@@ -50,6 +50,12 @@
         .setting-row { display:flex;justify-content:space-between;align-items:center;margin:10px 0;font-size:9px; }
         .toggle-btn { padding:5px 12px;border-radius:6px;cursor:pointer;pointer-events:auto;font-family:'Press Start 2P',cursive;font-size:8px;border:2px solid #4a00e0;background:#1a083d;color:#aaa;transition:all 0.15s; }
         .toggle-btn.active { border-color:#00f2ff;color:#00f2ff;background:rgba(0,242,255,0.1); }
+        /* Character info panel */
+        .char-info-card { background:#0d0525;border:2px solid #4a00e0;border-radius:8px;padding:10px 12px;text-align:left;transition:border-color 0.2s; }
+        .char-info-card:hover { border-color:#00f2ff; }
+        .ability-row { display:flex;gap:6px;margin:3px 0;align-items:flex-start; }
+        .ability-key { background:#1a083d;border:1px solid #4a00e0;border-radius:4px;padding:2px 6px;font-size:7px;color:#00f2ff;white-space:nowrap;flex-shrink:0; }
+        .ability-desc { font-size:7px;color:#bbb;line-height:1.5; }
 
 ```
     /* ── LANDSCAPE ENFORCEMENT OVERLAY ── */
@@ -154,6 +160,7 @@
         <div class="flex gap-2 justify-center mt-3 flex-wrap">
             <button onclick="showScreen('settingsScreen')" class="pause-btn" style="width:auto;padding:7px 12px;font-size:8px">⚙ SETTINGS</button>
             <button onclick="showScreen('keybindsScreen')" class="pause-btn" style="width:auto;padding:7px 12px;font-size:8px">⌨ KEYBINDS</button>
+            <button onclick="showScreen('infoScreen')" class="pause-btn" style="width:auto;padding:7px 12px;font-size:8px">📖 ABILITIES</button>
             <button onclick="downloadSave()" class="pause-btn" style="width:auto;padding:7px 12px;font-size:8px">💾 EXPORT</button>
         </div>
     </div>
@@ -213,7 +220,14 @@
     </div>
 </div>
 
-<!-- Level Up -->
+<!-- Character Info Screen -->
+<div id="infoScreen" class="ui-layer hidden">
+    <div class="menu-card interactive" style="min-width:360px;max-width:680px">
+        <h2 class="text-lg text-[#00f2ff] mb-4">📖 CHARACTER ABILITIES</h2>
+        <div style="display:grid;grid-template-columns:1fr;gap:8px" id="infoGrid"></div>
+        <button onclick="closeOverlay()" class="pause-btn mt-4">← BACK</button>
+    </div>
+</div>
 <div id="levelUpScreen" class="ui-layer hidden">
     <div class="menu-card interactive" style="min-width:300px">
         <h2 class="text-xl text-yellow-400 mb-4 italic">⬆ LEVEL UP!</h2>
@@ -307,17 +321,56 @@ const CHARACTERS=[
 
 // Weighted upgrade pool
 const UPGRADES_POOL=[
-    {id:'atk_speed',  name:"Haste",        desc:"Fire Rate",        tiers:[{l:"Common",v:5,c:"white",w:60},{l:"Rare",v:10,c:"#bc13fe",w:30},{l:"Legendary",v:20,c:"#ffd700",w:8}]},
-    {id:'damage',     name:"Caliber",      desc:"Bullet Damage",    tiers:[{l:"Common",v:2,c:"white",w:60},{l:"Rare",v:5,c:"#bc13fe",w:30},{l:"Legendary",v:12,c:"#ffd700",w:6}]},
-    {id:'speed',      name:"Drive",        desc:"Move Speed",       tiers:[{l:"Common",v:0.5,c:"white",w:60},{l:"Rare",v:1.2,c:"#bc13fe",w:30},{l:"Legendary",v:2.5,c:"#ffd700",w:8}]},
-    {id:'projectiles',name:"Splitter",     desc:"Extra Bullet",     tiers:[{l:"Rare",v:1,c:"#bc13fe",w:25},{l:"Legendary",v:2,c:"#ffd700",w:5}]},
-    {id:'bullet_size',name:"Heavy Rounds", desc:"Hitbox Size",      tiers:[{l:"Common",v:2,c:"white",w:55},{l:"Legendary",v:8,c:"#ffd700",w:7}]},
-    {id:'xp_boost',   name:"Wisdom",       desc:"XP Multiplier",    tiers:[{l:"Common",v:0.1,c:"white",w:55},{l:"Rare",v:0.3,c:"#bc13fe",w:22}]},
-    {id:'crit',       name:"Lethality",    desc:"Crit Chance %",    tiers:[{l:"Common",v:5,c:"white",w:60},{l:"Rare",v:15,c:"#bc13fe",w:28},{l:"Legendary",v:40,c:"#ffd700",w:6}]},
-    {id:'regen',      name:"Regen",        desc:"HP/5s",            tiers:[{l:"Common",v:0.06,c:"white",w:45},{l:"Rare",v:0.15,c:"#bc13fe",w:20},{l:"Legendary",v:0.35,c:"#ffd700",w:6}]},
-    {id:'max_hp',     name:"Vitality",     desc:"Max HP +",         tiers:[{l:"Common",v:1,c:"white",w:40},{l:"Rare",v:2,c:"#bc13fe",w:18},{l:"Legendary",v:4,c:"#ffd700",w:5}]},
-    {id:'ability_cd', name:"Readiness",    desc:"Ability CD -5s",   tiers:[{l:"Rare",v:300,c:"#bc13fe",w:18},{l:"Legendary",v:500,c:"#ffd700",w:5}]},
-    {id:'bullet_spd', name:"Velocity",     desc:"Bullet Speed",     tiers:[{l:"Common",v:2,c:"white",w:50},{l:"Rare",v:4,c:"#bc13fe",w:22}]},
+    {id:'atk_speed',  name:"Haste",        tiers:[
+        {l:"Common",   v:5,  c:"white",   w:60, desc:"Shoot 5 frames faster — small but noticeable fire rate boost"},
+        {l:"Rare",     v:10, c:"#bc13fe", w:30, desc:"Shoot 10 frames faster — meaningful fire rate increase"},
+        {l:"Legendary",v:20, c:"#ffd700", w:8,  desc:"Shoot 20 frames faster — drastically faster firing"},
+    ]},
+    {id:'damage',     name:"Caliber",      tiers:[
+        {l:"Common",   v:2,  c:"white",   w:60, desc:"+2 damage per bullet — each shot hits harder"},
+        {l:"Rare",     v:5,  c:"#bc13fe", w:30, desc:"+5 damage per bullet — noticeably more punch"},
+        {l:"Legendary",v:12, c:"#ffd700", w:6,  desc:"+12 damage per bullet — massive damage spike"},
+    ]},
+    {id:'speed',      name:"Drive",        tiers:[
+        {l:"Common",   v:0.5,  c:"white",   w:60, desc:"+0.5 movement speed — slightly faster"},
+        {l:"Rare",     v:1.2,  c:"#bc13fe", w:30, desc:"+1.2 movement speed — noticeably quicker"},
+        {l:"Legendary",v:2.5,  c:"#ffd700", w:8,  desc:"+2.5 movement speed — zoom across the map"},
+    ]},
+    {id:'projectiles',name:"Splitter",     tiers:[
+        {l:"Rare",     v:1, c:"#bc13fe", w:25, desc:"Fire 1 extra bullet per shot — great with damage upgrades"},
+        {l:"Legendary",v:2, c:"#ffd700", w:5,  desc:"Fire 2 extra bullets per shot — triple the pain"},
+    ]},
+    {id:'bullet_size',name:"Heavy Rounds", tiers:[
+        {l:"Common",   v:2, c:"white",   w:55, desc:"Bullets are 2px bigger — larger hitbox, easier to land"},
+        {l:"Legendary",v:8, c:"#ffd700", w:7,  desc:"Bullets are 8px bigger — massive hitbox, hard to miss"},
+    ]},
+    {id:'xp_boost',   name:"Wisdom",       tiers:[
+        {l:"Common",   v:0.1, c:"white",   w:55, desc:"+10% XP from all sources — level up faster"},
+        {l:"Rare",     v:0.3, c:"#bc13fe", w:22, desc:"+30% XP from all sources — significantly faster levelling"},
+    ]},
+    {id:'crit',       name:"Lethality",    tiers:[
+        {l:"Common",   v:5,  c:"white",   w:60, desc:"+5% crit chance — crits deal double damage"},
+        {l:"Rare",     v:15, c:"#bc13fe", w:28, desc:"+15% crit chance — much more consistent crits"},
+        {l:"Legendary",v:40, c:"#ffd700", w:6,  desc:"+40% crit chance — nearly half your shots crit"},
+    ]},
+    {id:'regen',      name:"Regen",        tiers:[
+        {l:"Common",   v:0.06, c:"white",   w:45, desc:"Heal 6% of max HP every 5 seconds"},
+        {l:"Rare",     v:0.15, c:"#bc13fe", w:20, desc:"Heal 15% of max HP every 5 seconds"},
+        {l:"Legendary",v:0.35, c:"#ffd700", w:6,  desc:"Heal 35% of max HP every 5 seconds — very strong sustain"},
+    ]},
+    {id:'max_hp',     name:"Vitality",     tiers:[
+        {l:"Common",   v:1, c:"white",   w:40, desc:"+1 max HP — also heals 1 HP immediately"},
+        {l:"Rare",     v:2, c:"#bc13fe", w:18, desc:"+2 max HP — also heals 2 HP immediately"},
+        {l:"Legendary",v:4, c:"#ffd700", w:5,  desc:"+4 max HP — also heals 4 HP immediately"},
+    ]},
+    {id:'ability_cd', name:"Readiness",    tiers:[
+        {l:"Rare",     v:300, c:"#bc13fe", w:18, desc:"Abilities recharge 5s faster — more frequent use"},
+        {l:"Legendary",v:500, c:"#ffd700", w:5,  desc:"Abilities recharge 8s faster — near-constant abilities"},
+    ]},
+    {id:'bullet_spd', name:"Velocity",     tiers:[
+        {l:"Common",   v:2, c:"white",   w:50, desc:"+20% bullet speed — harder for enemies to dodge"},
+        {l:"Rare",     v:4, c:"#bc13fe", w:22, desc:"+40% bullet speed — bullets reach enemies almost instantly"},
+    ]},
 ];
 function pickUpgrade(){
     const base=UPGRADES_POOL[Math.floor(Math.random()*UPGRADES_POOL.length)];
@@ -407,11 +460,11 @@ let state={
 };
 
 // ── FIXED LOGICAL WORLD ──
-// The game always runs at a fixed 1280×720 logical canvas.
+// The game always runs at a fixed 1920×1080 logical canvas.
 // We scale it via CSS to fill the window, keeping aspect ratio (letterbox/pillarbox).
 // This means the map is ALWAYS the same size regardless of display resolution or DPR.
-const WORLD_W = 1280;
-const WORLD_H = 720;
+const WORLD_W = 1920;
+const WORLD_H = 1080;
 
 // ZOOM is used for mouse/touch coordinate mapping
 let ZOOM = 1;
@@ -551,6 +604,26 @@ class XpOrb {
     draw(){ctx.fillStyle='#bc13fe';ctx.shadowBlur=6;ctx.shadowColor='#bc13fe';ctx.beginPath();ctx.arc(this.x,this.y,6,0,Math.PI*2);ctx.fill();ctx.shadowBlur=0;}
 }
 
+// ── EMOJI FILTER CACHE ──
+// Renders filtered emojis onto an offscreen canvas once and caches them.
+// This avoids applying ctx.filter directly to the main canvas, which causes
+// solid-black emoji rendering on iOS/Android (WebKit canvas compositing bug).
+const _emojiFilterCache = {};
+function getFilteredEmojiCanvas(emoji, filter, size){
+    const key = emoji + '|' + filter + '|' + size;
+    if(_emojiFilterCache[key]) return _emojiFilterCache[key];
+    const oc = document.createElement('canvas');
+    oc.width = size + 8; oc.height = size + 8;
+    const octx = oc.getContext('2d');
+    octx.filter = filter;
+    octx.font = `${size}px Arial`;
+    octx.textAlign = 'center';
+    octx.textBaseline = 'middle';
+    octx.fillText(emoji, oc.width/2, oc.height/2);
+    _emojiFilterCache[key] = oc;
+    return oc;
+}
+
 class Player {
     constructor(config){
         this.config=config;this.x=canvas.width/2;this.y=canvas.height/2;
@@ -630,7 +703,6 @@ class Player {
         }
         if(this.cutenessBoostShots>0){this.cutenessBoostShots--;popup(this.x,this.y-30,'2x DMG!','#ff88ff');}
         this.atkCooldown=this.atkSpeed;
-        if(this.regen>0){this.regenTick++;if(this.regenTick>=300){this.regenTick=0;if(this.hp<this.maxHp)this.hp=Math.min(this.maxHp,this.hp+this.regen*this.maxHp);updateHUD();}}
     }
     draw(){
         if(state.mindControl.active){const h=state.mindControl.host;ctx.save();ctx.strokeStyle='#ff00ff';ctx.lineWidth=3;ctx.shadowBlur=15;ctx.shadowColor='#ff00ff';ctx.beginPath();ctx.arc(h.x,h.y,33,0,Math.PI*2);ctx.stroke();ctx.restore();return;}
@@ -639,8 +711,17 @@ class Player {
         ctx.save();ctx.translate(this.x,this.y);
         if(this.config.id==='coolioioio'&&state.spinbot){ctx.rotate(state.spinbot.angle);}
         else if(this.facing===-1)ctx.scale(-1,1);
-        if(this.config.img&&this.config.img.complete&&this.config.img.naturalWidth!==0){ctx.drawImage(this.config.img,-this.size/2,-this.size/2,this.size,this.size);}
-        else{if(this.config.emojiFilter)ctx.filter=this.config.emojiFilter;ctx.font=`${this.size}px Arial`;ctx.textAlign='center';ctx.textBaseline='middle';ctx.fillText(this.config.emoji,0,0);}
+        if(this.config.img&&this.config.img.complete&&this.config.img.naturalWidth!==0){
+            ctx.drawImage(this.config.img,-this.size/2,-this.size/2,this.size,this.size);
+        } else if(this.config.emojiFilter){
+            // Draw filtered emoji onto offscreen canvas to avoid WebKit mobile black-rendering bug
+            // when ctx.filter is applied directly to the main canvas.
+            const oc=getFilteredEmojiCanvas(this.config.emoji,this.config.emojiFilter,this.size);
+            ctx.drawImage(oc,-this.size/2,-this.size/2,this.size,this.size);
+        } else {
+            ctx.font=`${this.size}px Arial`;ctx.textAlign='center';ctx.textBaseline='middle';
+            ctx.fillText(this.config.emoji,0,0);
+        }
         if(this._warpSpeedBoost>0){ctx.strokeStyle='rgba(0,255,136,0.5)';ctx.lineWidth=3;ctx.beginPath();ctx.arc(0,0,this.size/2+8,0,Math.PI*2);ctx.stroke();}
         ctx.restore();
     }
@@ -706,13 +787,19 @@ class Enemy {
         if(this.x<-60||this.x>canvas.width+60||this.y<-60||this.y>canvas.height+60)return;
         ctx.save();
         const onScreen=this.x>-40&&this.x<canvas.width+40&&this.y>-40&&this.y<canvas.height+40;
-        if(this.isHost)ctx.filter='drop-shadow(0 0 12px #ff00ff) hue-rotate(280deg)';
-        ctx.font='24px Arial';ctx.textAlign='center';ctx.textBaseline='middle';
+
+        // Draw emoji WITHOUT any ctx.filter — filter breaks emoji colour on iOS/Android WebKit
         if(state.effects.frozen&&!this.isBoss&&onScreen&&!this.isHost){
             ctx.globalAlpha=0.45;ctx.fillStyle='#aaeeff';ctx.beginPath();ctx.arc(this.x,this.y,16,0,Math.PI*2);ctx.fill();ctx.globalAlpha=1;
         }
+        ctx.font='24px Arial';ctx.textAlign='center';ctx.textBaseline='middle';
         ctx.fillText(this.type,this.x,this.y);
-        ctx.filter='none';
+
+        // Overlays drawn as plain shapes (no filter) so emoji stays coloured
+        if(this.isHost&&onScreen){
+            ctx.strokeStyle='#ff00ff';ctx.lineWidth=3;ctx.shadowBlur=12;ctx.shadowColor='#ff00ff';
+            ctx.beginPath();ctx.arc(this.x,this.y,18,0,Math.PI*2);ctx.stroke();ctx.shadowBlur=0;
+        }
         if(this.confused>0&&onScreen){
             ctx.strokeStyle='#00ffff';ctx.lineWidth=2;ctx.beginPath();ctx.arc(this.x,this.y,16,0,Math.PI*2);ctx.stroke();
         }
@@ -1231,6 +1318,19 @@ function gameStep(){
     if(!state.secondary.ready){state.secondary.cooldown--;if(state.secondary.cooldown<=0){state.secondary.ready=true;updateHUD();}}
     // Update HUD cooldown display every 60 ticks (once per second) so timers don't freeze
     if(state.frameCount%60===0) updateHUD();
+    // Health regen — ticks every 5 seconds (300 frames). Each Regen upgrade adds ~6-35% of maxHp per 5s.
+    if(state.player && state.player.regen > 0){
+        state.player.regenTick = (state.player.regenTick||0) + 1;
+        if(state.player.regenTick >= 300){
+            state.player.regenTick = 0;
+            if(state.player.hp < state.player.maxHp){
+                const healAmt = Math.max(1, Math.round(state.player.regen * state.player.maxHp));
+                state.player.hp = Math.min(state.player.maxHp, state.player.hp + healAmt);
+                popup(state.player.x, state.player.y - 40, `+${healAmt} ❤`, '#ff4466', 80);
+                updateHUD();
+            }
+        }
+    }
     if(state.effects.frozenTimer>0){state.effects.frozenTimer--;if(state.effects.frozenTimer<=0){state.effects.frozen=false;state.effects.frozenDamageMult=1;}}
     if(!state.boss){state.bossTimer--;if(state.bossTimer<=0)spawnBoss();}
 
@@ -1472,8 +1572,14 @@ function gameRender(){
         // Pounce player render
         if(state.pounce.active&&state.pounce.target){
             const pt=state.pounce.target;
-            ctx.save();if(state.player.config.emojiFilter)ctx.filter=state.player.config.emojiFilter;
-            ctx.font='38px Arial';ctx.textAlign='center';ctx.textBaseline='middle';ctx.fillText(state.player.config.emoji,pt.x,pt.y);ctx.restore();
+            ctx.save();
+            if(state.player.config.emojiFilter){
+                const oc=getFilteredEmojiCanvas(state.player.config.emoji,state.player.config.emojiFilter,38);
+                ctx.drawImage(oc,pt.x-oc.width/2,pt.y-oc.height/2);
+            } else {
+                ctx.font='38px Arial';ctx.textAlign='center';ctx.textBaseline='middle';ctx.fillText(state.player.config.emoji,pt.x,pt.y);
+            }
+            ctx.restore();
         }
 
         // Mini beams
@@ -1548,6 +1654,7 @@ let previousScreen=null;
 function showScreen(id){previousScreen=state.screen;state.screen='OVERLAY';document.querySelectorAll('.ui-layer').forEach(el=>el.classList.add('hidden'));document.getElementById(id).classList.remove('hidden');}
 function closeOverlay(){
     document.getElementById('settingsScreen').classList.add('hidden');document.getElementById('keybindsScreen').classList.add('hidden');
+    document.getElementById('infoScreen').classList.add('hidden');
     if(previousScreen==='MENU'||!state.player){document.getElementById('mainMenu').classList.remove('hidden');state.screen='MENU';}
     else{document.getElementById('pauseMenu').classList.remove('hidden');state.screen='PAUSED';}
 }
@@ -1564,8 +1671,66 @@ function renderCharIcon(c){
     return oc.toDataURL();
 }
 
+function initInfoScreen(){
+    const CHAR_INFO=[
+        {emoji:'👹',name:'Noglin',color:'#ff00ff',stats:'Speed: Fast | HP: 5',abilities:[
+            {key:'SPACE — Latch',   desc:'Mind control the nearest enemy. You pilot them directly and use their body to fight. They die, you escape unhurt.'},
+            {key:'[MC] SPACE — Slam', desc:'While controlling an enemy, slam nearby enemies for 70 damage each.'},
+            {key:'[MC] Q — Possess', desc:'Possess a nearby different enemy without losing control (swap hosts).'},
+            {key:'[MC] E — Drain',  desc:'Drain 30 HP from your current host and heal yourself.'},
+            {key:'[MC] F — Boom',   desc:'Detonate the host for a massive AOE explosion, then escape.'},
+            {key:'R — Cuteness',    desc:'Double your bullet damage for the next 8 shots by being adorable.'},
+        ]},
+        {emoji:'⚡',name:'Pikachu',color:'#ffff00',stats:'Speed: Very Fast | HP: 4',abilities:[
+            {key:'SPACE — Thunderbolt', desc:'Fire 8 lightning bolts that chain between nearby enemies, dealing 30 damage each hit.'},
+            {key:'R — Volt Tackle',     desc:'Dash at the nearest enemy at lightning speed. Stuns them and knocks them back. If aimed at a group, you bounce through all of them.'},
+        ]},
+        {emoji:'🐯',name:'Zanther',color:'#ff9900',stats:'Speed: Medium | HP: 5',abilities:[
+            {key:'SPACE — Pounce',  desc:'Leap onto the nearest enemy and feast — dealing constant damage while healing 25% of dealt damage back. All other enemies flee in terror. Hold to keep feasting, or press SPACE to release early.'},
+            {key:'R — Sheer Aura', desc:'Activate a terror aura for 5 seconds — all enemies on screen flee and take increased damage. Great combo with Pounce.'},
+        ]},
+        {emoji:'🐱',name:'Vitru',color:'#00ff88',stats:'Speed: Fast | HP: 5',abilities:[
+            {key:'SPACE — Glorp Beam', desc:'Fire a beam toward your cursor that instantly deletes everything in its path. Confuses nearby enemies. You teleport to a random point along the beam.'},
+            {key:'R — Wormhole',       desc:'Teleport instantly to your cursor position and gain a burst of speed. Great for escaping or repositioning.'},
+        ]},
+        {emoji:'🐕',name:'Broke Shiba',color:'#ffbbbb',stats:'Speed: Medium | HP: 6',abilities:[
+            {key:'SPACE — Sad Whimper', desc:'Emit a pitiful cry that slows ALL enemies on screen to 15% speed for 5 seconds. Also makes ranged enemies stop shooting.'},
+            {key:'R — 50 Bucks',        desc:'Throw bouncing coins that home in on enemies and bounce up to 7 times, dealing 5x your bullet damage per hit. Coins keep chasing new targets.'},
+        ]},
+        {emoji:'☃️',name:'Snowman',color:'#88eeff',stats:'Speed: Slow | HP: 7',abilities:[
+            {key:'SPACE — Flash Freeze', desc:'Instantly freeze ALL non-boss enemies solid for 5 seconds. Frozen enemies take 2× damage and cannot move or shoot.'},
+            {key:'R — Icicle Barrage',   desc:'Launch 12 icicles outward in a full circle, each dealing 2.5× your bullet damage. Great for clearing crowds.'},
+        ]},
+        {emoji:'😎',name:'Coolioioio',color:'#ff44ff',stats:'Speed: Fast | HP: 5',abilities:[
+            {key:'SPACE — Spinbot',   desc:'Spin wildly for 4 seconds, firing 10 bullets per second in all directions. Immune to damage while spinning.'},
+            {key:'R — 360-No-Scope',  desc:'Fire a single massive piercing shot at your cursor that one-taps most enemies. Deals 10× bullet damage with huge knockback.'},
+        ]},
+    ];
+    const grid=document.getElementById('infoGrid');
+    if(!grid)return;
+    grid.innerHTML='';
+    CHAR_INFO.forEach(c=>{
+        const card=document.createElement('div');
+        card.className='char-info-card';
+        const abRows=c.abilities.map(a=>
+            `<div class="ability-row"><span class="ability-key">${a.key}</span><span class="ability-desc">${a.desc}</span></div>`
+        ).join('');
+        card.innerHTML=`
+            <div style="display:flex;align-items:center;gap:8px;margin-bottom:6px;border-bottom:1px solid rgba(255,255,255,0.1);padding-bottom:6px">
+                <span style="font-size:1.5rem">${c.emoji}</span>
+                <div>
+                    <div style="font-size:10px;font-weight:bold;color:${c.color}">${c.name}</div>
+                    <div style="font-size:7px;color:#777">${c.stats}</div>
+                </div>
+            </div>
+            ${abRows}`;
+        grid.appendChild(card);
+    });
+}
+
 function initMenu(){
     loadSave();
+    initInfoScreen();
     const grid=document.getElementById('charGrid');if(!grid)return;grid.innerHTML='';
     CHARACTERS.forEach(c=>{
         const b=document.createElement('div');b.className='char-btn';
@@ -1648,7 +1813,7 @@ function showLevelUp(){
         do{const u=pickUpgrade();base=u.base;tier=u.tier;tries++;}while(picked.has(base.id+tier.l)&&tries<30);
         picked.add(base.id+tier.l);
         const b=document.createElement('button');b.className=`upgrade-btn ${tier.l.toLowerCase()}`;
-        b.innerHTML=`<div class="flex justify-between"><span style="font-size:10px;font-weight:bold">${base.name}</span><span style="font-size:8px;color:${tier.c}">${tier.l}</span></div><div style="font-size:8px;color:#aaa">${base.desc} +${tier.v}</div>`;
+        b.innerHTML=`<div class="flex justify-between items-center mb-1"><span style="font-size:10px;font-weight:bold">${base.name}</span><span style="font-size:8px;color:${tier.c};font-weight:bold">${tier.l.toUpperCase()}</span></div><div style="font-size:8px;color:#ccc;line-height:1.5">${tier.desc}</div>`;
         b.onclick=()=>{
             const p=state.player;
             if(base.id==='atk_speed') p.atkSpeed=Math.max(5,p.atkSpeed-tier.v);
