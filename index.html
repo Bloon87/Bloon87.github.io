@@ -284,6 +284,7 @@
                 <div style="color:#ccc;padding-left:8px;margin-bottom:2px">• Choco's towers now look like Roblox Tower Battles units; Noglin's host abilities no longer teleport out of bounds; Pickle Dash text removed</div>
                 <div style="color:#ccc;padding-left:8px;margin-bottom:2px">• Kira's Monologue and Blah's Ultimate Speech keep their words on screen for 1.6s</div>
                 <div style="color:#ccc;padding-left:8px;margin-bottom:2px">• New ENEMY CATALOGUE (menu + pause) with every enemy type and its Noglin host special; ✕ close buttons on menus; real character icons in the Abilities screen</div>
+                <div style="color:#ccc;padding-left:8px;margin-bottom:2px">• Upgrades now have icons, and Picky's extra options stay in one vertical stack (up to 9)</div>
                 <div style="color:#ccc;padding-left:8px;margin-bottom:2px">• Under the hood: delayed ability effects now run on game time (they pause with the game and reset each run); duplicate info text and dead code removed</div>
                 <div style="color:#ffd700;font-size:10px;margin:8px 0 6px">▶ v1.9</div>
                 <div style="color:#ccc;padding-left:8px;margin-bottom:2px">• New upgrades: Armour (-10/20/30% damage, max 60%) and legendary-only Picky (+2 level-up options, up to 3 stacks)</div>
@@ -5780,6 +5781,7 @@ function updateHUD(){
     if(ab2){if(state.player&&state.player.config.id==='choco'){ab2.classList.add('ready');ab2.innerText=state.player.swordMode?'⚔':'🏹';}else if(state.secondary.ready){ab2.classList.add('ready');ab2.innerText="★";}else{const s=Math.ceil(state.secondary.cooldown/60);ab2.classList.remove('ready');ab2.innerText=s;}}
 }
 
+const UPGRADE_ICONS={atk_speed:'💨',damage:'🔫',speed:'👟',projectiles:'🔱',bullet_size:'⚫',xp_boost:'🧠',crit:'🎯',regen:'💚',max_hp:'❤️',magnet:'🧲',pierce:'🏹',luck:'🍀',armor:'🛡️',picky:'🃏',ability_cd:'⏳',bullet_spd:'🚀'};
 function showLevelUp(){
     state.screen='LEVELUP';
     const container=document.getElementById('upgradeOptions');container.innerHTML='';
@@ -5787,14 +5789,16 @@ function showLevelUp(){
     const nOpt=3+2*((state.player&&state.player.picky)||0);   // Picky: +2 options per stack
     const pend=state.pendingLevels||1;
     const lt=document.getElementById('levelUpTitle');if(lt)lt.innerText='⬆ LEVEL UP!'+(pend>1?'  ('+(pend-1)+' more)':'');
-    container.style.cssText=nOpt>3?'display:grid;grid-template-columns:repeat('+(nOpt>6?3:2)+',minmax(0,1fr));gap:0 10px;max-height:68vh;overflow-y:auto':'';
-    if(container.parentElement){const cs=container.parentElement.style;cs.minWidth=nOpt>6?'min(860px,94vw)':nOpt>3?'min(580px,94vw)':'300px';cs.maxWidth=nOpt>3?'94vw':'';cs.width=nOpt>6?'min(860px,94vw)':nOpt>3?'min(580px,94vw)':'';}
+    container.style.cssText=nOpt>3?'max-height:calc(92vh - 120px);overflow-y:auto;padding-right:4px':'';   // always one vertical stack (up to 9 with Picky); scrolls only on very short screens
+    if(container.parentElement){const cs=container.parentElement.style;cs.minWidth='min(420px,94vw)';cs.maxWidth='94vw';cs.width='min(460px,94vw)';}
+    const dense=nOpt>3;
     for(let i=0;i<nOpt;i++){
         let base,tier,tries=0;
         do{const u=pickUpgrade();base=u.base;tier=u.tier;tries++;}while(picked.has(base.id+tier.l)&&tries<30);
         picked.add(base.id+tier.l);
         const b=document.createElement('button');b.className=`upgrade-btn ${tier.l.toLowerCase()}`;
-        b.innerHTML=`<div class="flex justify-between items-center mb-1"><span style="font-size:10px;font-weight:bold">${base.name}</span><span style="font-size:8px;color:${tier.c};font-weight:bold">${tier.l.toUpperCase()}</span></div><div style="font-size:8px;color:#ccc;line-height:1.5">${tier.desc}</div>`;
+        if(dense)b.style.cssText='padding:4px 8px;margin:3px 0';
+        b.innerHTML=`<div style="display:flex;align-items:center;gap:${dense?9:12}px"><span style="flex-shrink:0;width:${dense?30:42}px;height:${dense?30:42}px;display:flex;align-items:center;justify-content:center;font-size:${dense?1.05:1.5}rem;line-height:1;background:rgba(0,0,0,0.35);border:2px solid ${tier.c};border-radius:8px;box-shadow:0 0 8px ${tier.c}55">${UPGRADE_ICONS[base.id]||'✨'}</span><div style="flex:1;min-width:0"><div style="display:flex;justify-content:space-between;align-items:center;gap:8px;margin-bottom:2px"><span style="font-size:10px;font-weight:bold">${base.name}</span><span style="font-size:8px;color:${tier.c};font-weight:bold">${tier.l.toUpperCase()}</span></div><div style="font-size:${dense?7:8}px;color:#ccc;line-height:1.5">${tier.desc}</div></div></div>`;
         b.onclick=()=>{
             const p=state.player;
             if(base.id==='atk_speed') p.atkSpeed=Math.max(5,p.atkSpeed-tier.v);
