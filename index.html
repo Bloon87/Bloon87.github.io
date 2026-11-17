@@ -41,21 +41,20 @@
         #bossBar { position:absolute;top:88px;left:50%;transform:translateX(-50%);width:70%;z-index:60;pointer-events:none; }
         #bossBarFill { height:14px;background:linear-gradient(90deg,#ff6600,#ff0000);border-radius:4px;transition:width 0.2s; }
         #bossBarBg { width:100%;height:14px;background:rgba(0,0,0,0.6);border:2px solid #ff6600;border-radius:4px;overflow:hidden; }
-        #mindCtrlHud { position:absolute;bottom:155px;right:130px;background:rgba(255,0,255,0.15);border:2px solid #ff00ff;padding:5px 10px;border-radius:6px;font-size:7px;color:#ff00ff;text-align:right;pointer-events:none;z-index:60;white-space:nowrap;line-height:1.8; }
-        .mobile-active #mindCtrlHud { right:auto;left:200px;text-align:left; }
+        #mindCtrlHud { position:absolute;top:92px;left:58px;background:rgba(255,0,255,0.15);border:2px solid #ff00ff;padding:5px 10px;border-radius:6px;font-size:9px;line-height:1.7;color:#ff00ff;text-align:left;pointer-events:none;z-index:60;white-space:nowrap;line-height:1.8; }
         #pounceIndicator { position:absolute;top:45%;left:50%;transform:translate(-50%,-50%);font-size:10px;color:#ff9900;text-shadow:0 0 10px #ff9900;pointer-events:none;display:none;text-align:center; }
         .pause-btn { display:block;width:100%;padding:10px;margin:6px 0;background:#1a083d;border:2px solid #4a00e0;border-radius:8px;cursor:pointer;pointer-events:auto;font-family:'Press Start 2P',cursive;font-size:11px;color:#fff;transition:all 0.15s; }
         .pause-btn:hover { border-color:#00f2ff;color:#00f2ff;transform:scale(1.03); }
         .pause-btn.danger { border-color:#ff4444;color:#ff9999; }
         .pause-btn.danger:hover { border-color:#ff0000;color:#ff4444; }
-        #hud > *:not(#eyeToggle) { transition: opacity 0.6s ease; }
-        #hud.hud-hidden > *:not(#eyeToggle) { opacity: 0 !important; pointer-events: none; }
         .kb-row { display:flex;justify-content:space-between;align-items:center;padding:6px 0;border-bottom:1px solid rgba(255,255,255,0.08);font-size:9px; }
         .kb-key { background:#222;border:1px solid #555;padding:3px 8px;border-radius:4px;color:#00f2ff;font-family:'Press Start 2P',cursive;font-size:8px; }
         .setting-row { display:flex;justify-content:space-between;align-items:center;margin:10px 0;font-size:9px; }
         .toggle-btn { padding:5px 12px;border-radius:6px;cursor:pointer;pointer-events:auto;font-family:'Press Start 2P',cursive;font-size:8px;border:2px solid #4a00e0;background:#1a083d;color:#aaa;transition:all 0.15s; }
         .toggle-btn.active { border-color:#00f2ff;color:#00f2ff;background:rgba(0,242,255,0.1); }
         /* Character info panel */
+        .close-x { position:sticky;top:0;float:right;margin:-10px -10px 0 8px;z-index:6;width:30px;height:30px;line-height:26px;padding:0;background:#1a083d;border:2px solid #4a00e0;border-radius:8px;color:#fff;font-family:'Press Start 2P',monospace;font-size:12px;cursor:pointer;pointer-events:auto; }
+        .close-x:hover { border-color:#ff4466;color:#ff4466;transform:scale(1.08); }
         .char-info-card { background:#0d0525;border:2px solid #4a00e0;border-radius:8px;padding:10px 12px;text-align:left;transition:border-color 0.2s; }
         .char-info-card:hover { border-color:#00f2ff; }
         .ability-row { display:flex;gap:6px;margin:3px 0;align-items:flex-start; }
@@ -148,7 +147,7 @@
             <div class="text-center text-[9px] text-orange-400 mb-1" id="bossName">???</div>
             <div id="bossBarBg"><div id="bossBarFill" style="width:100%"></div></div>
         </div>
-        <div id="mindCtrlHud" class="hidden"><div id="mcHostName">MIND CONTROL</div><div id="mcTimerLine" style="font-size:6px;color:#cc88ff">60s</div></div>
+        <div id="mindCtrlHud" class="hidden"><div id="mcHostName">MIND CONTROL</div><div id="mcTimerLine" style="font-size:8px;color:#cc88ff">60s</div></div>
         <div id="pounceIndicator">🐯 FEASTING...<br>SPC: CANCEL</div>
     <div id="bossTimerDisplay" style="position:absolute;bottom:12px;right:12px;font-size:9px;color:#ff9900;pointer-events:none;z-index:60"></div>
     <div id="bossMultDisplay" style="position:absolute;bottom:28px;right:12px;font-size:8px;color:#ff6600;pointer-events:none;z-index:60"></div>
@@ -168,6 +167,7 @@
                 <button onclick="showScreen('settingsScreen')" class="pause-btn" style="width:auto;padding:7px 12px;font-size:8px">⚙ SETTINGS</button>
                 <button onclick="showScreen('keybindsScreen')" class="pause-btn" style="width:auto;padding:7px 12px;font-size:8px">⌨ KEYBINDS</button>
                 <button onclick="showScreen('infoScreen')" class="pause-btn" style="width:auto;padding:7px 12px;font-size:8px">📖 ABILITIES</button>
+                <button onclick="showScreen('enemyScreen')" class="pause-btn" style="width:auto;padding:7px 12px;font-size:8px">👾 ENEMIES</button>
                 <button onclick="showScreen('changelogScreen')" class="pause-btn" style="width:auto;padding:7px 12px;font-size:8px">📋 CHANGELOG</button>
                 <button onclick="downloadSave()" class="pause-btn" style="width:auto;padding:7px 12px;font-size:8px">💾 EXPORT</button>
             </div>
@@ -181,6 +181,8 @@
             <button onclick="resumeGame()" class="pause-btn">▶ RESUME</button>
             <button onclick="showScreen('settingsScreen')" class="pause-btn">⚙ SETTINGS</button>
             <button onclick="showScreen('keybindsScreen')" class="pause-btn">⌨ KEYBINDS</button>
+            <button onclick="showScreen('infoScreen')" class="pause-btn">📖 ABILITIES</button>
+            <button onclick="showScreen('enemyScreen')" class="pause-btn">👾 ENEMIES</button>
             <button onclick="showScreen('changelogScreen')" class="pause-btn">📋 CHANGELOG</button>
             <button onclick="resetGame()" class="pause-btn danger">✖ QUIT TO MENU</button>
         </div>
@@ -269,9 +271,34 @@
     <!-- Changelog Screen -->
     <div id="changelogScreen" class="ui-layer hidden">
         <div class="menu-card interactive" style="min-width:360px;max-width:620px;max-height:85vh;overflow-y:auto">
+            <button class="close-x" onclick="closeOverlay()" aria-label="Close">✕</button>
             <h2 class="text-lg text-[#00f2ff] mb-4">📋 CHANGELOG</h2>
             <div style="text-align:left;font-size:8px;line-height:2">
-                <div style="color:#ffd700;font-size:10px;margin-bottom:6px">▶ v1.7 — Current</div>
+                <div style="color:#ffd700;font-size:10px;margin-bottom:6px">▶ v2.0 — Current</div>
+                <div style="color:#ccc;padding-left:8px;margin-bottom:2px">• Enemies can no longer leave the arena once they're in — fear (Sheer Aura), knockbacks and charges all stay in bounds; enemy damage −20%</div>
+                <div style="color:#ccc;padding-left:8px;margin-bottom:2px">• Arsonist: Arson Party now throws its bottles at your Tar puddles first (setting them ablaze)</div>
+                <div style="color:#ccc;padding-left:8px;margin-bottom:2px">• Snowman: Blizzard freezes everything inside the arena (new arrivals too, as soon as they walk in); frostbite is now (1 + bosses so far) × your damage per second</div>
+                <div style="color:#ccc;padding-left:8px;margin-bottom:2px">• Vitru: confusion durations halved</div>
+                <div style="color:#ccc;padding-left:8px;margin-bottom:2px">• Coolioioio: Minigun spits glowing embers that deal low damage and set enemies on fire (same burn as the Arsonist)</div>
+                <div style="color:#ccc;padding-left:8px;margin-bottom:2px">• Subaru: Madness removed. Return by Death is now a timed 5s window — die inside it and you respawn instantly at the spot with FULL HP. Unseen Hand got shadow-hand VFX. Uses subaru.png when present (🔄 until then)</div>
+                <div style="color:#ccc;padding-left:8px;margin-bottom:2px">• Choco's towers now look like Roblox Tower Battles units; Noglin's host abilities no longer teleport out of bounds; Pickle Dash text removed</div>
+                <div style="color:#ccc;padding-left:8px;margin-bottom:2px">• Kira's Monologue and Blah's Ultimate Speech keep their words on screen for 1.6s</div>
+                <div style="color:#ccc;padding-left:8px;margin-bottom:2px">• New ENEMY CATALOGUE (menu + pause) with every enemy type and its Noglin host special; ✕ close buttons on menus; real character icons in the Abilities screen</div>
+                <div style="color:#ccc;padding-left:8px;margin-bottom:2px">• Under the hood: delayed ability effects now run on game time (they pause with the game and reset each run); duplicate info text and dead code removed</div>
+                <div style="color:#ffd700;font-size:10px;margin:8px 0 6px">▶ v1.9</div>
+                <div style="color:#ccc;padding-left:8px;margin-bottom:2px">• New upgrades: Armour (-10/20/30% damage, max 60%) and legendary-only Picky (+2 level-up options, up to 3 stacks)</div>
+                <div style="color:#ccc;padding-left:8px;margin-bottom:2px">• Fixed: gaining several levels at once now gives an upgrade pick for each level</div>
+                <div style="color:#ccc;padding-left:8px;margin-bottom:2px">• Snowman ult is now a giant growing Snowball that catches enemies and bursts</div>
+                <div style="color:#ccc;padding-left:8px;margin-bottom:2px">• Choco: no Splitter, 1.1x attack speed, sword DPS 1.3x gun DPS; Brine Burst shockwave VFX; Noglin MC panel moved; HUD no longer auto-hides (eye button stays in pause menu)</div>
+                <div style="color:#ffd700;font-size:10px;margin:8px 0 6px">▶ v1.8</div>
+                <div style="color:#ccc;padding-left:8px;margin-bottom:2px">• Regen is now a starting stat (4 HP/s) that heals every second; Regen upgrades +2 / +5 / +10 per second; Kira's God Mode lasts 3s</div>
+                <div style="color:#ccc;padding-left:8px;margin-bottom:2px">• Arsonist: Oil Slick is now TAR TOSS — hurl tar that leaves an oiling puddle (burns when lit); Inferno Strike hits harder</div>
+                <div style="color:#ccc;padding-left:8px;margin-bottom:2px">• Enemies outside the arena can no longer be targeted (Pickle Dash, auto-attacks, abilities, ultimates, Glorp Beam, Among Us Tonight...)</div>
+                <div style="color:#ccc;padding-left:8px;margin-bottom:2px">• New upgrades: Pierce (1/2/3 enemies) and Luck (better upgrade rarity + bonus XP orbs)</div>
+                <div style="color:#ccc;padding-left:8px;margin-bottom:2px">• Regular enemies drop 2x XP; bosses come every 30s; Glorp Beam damage reduced again</div>
+                <div style="color:#ccc;padding-left:8px;margin-bottom:2px">• Choco's sword deals ~1.8x gun DPS and grows with Heavy Rounds; Minigun is 4x stronger; Spinbot bullets pierce</div>
+                <div style="color:#ccc;padding-left:8px;margin-bottom:2px">• Pickle-astrophe hits and poisons harder; Brine Burst radius 300→460; Noglin's Kill Host no longer one-shots bosses</div>
+                <div style="color:#ffd700;font-size:10px;margin:8px 0 6px">▶ v1.7</div>
                 <div style="color:#ccc;padding-left:8px;margin-bottom:2px">• New Magnet upgrade (XP pickup range); Readiness hides once cooldowns are capped; XP orbs accelerate in a stream instead of clumping</div>
                 <div style="color:#ccc;padding-left:8px;margin-bottom:2px">• Volt Tackle is now a piercing lightning dash with chain lightning, a thunderclap and an electrified trail</div>
                 <div style="color:#ccc;padding-left:8px;margin-bottom:2px">• Coolioioio ult is now a Minigun; slight homing on Spinbot and BlahBlahBlah words; Pickle Dash poisons its path and ends with a bonus dash</div>
@@ -289,7 +316,7 @@
                 <div style="color:#ccc;padding-left:8px;margin-bottom:2px">• Vitru now opens a variant menu: Glorp or Arsonist</div>
                 <div style="color:#ccc;padding-left:8px;margin-bottom:2px">• Performance pass on Femboy, Pickle, Arsonist and Broke Shiba (and confusion AI, sparks)</div>
                 <div style="color:#ffd700;font-size:10px;margin:8px 0 6px">▶ v1.3</div>
-                <div style="color:#ccc;padding-left:8px;margin-bottom:2px">• NEW CHARACTER: Arsonist (Glorp variant) — Arson Party, Oil Slick, ult Inferno Strike</div>
+                <div style="color:#ccc;padding-left:8px;margin-bottom:2px">• NEW CHARACTER: Arsonist (Glorp variant) — Arson Party, Tar Toss (was Oil Slick), ult Inferno Strike</div>
                 <div style="color:#ccc;padding-left:8px;margin-bottom:2px">• Konami code restored on the main menu: ⬆⬆⬇⬇⬅➡⬅➡ B A unlocks secret characters</div>
                 <div style="color:#ffd700;font-size:10px;margin:8px 0 6px">▶ v1.2</div>
                 <div style="color:#ccc;padding-left:8px;margin-bottom:2px">• ULTIMATES for all 12 characters — charge by killing and over time, press F (or the ✦ button)</div>
@@ -316,7 +343,6 @@
                 <div style="color:#ccc;padding-left:8px;margin-bottom:2px">• Boss mind control: keeps boss shooting pattern, unique Q per pattern</div>
                 <div style="color:#ccc;padding-left:8px;margin-bottom:2px">• 50 Bucks: 5s lifetime, unlimited targets (no back-to-back same enemy)</div>
                 <div style="color:#aaa;margin-top:8px;margin-bottom:4px;font-size:7px">UI &amp; Quality of Life</div>
-                <div style="color:#ccc;padding-left:8px;margin-bottom:2px">• HUD text auto-hides after 3s of inactivity</div>
                 <div style="color:#ccc;padding-left:8px;margin-bottom:2px">• Eye icon in bottom-left during pause to toggle UI</div>
                 <div style="color:#ccc;padding-left:8px;margin-bottom:2px">• Cooldown shows — when frozen/paused</div>
                 <div style="color:#ccc;padding-left:8px;margin-bottom:2px">• Hitbox debug display in settings</div>
@@ -330,14 +356,25 @@
     <!-- Character Info Screen -->
     <div id="infoScreen" class="ui-layer hidden">
         <div class="menu-card interactive" style="min-width:360px;max-width:680px">
+            <button class="close-x" onclick="closeOverlay()" aria-label="Close">✕</button>
             <h2 class="text-lg text-[#00f2ff] mb-4">📖 CHARACTER ABILITIES</h2>
             <div style="display:grid;grid-template-columns:1fr;gap:8px" id="infoGrid"></div>
             <button onclick="closeOverlay()" class="pause-btn mt-4">← BACK</button>
         </div>
     </div>
+    <!-- Enemy Catalogue -->
+    <div id="enemyScreen" class="ui-layer hidden">
+        <div class="menu-card interactive" style="width:min(800px,94vw)">
+            <button class="close-x" onclick="closeOverlay()" aria-label="Close">✕</button>
+            <h2 class="text-lg text-[#00f2ff] mb-2">👾 ENEMY CATALOGUE</h2>
+            <div style="font-size:7px;line-height:1.8;color:#8a8aa8;margin-bottom:10px">Every regular enemy type. When Noglin latches onto one, <span style="color:#ff88ff">Q</span> unleashes that host's special (bosses have their own unique ones).</div>
+            <div id="enemyGrid" style="display:grid;grid-template-columns:repeat(auto-fill,minmax(270px,1fr));gap:8px"></div>
+            <button onclick="closeOverlay()" class="pause-btn mt-4">← BACK</button>
+        </div>
+    </div>
     <div id="levelUpScreen" class="ui-layer hidden">
         <div class="menu-card interactive" style="min-width:300px">
-            <h2 class="text-xl text-yellow-400 mb-4 italic">⬆ LEVEL UP!</h2>
+            <h2 id="levelUpTitle" class="text-xl text-yellow-400 mb-4 italic">⬆ LEVEL UP!</h2>
             <div id="upgradeOptions"></div>
         </div>
     </div>
@@ -408,14 +445,15 @@ function saveGame(){try{localStorage.setItem(SAVE_KEY,JSON.stringify(saveData));
 function downloadSave(){const a=document.createElement('a');a.href="data:text/json;charset=utf-8,"+encodeURIComponent(JSON.stringify(saveData));a.download="chaos_save.json";a.click();}
 
 // ── ASSETS ──
-const assets={noglin:new Image(),pikachu:new Image(),coolioso:new Image(),noglinCuteness:new Image(),shibaHomeless:new Image()};
+const assets={noglin:new Image(),pikachu:new Image(),coolioso:new Image(),noglinCuteness:new Image(),shibaHomeless:new Image(),subaru:new Image()};
 assets.noglin.src='skibidi noglin.png';assets.noglinCuteness.src='noglincuteness.png';assets.shibaHomeless.src='homeless shiba.png';
 assets.pikachu.src='pikachu.png';
 assets.coolioso.src='coolioso.png';
+assets.subaru.src='subaru.png';   // drop subaru.png next to the game — until it loads the 🔄 emoji stands in
 
 // ── HEALTH (v1.6): HP is now a bar. 1 heart = 50 HP; enemy attacks hit harder the higher your level ──
 const HP_PER_HEART=50;
-function enemyDmgScale(){return 1+Math.max(0,state.lvl-1)*0.06;}
+function enemyDmgScale(){return (1+Math.max(0,state.lvl-1)*0.06)*0.8;}   // v2.0: all enemy damage -20%
 // ── CHARACTERS ──
 const CHARACTERS=[
     {id:'noglin',    name:"Noglin",       emoji:"👹", img:assets.noglin,   speed:9.5, hp:3, abilityColor:'#ff00ff', imgSize:88,
@@ -427,7 +465,7 @@ const CHARACTERS=[
     {id:'cat',       name:"Vitru",        emoji:"🐱", emojiFilter:"hue-rotate(110deg) saturate(3)", variantName:"Glorp", speed:9, hp:5, abilityColor:'#00ff88',
      desc:"Glorp Beam",     abilityDesc:"SPC: Glorp Beam | R: Wormhole"},
     {id:'arsonist',  name:"Arsonist",     emoji:"🐱", emojiFilter:"hue-rotate(-32deg) saturate(3) brightness(1.1)", variantOf:'cat', unlockKey:'arsonistUnlocked', unlockHint:'Reach level 15 with Vitru (Glorp)', variantName:"Arsonist", speed:9, hp:5, abilityColor:'#ff6a00',
-     desc:"Arson Party",    abilityDesc:"SPC: Arson Party | R: Oil Slick"},
+     desc:"Arson Party",    abilityDesc:"SPC: Arson Party | R: Tar Toss"},
     {id:'shiba',     name:"Broke Shiba",  emoji:"🐕",  img:assets.shibaHomeless, speed:8, hp:6, abilityColor:'#ffbbbb',
      desc:"50 Bucks",   abilityDesc:"SPC: 50 Bucks | R: Sad Whimper"},
     {id:'snowman',   name:"Snowman",      emoji:"☃️", speed:6,   hp:7, abilityColor:'#88eeff',
@@ -444,7 +482,7 @@ const CHARACTERS=[
      desc:"Death Note",   abilityDesc:"SPC: Death Note | R: Justice Monologue"},
     {id:'femboy',    name:"Femboy",        emoji:"🎀", speed:11, hp:5, abilityColor:'#ff88cc', secret:true,
      desc:"Girly Pop",    abilityDesc:"SPC: Slay (Charm) | R: Twirl AOE"},
-    {id:'subaru',    name:"Subaru",        emoji:"🔄", speed:10, hp:4, abilityColor:'#4488ff', secret:true,
+    {id:'subaru',    name:"Subaru",        emoji:"🔄", img:assets.subaru, speed:10, hp:4, abilityColor:'#4488ff', secret:true,
      desc:"Return by Death", abilityDesc:"SPC: Return by Death | R: Unseen Hand"},
 ];
 
@@ -483,9 +521,9 @@ const UPGRADES_POOL=[
         {l:"Legendary",v:40, c:"#ffd700", w:6,  desc:"+40% crit chance — nearly half your shots crit"},
     ]},
     {id:'regen',      name:"Regen",        tiers:[
-        {l:"Common",   v:10, c:"white",   w:45, desc:"Heal 10 HP every 5 seconds"},
-        {l:"Rare",     v:25, c:"#bc13fe", w:20, desc:"Heal 25 HP every 5 seconds"},
-        {l:"Legendary",v:60, c:"#ffd700", w:6,  desc:"Heal 60 HP every 5 seconds — very strong sustain"},
+        {l:"Common",   v:2,  c:"white",   w:45, desc:"+2 HP regenerated every second"},
+        {l:"Rare",     v:5,  c:"#bc13fe", w:20, desc:"+5 HP regenerated every second"},
+        {l:"Legendary",v:10, c:"#ffd700", w:6,  desc:"+10 HP regenerated every second — a real passive heal"},
     ]},
     {id:'max_hp',     name:"Vitality",     tiers:[
         {l:"Common",   v:50,  c:"white",   w:40, desc:"+50 max HP — also heals 50 HP immediately"},
@@ -496,6 +534,24 @@ const UPGRADES_POOL=[
         {l:"Common",   v:60,  c:"white",   w:45, desc:"+60 XP pickup range — orbs notice you from further away"},
         {l:"Rare",     v:150, c:"#bc13fe", w:20, desc:"+150 XP pickup range — a wide, hungry magnet"},
         {l:"Legendary",v:350, c:"#ffd700", w:5,  desc:"+350 XP pickup range — vacuums up most of the screen"},
+    ]},
+    {id:'pierce',    name:"Pierce",       tiers:[
+        {l:"Common",   v:1, c:"white",   w:40, desc:"Bullets pass through 1 enemy before stopping"},
+        {l:"Rare",     v:2, c:"#bc13fe", w:18, desc:"Bullets pass through 2 enemies — great against crowds"},
+        {l:"Legendary",v:3, c:"#ffd700", w:5,  desc:"Bullets pass through 3 enemies — a bullet-shaped skewer"},
+    ]},
+    {id:'luck',       name:"Luck",         tiers:[
+        {l:"Common",   v:3,  c:"white",   w:45, desc:"+3 Luck — slightly better odds of Rare & Legendary upgrades, and enemies sometimes drop an extra XP orb"},
+        {l:"Rare",     v:8,  c:"#bc13fe", w:20, desc:"+8 Luck — noticeably better upgrade rarity and more bonus XP orbs"},
+        {l:"Legendary",v:20, c:"#ffd700", w:5,  desc:"+20 Luck — fortune smiles: much better upgrade rarity and lots of bonus XP orbs"},
+    ]},
+    {id:'armor',     name:"Armour",       tiers:[
+        {l:"Common",   v:10, c:"white",   w:42, desc:"Take 10% less damage (max 60% total)"},
+        {l:"Rare",     v:20, c:"#bc13fe", w:20, desc:"Take 20% less damage (max 60% total)"},
+        {l:"Legendary",v:30, c:"#ffd700", w:5,  desc:"Take 30% less damage (max 60% total)"},
+    ]},
+    {id:'picky',      name:"Picky",        legendaryOnly:true, tiers:[
+        {l:"Legendary",v:2, c:"#ffd700", w:1,  desc:"+2 upgrade options at every level-up (stacks up to 3 times)"},
     ]},
     {id:'ability_cd', name:"Readiness",    tiers:[
         {l:"Rare",     v:300, c:"#bc13fe", w:18, desc:"Abilities recharge 5s faster — more frequent use"},
@@ -508,12 +564,17 @@ const UPGRADES_POOL=[
 ];
 function pickUpgrade(){
     // Readiness is hidden once both cooldowns are already at the minimum cap
-    const capped=state.ability.maxCooldown<=360&&state.secondary.maxCooldown<=360;
-    const pool=capped?UPGRADES_POOL.filter(u=>u.id!=='ability_cd'):UPGRADES_POOL;
-    const base=pool[Math.floor(Math.random()*pool.length)];
-    const total=base.tiers.reduce((s,t)=>s+(t.w||50),0);
+    const pl0=state.player||{},capped=state.ability.maxCooldown<=360&&state.secondary.maxCooldown<=360;
+    // Hidden once useless: Readiness at the cooldown cap, Armour at 60%, Picky at 3 stacks; Choco can't roll Splitter
+    const pool=UPGRADES_POOL.filter(u=>!(u.id==='ability_cd'&&capped)&&!(u.id==='armor'&&(pl0.armor||0)>=60)&&!(u.id==='picky'&&(pl0.picky||0)>=3)&&!(u.id==='projectiles'&&pl0.config&&pl0.config.id==='choco'));
+    const L=(state.player&&state.player.luck)||0;
+    let base;
+    do{base=pool[Math.floor(Math.random()*pool.length)];}while(base.legendaryOnly&&Math.random()>0.2*(1+Math.min(2,L*0.02)));   // legendary-exclusive upgrades are rare
+    // Luck tilts the roll toward Rare / Legendary tiers
+    const wf=t=>(t.w||50)*(t.l==='Rare'?1+Math.min(4,L*0.04):t.l==='Legendary'?1+Math.min(5,L*0.08):1);
+    const total=base.tiers.reduce((s,t)=>s+wf(t),0);
     let r=Math.random()*total;
-    for(const t of base.tiers){r-=(t.w||50);if(r<=0)return{base,tier:t};}
+    for(const t of base.tiers){r-=wf(t);if(r<=0)return{base,tier:t};}
     return{base,tier:base.tiers[0]};
 }
 
@@ -584,7 +645,7 @@ let accumulator = 0;
 let lastTimestamp = 0;
 
 let state={
-    screen:'MENU',player:null,
+    screen:'MENU',player:null,timers:[],
     enemies:[],bullets:[],enemyBullets:[],xpOrbs:[],textPopups:[],lightningEffects:[],particles:[],
     lvl:1,xp:0,xpNeeded:100,score:0,frameCount:0,keys:{},
     joystick:{active:false,x:0,y:0},
@@ -613,7 +674,6 @@ let state={
     blahBarrage:null,
     blahCutscene:null,
     subaru_checkpoint:null,
-    subaruCutscene:null,
 };
 
 // ── FIXED LOGICAL WORLD ──
@@ -696,6 +756,23 @@ class TextPopup {
         ctx.restore();
     }
 }
+// ── Game-time scheduler: later(fn,ms) runs once, every(fn,ms) repeats until fn returns false. Ticks inside gameStep, so pause / cutscenes / new runs behave.
+function later(fn,ms){state.timers.push({f:fn,t:Math.max(1,Math.round(ms*0.06)),p:0});}
+function every(fn,ms){const p=Math.max(1,Math.round(ms*0.06));state.timers.push({f:fn,t:p,p:p});}
+function timersTick(){
+    const a=state.timers;if(!a.length)return;
+    for(let i=0,n=a.length;i<n;i++){   // timers added by a callback start counting next tick
+        const T=a[i];if(--T.t>0)continue;
+        let keep=false;
+        try{const r=T.f();if(T.p&&r!==false){T.t=T.p;keep=true;}}catch(err){console.error(err);}
+        if(!keep)T.dead=true;
+    }
+    state.timers=a.filter(T=>!T.dead&&(T.t>0));
+}
+// Speech cutscenes (Kira's Monologue, Blah's Ultimate Speech): 12f fade-in, words held 1.6s (96f), 12f fade-out, +18f for the staggered line reveal
+const SPEECH_FRAMES=12+18+96+12;
+function speechAlpha(c){const e=c.maxTimer-c.timer;return Math.max(0,Math.min(1,e/12,c.timer/12));}
+function speechReveal(c,i){return Math.max(0,Math.min(1,(c.maxTimer-c.timer-12-i*6)/8));}
 function popup(x,y,text,color,life){if(settings.particles){if(state.textPopups.length>140)state.textPopups.shift();state.textPopups.push(new TextPopup(x,y,text,color||'#fff',life));}}
 
 class BloodParticle {
@@ -796,10 +873,10 @@ const ULT_INFO={
     tiger:       {name:'APEX FRENZY',       color:'#ff9900',icon:'🐯',dur:420,desc:'7 seconds of unstoppable rage: 1.8× speed, double attack rate, invulnerable, and claw slashes every 0.15s that carve 7% of every nearby enemy\'s max HP.'},
     cat:         {name:'GLORP SINGULARITY', color:'#00ff88',icon:'🌀',dur:300,desc:'Tear open a black hole at your cursor that drags in every enemy on screen, grinding them down, then detonates — killing everything near it.'},
     shiba:       {name:'MONEY RAIN',        color:'#ffdd55',icon:'💸',dur:360,desc:'It rains coins for 6 seconds. Each one crashes down with an area blast (big golden ones hit harder) and drops bonus XP. Ends with a JACKPOT slam.'},
-    arsonist:    {name:'INFERNO STRIKE',     color:'#ff6a00',icon:'☄️',dur:130,invul:70,desc:'Launch a blazing fireball at the strongest enemy on screen. It tears straight through anything in the way, setting it ablaze, then detonates in a fire-and-spark firework for MASSIVE damage (and 1/4 of that to every enemy near the blast).'},
+    arsonist:    {name:'INFERNO STRIKE',     color:'#ff6a00',icon:'☄️',dur:130,invul:70,desc:'Launch a blazing fireball at the strongest enemy on screen. It tears straight through anything in the way, setting it ablaze, then detonates in a fire-and-spark firework for MASSIVE damage (and 40% of that to every enemy near the blast).'},
     choco:       {name:'AMONG US TONIGHT', color:'#ff3a3a',icon:'🛸',dur:420,invul:60,desc:'A UFO with a very suspicious crewmate descends and orbits you for 7 seconds, firing lasers at enemies across the arena (with splash). When it leaves it unleashes a final volley that EJECTS up to 30 enemies for 22% max HP (3% on bosses).'},
-    snowman:     {name:'ABSOLUTE ZERO',     color:'#aaf4ff',icon:'🥶',dur:300,desc:'Freeze EVERYTHING solid — bosses too — under a raging blizzard with brittle 10× damage. When it ends the ice SHATTERS for 34% max HP to all.'},
-    coolioioio:  {name:'MINIGUN',           color:'#ffaa33',icon:'🔫',dur:300,desc:'Pull out a minigun: 6 attacks per second for 5 seconds, each hitting for 3× your damage. Aim with your cursor or auto-target. You can keep moving.'},
+    snowman:     {name:'GIANT SNOWBALL',     color:'#aaf4ff',icon:'⛄',dur:360,invul:60,desc:'Roll a snowball that grows bigger every second and catches every enemy it touches, carrying them inside it. After 6 seconds it BURSTS: caught enemies take 95% max HP, everything nearby takes 50%.'},
+    coolioioio:  {name:'MINIGUN',           color:'#ffaa33',icon:'🔫',dur:300,desc:'Pull out a minigun: 12 attacks per second for 5 seconds, each hitting for 6× your damage (4× the damage output it used to have). Aim with your cursor or auto-target. You can keep moving.'},
     blahblahblah:{name:'FINAL WORD',        color:'#cc66ff',icon:'💬',dur:210,desc:'A rotating 4-arm spiral of word-bullets that stun on hit, capped by a screen-shaking FINAL WORD that deals 25% max HP to everyone.'},
     pickle:      {name:'PICKLE-ASTROPHE',   color:'#66dd22',icon:'🥒',dur:330,desc:'A colossal brine tsunami sweeps the arena, hitting and poisoning everything, followed by a rain of falling pickles.'},
     kira:        {name:'SHINIGAMI EYES',    color:'#ff2222',icon:'👁️',dur:240,desc:'Write every name at once: all enemies are condemned on staggered timers and die; bosses lose 25% max HP.'},
@@ -834,6 +911,82 @@ function poisonSprite(){
     return _poisonSpr=c;
 }
 function allTargets(){const a=state.enemies.slice();if(state.boss)a.push(state.boss);return a;}
+// v1.8: anything outside the arena can't be targeted (auto-attacks, abilities, ultimates)
+function inArena(e){return e.x>=0&&e.x<=canvas.width&&e.y>=0&&e.y<=canvas.height;}
+// keep a unit on the playfield (knockbacks / warps never throw anything outside); mcWarp lands the piloted host safely inside the walls
+function keepInArena(o,m){m=m===undefined?24:m;o.x=Math.max(m,Math.min(canvas.width-m,o.x));o.y=Math.max(m,Math.min(canvas.height-m,o.y));}
+function mcWarp(h,x,y){h.x=Math.max(65,Math.min(canvas.width-65,x));h.y=Math.max(65,Math.min(canvas.height-65,y));}
+function frozenFoe(e){return state.effects.frozen&&!e.isBoss&&inArena(e);}   // Blizzard: freezes non-boss enemies that are on the playfield
+// ── Subaru ──
+const RETURN_WINDOW=300;   // 5s
+function subaruReturn(){
+    const p=state.player,cp=state.subaru_checkpoint;
+    if(!p||p.config.id!=='subaru'||!cp||p.hp>0)return false;
+    state.subaru_checkpoint=null;
+    const ox=p.x,oy=p.y;
+    addRing(ox,oy,200,16,'#223a88',5);fxBurst(ox,oy,18,'#4a70ff',2,9,24,2.8,{trail:false});   // where you died…
+    p.x=cp.x;p.y=cp.y;p.hp=p.maxHp;p.invul=Math.max(p.invul,90);                              // …and where you wake up: instantly, fully healed
+    state.enemyBullets.length=0;
+    addRing(p.x,p.y,320,22,'#4488ff',6);addRing(p.x,p.y,190,16,'#ffffff',3);addRing(p.x,p.y,100,12,'#9fc4ff',4);
+    fxBurst(p.x,p.y,40,'#6aa0ff',3,13,30,3.2);fxBurst(p.x,p.y,16,'#ffffff',2,8,22,2.4);fxFlash('#4488ff',0.5,16);fxShake(12);
+    const LINES=['I WILL NOT GIVE UP! I RETURN BY DEATH!','...NOT YET. I STILL HAVE PEOPLE TO PROTECT.','STARTING OVER. I KNOW WHAT I NEED TO DO.','THEY TOOK EVERYTHING FROM ME. AGAIN.'];
+    popup(p.x,p.y-80,LINES[Math.floor(Math.random()*LINES.length)],'#4488ff',200);
+    popup(p.x,p.y-50,'🔄 RETURN BY DEATH','#ffffff',180);
+    updateHUD();
+    return true;
+}
+// Unseen Hand VFX: dark hands snatch each victim, curl shut, and drag them in along wispy arms
+function unseenHandFx(p,list,range){
+    addRing(p.x,p.y,range,26,'#6a3dff',6);addRing(p.x,p.y,range*0.6,18,'#1a0a40',9);fxShake(7);fxFlash('#3a1a88',0.28,12);
+    (state.handFx||(state.handFx=[])).push({px:p.x,py:p.y,t0:state.frameCount,max:48,R:range,
+        arms:list.slice(0,14).map(e=>{
+            const a=Math.atan2(p.y-e.y,p.x-e.x);
+            fxBurst(e.x,e.y,4,'#8a5cff',1,4,18,2.4,{trail:false});
+            return{x:e.x,y:e.y,dx:Math.cos(a)*80,dy:Math.sin(a)*80,rot:a+Math.PI/2+(Math.random()-.5)*0.6,sc:e.isBoss?1.9:1,w:(Math.random()-.5)*2};
+        })});
+}
+function handDraw(){
+    const a=state.handFx;if(!a||!a.length)return;
+    const fc=state.frameCount;
+    ctx.save();ctx.lineCap='round';ctx.lineJoin='round';
+    for(let i=a.length-1;i>=0;i--){
+        const f=a[i],t=fc-f.t0;
+        if(t>f.max){a.splice(i,1);continue;}
+        const k=t/f.max,fade=k>0.78?(1-k)/0.22:1;
+        // dark dome over the whole grab range
+        ctx.globalAlpha=0.22*fade*(1-k*0.5);
+        const R=f.R*(0.55+0.45*Math.min(1,t/10)),g=ctx.createRadialGradient(f.px,f.py,R*0.35,f.px,f.py,R);
+        g.addColorStop(0,'rgba(20,6,50,0)');g.addColorStop(1,'rgba(20,6,50,1)');
+        ctx.fillStyle=g;ctx.beginPath();ctx.arc(f.px,f.py,R,0,6.2832);ctx.fill();
+        for(const m of f.arms){
+            const grow=Math.min(1,t/9),curl=Math.max(0,Math.min(1,(t-8)/8)),pu=Math.max(0,Math.min(1,(t-16)/18)),pull=1-Math.pow(1-pu,3);
+            const hx=m.x+m.dx*pull,hy=m.y+m.dy*pull;
+            // wispy arm back toward the caster
+            const mx=(hx+f.px)/2+Math.sin(t*0.3+m.w*3)*14*m.w,my=(hy+f.py)/2+Math.cos(t*0.27+m.w*3)*14;
+            ctx.globalAlpha=0.5*fade*grow;ctx.strokeStyle='#0b0618';ctx.lineWidth=9*m.sc;
+            ctx.beginPath();ctx.moveTo(f.px,f.py);ctx.quadraticCurveTo(mx,my,hx,hy);ctx.stroke();
+            ctx.globalCompositeOperation='lighter';ctx.globalAlpha=0.35*fade*grow;ctx.strokeStyle='#8a5cff';ctx.lineWidth=2;
+            ctx.beginPath();ctx.moveTo(f.px,f.py);ctx.quadraticCurveTo(mx,my,hx,hy);ctx.stroke();
+            ctx.globalCompositeOperation='source-over';
+            // the hand
+            ctx.save();ctx.translate(hx,hy);ctx.rotate(m.rot);ctx.scale(m.sc*grow,m.sc*grow);ctx.globalAlpha=0.92*fade;
+            const L=30*(1-0.6*curl);
+            for(let pass=0;pass<2;pass++){
+                ctx.strokeStyle=pass?'#07030f':'#8a5cff';ctx.lineWidth=pass?5:8;
+                for(let fi=0;fi<4;fi++){
+                    const sx=-9+fi*6,sp=(fi-1.5)*0.28*(1-curl*0.8);
+                    ctx.beginPath();ctx.moveTo(sx,-6);ctx.lineTo(sx+Math.sin(sp)*L,-6-Math.cos(sp)*L);ctx.stroke();
+                }
+                ctx.beginPath();ctx.moveTo(-11,2);ctx.lineTo(-11-14*(1-curl*0.6),-4-8*(1-curl));ctx.stroke();   // thumb
+            }
+            ctx.fillStyle='#07030f';ctx.strokeStyle='#8a5cff';ctx.lineWidth=2;
+            ctx.beginPath();ctx.ellipse(0,2,13,11,0,0,6.2832);ctx.fill();ctx.stroke();
+            ctx.restore();
+        }
+    }
+    ctx.restore();
+}
+function liveTargets(){const a=[],en=state.enemies;for(let i=0;i<en.length;i++){const e=en[i];if(e.hp>0&&inArena(e))a.push(e);}const b=state.boss;if(b&&b.hp>0&&inArena(b))a.push(b);return a;}
 function ultHurt(e,pctN,pctB,minDmg,tag,col){
     if(!e||e.hp<=0)return;
     const dmg=Math.max(minDmg||0,e.maxHp*(e.isBoss?pctB:pctN));
@@ -961,7 +1114,7 @@ function igniteEnemy(e,dur){
 // Burn damage scales with the player's damage (so damage upgrades boost it); oiled targets take double.
 function burnTick(){
     const p=state.player;
-    if(!p||p.config.id!=='arsonist'||!state.fireOn)return;   // nothing burning / oiled / flying: skip all work
+    if(!p||!state.fireOn)return;   // nothing burning / oiled / flying: skip all work (v2.0: burning also works for Coolioioio's minigun embers)
     let stay=false;
     const list=allTargets();
     for(const e of list){
@@ -1021,32 +1174,147 @@ function burnTick(){
             if(f.t<=0)fp.splice(i,1);
         }
     }
-    state.fireOn=stay||!!state._fireNew||(ms&&ms.length>0)||(fp&&fp.length>0);state._fireNew=false;
+    // v1.8 Tar Toss: flying globs, then puddles that oil everyone standing in them (and burn when lit)
+    const tb=state.tarBlobs;
+    if(tb&&tb.length){
+        for(let i=tb.length-1;i>=0;i--){
+            const m=tb[i];m.t++;
+            const k=Math.min(1,m.t/m.dur);
+            m.x=m.x0+(m.tx-m.x0)*k;m.y=m.y0+(m.ty-m.y0)*k-Math.sin(k*Math.PI)*110;m.rot+=0.3;
+            if(m.t%2===0)fxSpark(m.x,m.y,(Math.random()-.5)*1.4,0.6+Math.random(),18,3,Math.random()<0.5?'#6a4fb0':'#8a6ae0',{trail:false,g:0.12});
+            if(m.t>=m.dur){tarLand(m.tx,m.ty);tb.splice(i,1);}
+        }
+    }
+    const tp=state.tarPuddles;
+    if(tp&&tp.length){
+        for(let i=tp.length-1;i>=0;i--){
+            const f=tp[i];f.t--;f.age++;
+            const burning=f.fire>0;
+            if(burning){
+                f.fire--;
+                if(state.frameCount%2===0){const a=Math.random()*6.2832,r=Math.sqrt(Math.random())*f.r;fxSpark(f.x+Math.cos(a)*r,f.y+Math.sin(a)*r*0.8,(Math.random()-.5)*0.6,-(1+Math.random()*2),24,3.6,FIRE_COLS[Math.floor(Math.random()*5)],{trail:false,g:-0.04,drag:0.98});}
+            }else if(f.age%14===0){const a=Math.random()*6.2832,r=Math.sqrt(Math.random())*f.r*0.8;fxSpark(f.x+Math.cos(a)*r,f.y+Math.sin(a)*r*0.8,0,-0.5,26,2.4,'#a98cf0',{trail:false,g:-0.01,drag:0.99});}
+            if(f.t%6===0){
+                const rr=f.r*f.r;let lit=false;
+                if(!burning){
+                    // fire touching the puddle (a fire pool, another burning puddle, or a burning enemy standing in it) sets it ablaze
+                    if(fp)for(const g of fp)if((g.x-f.x)**2+(g.y-f.y)**2<(f.r*0.8+g.r)**2){lit=true;break;}
+                    if(!lit)for(const g of tp)if(g!==f&&g.fire>0&&(g.x-f.x)**2+(g.y-f.y)**2<(f.r*1.6)**2){lit=true;break;}
+                }
+                for(const o of list){
+                    if(o.hp<=0)continue;
+                    const dx=o.x-f.x,dy=(o.y-f.y)/0.8;
+                    if(dx*dx+dy*dy>=rr)continue;
+                    o.oil=Math.max(o.oil||0,180);
+                    if(burning)igniteEnemy(o,300);else if(o.burn)lit=true;
+                }
+                if(lit&&!burning){
+                    f.fire=300;f.t=Math.min(f.t,300);
+                    popup(f.x,f.y-34,'🔥 TAR IGNITES!','#ff8a2a',90);
+                    addRing(f.x,f.y,f.r,18,'#ff6a00',5);addRing(f.x,f.y,f.r*0.6,12,'#ffe066',3);
+                    fxBurst(f.x,f.y,30,'#ff8800',2,10,28,3,{g:0.05});fxShake(5);
+                }
+            }
+            if(f.t<=0)tp.splice(i,1);
+        }
+    }
+
+    state.fireOn=stay||!!state._fireNew||(ms&&ms.length>0)||(fp&&fp.length>0)||(state.tarBlobs&&state.tarBlobs.length>0)||(state.tarPuddles&&state.tarPuddles.length>0);state._fireNew=false;
 }
 function arsonParty(p){
-    const RANGE=620;
-    const T=allTargets().filter(e=>e.hp>0&&(e.x-p.x)**2+(e.y-p.y)**2<RANGE*RANGE);
-    T.sort((a,b)=>(a.x-p.x)**2+(a.y-p.y)**2-((b.x-p.x)**2+(b.y-p.y)**2));
-    const picks=T.slice(0,4);
-    if(!picks.length){popup(p.x,p.y-40,'no targets in range','#ff9944',80);return false;}
-    state.molotovs=state.molotovs||[];state.fireOn=true;
-    picks.forEach((e,i)=>state.molotovs.push({x0:p.x,y0:p.y,x:p.x,y:p.y,tgt:e,tx:e.x,ty:e.y,t:-i*6,dur:34,rot:0}));
-    popup(p.x,p.y-55,'🍾 ARSON PARTY!','#ff8800',140);
+    // v2.0: the bottles go for the TAR first — one per unlit puddle (the fullest ones first), spare bottles splash on the next-best spot
+    const RANGE=620,SHOTS=4,ms=(state.molotovs=state.molotovs||[]);
+    const T=liveTargets();
+    const aim=[];
+    const pud=(state.tarPuddles||[]).filter(f=>!(f.fire>0));
+    if(pud.length){
+        const fill=f=>{let n=0;for(const e of T)if((e.x-f.x)**2+(e.y-f.y)**2<f.r*f.r)n+=e.isBoss?2:1;return n;};
+        pud.map(f=>({f,n:fill(f)})).sort((a,b)=>b.n-a.n).forEach(o=>{if(aim.length<SHOTS)aim.push({x:o.f.x,y:o.f.y,tgt:null});});
+        // spare bottles: spread over the biggest puddles (offset so they don't stack) 
+        for(let k=0;aim.length<SHOTS&&k<SHOTS;k++){
+            const f=pud[k%pud.length],a=k*2.4+Math.random(),r=f.r*0.45;
+            aim.push({x:f.x+Math.cos(a)*r,y:f.y+Math.sin(a)*r*0.8,tgt:null});
+        }
+        // this was a fire-in-the-hole for the tar, so only add enemy bottles if every puddle is already covered
+    } else {
+        const near=T.filter(e=>(e.x-p.x)**2+(e.y-p.y)**2<RANGE*RANGE).sort((a,b)=>(a.x-p.x)**2+(a.y-p.y)**2-((b.x-p.x)**2+(b.y-p.y)**2));
+        near.slice(0,SHOTS).forEach(e=>aim.push({x:e.x,y:e.y,tgt:e}));
+    }
+    if(!aim.length){popup(p.x,p.y-40,'no targets in range','#ff9944',80);return false;}
+    state.fireOn=true;
+    const W=canvas.width,H=canvas.height;
+    aim.forEach((a,i)=>{
+        const tx=Math.max(40,Math.min(W-40,a.x)),ty=Math.max(40,Math.min(H-40,a.y));
+        const d=Math.sqrt((tx-p.x)**2+(ty-p.y)**2);
+        ms.push({x0:p.x,y0:p.y,x:p.x,y:p.y,tgt:a.tgt,tx:tx,ty:ty,t:-i*6,dur:Math.max(26,Math.min(44,Math.round(d/18))),rot:0});
+    });
+    popup(p.x,p.y-55,pud.length?'🍾 FIRE IN THE TAR!':'🍾 ARSON PARTY!','#ff8800',140);
     fxBurst(p.x,p.y,10,'#ffaa33',2,7,18,2.4);
     return true;
 }
-function oilSlick(p){
-    const R=540;
-    let n=0;state.fireOn=true;state._fireNew=true;
-    allTargets().forEach(e=>{
-        if(e.hp<=0||(e.x-p.x)**2+(e.y-p.y)**2>R*R)return;
+// ═══════════════════════════════════════════════════
+//  v1.8 — TAR TOSS: a thrown tar glob that splashes oil and leaves a puddle
+// ═══════════════════════════════════════════════════
+const TAR_R=230,TAR_LIFE=840,TAR_RANGE=760,TAR_MAX=4;
+function tarToss(p){
+    const W=canvas.width,H=canvas.height;
+    let tx,ty;
+    if(settings.abilityTarget==='manual'){tx=state.mouseX;ty=state.mouseY;}
+    else{
+        // auto: land on the thickest cluster of in-arena enemies within throwing range (bosses count double)
+        const T=liveTargets();let bc=-1,bd=Infinity,best=null;
+        for(let i=0;i<T.length;i++){
+            const e=T[i],dd=(e.x-p.x)**2+(e.y-p.y)**2;
+            if(dd>TAR_RANGE*TAR_RANGE)continue;
+            let c=0;for(let k=0;k<T.length;k++){if((T[k].x-e.x)**2+(T[k].y-e.y)**2<250*250)c+=T[k].isBoss?2:1;}
+            if(c>bc||(c===bc&&dd<bd)){bc=c;bd=dd;best=e;}
+        }
+        if(best){tx=best.x;ty=best.y;}
+        else{const a=Math.atan2(state.mouseY-p.y,state.mouseX-p.x);tx=p.x+Math.cos(a)*380;ty=p.y+Math.sin(a)*380;}
+    }
+    const dx=tx-p.x,dy=ty-p.y,d=Math.sqrt(dx*dx+dy*dy)||1;
+    if(d>TAR_RANGE){tx=p.x+dx/d*TAR_RANGE;ty=p.y+dy/d*TAR_RANGE;}
+    tx=Math.max(60,Math.min(W-60,tx));ty=Math.max(60,Math.min(H-60,ty));
+    const fd=Math.sqrt((tx-p.x)**2+(ty-p.y)**2);
+    (state.tarBlobs||(state.tarBlobs=[])).push({x0:p.x,y0:p.y,x:p.x,y:p.y,tx:tx,ty:ty,t:0,dur:Math.max(18,Math.min(36,Math.round(fd/20))),rot:0});
+    state.fireOn=true;state._fireNew=true;
+    popup(p.x,p.y-55,'🛢 TAR TOSS!','#a98cf0',110);
+    fxBurst(p.x,p.y,10,'#8a6ae0',2,7,20,2.6,{g:0.08});
+    return true;
+}
+// the glob hits the ground: splash-oil everything nearby and leave a puddle
+function tarLand(x,y){
+    const tp=state.tarPuddles||(state.tarPuddles=[]);
+    while(tp.length>=TAR_MAX)tp.shift();
+    tp.push({x:x,y:y,r:TAR_R,t:TAR_LIFE,age:0,fire:0,seed:Math.random()*6.28});
+    const R=TAR_R+50;let n=0;
+    for(const e of allTargets()){
+        if(e.hp<=0||(e.x-x)**2+(e.y-y)**2>R*R)continue;
         e.oil=Math.max(e.oil||0,540);e.oilAng=undefined;n++;
         fxBurst(e.x,e.y,6,'#7a5ad0',1,4,22,2.8,{g:0.1,trail:false});
-    });
-    popup(p.x,p.y-55,'🛢 OIL SLICK! ('+n+')','#a98cf0',140);
-    addRing(p.x,p.y,R,24,'#6a4fb0',7);addRing(p.x,p.y,R*0.7,18,'#88ddff',3);addRing(p.x,p.y,R*0.4,14,'#c9b3ff',2);
-    fxBurst(p.x,p.y,30,'#8a6ae0',3,11,30,3.2,{g:0.08});fxShake(5);
+    }
+    popup(x,y-48,'🛢 TAR! ('+n+')','#a98cf0',120);
+    addRing(x,y,TAR_R,22,'#6a4fb0',7);addRing(x,y,TAR_R*0.62,16,'#88ddff',3);addRing(x,y,TAR_R*0.3,12,'#c9b3ff',2);
+    fxBurst(x,y,34,'#8a6ae0',3,12,30,3.2,{g:0.12});fxBurst(x,y,14,'#1b0f33',2,8,26,4,{g:0.15,trail:false});fxShake(7);
 }
+let _tarSpr=null;
+function tarSprite(){
+    if(_tarSpr)return _tarSpr;
+    const c=document.createElement('canvas');c.width=256;c.height=205;const g=c.getContext('2d');
+    g.translate(128,102.5);
+    const bl=[[0,0,114,88],[-52,16,66,52],[56,-16,62,50],[18,44,60,42],[-34,-40,62,44],[-86,-6,32,28],[92,20,28,24]];
+    g.fillStyle='rgba(70,40,130,0.4)';for(const b of bl){g.beginPath();g.ellipse(b[0],b[1],b[2]+7,b[3]+7,0,0,6.2832);g.fill();}   // soft violet edge
+    g.fillStyle='#0c0618';for(const b of bl){g.beginPath();g.ellipse(b[0],b[1],b[2],b[3],0,0,6.2832);g.fill();}
+    const gr=g.createRadialGradient(-26,-30,6,0,0,120);gr.addColorStop(0,'rgba(110,76,200,0.55)');gr.addColorStop(0.55,'rgba(50,30,100,0.32)');gr.addColorStop(1,'rgba(0,0,0,0)');
+    g.fillStyle=gr;g.beginPath();for(const b of bl){g.ellipse(b[0],b[1],b[2],b[3],0,0,6.2832);g.closePath();}g.fill();
+    g.lineCap='round';g.lineWidth=3;
+    g.strokeStyle='rgba(170,232,255,0.55)';g.beginPath();g.arc(-34,-14,52,3.55,4.45);g.stroke();
+    g.strokeStyle='rgba(210,175,255,0.45)';g.beginPath();g.arc(30,10,40,0.2,1.0);g.stroke();
+    g.fillStyle='rgba(200,180,255,0.55)';
+    [[-60,18,5],[40,-30,4],[8,34,3.5],[70,12,3],[-18,-52,3]].forEach(b=>{g.beginPath();g.arc(b[0],b[1],b[2],0,6.2832);g.fill();});
+    return _tarSpr=c;
+}
+
 // Oiled enemies steer sluggishly and move slower (the wrapper turns & slows whatever movement update() produced)
 function _oilWrap(cls){
     const orig=cls.prototype.update;
@@ -1075,8 +1343,62 @@ function fireSprite(){
 }
 const _ffCache={};
 function _flameFont(s){return _ffCache[s]||(_ffCache[s]=s+'px Arial');}
-function arsonDraw(){
+// v1.9 Brine Burst shockwave (drawn from state.brineFx; time is read off frameCount so it needs no update hook)
+function brineDraw(){
+    const a=state.brineFx;if(!a||!a.length)return;
+    ctx.save();ctx.globalCompositeOperation='lighter';
+    for(let i=a.length-1;i>=0;i--){
+        const f=a[i],t=state.frameCount-f.t0;
+        if(t>f.max){a.splice(i,1);continue;}
+        const k=t/f.max,e=1-Math.pow(1-k,3),R=Math.max(4,f.R*e),al=1-k;
+        const g=ctx.createRadialGradient(f.x,f.y,R*0.5,f.x,f.y,R);
+        g.addColorStop(0,'rgba(90,220,40,0)');g.addColorStop(0.75,'rgba(110,235,60,'+(0.3*al)+')');g.addColorStop(1,'rgba(225,255,160,'+(0.65*al)+')');
+        ctx.globalAlpha=1;ctx.fillStyle=g;ctx.beginPath();ctx.arc(f.x,f.y,R,0,6.2832);ctx.fill();
+        ctx.globalAlpha=0.85*al;ctx.fillStyle='#eaffc0';   // foam / bubbles riding the wavefront
+        for(let j=0;j<30;j++){const an=j/30*6.2832+f.seed,wob=Math.sin(an*7+t*0.5)*7;ctx.beginPath();ctx.arc(f.x+Math.cos(an)*(R+wob),f.y+Math.sin(an)*(R+wob),2+((j*7)%3),0,6.2832);ctx.fill();}
+    }
+    ctx.restore();
+}
+function tarPuddleDraw(){
     const p=state.player;if(!p||p.config.id!=='arsonist'||!state.fireOn)return;
+    const tpd=state.tarPuddles;
+    if(tpd&&tpd.length){
+        const spr=tarSprite(),fs=fireSprite();
+        ctx.save();
+        for(const f of tpd){
+            const grow=Math.min(1,f.age/14),sc=0.25+0.75*(1-Math.pow(1-grow,3)),fade=Math.min(1,f.t/45);
+            const w=f.r*2*sc,h=f.r*1.6*sc;
+            ctx.globalAlpha=0.93*fade;ctx.drawImage(spr,f.x-w/2,f.y-h/2,w,h);
+            ctx.globalAlpha=0.3*fade*(0.6+0.4*Math.sin(state.frameCount*0.07+f.seed));   // slow glossy shimmer
+            ctx.strokeStyle='#9fe6ff';ctx.lineWidth=3;ctx.beginPath();ctx.ellipse(f.x-f.r*0.25*sc,f.y-f.r*0.18*sc,f.r*0.38*sc,f.r*0.2*sc,-0.3,3.5,4.9);ctx.stroke();
+            if(f.fire>0){
+                ctx.globalCompositeOperation='lighter';
+                ctx.globalAlpha=Math.min(1,f.fire/40)*(0.75+0.25*Math.sin(state.frameCount*0.5+f.seed));
+                ctx.drawImage(fs,f.x-f.r*1.05,f.y-f.r*0.85,f.r*2.1,f.r*1.7);
+                ctx.globalCompositeOperation='source-over';
+            }
+        }
+        ctx.restore();
+    }
+}
+function arsonDraw(){
+    const p=state.player;if(!p||!state.fireOn)return;
+    const tbl=state.tarBlobs;
+    if(tbl&&tbl.length){
+        ctx.save();
+        for(const m of tbl){
+            const k=Math.min(1,m.t/m.dur),gx=m.x0+(m.tx-m.x0)*k,gy=m.y0+(m.ty-m.y0)*k;
+            ctx.globalAlpha=0.25+0.35*k;ctx.strokeStyle='#8a6ae0';ctx.lineWidth=2;ctx.setLineDash([6,6]);
+            ctx.beginPath();ctx.ellipse(m.tx,m.ty,TAR_R*k,TAR_R*0.8*k,0,0,6.2832);ctx.stroke();ctx.setLineDash([]);
+            ctx.globalAlpha=0.3;ctx.fillStyle='#000';ctx.beginPath();ctx.ellipse(gx,gy+6,14,6,0,0,6.2832);ctx.fill();   // ground shadow
+            const sq=1+0.18*Math.sin(m.rot*2);
+            ctx.globalAlpha=1;ctx.fillStyle='#140b27';ctx.beginPath();ctx.ellipse(m.x,m.y,15*sq,15/sq,0,0,6.2832);ctx.fill();
+            ctx.fillStyle='#3d2a73';ctx.beginPath();ctx.ellipse(m.x-4,m.y-5,6,4,-0.5,0,6.2832);ctx.fill();
+            ctx.globalAlpha=0.9;ctx.fillStyle='#cfeaff';ctx.beginPath();ctx.arc(m.x-5,m.y-6,2.4,0,6.2832);ctx.fill();
+        }
+        ctx.restore();
+    }
+
     // fire pools
     const fp=state.firePools;
     if(fp&&fp.length){
@@ -1123,11 +1445,11 @@ function arsonDraw(){
 function infernoImpact(F,p,d,x,y){
     const main=d.tgt&&d.tgt.hp>0?d.tgt:null;
     // MASSIVE hit on the target, 1/4 of it to everything nearby
-    const base=Math.max(p.damage*40,main?main.maxHp*(main.isBoss?0.25:0.6):0);
+    const base=Math.max(p.damage*72,main?main.maxHp*(main.isBoss?0.4:0.9):0);   // v1.8: hits harder
     if(main){popup(main.x,main.y-50,'☄ -'+Math.floor(base),'#ffcc33',120);hurtFlat(main,base);}
     for(const o of allTargets()){
         if(o===main||o.hp<=0||(o.x-x)**2+(o.y-y)**2>280*280)continue;
-        igniteEnemy(o,480);hurtFlat(o,base*0.25,'🔥','#ff8833');
+        igniteEnemy(o,480);hurtFlat(o,base*0.4,'🔥','#ff8833');
     }
     fxFlash('#fff2cc',0.9,18);fxShake(30);
     addRing(x,y,440,34,'#ff5500',9);addRing(x,y,270,26,'#ffcc33',6);addRing(x,y,140,18,'#ffffff',4);
@@ -1145,7 +1467,7 @@ const ULT_IMPL={};
 ULT_IMPL.arsonist={
     start(F,p,d){
         // the strongest enemy on screen = the one with the most HP left
-        let best=null;for(const e of allTargets())if(e.hp>0&&(!best||e.hp>best.hp))best=e;
+        let best=null;for(const e of liveTargets())if(!best||e.hp>best.hp)best=e;
         d.tgt=best;d.fx=p.x;d.fy=p.y;d.hit=new Set();d.landed=false;d.ang=0;
         if(!best)d.fallback=Math.atan2(state.mouseY-p.y,state.mouseX-p.x);
         fxFlash('#ff8800',0.45,10);fxShake(10);addRing(p.x,p.y,260,20,'#ff6a00',5);fxBurst(p.x,p.y,30,'#ff8800',3,12,26,3);
@@ -1228,7 +1550,7 @@ ULT_IMPL.pikachu={
     run(F,p,d,t){
         p.invul=Math.max(p.invul,2);
         if(t%5===0&&t<F.dur-1){
-            const T=allTargets().filter(e=>e.hp>0);
+            const T=liveTargets();
             if(T.length){
                 const e=T[Math.floor(Math.random()*T.length)];
                 state.lightningEffects.push(new LightningEffect(e.x+(Math.random()-.5)*120,-30,e.x,e.y));
@@ -1238,7 +1560,7 @@ ULT_IMPL.pikachu={
             }
         }
         if(t===F.dur-1){
-            allTargets().filter(e=>e.hp>0).slice(0,40).forEach(e=>{
+            liveTargets().slice(0,40).forEach(e=>{
                 state.lightningEffects.push(new LightningEffect(e.x+(Math.random()-.5)*80,-30,e.x,e.y));
                 ultHurt(e,0.4,0.06,p.damage*8,'⚡','#ffffff');
             });
@@ -1360,7 +1682,8 @@ ULT_IMPL.shiba={
 //  IAmChoco 🍪 (v1.6): Dying SMP sword, Wanna Play TB? towers, Among Us Tonight UFO
 // ═══════════════════════════════════════════════════
 const CH_TAU=6.2832;
-function chocoReach(p){const vm=p.bulletSpeedMult||1;return 135*Math.min(2.4,1+(vm-1)*0.35);}   // Velocity → longer reach
+function chocoSize(p){return Math.min(1.7,1+Math.max(0,(p.bSize||5)-5)*0.05);}   // v1.8: Heavy Rounds → bigger sword
+function chocoReach(p){const vm=p.bulletSpeedMult||1;return 135*Math.min(2.4,1+(vm-1)*0.35)*chocoSize(p);}   // Velocity → longer reach
 function chocoAnim(p){return Math.pow(p.bulletSpeedMult||1,0.6);}                                // Velocity → faster swings
 function toggleSword(p){
     if(state.frameCount-(p._swTog===undefined?-99:p._swTog)<12)return;
@@ -1378,9 +1701,9 @@ function swordStart(p){
     const reach=chocoReach(p),lim=(reach+50)*(reach+50);
     let tgt=null,bd=Infinity;
     const en=state.enemies;
-    for(let i=0;i<en.length;i++){const e=en[i],dx=e.x-p.x,dy=e.y-p.y,d=dx*dx+dy*dy;if(d<bd){bd=d;tgt=e;}}
+    for(let i=0;i<en.length;i++){const e=en[i];if(e.hp<=0||!inArena(e))continue;const dx=e.x-p.x,dy=e.y-p.y,d=dx*dx+dy*dy;if(d<bd){bd=d;tgt=e;}}
     const bb=state.boss;
-    if(bb){const dx=bb.x-p.x,dy=bb.y-p.y,d=dx*dx+dy*dy;if(d<bd){bd=d;tgt=bb;}}
+    if(bb&&bb.hp>0&&inArena(bb)){const dx=bb.x-p.x,dy=bb.y-p.y,d=dx*dx+dy*dy;if(d<bd){bd=d;tgt=bb;}}
     if(!tgt||bd>lim){p.atkCooldown=3;return;}
     const manual=settings.shootTarget==='manual';
     const aim=manual?Math.atan2(state.mouseY-p.y,state.mouseX-p.x):Math.atan2(tgt.y-p.y,tgt.x-p.x);
@@ -1390,7 +1713,11 @@ function swordStart(p){
     const base=Math.max(5,Math.min(40,Math.round(15*Math.pow(p.atkSpeed/45,0.7)/anim)));
     const fin=idx===2,dir=idx===1?-1:1,arc=fin?CH_TAU+0.35:2.5;
     const dur=fin?Math.round(base*1.7):base;
-    state.sword={active:true,idx:idx,t:0,dur:dur,dir:dir,arc:arc,sa:aim-dir*arc/2,aim:aim,reach:reach*(fin?1.25:1),mul:fin?16:(idx===1?7:6),hit:new Set(),cur:aim-dir*arc/2,prev:aim-dir*arc/2};
+    // v1.9: a full 3-hit combo deals 1.3x the player's regular gun DPS (per enemy) over the time it takes; the finisher takes the biggest share
+    const cdOf=(d,f)=>d+(f?Math.round(p.atkSpeed*0.6):Math.round(d*0.3)),dFin=Math.round(base*1.7);
+    const Tc=cdOf(base,false)*2+cdOf(dFin,true);
+    const share=(fin?16:(idx===1?7:6))/29,mul=1.3*(p.projectileCount||1)*(Tc/p.atkSpeed)*share;
+    state.sword={active:true,idx:idx,t:0,dur:dur,dir:dir,arc:arc,sa:aim-dir*arc/2,aim:aim,reach:reach*(fin?1.25:1),mul:mul,sw:chocoSize(p),hit:new Set(),cur:aim-dir*arc/2,prev:aim-dir*arc/2};
     p.atkCooldown=dur+(fin?Math.round(p.atkSpeed*0.6):Math.round(dur*0.3));
     if(p.cutenessActive)p.atkCooldown=Math.floor(p.atkCooldown*0.5);
     fxShake(fin?4:1.5);
@@ -1406,7 +1733,7 @@ function swordTick(p){
     for(let i=0;i<tg.length;i++){
         const e=tg[i];
         if(e.hp<=0||S.hit.has(e))continue;
-        const dx=e.x-p.x,dy=e.y-p.y,rr=R+(e.isBoss?44:20);
+        const dx=e.x-p.x,dy=e.y-p.y,rr=R+(e.isBoss?44:20)*(S.sw||1);
         if(dx*dx+dy*dy>rr*rr)continue;
         let rel=(Math.atan2(dy,dx)-S.sa)*S.dir;rel=((rel%CH_TAU)+CH_TAU)%CH_TAU;
         if(rel>lim||rel>S.arc+0.1)continue;
@@ -1478,7 +1805,7 @@ function towerTick(p){
         // bow
         t.cd--;
         let tgt=null,bd=560*560;
-        for(let k=0;k<=en.length;k++){const e=k<en.length?en[k]:bb;if(!e||e.hp<=0)continue;const dx=e.x-t.x,dy=e.y-t.y,d=dx*dx+dy*dy;if(d<bd){bd=d;tgt=e;}}
+        for(let k=0;k<=en.length;k++){const e=k<en.length?en[k]:bb;if(!e||e.hp<=0||!inArena(e))continue;const dx=e.x-t.x,dy=e.y-t.y,d=dx*dx+dy*dy;if(d<bd){bd=d;tgt=e;}}
         if(tgt){
             const want=Math.atan2(tgt.y-(t.y-44),tgt.x-t.x);let df=want-t.ang;df=Math.atan2(Math.sin(df),Math.cos(df));t.ang+=df*0.3;
             if(t.cd<=0){
@@ -1503,33 +1830,45 @@ function chocoTick(){
     if(state.sword&&state.sword.fade>0&&!state.sword.active){state.sword.fade--;if(state.sword.fade<=0)state.sword=null;}
     if((state.towers&&state.towers.length)||(state.arrows&&state.arrows.length))towerTick(p);
 }
+function tbBox(x,y,w,h,fill,edge){ctx.fillStyle=fill;ctx.fillRect(x,y,w,h);ctx.strokeStyle=edge;ctx.lineWidth=1.5;ctx.strokeRect(x,y,w,h);}   // flat Roblox-style block
 function chocoDraw(){
     const p=state.player;if(!p||p.config.id!=='choco')return;
     const T=state.towers,A=state.arrows;
     if(T&&T.length){
         for(const t of T){
             const k=Math.min(1,t.age/16),ease=1-(1-k)*(1-k),fade=t.life<60?t.life/60:1;
-            ctx.save();ctx.globalAlpha=fade;ctx.translate(t.x,t.y+(1-ease)*30);
-            ctx.fillStyle='rgba(0,0,0,0.28)';ctx.beginPath();ctx.ellipse(0,26,44,10,0,0,CH_TAU);ctx.fill();
-            // tower post + platform
-            ctx.fillStyle='#7a4a1e';ctx.fillRect(-6,-34,12,58);
-            ctx.fillStyle='#a8743a';ctx.fillRect(-26,-40,52,9);ctx.fillStyle='#5b3513';ctx.fillRect(-26,-32,52,2);
-            ctx.fillStyle='#8b5a2b';ctx.fillRect(-26,-52,4,13);ctx.fillRect(22,-52,4,13);
-            // barricade planks + sharpened stakes
-            ctx.fillStyle=t.flash>0?'#e6b27a':'#8b5a2b';ctx.fillRect(-40,8,80,8);ctx.fillRect(-40,19,80,8);
-            ctx.strokeStyle='#4a2e12';ctx.lineWidth=1.5;ctx.strokeRect(-40,8,80,8);ctx.strokeRect(-40,19,80,8);
-            ctx.fillStyle='#a8743a';
-            for(let i=0;i<5;i++){const sx=-36+i*18;ctx.beginPath();ctx.moveTo(sx-5,8);ctx.lineTo(sx,-8);ctx.lineTo(sx+5,8);ctx.closePath();ctx.fill();ctx.stroke();}
-            // bow on top
-            ctx.save();ctx.translate(0,-46);ctx.rotate(t.ang);
+            // Tower Battles placement preview: the unit's range circle flashes when it is dropped
+            if(t.age<42){const ra=(1-t.age/42);ctx.save();ctx.globalAlpha=0.16*ra;ctx.fillStyle='#ffffff';ctx.beginPath();ctx.arc(t.x,t.y,560,0,CH_TAU);ctx.fill();ctx.globalAlpha=0.5*ra;ctx.strokeStyle='#ffffff';ctx.lineWidth=2;ctx.stroke();ctx.restore();}
+            ctx.save();ctx.globalAlpha=fade;ctx.translate(t.x,t.y+(1-ease)*30);ctx.scale(1.2,1.2);
+            ctx.fillStyle='rgba(0,0,0,0.25)';ctx.beginPath();ctx.ellipse(0,24,42,9,0,0,CH_TAU);ctx.fill();
+            // placement tile (flat grey Roblox baseplate with a bevel + a team-colour corner)
+            tbBox(-31,2,62,26,'#7d838d','#15171c');
+            tbBox(-29,2,58,20,'#c4c9d2','#15171c');
+            ctx.fillStyle='#e0a050';ctx.fillRect(-29,2,10,5);ctx.fillRect(19,2,10,5);
+            // barricade: orange/white road-block bars along the front edge
+            ctx.save();ctx.beginPath();ctx.rect(-36,17,72,8);ctx.clip();
+            ctx.fillStyle='#f4f4f4';ctx.fillRect(-36,17,72,8);ctx.fillStyle=t.flash>0?'#ffd9a0':'#ff7a1a';
+            for(let i=-4;i<9;i++){ctx.beginPath();ctx.moveTo(-36+i*10,25);ctx.lineTo(-36+i*10+5,25);ctx.lineTo(-36+i*10+13,17);ctx.lineTo(-36+i*10+8,17);ctx.closePath();ctx.fill();}
+            ctx.restore();ctx.strokeStyle='#15171c';ctx.lineWidth=1.5;ctx.strokeRect(-36,17,72,8);
+            // blocky "noob" unit standing on the tile
+            const hit=t.flash>0;
+            tbBox(-8,-2,7,13,'#3a9a45','#15171c');tbBox(1,-2,7,13,'#3a9a45','#15171c');                  // legs
+            tbBox(-9,-19,18,18,hit?'#9fc4ff':'#2f6fd0','#15171c');                                      // torso
+            tbBox(-7,-33,14,13,'#f2d03b','#15171c');                                                      // head
+            ctx.fillStyle='#15171c';ctx.fillRect(-4,-28,2,3);ctx.fillRect(2,-28,2,3);ctx.fillRect(-3,-23,6,1.5);  // face
+            tbBox(-8,-36,16,4,'#e0a050','#15171c');                                                       // little choco-brown cap
+            // crossbow, rotating around the shoulder
+            ctx.save();ctx.translate(0,-12);ctx.rotate(t.ang);
             const rc=(t.recoil||0)*0.8;
-            ctx.strokeStyle='#d6a15e';ctx.lineWidth=3;ctx.beginPath();ctx.arc(-rc,0,14,-1.15,1.15);ctx.stroke();
-            ctx.strokeStyle='#ffffff';ctx.lineWidth=1;ctx.beginPath();ctx.moveTo(-rc+Math.cos(-1.15)*14,Math.sin(-1.15)*14);ctx.lineTo(-rc-4+(t.cd<8?-6:0),0);ctx.lineTo(-rc+Math.cos(1.15)*14,Math.sin(1.15)*14);ctx.stroke();
-            if(t.cd<10){ctx.strokeStyle='#ffe29a';ctx.lineWidth=2;ctx.beginPath();ctx.moveTo(-8,0);ctx.lineTo(16,0);ctx.stroke();}
+            tbBox(-2-rc,-2,12,5,'#f2d03b','#15171c');                                                     // arm
+            tbBox(6-rc,-2.5,18,5,'#6b4a2b','#15171c');                                                    // stock
+            tbBox(18-rc,-10,4,20,'#3a3d46','#15171c');                                                    // prod
+            ctx.strokeStyle='#e8e8e8';ctx.lineWidth=1;ctx.beginPath();ctx.moveTo(20-rc,-10);ctx.lineTo(10-rc-(t.cd<8?5:0),0);ctx.lineTo(20-rc,10);ctx.stroke();
+            if(t.cd<10){ctx.fillStyle='#ffe29a';ctx.fillRect(8-rc,-1,18,2);}                                // loaded bolt
             ctx.restore();
-            // health + lifetime bars
-            ctx.fillStyle='rgba(0,0,0,0.5)';ctx.fillRect(-26,32,52,4);ctx.fillStyle='#6fd36f';ctx.fillRect(-26,32,52*Math.max(0,t.hp/t.maxHp),4);
-            ctx.fillStyle='#e0a050';ctx.fillRect(-26,37,52*Math.max(0,t.life/840),2);
+            // Tower Battles style health bar over the head + a slim time-left bar under the tile
+            tbBox(-19,-44,38,6,'#1c1f26','#000');ctx.fillStyle='#3ddc4b';ctx.fillRect(-18,-43,36*Math.max(0,t.hp/t.maxHp),4);
+            ctx.fillStyle='rgba(0,0,0,0.5)';ctx.fillRect(-31,31,62,3);ctx.fillStyle='#e0a050';ctx.fillRect(-31,31,62*Math.max(0,t.life/840),3);
             ctx.restore();
         }
     }
@@ -1554,8 +1893,8 @@ function chocoDraw(){
         ctx.globalAlpha=0.9*fadeA;ctx.strokeStyle='#fff6d8';ctx.lineWidth=4;ctx.beginPath();ctx.arc(0,0,R*0.93,Math.max(Math.min(a0,cur),cur-S.dir*Math.min(trail,1.1)),cur,ccw);ctx.stroke();
         ctx.globalCompositeOperation='source-over';ctx.globalAlpha=1;
         const c=Math.cos(cur),s=Math.sin(cur);
-        ctx.strokeStyle='#5a3a12';ctx.lineWidth=9;ctx.beginPath();ctx.moveTo(c*18,s*18);ctx.lineTo(c*R,s*R);ctx.stroke();
-        ctx.strokeStyle='#e9f3ff';ctx.lineWidth=6;ctx.beginPath();ctx.moveTo(c*40,s*40);ctx.lineTo(c*R,s*R);ctx.stroke();
+        ctx.strokeStyle='#5a3a12';ctx.lineWidth=9*(S.sw||1);ctx.beginPath();ctx.moveTo(c*18,s*18);ctx.lineTo(c*R,s*R);ctx.stroke();
+        ctx.strokeStyle='#e9f3ff';ctx.lineWidth=6*(S.sw||1);ctx.beginPath();ctx.moveTo(c*40,s*40);ctx.lineTo(c*R,s*R);ctx.stroke();
         ctx.strokeStyle='#ffffff';ctx.lineWidth=2;ctx.beginPath();ctx.moveTo(c*40,s*40);ctx.lineTo(c*R,s*R);ctx.stroke();
         ctx.strokeStyle='#d6a15e';ctx.lineWidth=7;ctx.beginPath();ctx.moveTo(c*36-s*13,s*36+c*13);ctx.lineTo(c*36+s*13,s*36-c*13);ctx.stroke();
         ctx.fillStyle='#6b3f14';ctx.beginPath();ctx.arc(c*16,s*16,5,0,CH_TAU);ctx.fill();
@@ -1583,7 +1922,7 @@ ULT_IMPL.choco={
         const B=d.beams;
         for(let i=B.length-1;i>=0;i--){if(--B[i].life<=0){B[i]=B[B.length-1];B.pop();}}
         if(t>14&&t<F.dur-16&&t%5===0){
-            const T=allTargets();let e=null;
+            const T=liveTargets();let e=null;
             for(let tries=0;tries<6&&T.length;tries++){const c=T[Math.floor(Math.random()*T.length)];if(c.hp>0&&c.x>-20&&c.x<canvas.width+20&&c.y>-20&&c.y<canvas.height+20){e=c;break;}}
             if(e&&B.length<14){
                 B.push({x1:d.x,y1:d.y+16,x2:e.x,y2:e.y,life:8,big:false});
@@ -1596,7 +1935,7 @@ ULT_IMPL.choco={
         if(t%70===30)popup(d.x,d.y+46,AMONG_LINES[d.pick++%AMONG_LINES.length],'#ffffff',60);
     },
     end(F,p,d){
-        const T=allTargets();let n=0;
+        const T=liveTargets();let n=0;
         for(let k=0;k<T.length&&n<30;k++){
             const e=T[k];if(e.hp<=0)continue;n++;
             d.beams.push({x1:d.x,y1:d.y+16,x2:e.x,y2:e.y,life:14,big:true});
@@ -1752,9 +2091,9 @@ function steerHome(b,rate,range){
     b._hc=(b._hc||0)+1;
     if(!b._ht||b._ht.hp<=0||b._hc%10===0){
         let best=null,bd=range*range;const en=state.enemies,mc=state.mindControl.active?state.mindControl.host:null;
-        for(let i=0;i<en.length;i++){const e=en[i];if(e.hp<=0||e===mc)continue;const dx=e.x-b.x,dy=e.y-b.y,d=dx*dx+dy*dy;if(d<bd){bd=d;best=e;}}
+        for(let i=0;i<en.length;i++){const e=en[i];if(e.hp<=0||e===mc||!inArena(e)||(b.hitSet&&b.hitSet.has(e)))continue;const dx=e.x-b.x,dy=e.y-b.y,d=dx*dx+dy*dy;if(d<bd){bd=d;best=e;}}
         const bb=state.boss;
-        if(bb&&bb!==mc&&bb.hp>0){const dx=bb.x-b.x,dy=bb.y-b.y,d=dx*dx+dy*dy;if(d<bd){bd=d;best=bb;}}
+        if(bb&&bb!==mc&&bb.hp>0&&inArena(bb)&&!(b.hitSet&&b.hitSet.has(bb))){const dx=bb.x-b.x,dy=bb.y-b.y,d=dx*dx+dy*dy;if(d<bd){bd=d;best=bb;}}
         b._ht=best;
     }
     const t=b._ht;if(!t)return;
@@ -1786,54 +2125,140 @@ function pickleIsolatedSpot(){
     return best;
 }
 
+// ═══════════════════════════════════════════════════
+//  v1.9 — SNOWMAN ULT: a snowball that keeps growing, catches enemies, then bursts
+// ═══════════════════════════════════════════════════
+let _sbSpr=null;
+function snowballSprite(){
+    if(_sbSpr)return _sbSpr;
+    const c=document.createElement('canvas');c.width=c.height=256;const g=c.getContext('2d');
+    const gr=g.createRadialGradient(100,96,10,128,128,126);gr.addColorStop(0,'#ffffff');gr.addColorStop(0.6,'#dff2ff');gr.addColorStop(1,'#8fc4ee');
+    g.fillStyle=gr;g.beginPath();g.arc(128,128,124,0,6.2832);g.fill();
+    g.strokeStyle='rgba(120,170,220,0.55)';g.lineWidth=5;g.lineCap='round';
+    [[70,90,34,0.2,2.2],[170,70,28,3.3,5.0],[150,170,40,1.0,3.2],[80,180,26,4.2,6.0],[128,128,60,2.4,3.6]].forEach(a=>{g.beginPath();g.arc(a[0],a[1],a[2],a[3],a[4]);g.stroke();});
+    g.fillStyle='rgba(255,255,255,0.9)';
+    [[60,60,9],[190,110,7],[110,200,8],[176,184,6],[96,120,5]].forEach(b=>{g.beginPath();g.arc(b[0],b[1],b[2],0,6.2832);g.fill();});
+    g.strokeStyle='rgba(150,205,245,0.9)';g.lineWidth=4;g.beginPath();g.arc(128,128,122,0,6.2832);g.stroke();
+    return _sbSpr=c;
+}
 ULT_IMPL.snowman={
     start(F,p,d){
-        allTargets().forEach(e=>{e.stunned=Math.max(e.stunned||0,F.dur);});
-        state.effects.frozen=true;state.effects.frozenTimer=F.dur+4;state.effects.frozenDamageMult=10;state.effects.blizzardTick=0;
-        fxFlash('#d8f8ff',0.85,18);fxShake(18);addRing(p.x,p.y,1300,50,'#aef0ff',7);addRing(p.x,p.y,800,40,'#ffffff',4);fxBurst(p.x,p.y,50,'#bff4ff',3,15,40,3.4);
-        popup(p.x,p.y-70,'🥶 ABSOLUTE ZERO','#bff4ff',140);
+        d.x=p.x;d.y=p.y;d.vx=0;d.vy=0;d.r=26;d.rot=0;d.caught=[];d.tx=p.x;d.ty=p.y;d.sp=3.2;d.tgt=null;
+        fxFlash('#d8f8ff',0.5,12);fxShake(8);addRing(p.x,p.y,220,24,'#aef0ff',6);fxBurst(p.x,p.y,40,'#eaffff',3,12,34,3.2,{g:0.04});
+        popup(p.x,p.y-70,'⛄ SNOWBALL!','#bff4ff',140);
     },
     run(F,p,d,t){
-        p.invul=Math.max(p.invul,2);
-        if(t%20===0)allTargets().forEach(e=>{if(e.hp>0)e.stunned=Math.max(e.stunned||0,F.dur-t);});
-        state.snow=state.snow||[];
-        for(let k=0;k<6&&state.snow.length<700;k++)state.snow.push({x:Math.random()*canvas.width,y:-10,vy:2+Math.random()*4,sw:Math.random()*6.28,r:1.5+Math.random()*3.4});
+        const W=canvas.width,H=canvas.height;
+        // keep growing: time + everything it has swallowed
+        const goal=26+190*Math.pow(t/F.dur,0.85)+Math.min(14,d.caught.length)*6;
+        d.r+=(Math.min(300,goal)-d.r)*0.12;
+        // steer toward the thickest cluster of free enemies (or the cursor in manual mode)
+        if(settings.abilityTarget==='manual'){d.tx=state.mouseX;d.ty=state.mouseY;}
+        else{
+            if(t%12===1||!d.tgt||d.tgt.hp<=0||d.tgt._sbCaught){
+                const T=liveTargets();let bs=-1e9,best=null;
+                for(let i=0;i<T.length;i++){
+                    const e=T[i];if(e._sbCaught)continue;
+                    let c=0;for(let k=0;k<T.length;k++){const o=T[k];if(!o._sbCaught&&(o.x-e.x)**2+(o.y-e.y)**2<200*200)c+=o.isBoss?3:1;}
+                    const sc=c-Math.sqrt((e.x-d.x)**2+(e.y-d.y)**2)/250;
+                    if(sc>bs){bs=sc;best=e;}
+                }
+                d.tgt=best;
+            }
+            if(d.tgt){d.tx=d.tgt.x;d.ty=d.tgt.y;}else{d.tx=W/2;d.ty=H/2;}
+        }
+        d.sp=Math.min(8.5,d.sp+0.02);
+        const ax=d.tx-d.x,ay=d.ty-d.y,al=Math.hypot(ax,ay)||1;
+        d.vx+=(ax/al*d.sp-d.vx)*0.05;d.vy+=(ay/al*d.sp-d.vy)*0.05;
+        d.x+=d.vx;d.y+=d.vy;
+        const dr=Math.hypot(d.vx,d.vy)/Math.max(20,d.r);d.rot+=dr;
+        const m=d.r*0.4;
+        if(d.x<m){d.x=m;d.vx=Math.abs(d.vx);}else if(d.x>W-m){d.x=W-m;d.vx=-Math.abs(d.vx);}
+        if(d.y<m){d.y=m;d.vy=Math.abs(d.vy);}else if(d.y>H-m){d.y=H-m;d.vy=-Math.abs(d.vy);}
+        const R=d.r,all=allTargets();
+        // catch anything it rolls over (bosses are too big to carry, but still get crushed)
+        for(let i=0;i<all.length;i++){
+            const e=all[i];if(e.hp<=0||e._sbCaught||e.isBoss)continue;
+            const dx=e.x-d.x,dy=e.y-d.y,dd=dx*dx+dy*dy;
+            if(dd<R*R*0.85){
+                e._sbCaught=true;e._sbA=Math.atan2(dy,dx);e._sbF=Math.min(0.8,Math.max(0.12,Math.sqrt(dd)/R));d.caught.push(e);
+                fxBurst(e.x,e.y,8,'#eaffff',2,7,20,2.6,{g:0.05,trail:false});
+                if(Math.random()<0.4)popup(e.x,e.y-20,'❄ CAUGHT','#bff4ff',50);
+            }
+        }
+        // carried enemies ride along on the surface and spin with the ball
+        for(let i=d.caught.length-1;i>=0;i--){
+            const e=d.caught[i];
+            if(e.hp<=0){e._sbCaught=false;d.caught.splice(i,1);continue;}
+            e._sbA+=dr;e.x=d.x+Math.cos(e._sbA)*e._sbF*R;e.y=d.y+Math.sin(e._sbA)*e._sbF*R;
+            e.stunned=Math.max(e.stunned||0,4);
+        }
+        // crushing damage while it rolls
+        if(t%15===0){
+            for(let i=0;i<all.length;i++){
+                const e=all[i];if(e.hp<=0)continue;
+                const dd=(e.x-d.x)**2+(e.y-d.y)**2;
+                if(dd<(R*1.05)*(R*1.05))ultHurt(e,e._sbCaught?0.03:0.02,0.004,p.damage*1.5,e.isBoss?'❄':'','#bff4ff');
+            }
+        }
+        if(t%3===0)fxSpark(d.x+(Math.random()-.5)*R*1.4,d.y+(Math.random()-.5)*R*1.4,-d.vx*0.3,-d.vy*0.3,22,2.5+Math.random()*2.5,'#eaffff',{trail:false,g:0.02});
+        if(t%10===0)fxShake(Math.min(7,R/40));
     },
     end(F,p,d){
-        allTargets().forEach(e=>{if(e.hp>0){fxBurst(e.x,e.y,10,'#cff8ff',2,10,26,2.8);ultHurt(e,0.34,0.07,p.damage*5,'💥','#bff4ff');}});
-        addRing(p.x,p.y,1300,36,'#ffffff',8);fxFlash('#ffffff',0.9,18);fxShake(28);
+        const R=d.r*2.4+140;
+        const all=allTargets();
+        for(let i=0;i<all.length;i++){
+            const e=all[i];if(e.hp<=0)continue;
+            const dd=(e.x-d.x)**2+(e.y-d.y)**2,was=e._sbCaught;e._sbCaught=false;
+            if(was)ultHurt(e,0.95,0.18,p.damage*14,'💥','#ffffff');
+            else if(dd<R*R)ultHurt(e,0.5,0.1,p.damage*7,'💥','#bff4ff');
+            if(dd<R*R)fxBurst(e.x,e.y,10,'#cff8ff',2,10,26,2.8);
+        }
+        d.caught.length=0;
+        addRing(d.x,d.y,R,34,'#ffffff',9);addRing(d.x,d.y,R*0.65,26,'#aef0ff',6);addRing(d.x,d.y,R*0.3,18,'#ffffff',4);
+        fxBurst(d.x,d.y,90,'#eaffff',5,24,44,4.4,{g:0.05});fxBurst(d.x,d.y,40,'#8fd8ff',3,14,36,5,{g:0.1});
+        fxFlash('#ffffff',0.9,18);fxShake(30);popup(d.x,d.y-60,'💥 SNOWBALL BURST!','#ffffff',150);
     },
     draw(F,p,d,t,env){
-        ultVig('#aef0ff',0.5*env);
+        const R=d.r,left=F.dur-t,warn=left<50?Math.sin(t*1.3):0,sc=1+0.04*warn;
         ctx.save();
-        for(const e of allTargets()){
-            if(e.hp<=0||e.x<-30||e.x>canvas.width+30||e.y<-30||e.y>canvas.height+30)continue;
-            const s=e.isBoss?30:18;
-            ctx.globalAlpha=0.38;ctx.fillStyle='#aaeaff';ctx.fillRect(e.x-s,e.y-s,s*2,s*2);
-            ctx.globalAlpha=0.9;ctx.strokeStyle='#ffffff';ctx.lineWidth=2;ctx.strokeRect(e.x-s,e.y-s,s*2,s*2);
-            ctx.globalAlpha=0.7;ctx.beginPath();ctx.moveTo(e.x-s+4,e.y-s+9);ctx.lineTo(e.x-s+9,e.y-s+4);ctx.stroke();
-        }
+        ctx.globalAlpha=0.3;ctx.fillStyle='#000';ctx.beginPath();ctx.ellipse(d.x,d.y+R*0.85,R*0.9,R*0.28,0,0,6.2832);ctx.fill();
+        ctx.translate(d.x,d.y);ctx.rotate(d.rot);
+        ctx.globalAlpha=0.96;ctx.drawImage(snowballSprite(),-R*sc,-R*sc,R*2*sc,R*2*sc);
+        ctx.rotate(-d.rot);
+        ctx.globalAlpha=0.35;ctx.strokeStyle='#bff4ff';ctx.lineWidth=6;ctx.beginPath();ctx.arc(0,0,R+4,0,6.2832);ctx.stroke();
+        if(left<50){ctx.globalAlpha=0.2+0.25*Math.abs(warn);ctx.fillStyle='#ffffff';ctx.beginPath();ctx.arc(0,0,R,0,6.2832);ctx.fill();}
         ctx.restore();
+        for(let i=0;i<d.caught.length;i++){const e=d.caught[i];if(e.hp>0)e.draw();}
+        if(left<60){   // blast-radius warning
+            ctx.save();ctx.globalAlpha=0.35*(1-left/60);ctx.strokeStyle='#ffffff';ctx.setLineDash([10,8]);ctx.lineWidth=3;
+            ctx.beginPath();ctx.arc(d.x,d.y,R*2.4+140,0,6.2832);ctx.stroke();ctx.restore();
+        }
+        ultVig('#aef0ff',0.25*env);
     }
 };
 ULT_IMPL.coolioioio={
-    start(F,p,d){d.aim=0;d.spin=0;d.kick=0;fxFlash('#ffaa33',0.4,10);fxShake(10);addRing(p.x,p.y,300,22,'#ffaa33',5);popup(p.x,p.y-70,'🔫 MINIGUN TIME','#ffbb55',120);},
+    start(F,p,d){d.aim=0;d.spin=0;d.kick=0;d.sp=[];fxFlash('#ffaa33',0.4,10);fxShake(10);addRing(p.x,p.y,300,22,'#ffaa33',5);popup(p.x,p.y-70,'🔫 MINIGUN TIME','#ffbb55',120);},
     run(F,p,d,t){
         d.spin+=0.55+Math.min(0.9,t*0.05);if(d.kick>0)d.kick--;
         let tgt=null,bd=Infinity;const en=state.enemies;
-        for(let i=0;i<en.length;i++){const e=en[i],dx=e.x-p.x,dy=e.y-p.y,dd=dx*dx+dy*dy;if(dd<bd){bd=dd;tgt=e;}}
-        if(state.boss){const dx=state.boss.x-p.x,dy=state.boss.y-p.y,dd=dx*dx+dy*dy;if(dd<bd){bd=dd;tgt=state.boss;}}
+        for(let i=0;i<en.length;i++){const e=en[i];if(e.hp<=0||!inArena(e))continue;const dx=e.x-p.x,dy=e.y-p.y,dd=dx*dx+dy*dy;if(dd<bd){bd=dd;tgt=e;}}
+        if(state.boss&&state.boss.hp>0&&inArena(state.boss)){const dx=state.boss.x-p.x,dy=state.boss.y-p.y,dd=dx*dx+dy*dy;if(dd<bd){bd=dd;tgt=state.boss;}}
         if(settings.abilityTarget==='manual')d.aim=Math.atan2(state.mouseY-p.y,state.mouseX-p.x);
         else if(tgt)d.aim=Math.atan2(tgt.y-p.y,tgt.x-p.x);
-        if(t%10===0&&(tgt||settings.abilityTarget==='manual')){   // 6 attacks / second
+        if(t%5===0&&(tgt||settings.abilityTarget==='manual')){   // 12 attacks / second (v1.8)
             const n=p.projectileCount,vm=p.bulletSpeedMult||1,c=Math.cos(d.aim),s=Math.sin(d.aim);
             for(let i=0;i<n;i++){
                 const ang=d.aim+(i-(n-1)/2)*0.2+(Math.random()-.5)*0.05,crit=Math.random()*100<p.crit;
-                const b=new Bullet(p.x+c*40,p.y+s*40,ang,p.damage*3*(crit?2:1),p.bSize+1,crit,1);
+                const b=new Bullet(p.x+c*40,p.y+s*40,ang,p.damage*6*(crit?2:1),p.bSize+1,crit,1);
                 b.vx*=1.5*vm;b.vy*=1.5*vm;b.col=crit?'#ffe066':'#ffb347';b.life=60;
                 if(state.bullets.length<420)state.bullets.push(b);
             }
             d.kick=4;fxShake(1.6);
+            if(Math.random()<0.6&&d.sp.length<90){   // glowing embers spit out of the barrel
+                const ea=d.aim+(Math.random()-.5)*0.7,es=7+Math.random()*5;
+                d.sp.push({x:p.x+c*74,y:p.y+s*74,vx:Math.cos(ea)*es,vy:Math.sin(ea)*es,life:26+Math.random()*10});
+            }
             fxSpark(p.x+c*72,p.y+s*72,c*5+(Math.random()-.5)*3,s*5+(Math.random()-.5)*3,8,3,'#ffdd88');
             fxSpark(p.x,p.y,-s*3+(Math.random()-.5)*2,c*3+(Math.random()-.5)*2,22,2,'#d4a017',{g:0.18,trail:false});
         }
@@ -1841,6 +2266,25 @@ ULT_IMPL.coolioioio={
     end(F,p,d){addRing(p.x,p.y,260,20,'#ffaa33',5);fxShake(8);},
     draw(F,p,d,t,env){
         ultVig('#ff9a2e',0.2*env);
+        if(d.sp&&d.sp.length){   // embers: fly, burn what they touch (low damage + the Arsonist's burn), then fizzle
+            const T=liveTargets(),W=canvas.width,H=canvas.height;
+            ctx.save();ctx.globalCompositeOperation='lighter';
+            for(let i=d.sp.length-1;i>=0;i--){
+                const e=d.sp[i];e.x+=e.vx;e.y+=e.vy;e.vy+=0.05;e.vx*=0.985;e.life--;
+                if(e.life<=0||e.x<0||e.x>W||e.y<0||e.y>H){d.sp.splice(i,1);continue;}
+                let hit=null;
+                for(let k=0;k<T.length;k++){const o=T[k],r=o.isBoss?44:24;if((o.x-e.x)**2+(o.y-e.y)**2<r*r){hit=o;break;}}
+                if(hit){
+                    hurtFlat(hit,p.damage*0.5,'🔥','#ffaa44');igniteEnemy(hit,240);
+                    fxBurst(e.x,e.y,4,'#ffaa33',1,5,14,2.2,{trail:false});d.sp.splice(i,1);continue;
+                }
+                const a=Math.min(1,e.life/12);
+                ctx.globalAlpha=0.35*a;ctx.fillStyle='#ff7a1a';ctx.beginPath();ctx.arc(e.x,e.y,7,0,6.2832);ctx.fill();
+                ctx.globalAlpha=0.95*a;ctx.fillStyle='#ffd070';ctx.beginPath();ctx.arc(e.x,e.y,2.8,0,6.2832);ctx.fill();
+                if(e.life%3===0)fxSpark(e.x,e.y,(Math.random()-.5)*0.8,(Math.random()-.5)*0.8,12,2.2,FIRE_COLS[Math.floor(Math.random()*4)],{trail:false,g:-0.02});
+            }
+            ctx.restore();
+        }
         ctx.save();ctx.translate(p.x,p.y);ctx.rotate(d.aim);
         const k=d.kick;
         ctx.fillStyle='#2e323c';ctx.fillRect(8-k,-12,28,24);ctx.fillStyle='#4a4f5c';ctx.fillRect(8-k,-12,28,6);
@@ -1893,19 +2337,19 @@ ULT_IMPL.pickle={
                 if(e.hp<=0||d.hit.has(e))return;
                 if((e.x-d.ox)**2+(e.y-d.oy)**2<d.r*d.r){
                     d.hit.add(e);
-                    ultHurt(e,0.2,0.04,p.damage*3,'🥒','#88ff33');
-                    if(e.hp>0){const pl=state.picklePoisons||(state.picklePoisons=[]),pdps=Math.max(2,p.damage*0.9),ex=pl.find(x=>x.enemy===e);if(ex){ex.timer=420;ex.dps=pdps;ex.tickTimer=0;}else pl.push({enemy:e,timer:420,dps:pdps,tickTimer:0});}
+                    ultHurt(e,0.3,0.06,p.damage*4.5,'🥒','#88ff33');
+                    if(e.hp>0){const pl=state.picklePoisons||(state.picklePoisons=[]),pdps=Math.max(3,p.damage*1.8),ex=pl.find(x=>x.enemy===e);if(ex){ex.timer=420;ex.dps=pdps;ex.tickTimer=0;}else pl.push({enemy:e,timer:420,dps:pdps,tickTimer:0});}
                     fxBurst(e.x,e.y,8,'#66dd22',2,8,22,2.8,{g:0.12});
                 }
             });
         }
         if(t>80&&t%6===0){
-            const T=allTargets().filter(e=>e.hp>0);
+            const T=liveTargets();
             if(T.length){
                 const e=T[Math.floor(Math.random()*T.length)];
                 fxSpark(e.x,e.y-320,0,16,20,6,'#66dd22',{ch:'🥒',trail:false,shrink:false,drag:1});
-                ultHurt(e,0.08,0.012,p.damage*2,'🥒','#88ff33');
-                T.forEach(o=>{if(o!==e&&o.hp>0&&(o.x-e.x)**2+(o.y-e.y)**2<4900)ultHurt(o,0.05,0.006,p.damage,'','#88ff33');});
+                ultHurt(e,0.12,0.018,p.damage*3,'🥒','#88ff33');
+                T.forEach(o=>{if(o!==e&&o.hp>0&&(o.x-e.x)**2+(o.y-e.y)**2<4900)ultHurt(o,0.08,0.01,p.damage*1.5,'','#88ff33');});
                 addRing(e.x,e.y,70,12,'#66dd22',3);fxBurst(e.x,e.y,8,'#88ee33',2,8,20,2.6,{g:0.12});
             }
         }
@@ -1927,8 +2371,8 @@ ULT_IMPL.pickle={
 };
 function kiraMarkAll(F){
     const dn=state.deathNoteTargets;
-    allTargets().forEach(e=>{
-        if(e.hp<=0||dn.some(x=>x.enemy===e))return;
+    liveTargets().forEach(e=>{
+        if(dn.some(x=>x.enemy===e))return;
         if(e.isBoss)dn.push({enemy:e,timer:Math.max(1,F.dur-F.t),maxTimer:F.dur,isBoss:true,dmg:e.maxHp*0.25});
         else{const tm=30+Math.floor(Math.random()*Math.max(20,F.dur-F.t-40));dn.push({enemy:e,timer:tm,maxTimer:tm,isBoss:false,dmg:e.maxHp*99});}
     });
@@ -2110,7 +2554,7 @@ class CoinProjectile {
     constructor(x,y,angle,bounces){this.x=x;this.y=y;this.vx=Math.cos(angle)*28;this.vy=Math.sin(angle)*28;this.damage=state.player.damage*2.5;this.life=300;this.lastHit=null;this.bt=0;}
     findTarget(){
         let best=null,bd=Infinity;const en=state.enemies,lh=this.lastHit;
-        for(let i=0;i<en.length;i++){const e=en[i];if(e===lh)continue;const dx=e.x-this.x,dy=e.y-this.y,d=dx*dx+dy*dy;if(d<bd){bd=d;best=e;}}
+        for(let i=0;i<en.length;i++){const e=en[i];if(e===lh||e.hp<=0||!inArena(e))continue;const dx=e.x-this.x,dy=e.y-this.y,d=dx*dx+dy*dy;if(d<bd){bd=d;best=e;}}
         if(!best&&state.boss&&state.boss!==lh)best=state.boss;
         return best;
     }
@@ -2158,7 +2602,7 @@ class CoinProjectile {
 }
 
 class Bullet {
-    constructor(x,y,angle,dmg,sz,crit,damageMult){this.x=x;this.y=y;this.vx=Math.cos(angle)*12;this.vy=Math.sin(angle)*12;this.damage=dmg*(damageMult||1);this.size=sz;this.crit=crit;this.life=65;}
+    constructor(x,y,angle,dmg,sz,crit,damageMult){this.x=x;this.y=y;this.vx=Math.cos(angle)*12;this.vy=Math.sin(angle)*12;this.damage=dmg*(damageMult||1);this.size=sz;this.crit=crit;this.life=65;this.pierce=(state.player&&state.player.pierce)|0;}
     update(){if(this.homing)steerHome(this,this.homing,380);this.x+=this.vx;this.y+=this.vy;this.life--;}
     draw(){
         const c=this.col||(this.crit?'#ffd700':'#00f2ff');
@@ -2226,17 +2670,16 @@ class Player {
         this.config=config;this.x=canvas.width/2;this.y=canvas.height/2;
         this.hp=config.hp*HP_PER_HEART;this.maxHp=config.hp*HP_PER_HEART;this.speed=config.speed;
         this.invul=0;this.facing=1;this.atkCooldown=0;
-        this.atkSpeed=config.id==='coolioioio'?22:45;
-        this.damage=config.id==='coolioioio'?4:10;this.projectileCount=1;this.bSize=5;this.crit=5;this.xpMult=1;
-        this.size=config.imgSize||50;this.cutenessBoostShots=0;this.cutenessActive=false;this.regen=0;this.regenTick=0;this.magnet=0;
+        this.atkSpeed=config.id==='coolioioio'?22:config.id==='choco'?40.9:45;   // Choco: 1.1x attack speed
+        this.pierce=0;this.luck=0;this.armor=0;this.picky=0;this.damage=config.id==='coolioioio'?4:10;this.projectileCount=1;this.bSize=5;this.crit=5;this.xpMult=1;
+        this.size=config.imgSize||50;this.cutenessBoostShots=0;this.cutenessActive=false;this.regen=(config.regen!=null?config.regen:4);this.regenTick=0;   // v1.8: HP per secondthis.magnet=0;
         this.bulletSpeedMult=1;this.pounceRegenTick=0;
         this._frenzyTimer=0;this._frenzyDmgMult=1;this._frenzyAtkBase=0;
         // Kira
-        if(config.id==='kira'){this.godGauge=0;this.godGaugeMax=10;this.godMode=false;}
+        if(config.id==='kira'){this.godGauge=0;this.godGaugeMax=10;this.godMode=false;this.godTimer=0;}
         // Femboy
         if(config.id==='femboy'){this.slayCharm=[];}
         // Subaru
-        if(config.id==='subaru'){this.madnessMeter=0;this.lastMadnessDmg=0;}
     }
     update(){
         if(state.pounce.active){if(state.pounce.target){this.x=state.pounce.target.x;this.y=state.pounce.target.y;}if(this.invul>0)this.invul--;return;}
@@ -2295,8 +2738,8 @@ class Player {
     autoAttack(){
         if(this.config.id==='choco'&&this.swordMode){swordStart(this);return;}
         const skipHost=state.mindControl.active?state.mindControl.host:null;
-        const allTargets=[...state.enemies];
-        if(state.boss&&state.boss!==skipHost)allTargets.push(state.boss);
+        const allTargets=state.enemies.filter(inArena);
+        if(state.boss&&state.boss!==skipHost&&inArena(state.boss))allTargets.push(state.boss);
         let target=null,minDist=Infinity;
         const tMode=settings.shootTarget||'default';
         if(tMode==='manual'){
@@ -2396,7 +2839,7 @@ function makeMCBullet(x,y,ang,spd,dmg,color,size,life,track,strength){
 function nearestTargetFor(h){
     let best=null,bd=Infinity;
     const all=[...state.enemies];if(state.boss)all.push(state.boss);
-    for(const e of all){if(e===h||e.hp<=0)continue;const d=(e.x-h.x)**2+(e.y-h.y)**2;if(d<bd){bd=d;best=e;}}
+    for(const e of all){if(e===h||e.hp<=0||!inArena(e))continue;const d=(e.x-h.x)**2+(e.y-h.y)**2;if(d<bd){bd=d;best=e;}}
     return best;
 }
 function countBosses(){let n=state.boss?1:0;for(const e of state.enemies)if(e.isBoss)n++;return n;}
@@ -2494,7 +2937,7 @@ class Enemy {
         this.aimLine=false;
         if(this.blinkFlash>0)this.blinkFlash--;
         if(this.stunned>0){this.stunned--;return;}
-        if(state.effects.frozen&&!this.isBoss)return;
+        if(frozenFoe(this))return;
         if(state.pounce.active&&state.pounce.target===this)return;
         if(state.mindControl.active&&this===state.mindControl.host){
             // Piloted by Noglin: Player.update drives movement and shooting
@@ -2610,7 +3053,7 @@ class Enemy {
         const onScreen=this.x>-40&&this.x<canvas.width+40&&this.y>-40&&this.y<canvas.height+40;
 
         // Draw emoji WITHOUT any ctx.filter — filter breaks emoji colour on iOS/Android WebKit
-        if(state.effects.frozen&&!this.isBoss&&onScreen&&!this.isHost){
+        if(frozenFoe(this)&&onScreen&&!this.isHost){
             ctx.globalAlpha=0.45;ctx.fillStyle='#aaeeff';ctx.beginPath();ctx.arc(this.x,this.y,16,0,Math.PI*2);ctx.fill();ctx.globalAlpha=1;
         }
         if(this.aimLine&&onScreen){
@@ -2635,7 +3078,7 @@ class Enemy {
             const rs=ringSprite(20,3,'#ff44aa','#ff44aa',10);ctx.drawImage(rs,this.x-rs.width/2,this.y-rs.height/2);
             const hs=emojiSprite('💕',10);ctx.drawImage(hs,this.x-hs.width/2,this.y-28-hs.height/2);
         }
-        if(this.stunned>0&&onScreen&&!state.effects.frozen){
+        if(this.stunned>0&&onScreen&&!frozenFoe(this)){
             const rs=ringSprite(14,2.5,'rgba(255,255,255,0.8)','#ffffff',8);ctx.drawImage(rs,this.x-rs.width/2,this.y-rs.height/2);
         }
         const bw=32;
@@ -2785,7 +3228,7 @@ function autoPickTarget(){
     let best=null,bd=Infinity;
     const all=[...state.enemies];if(state.boss)all.push(state.boss);
     const skipHost=state.mindControl.active?state.mindControl.host:null;
-    all.forEach(e=>{if(e===skipHost)return;const d=Math.sqrt((e.x-state.player.x)**2+(e.y-state.player.y)**2);if(d<bd){bd=d;best=e;}});
+    all.forEach(e=>{if(e===skipHost||!inArena(e))return;const d=Math.sqrt((e.x-state.player.x)**2+(e.y-state.player.y)**2);if(d<bd){bd=d;best=e;}});
     return best;
 }
 // ── ABILITY TARGETING HELPER ──
@@ -2799,7 +3242,7 @@ function abilityAimAngle(px, py){
     let best=null, bd=Infinity;
     const all=[...state.enemies];
     if(state.boss) all.push(state.boss);
-    all.forEach(e=>{const d=Math.sqrt((e.x-px)**2+(e.y-py)**2);if(d<bd){bd=d;best=e;}});
+    all.forEach(e=>{if(!inArena(e))return;const d=Math.sqrt((e.x-px)**2+(e.y-py)**2);if(d<bd){bd=d;best=e;}});
     if(best) return Math.atan2(best.y-py, best.x-px);
     // Fallback to cursor if no enemies
     return Math.atan2(state.mouseY - py, state.mouseX - px);
@@ -2831,7 +3274,7 @@ function triggerAbility(){
         const MAX_CHAINS=12,CHAIN_RANGE=5000;
         let startE=null,sd=Infinity;
         const all=[...state.enemies];if(state.boss)all.push(state.boss);
-        all.forEach(e=>{const d=Math.sqrt((e.x-p.x)**2+(e.y-p.y)**2);if(d<10000&&d<sd){sd=d;startE=e;}});
+        all.forEach(e=>{if(!inArena(e))return;const d=Math.sqrt((e.x-p.x)**2+(e.y-p.y)**2);if(d<10000&&d<sd){sd=d;startE=e;}});
         if(startE){
             const hit=new Set();
             const chain=[{from:{x:p.x,y:p.y},to:startE,mult:1}];
@@ -2839,19 +3282,19 @@ function triggerAbility(){
             for(let i=1;i<MAX_CHAINS;i++){
                 let next=null,nd=Infinity;
                 const pool=[...state.enemies];if(state.boss)pool.push(state.boss);
-                pool.forEach(e=>{if(hit.has(e))return;const d=Math.sqrt((e.x-cur.x)**2+(e.y-cur.y)**2);if(d<CHAIN_RANGE&&d<nd){nd=d;next=e;}});
+                pool.forEach(e=>{if(hit.has(e)||!inArena(e))return;const d=Math.sqrt((e.x-cur.x)**2+(e.y-cur.y)**2);if(d<CHAIN_RANGE&&d<nd){nd=d;next=e;}});
                 if(!next)break;
                 chain.push({from:{x:cur.x,y:cur.y},to:next,mult:Math.pow(0.88,i)});
                 hit.add(next);cur=next;
             }
             state.pikaChaining=true;
             chain.forEach((arc,i)=>{
-                setTimeout(()=>{
+                later(()=>{
                     if(state.screen!=='PLAYING')return;
-                    if(!arc.to||arc.to.hp<=0){if(i===chain.length-1)setTimeout(()=>{state.pikaChaining=false;},350);return;}
+                    if(!arc.to||arc.to.hp<=0){if(i===chain.length-1)later(()=>{state.pikaChaining=false;},350);return;}
                     const le=new LightningEffect(arc.from.x,arc.from.y,arc.to.x,arc.to.y);
                     state.lightningEffects.push(le);
-                    const dmg=p.damage*4.5*arc.mult*(state.effects.frozen&&!arc.to.isBoss?state.effects.frozenDamageMult:1);
+                    const dmg=p.damage*4.5*arc.mult*(frozenFoe(arc.to)?state.effects.frozenDamageMult:1);
                     arc.to.hp=Math.max(0,arc.to.hp-dmg);
                     if(!arc.to.isBoss)arc.to.stunned=Math.max(arc.to.stunned||0,80);
                     else if(arc.to.isBoss)arc.to.stunned=Math.max(arc.to.stunned||0,20);
@@ -2860,7 +3303,7 @@ function triggerAbility(){
                     if(arc.to.hp<=0){if(!arc.to.isBoss){const ei=state.enemies.indexOf(arc.to);if(ei!==-1){killEnemy(arc.to,ei);state.enemies.splice(ei,1);}}else killEnemy(arc.to,-1);}
                     // After last arc, clear flag and despawn all lightning effects
                     if(i===chain.length-1){
-                        setTimeout(()=>{
+                        later(()=>{
                             state.pikaChaining=false;
                             state.lightningEffects=[];
                         },350);
@@ -2914,7 +3357,7 @@ function triggerAbility(){
             godBoss.hp=0;
             popup(godBoss.x,godBoss.y-60,'✍ I AM JUSTICE ✍','#ffd700',260);
             popup(godBoss.x,godBoss.y-35,'WRITTEN.','#cc0000',220);
-            p.godMode=false;p.godGauge=0;used=true;
+            p.godMode=false;p.godTimer=0;p.godGauge=0;used=true;
         } else {
             // Pick the highest-HP enemy
             const target=all.reduce((best,e)=>e.hp>best.hp?e:best,all[0]);
@@ -2955,7 +3398,12 @@ function triggerAbility(){
         used=true;
     } else if(p.config.id==='pickle'){
         // Brine Burst: poison + slow all enemies in range
-        const RANGE=300;
+        const RANGE=460;   // v1.8: longer radius
+        addRing(p.x,p.y,RANGE,22,'#55cc22',6);addRing(p.x,p.y,RANGE*0.62,16,'#bfff77',3);addRing(p.x,p.y,RANGE*0.3,12,'#ffffff',2);
+        (state.brineFx||(state.brineFx=[])).push({x:p.x,y:p.y,t0:state.frameCount,max:30,R:RANGE,seed:Math.random()*6.28});
+        fxFlash('#7dff3a',0.28,10);fxShake(9);
+        fxBurst(p.x,p.y,50,'#6edc2a',4,16,34,3.6,{g:0.06});fxBurst(p.x,p.y,30,'#d8ff9a',2,9,26,2.6,{g:-0.03,trail:false});
+        for(let bi=0;bi<10;bi++){const ba=Math.random()*6.2832,bs=3+Math.random()*9;fxSpark(p.x,p.y,Math.cos(ba)*bs,Math.sin(ba)*bs,40,11,'#88ff44',{trail:false,ch:'🥒',drag:0.95});}
         const all3=[...state.enemies];if(state.boss)all3.push(state.boss);
         state.picklePoisons=state.picklePoisons||[];
         let poisoned=0;
@@ -2970,6 +3418,7 @@ function triggerAbility(){
                 // slow
                 if(!e.isBoss)e.stunned=Math.max(e.stunned||0,60);
                 popup(e.x,e.y-25,'🥒 BRINED','#44cc00',160);
+                fxBurst(e.x,e.y,9,'#66dd22',1.5,6,24,2.8,{g:0.1,trail:false});
                 poisoned++;
             }
         });
@@ -2995,7 +3444,7 @@ function triggerAbility(){
         }
     } else if(p.config.id==='snowman'){
         state.effects.frozen=true;state.effects.frozenTimer=300;state.effects.frozenDamageMult=10;state.effects.blizzardTick=0;
-        popup(p.x,p.y-60,'❄ BLIZZARD!','#88eeff');popup(p.x,p.y-80,'BRITTLE 10x + FROSTBITE! 5s','#ffffff');used=true;
+        popup(p.x,p.y-60,'❄ BLIZZARD!','#88eeff');popup(p.x,p.y-80,'ARENA FREEZES! 5s','#ffffff');used=true;
     } else if(p.config.id==='blahblahblah'){
         // Word Barrage: fire a rapid stream of word-bullets that each stun briefly
         const WORDS=['NAKAMA','BELIEVE IT','PLUS ULTRA','BANKAI','SHANNARO','GOMU GOMU','KAMEHAMEHA','STAND PROUD'];
@@ -3008,35 +3457,12 @@ function triggerAbility(){
         p.invul=60;
         used=true;
     } else if(p.config.id==='subaru'){
-        // Return by Death: save a checkpoint. If player would die, return to it with full HP.
-        // Also deals Madness-scaled damage burst to nearby enemies
-        const madnessPct=(p.madnessMeter||0)/100;
-        const burstDmg=p.damage*(3+madnessPct*12);
-        const RANGE=250+madnessPct*150;
-        state.subaru_checkpoint={x:p.x,y:p.y,hp:p.maxHp,frameSet:state.frameCount};
-        popup(p.x,p.y-80,'🔄 CHECKPOINT SET','#4488ff',200);
-        if(madnessPct>0){
-            // Madness burst
-            for(let ei=state.enemies.length-1;ei>=0;ei--){
-                const e=state.enemies[ei];
-                const d=Math.sqrt((e.x-p.x)**2+(e.y-p.y)**2);
-                if(d<RANGE){
-                    e.hp=Math.max(0,e.hp-burstDmg);spawnBlood(e.x,e.y,8);
-                    popup(e.x,e.y-20,`ECHOES -${Math.floor(burstDmg)}`,'#aa44ff',120);
-                    if(e.hp<=0){killEnemy(e,ei);state.enemies.splice(ei,1);}
-                }
-            }
-            if(state.boss){const d=Math.sqrt((state.boss.x-p.x)**2+(state.boss.y-p.y)**2);if(d<RANGE){state.boss.hp=Math.max(0,state.boss.hp-burstDmg*0.4);popup(state.boss.x,state.boss.y-50,`ECHOES -${Math.floor(burstDmg*0.4)}`,'#aa44ff',180);updateBossBar();if(state.boss.hp<=0)killEnemy(state.boss,-1);}}
-            if(madnessPct>=0.8){
-                popup(p.x,p.y-110,'I WILL SAVE EVERYONE...','#ffffff',240);
-                state.subaruCutscene={timer:120,maxTimer:120,type:'madness',madness:madnessPct};
-            }
-            popup(p.x,p.y-55,`🌀 MADNESS ${Math.floor(p.madnessMeter)}% RELEASED`,'#aa44ff',200);
-            p.madnessMeter=0;// reset madness after use
-        } else {
-            popup(p.x,p.y-55,'build madness by taking damage','#4488ff',180);
-        }
-        p.invul=60;
+        // Return by Death: arm a 5s window. Die inside it and you respawn right here, instantly, at full HP — so it has to be timed.
+        state.subaru_checkpoint={x:p.x,y:p.y,t:RETURN_WINDOW,max:RETURN_WINDOW};
+        popup(p.x,p.y-80,'🔄 RETURN BY DEATH ARMED','#4488ff',200);
+        addRing(p.x,p.y,150,18,'#4488ff',4);addRing(p.x,p.y,90,12,'#bcd8ff',2);
+        fxBurst(p.x,p.y,16,'#6aa0ff',2,8,22,2.6,{trail:false});
+        p.invul=Math.max(p.invul,30);
         used=true;
     }
 
@@ -3063,14 +3489,14 @@ function triggerSecondary(){
         p.cutenessActive=true;
         // cutenessActive lasts exactly as long as stun (120 frames = 2s) so image shows while enemies are stunned
         const _cutFrames=120;
-        setTimeout(()=>{if(state.player===p)p.cutenessActive=false;},_cutFrames*(1000/60));
+        later(()=>{if(state.player===p)p.cutenessActive=false;},_cutFrames*(1000/60));
         popup(p.x,p.y-60,CUTENESS_LINES[Math.floor(Math.random()*CUTENESS_LINES.length)],'#ff66cc',180);
         if(count===0)popup(p.x,p.y-40,'nobody noticed...','#888');
         used=true;
     } else if(p.config.id==='pikachu'){
         // VOLT TACKLE: a piercing lightning dash — everything in the path is hit, stunned and chained, the finish is a thunderclap, and the path stays electrified
         let target=null,md=Infinity;
-        const all=allTargets();
+        const all=liveTargets();
         for(let i=0;i<all.length;i++){const e=all[i],d=(e.x-p.x)**2+(e.y-p.y)**2;if(d<md){md=d;target=e;}}
         if(settings.abilityTarget==='manual')used=voltStart(p,Math.atan2(state.mouseY-p.y,state.mouseX-p.x),target);
         else if(target)used=voltStart(p,Math.atan2(target.y-p.y,target.x-p.x),target);
@@ -3092,8 +3518,8 @@ function triggerSecondary(){
         p.x=destX;p.y=destY;p.invul=100;
         addRing(p.x,p.y,260,22,'#00ff88',5);fxBurst(p.x,p.y,26,'#88ffbb',3,11,28,3);fxShake(12);
         popup(p.x,p.y-35,'WARP!','#00ff88');
-        state.enemies.forEach(e=>{e.confused=300;e.confuseTimer=0;popup(e.x,e.y-20,'??','#00ff88');});
-        if(state.boss){state.boss.confused=180;popup(state.boss.x,state.boss.y-50,'BOSS CONFUSED!','#00ff88',160);}
+        state.enemies.forEach(e=>{if(!inArena(e))return;e.confused=150;e.confuseTimer=0;popup(e.x,e.y-20,'??','#00ff88');});
+        if(state.boss){state.boss.confused=90;popup(state.boss.x,state.boss.y-50,'BOSS CONFUSED!','#00ff88',160);}
         p._warpSpeedBoost=240;
         used=true;
     } else if(p.config.id==='shiba'){
@@ -3140,7 +3566,7 @@ function triggerSecondary(){
         ];
         const line=MONOLOGUE[Math.floor(Math.random()*MONOLOGUE.length)];
         // Trigger anime cutscene overlay
-        state.kiraCutscene={timer:36,maxTimer:36,line};
+        state.kiraCutscene={timer:SPEECH_FRAMES,maxTimer:SPEECH_FRAMES,line};
         popup(p.x,p.y-60,'📓 JUSTICE!','#cc0000',200);
         p.invul=240;
         // Kill enemies by dealing 50% of their max HP
@@ -3175,7 +3601,7 @@ function triggerSecondary(){
         const PICKLE_QUOTES=["I'M PICKLE RICK!","WUBBA LUBBA DUB DUB!","BOOM — BIG MOVES BABY","I TURNED MYSELF INTO A PICKLE MORTY","NOBODY EXPECTS THE PICKLE"];
         popup(p.x,p.y-70,PICKLE_QUOTES[Math.floor(Math.random()*PICKLE_QUOTES.length)],'#44ff44',280);
         // Collect targets sorted by distance
-        const allE=allTargets();
+        const allE=liveTargets();
         for(let i=0;i<allE.length;i++){const e=allE[i];e._pd=(e.x-p.x)*(e.x-p.x)+(e.y-p.y)*(e.y-p.y);}   // squared distance computed once per enemy, not per comparison
         allE.sort((a,b)=>a._pd-b._pd);
         const targets=allE.slice(0,8);
@@ -3185,7 +3611,7 @@ function triggerSecondary(){
         if(targets.length===0)popup(p.x,p.y-40,'no targets','#888');
         used=true;
     } else if(p.config.id==='coolioioio'){
-        const all=[...state.enemies];if(state.boss)all.push(state.boss);
+        const all=liveTargets();
         if(all.length===0){popup(p.x,p.y-30,'no targets','#888');return;}
         let mainTarget;
         if(settings.abilityTarget==='manual'){
@@ -3207,11 +3633,11 @@ function triggerSecondary(){
         // Ultimate Speech: fullscreen anime cutscene then nuke everything in huge radius
         const SPEECHES=['I CANNOT GIVE UP NOW — MY FRIENDS NEED ME!','THIS POWER... IS THE POWER OF BONDS!','I REFUSE TO LOSE IN A PLACE LIKE THIS!','JUST WHO THE HECK DO YOU THINK I AM?!','I WILL SURPASS MY LIMITS... RIGHT HERE, RIGHT NOW!'];
         const speechLine=SPEECHES[Math.floor(Math.random()*SPEECHES.length)];
-        state.blahCutscene={timer:36,maxTimer:36,line:speechLine};
+        state.blahCutscene={timer:SPEECH_FRAMES,maxTimer:SPEECH_FRAMES,line:speechLine};
         popup(p.x,p.y-60,'💬 ULTIMATE SPEECH!','#cc44ff',200);
         p.invul=300;
-        // Massive nuke after short delay
-        setTimeout(()=>{
+        // Massive nuke once the speech has landed (~1.7s)
+        later(()=>{
             if(state.screen!=='PLAYING')return;
             const RANGE=600;
             for(let ei=state.enemies.length-1;ei>=0;ei--){
@@ -3224,15 +3650,16 @@ function triggerSecondary(){
                 }
             }
             if(state.boss){const d=Math.sqrt((state.boss.x-p.x)**2+(state.boss.y-p.y)**2);if(d<RANGE){const dmg=p.damage*8;state.boss.hp=Math.max(0,state.boss.hp-dmg);popup(state.boss.x,state.boss.y-60,`💬 -${Math.floor(dmg)}`,'#cc44ff',180);updateBossBar();if(state.boss.hp<=0)killEnemy(state.boss,-1);}}
-        },600);
+        },1700);
         used=true;
     } else if(p.config.id==='subaru'){
         // Unseen Hand: grab all enemies in range and slam them into each other
         const LINES=['BEATRICE, I NEED YOU!','BY THE POWER OF THE UNSEEN HAND!','ROSWAAL... THIS IS FOR EVERYONE!','I PROMISED I WOULD WIN!'];
         popup(p.x,p.y-80,LINES[Math.floor(Math.random()*LINES.length)],'#4488ff',280);
         const all=[...state.enemies];if(state.boss)all.push(state.boss);
-        const RANGE=400;const nearby=all.filter(e=>Math.sqrt((e.x-p.x)**2+(e.y-p.y)**2)<RANGE);
+        const RANGE=400;const nearby=all.filter(e=>inArena(e)&&Math.sqrt((e.x-p.x)**2+(e.y-p.y)**2)<RANGE);
         if(nearby.length===0){popup(p.x,p.y-40,'nobody nearby','#888');return;}
+        unseenHandFx(p,nearby,RANGE);
         // Yank all nearby enemies toward center, then release
         nearby.forEach(e=>{
             const d=Math.sqrt((e.x-p.x)**2+(e.y-p.y)**2);
@@ -3241,19 +3668,17 @@ function triggerSecondary(){
             popup(e.x,e.y-25,`🌀 -${Math.floor(dmg)}`,'#4488ff',100);
             // Fling toward player center
             const ang=Math.atan2(p.y-e.y,p.x-e.x);
-            e.x+=Math.cos(ang)*80;e.y+=Math.sin(ang)*80;
+            e.x+=Math.cos(ang)*80;e.y+=Math.sin(ang)*80;keepInArena(e);
             if(e.hp<=0){
                 if(!e.isBoss){const ei=state.enemies.indexOf(e);if(ei!==-1){killEnemy(e,ei);state.enemies.splice(ei,1);}}
                 else{killEnemy(e,-1);}
             }
         });
         popup(p.x,p.y-55,'🌀 UNSEEN HAND!','#4488ff',200);
-        // Gain madness for using a spell
-        p.madnessMeter=Math.min(100,(p.madnessMeter||0)+15);
         used=true;
     }
 
-    if(p.config.id==='arsonist'){oilSlick(p);used=true;}
+    if(p.config.id==='arsonist'){used=tarToss(p);}
 
     if(used){state.secondary.ready=false;state.secondary.cooldown=state.secondary.maxCooldown;updateHUD();}
 }
@@ -3261,6 +3686,18 @@ function triggerSecondary(){
 function killMindControlHost(){
     if(!state.mindControl.active)return;
     const h=state.mindControl.host;
+    // v1.8: a boss host is not deleted in one hit — you tear out a chunk of its health and eject instead
+    if(h.isBoss){
+        const dmg=Math.max(state.player.damage*20,h.maxHp*0.25);
+        h.hp=Math.max(1,h.hp-dmg);   // never lethal
+        const healAmt=Math.max(1,Math.ceil(h.hp/h.maxHp*state.player.maxHp*0.25));
+        popup(h.x,h.y-70,'☠ HOST RIPPED -'+Math.floor(dmg),'#ff0044',140);addRing(h.x,h.y,150,18,'#ff0044',5);fxBurst(h.x,h.y,24,'#ff3366',3,11,26,3);fxShake(12);
+        ejectMindControl();
+        state.player.hp=Math.min(state.player.maxHp,state.player.hp+healAmt);
+        if(h===state.boss)updateBossBar();
+        updateHUD();
+        return;
+    }
     // Heal the noglin based on remaining host HP — reward for smart early termination
     const healPct=h.hp/h.maxHp;
     const healAmt=Math.max(1,Math.ceil(healPct*state.player.maxHp*0.5));
@@ -3315,16 +3752,16 @@ function triggerMCAbility(key){
             // Spiral red burst visual
             state.mcRings.push({cx:host.x,cy:host.y,r:0,maxR:200,timer:18,maxTimer:18,color:'#ff4400',lw:3});
             state.mcRings.push({cx:host.x,cy:host.y,r:0,maxR:140,timer:12,maxTimer:12,color:'#ff8800',lw:2});
-            const victims=[...state.enemies.filter(e=>e!==host)];
-            if(state.boss)victims.push(state.boss);
+            const victims=[...state.enemies.filter(e=>inArena(e)&&e!==host)];
+            if(state.boss&&inArena(state.boss))victims.push(state.boss);
             victims.sort((a,b)=>Math.sqrt((a.x-host.x)**2+(a.y-host.y)**2)-Math.sqrt((b.x-host.x)**2+(b.y-host.y)**2));
             // Double pass — visit each enemy twice
             const doubledVictims=[...victims,...victims];
             doubledVictims.forEach((e,i)=>{
-                setTimeout(()=>{
+                later(()=>{
                     if(state.screen!=='PLAYING')return;
                     if(!state.mindControl.active||!e||e.hp<=0)return;
-                    host.x=e.x;host.y=e.y;
+                    mcWarp(host,e.x,e.y);
                     state.mcRings.push({cx:e.x,cy:e.y,r:0,maxR:80,timer:10,maxTimer:10,color:'#ff4400',lw:2});
                     spawnBlood(e.x,e.y,8);
                     const dmg=p.damage*2;
@@ -3346,13 +3783,13 @@ function triggerMCAbility(key){
             popup(host.x,host.y-55,'🎯 VOLLEY!','#ffaa00',180);
             // Orange burst rings
             for(let ri=0;ri<3;ri++)state.mcRings.push({cx:host.x,cy:host.y,r:ri*30,maxR:180+ri*40,timer:14,maxTimer:14,color:'#ffaa00',lw:2});
-            const allT=[...state.enemies.filter(e=>e!==host)];
-            if(state.boss)allT.push(state.boss);
+            const allT=[...state.enemies.filter(e=>inArena(e)&&e!==host)];
+            if(state.boss&&inArena(state.boss))allT.push(state.boss);
             allT.sort((a,b)=>b.hp-a.hp);
             const targets=allT.slice(0,5);
             targets.forEach((tgt,ti)=>{
                 for(let s=0;s<4;s++){
-                    setTimeout(()=>{
+                    later(()=>{
                         if(!state.mindControl.active||!tgt||tgt.hp<=0)return;
                         const ang=Math.atan2(tgt.y-host.y,tgt.x-host.x)+(Math.random()-0.5)*0.12;
                         // Orange homing bullet — isMCBullet so it hits enemies but NOT the host
@@ -3375,18 +3812,18 @@ function triggerMCAbility(key){
             state.mindControl.vortexX=host.x;
             state.mindControl.vortexY=host.y;
             // Spinning inward rings every 20 frames during pull
-            for(let ri=0;ri<5;ri++)setTimeout(()=>{
+            for(let ri=0;ri<5;ri++)later(()=>{
                 if(!state.mindControl.active)return;
                 state.mcRings.push({cx:state.mindControl.vortexX,cy:state.mindControl.vortexY,r:600,maxR:0,timer:18,maxTimer:18,color:'#cc00ff',lw:2,inward:true});
             },ri*400);
             const vx2=host.x,vy2=host.y;
-            setTimeout(()=>{
+            later(()=>{
                 if(state.screen!=='PLAYING')return;
                 popup(vx2,vy2-55,'💜 VORTEX BURST!','#ff00ff',200);
                 // Big purple burst ring
                 state.mcRings.push({cx:vx2,cy:vy2,r:0,maxR:600,timer:22,maxTimer:22,color:'#ff00ff',lw:5});
                 state.mcRings.push({cx:vx2,cy:vy2,r:0,maxR:400,timer:18,maxTimer:18,color:'#cc00ff',lw:3});
-                const all2=[...state.enemies];if(state.boss)all2.push(state.boss);
+                const all2=state.enemies.filter(inArena);if(state.boss&&inArena(state.boss))all2.push(state.boss);
                 all2.forEach(e=>{
                     if(e===host)return;
                     const dmg=p.damage*4;
@@ -3394,7 +3831,7 @@ function triggerMCAbility(key){
                     spawnBlood(e.x,e.y,8);
                     popup(e.x,e.y-20,`💜-${Math.floor(dmg*(e.isBoss?0.4:1))}`,'#cc00ff',100);
                     const ang2=Math.atan2(e.y-vy2,e.x-vx2);
-                    e.x+=Math.cos(ang2)*140;e.y+=Math.sin(ang2)*140;
+                    e.x+=Math.cos(ang2)*140;e.y+=Math.sin(ang2)*140;keepInArena(e);
                     e.x=Math.max(0,Math.min(canvas.width,e.x));e.y=Math.max(0,Math.min(canvas.height,e.y));
                     if(e.hp<=0){
                         if(!e.isBoss){const ei=state.enemies.indexOf(e);if(ei!==-1){killEnemy(e,ei);state.enemies.splice(ei,1);}}
@@ -3410,14 +3847,14 @@ function triggerMCAbility(key){
             popup(host.x,host.y-55,'🌊 SHOCKWAVE SLAM!','#88aaff',200);
             const WAVES=4,WAVE_DELAY=120,WAVE_RADIUS_MAX=500;
             for(let w=0;w<WAVES;w++){
-                setTimeout(()=>{
+                later(()=>{
                     if(state.screen!=='PLAYING')return;
                     if(!state.mindControl.active)return;
                     const wRadius=(w+1)*(WAVE_RADIUS_MAX/WAVES);
                     const prevR=w*(WAVE_RADIUS_MAX/WAVES);
                     state.mcRings.push({cx:host.x,cy:host.y,r:prevR,maxR:wRadius,timer:20,maxTimer:20,color:'#88aaff',lw:4});
                     const dmg=p.damage*(3.5-w*0.5);
-                    const all3=[...state.enemies];if(state.boss)all3.push(state.boss);
+                    const all3=state.enemies.filter(inArena);if(state.boss&&inArena(state.boss))all3.push(state.boss);
                     all3.forEach(e=>{
                         if(e===host)return;
                         const d=Math.sqrt((e.x-host.x)**2+(e.y-host.y)**2);
@@ -3426,14 +3863,13 @@ function triggerMCAbility(key){
                             spawnBlood(e.x,e.y,6);
                             popup(e.x,e.y-20,`💫-${Math.floor(dmg*(e.isBoss?0.35:1))}`,'#88aaff',90);
                             const ang3=Math.atan2(e.y-host.y,e.x-host.x);
-                            e.x+=Math.cos(ang3)*260;e.y+=Math.sin(ang3)*260;
-                            e.x=Math.max(0,Math.min(canvas.width,e.x));e.y=Math.max(0,Math.min(canvas.height,e.y));
+                            e.x+=Math.cos(ang3)*260;e.y+=Math.sin(ang3)*260;keepInArena(e);
                             if(!e.isBoss)e.stunned=80;
                             // Mini shockwave from hit enemy — 10% damage, same size, no chain
                             const miniDmg=dmg*(e.isBoss?0.35:1)*0.1;
                             const miniR=wRadius-prevR;
                             const ex=e.x,ey=e.y;
-                            const allN=[...state.enemies];if(state.boss)allN.push(state.boss);
+                            const allN=state.enemies.filter(inArena);if(state.boss&&inArena(state.boss))allN.push(state.boss);
                             allN.forEach(n=>{
                                 if(n===e||n===host)return;
                                 const nd=Math.sqrt((n.x-ex)**2+(n.y-ey)**2);
@@ -3460,19 +3896,19 @@ function triggerMCAbility(key){
             popup(host.x,host.y-55,'👻 PHANTOM RUSH!','#ffff44',200);
             // Yellow flash ring
             state.mcRings.push({cx:host.x,cy:host.y,r:0,maxR:180,timer:12,maxTimer:12,color:'#ffff44',lw:3});
-            const victims2=[...state.enemies.filter(e=>e!==host)];
-            if(state.boss)victims2.push(state.boss);
+            const victims2=[...state.enemies.filter(e=>inArena(e)&&e!==host)];
+            if(state.boss&&inArena(state.boss))victims2.push(state.boss);
             for(let i=victims2.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[victims2[i],victims2[j]]=[victims2[j],victims2[i]];}
             const targets2=victims2.slice(0,7);
             targets2.forEach((tgt,i)=>{
-                setTimeout(()=>{
+                later(()=>{
                     if(state.screen!=='PLAYING')return;
                     if(!state.mindControl.active||!tgt||tgt.hp<=0)return;
-                    host.x=tgt.x;host.y=tgt.y;
+                    mcWarp(host,tgt.x,tgt.y);
                     state.mcRings.push({cx:tgt.x,cy:tgt.y,r:0,maxR:130,timer:10,maxTimer:10,color:'#ffff44',lw:2});
                     spawnBlood(tgt.x,tgt.y,6);
                     const AOE=130,dmg=p.damage*3;// nerfed from 5x
-                    const near=[...state.enemies.filter(e=>e!==host),state.boss].filter(Boolean);
+                    const near=[...state.enemies.filter(e=>inArena(e)&&e!==host),state.boss].filter(Boolean);
                     near.forEach(e=>{
                         const d=Math.sqrt((e.x-host.x)**2+(e.y-host.y)**2);
                         if(d<AOE){
@@ -3495,8 +3931,8 @@ function triggerMCAbility(key){
         // ── BRUTE → HURL ──
         else if(hostType==='brute'){
             let hurled=null,hd=Infinity;
-            state.enemies.forEach(e=>{if(e===host)return;const d=Math.sqrt((e.x-host.x)**2+(e.y-host.y)**2);if(d<hd){hd=d;hurled=e;}});
-            if(!hurled&&state.boss)hurled=state.boss;
+            state.enemies.forEach(e=>{if(e===host||!inArena(e))return;const d=Math.sqrt((e.x-host.x)**2+(e.y-host.y)**2);if(d<hd){hd=d;hurled=e;}});
+            if(!hurled&&state.boss&&inArena(state.boss))hurled=state.boss;
             if(hurled){
                 popup(host.x,host.y-55,'🗿 HURL!','#ffcc44',200);
                 popup(hurled.x,hurled.y-30,'THROWN!','#ffcc44',100);
@@ -3518,15 +3954,15 @@ function triggerMCAbility(key){
             popup(host.x,host.y-55,'💣 CHAIN DETONATION!','#ff8800',200);
             host.hp=Math.max(1,host.hp-host.maxHp*0.25);
             for(let w=0;w<3;w++){
-                setTimeout(()=>{
+                later(()=>{
                     if(state.screen!=='PLAYING'||!state.mindControl.active)return;
                     const R=170+w*60;addRing(host.x,host.y,R,16,'#ff8800',4);addRing(host.x,host.y,R*0.6,12,'#ffdd00',2);
-                    const all=[...state.enemies.filter(e=>e!==host)];if(state.boss&&state.boss!==host)all.push(state.boss);
+                    const all=[...state.enemies.filter(e=>inArena(e)&&e!==host)];if(state.boss&&state.boss!==host&&inArena(state.boss))all.push(state.boss);
                     all.forEach(e=>{
                         if(e.hp<=0||(e.x-host.x)**2+(e.y-host.y)**2>=R*R)return;
                         const dmg=p.damage*(5-w)*(e.isBoss?0.35:1);e.hp=Math.max(0,e.hp-dmg);
                         spawnBlood(e.x,e.y,8);popup(e.x,e.y-20,`💥-${Math.floor(dmg)}`,'#ff8800',80);
-                        const ang=Math.atan2(e.y-host.y,e.x-host.x);e.x+=Math.cos(ang)*90;e.y+=Math.sin(ang)*90;
+                        const ang=Math.atan2(e.y-host.y,e.x-host.x);e.x+=Math.cos(ang)*90;e.y+=Math.sin(ang)*90;keepInArena(e);
                         if(e.hp<=0)killAny(e);
                     });
                 },w*350);
@@ -3538,7 +3974,7 @@ function triggerMCAbility(key){
         else if(hostType==='phantom'){
             popup(host.x,host.y-55,'👻 HAUNT!','#bb88ff',200);
             addRing(host.x,host.y,450,20,'#bb88ff',4);addRing(host.x,host.y,300,16,'#dd99ff',2);
-            const all=[...state.enemies.filter(e=>e!==host)];if(state.boss&&state.boss!==host)all.push(state.boss);
+            const all=[...state.enemies.filter(e=>inArena(e)&&e!==host)];if(state.boss&&state.boss!==host&&inArena(state.boss))all.push(state.boss);
             let n=0;
             all.forEach(e=>{
                 if(e.hp<=0||(e.x-host.x)**2+(e.y-host.y)**2>=202500)return;
@@ -3554,7 +3990,7 @@ function triggerMCAbility(key){
         else if(hostType==='healer'){
             popup(host.x,host.y-55,'💚 LIFE DRAIN!','#66ff99',200);
             addRing(host.x,host.y,380,20,'#66ff99',4);
-            const all=[...state.enemies.filter(e=>e!==host)];if(state.boss&&state.boss!==host)all.push(state.boss);
+            const all=[...state.enemies.filter(e=>inArena(e)&&e!==host)];if(state.boss&&state.boss!==host&&inArena(state.boss))all.push(state.boss);
             let drained=0;
             all.forEach(e=>{
                 if(e.hp<=0||(e.x-host.x)**2+(e.y-host.y)**2>=144400)return;
@@ -3569,13 +4005,13 @@ function triggerMCAbility(key){
 
         // ── SNIPER → HEADSHOT ──
         else if(hostType==='sniper'){
-            const all=[...state.enemies.filter(e=>e!==host&&e.hp>0)];if(state.boss&&state.boss!==host&&state.boss.hp>0)all.push(state.boss);
+            const all=[...state.enemies.filter(e=>inArena(e)&&e!==host&&e.hp>0)];if(state.boss&&state.boss!==host&&state.boss.hp>0&&inArena(state.boss))all.push(state.boss);
             all.sort((a,b)=>b.hp-a.hp);
             const picks=all.slice(0,3);
             if(picks.length===0)popup(host.x,host.y-40,'no targets!','#888');
             else popup(host.x,host.y-55,'🎯 HEADSHOT!','#ff4444',200);
             picks.forEach((tgt,i)=>{
-                setTimeout(()=>{
+                later(()=>{
                     if(state.screen!=='PLAYING'||!state.mindControl.active||!tgt||tgt.hp<=0)return;
                     state.miniBeams=state.miniBeams||[];
                     state.miniBeams.push({sx:host.x,sy:host.y,ex:tgt.x,ey:tgt.y,timer:30,maxTimer:30,rgb:'255,40,40',glow:'#ff2222'});
@@ -3594,17 +4030,17 @@ function triggerMCAbility(key){
             addRing(host.x,host.y,120,14,'#ffaa66',4);
             const sang=Math.atan2(state.mouseY-host.y,state.mouseX-host.x);
             let sf=0;const hitSet=new Set();
-            const stampede=setInterval(()=>{
-                if(state.screen!=='PLAYING'||!state.mindControl.active||sf>=16){clearInterval(stampede);return;}
+            every(()=>{
+                if(state.screen!=='PLAYING'||!state.mindControl.active||sf>=16)return false;
                 host.x=Math.max(65,Math.min(canvas.width-65,host.x+Math.cos(sang)*34));
                 host.y=Math.max(65,Math.min(canvas.height-65,host.y+Math.sin(sang)*34));
-                const all=[...state.enemies.filter(e=>e!==host)];if(state.boss&&state.boss!==host)all.push(state.boss);
+                const all=[...state.enemies.filter(e=>inArena(e)&&e!==host)];if(state.boss&&state.boss!==host&&inArena(state.boss))all.push(state.boss);
                 all.forEach(e=>{
                     if(e.hp<=0||hitSet.has(e)||(e.x-host.x)**2+(e.y-host.y)**2>=3600)return;
                     hitSet.add(e);
                     const dmg=p.damage*5*(e.isBoss?0.3:1);e.hp=Math.max(0,e.hp-dmg);
                     spawnBlood(e.x,e.y,8);popup(e.x,e.y-20,`🐗-${Math.floor(dmg)}`,'#ffaa66',80);
-                    e.x+=Math.cos(sang)*120;e.y+=Math.sin(sang)*120;
+                    e.x+=Math.cos(sang)*120;e.y+=Math.sin(sang)*120;keepInArena(e);
                     if(!e.isBoss)e.stunned=Math.max(e.stunned||0,70);
                     if(e.hp<=0)killAny(e);
                 });
@@ -3617,13 +4053,13 @@ function triggerMCAbility(key){
         else if(hostType==='spider'){
             popup(host.x,host.y-55,'🕸 WEB BARRAGE!','#dddddd',200);
             addRing(host.x,host.y,200,14,'#dddddd',3);
-            const all=[...state.enemies.filter(e=>e!==host&&e.hp>0)];if(state.boss&&state.boss!==host&&state.boss.hp>0)all.push(state.boss);
+            const all=[...state.enemies.filter(e=>inArena(e)&&e!==host&&e.hp>0)];if(state.boss&&state.boss!==host&&state.boss.hp>0&&inArena(state.boss))all.push(state.boss);
             all.sort((a,b)=>(a.x-host.x)**2+(a.y-host.y)**2-((b.x-host.x)**2+(b.y-host.y)**2));
             const picks=all.slice(0,8);
             if(picks.length===0)popup(host.x,host.y-40,'no targets!','#888');
             picks.forEach((tgt,ti)=>{
                 for(let s2=0;s2<2;s2++){
-                    setTimeout(()=>{
+                    later(()=>{
                         if(state.screen!=='PLAYING'||!state.mindControl.active||!tgt||tgt.hp<=0)return;
                         const ang=Math.atan2(tgt.y-host.y,tgt.x-host.x)+(Math.random()-.5)*0.5;
                         const wb=makeMCBullet(host.x,host.y,ang,10,p.damage*1.2,'#eeeeee',6,200,tgt,0.2);
@@ -3642,7 +4078,7 @@ function triggerMCAbility(key){
                 popup(host.x,host.y-60,'🔫 TURRET OVERLOAD!','#00ffcc',220);
                 for(let ri=0;ri<3;ri++)state.mcRings.push({cx:host.x,cy:host.y,r:ri*50,maxR:280+ri*60,timer:16,maxTimer:16,color:'#00ffcc',lw:2+ri});
                 for(let wave=0;wave<4;wave++){
-                    setTimeout(()=>{
+                    later(()=>{
                         if(state.screen!=='PLAYING'||!state.mindControl.active)return;
                         const SHOTS=16;
                         for(let i=0;i<SHOTS;i++){
@@ -3660,11 +4096,11 @@ function triggerMCAbility(key){
                 const cang=Math.atan2(state.mouseY-host.y,state.mouseX-host.x);
                 const chargeSpd=28,frames=18;
                 let cf=0;
-                const chargeInterval=setInterval(()=>{
-                    if(state.screen!=='PLAYING'||!state.mindControl.active||cf>=frames){clearInterval(chargeInterval);return;}
+                every(()=>{
+                    if(state.screen!=='PLAYING'||!state.mindControl.active||cf>=frames)return false;
                     host.x+=Math.cos(cang)*chargeSpd;host.y+=Math.sin(cang)*chargeSpd;
                     host.x=Math.max(65,Math.min(canvas.width-65,host.x));host.y=Math.max(65,Math.min(canvas.height-65,host.y));
-                    const all=[...state.enemies.filter(e=>e!==host)];
+                    const all=[...state.enemies.filter(e=>inArena(e)&&e!==host)];
                     all.forEach(e=>{if(Math.sqrt((e.x-host.x)**2+(e.y-host.y)**2)<60){e.hp=Math.max(0,e.hp-p.damage*3);spawnBlood(e.x,e.y,6);popup(e.x,e.y-20,`💥-${Math.floor(p.damage*3)}`,'#ff4400',60);if(!e.isBoss)e.stunned=40;if(e.hp<=0){const ei=state.enemies.indexOf(e);if(ei!==-1){killEnemy(e,ei);state.enemies.splice(ei,1);}}}});
                     cf++;
                 },16);
@@ -3682,7 +4118,7 @@ function triggerMCAbility(key){
                 popup(host.x,host.y-60,'🌪️ DEATH SPIRAL!','#9900ff',220);
                 for(let ri=0;ri<3;ri++)state.mcRings.push({cx:host.x,cy:host.y,r:ri*30,maxR:350+ri*50,timer:18,maxTimer:18,color:'#9900ff',lw:2+ri});
                 for(let wave=0;wave<6;wave++){
-                    setTimeout(()=>{
+                    later(()=>{
                         if(state.screen!=='PLAYING'||!state.mindControl.active)return;
                         for(let i=0;i<8;i++){const a=(i/8)*Math.PI*2+wave*0.5;const rb={x:host.x,y:host.y,vx:Math.cos(a)*8,vy:Math.sin(a)*8,damage:p.damage*0.9,life:220,size:7,isMCBullet:true,trackTarget:null,trackStrength:0,draw(){ctx.fillStyle='#cc44ff';ctx.shadowBlur=8;ctx.shadowColor='#9900ff';ctx.beginPath();ctx.arc(this.x,this.y,this.size,0,Math.PI*2);ctx.fill();ctx.shadowBlur=0;}};state.bullets.push(rb);}
                     },wave*200);
@@ -3692,9 +4128,9 @@ function triggerMCAbility(key){
                 // Massive burst toward all enemies
                 popup(host.x,host.y-60,'💥 BURST STORM!','#ff6600',220);
                 for(let ri=0;ri<3;ri++)state.mcRings.push({cx:host.x,cy:host.y,r:ri*50,maxR:300+ri*70,timer:17,maxTimer:17,color:'#ff6600',lw:3+ri});
-                const all=[...state.enemies.filter(e=>e!==host)];if(state.boss&&state.boss!==host)all.push(state.boss);
+                const all=[...state.enemies.filter(e=>inArena(e)&&e!==host)];if(state.boss&&state.boss!==host&&inArena(state.boss))all.push(state.boss);
                 all.slice(0,6).forEach((tgt,ti)=>{
-                    for(let s=0;s<5;s++){setTimeout(()=>{
+                    for(let s=0;s<5;s++){later(()=>{
                         if(state.screen!=='PLAYING'||!state.mindControl.active)return;
                         const a=Math.atan2(tgt.y-host.y,tgt.x-host.x)+(Math.random()-.5)*0.25;
                         const rb={x:host.x,y:host.y,vx:Math.cos(a)*12,vy:Math.sin(a)*12,damage:p.damage*1.1,life:160,size:8,isMCBullet:true,trackTarget:tgt,trackStrength:0.1,draw(){ctx.fillStyle='#ff8800';ctx.shadowBlur=8;ctx.shadowColor='#ff6600';ctx.beginPath();ctx.arc(this.x,this.y,this.size,0,Math.PI*2);ctx.fill();ctx.shadowBlur=0;}};
@@ -3705,11 +4141,11 @@ function triggerMCAbility(key){
             } else if(bossPattern==='ghost'){
                 // Teleport behind each enemy and deal damage
                 popup(host.x,host.y-60,'💀 PHANTOM STRIKES!','#cccccc',220);
-                const all=[...state.enemies.filter(e=>e!==host)];if(state.boss&&state.boss!==host)all.push(state.boss);
+                const all=[...state.enemies.filter(e=>inArena(e)&&e!==host)];if(state.boss&&state.boss!==host&&inArena(state.boss))all.push(state.boss);
                 all.slice(0,5).forEach((tgt,i)=>{
-                    setTimeout(()=>{
+                    later(()=>{
                         if(state.screen!=='PLAYING'||!state.mindControl.active||!tgt||tgt.hp<=0)return;
-                        host.x=tgt.x+(Math.random()-.5)*20;host.y=tgt.y+(Math.random()-.5)*20;
+                        mcWarp(host,tgt.x+(Math.random()-.5)*20,tgt.y+(Math.random()-.5)*20);
                         state.mcRings.push({cx:host.x,cy:host.y,r:0,maxR:100,timer:10,maxTimer:10,color:'#cccccc',lw:2});
                         const dmg=p.damage*4;tgt.hp=Math.max(0,tgt.hp-dmg);spawnBlood(tgt.x,tgt.y,8);
                         popup(tgt.x,tgt.y-25,`👻-${Math.floor(dmg)}`,'#cccccc',90);
@@ -3767,7 +4203,18 @@ function updateHurlState(){
 }
 
 // ── DAMAGE / KILL ──
-_oilWrap(Enemy);_oilWrap(Boss);
+// Once an enemy has walked onto the playfield it stays there: fear (Sheer Aura / flee), knockbacks and charges can never push it back out.
+function _arenaWrap(cls){
+    const orig=cls.prototype.update;
+    cls.prototype.update=function(){
+        orig.call(this);
+        const W=canvas.width,H=canvas.height,m=this.isBoss?34:18;
+        if(!this.entered){if(this.x>=m&&this.x<=W-m&&this.y>=m&&this.y<=H-m)this.entered=true;return;}
+        if(this.x<m)this.x=m;else if(this.x>W-m)this.x=W-m;
+        if(this.y<m)this.y=m;else if(this.y>H-m)this.y=H-m;
+    };
+}
+_oilWrap(Enemy);_oilWrap(Boss);_arenaWrap(Enemy);_arenaWrap(Boss);
 
 function killEnemy(e,idx){
     if(!e)return;
@@ -3782,16 +4229,17 @@ function killEnemy(e,idx){
         document.getElementById('mindCtrlHud').classList.add('hidden');
         document.getElementById('mc-controls').style.display='none';
     } else {
-        const xpV=e.isBoss?600:20;
+        const xpV=e.isBoss?600:40;   // v1.8: regular enemies drop 2x XP
         const xpCount=e.isBoss?12:1;
         for(let i=0;i<xpCount;i++)state.xpOrbs.push(new XpOrb(e.x+(Math.random()-.5)*50,e.y+(Math.random()-.5)*50,xpV));
+        {const lk=(state.player&&state.player.luck)||0;if(!e.isBoss&&lk>0&&Math.random()<Math.min(0.5,lk*0.012))state.xpOrbs.push(new XpOrb(e.x+(Math.random()-.5)*50,e.y+(Math.random()-.5)*50,xpV));}
         state.score+=e.isBoss?600:10;saveData.totalKills++;
         // Kira god gauge
         if(state.player&&state.player.config.id==='kira'){
             const gain=e.isBoss?5:1;
             state.player.godGauge=Math.min(state.player.godGaugeMax,(state.player.godGauge||0)+gain);
             if(state.player.godGauge>=state.player.godGaugeMax&&!state.player.godMode){
-                state.player.godMode=true;popup(canvas.width/2,canvas.height/2-40,'✨ KIRA WINS — GOD MODE ✨','#ffd700',280);
+                state.player.godMode=true;state.player.godTimer=180;popup(canvas.width/2,canvas.height/2-40,'✨ KIRA WINS — GOD MODE ✨','#ffd700',280);   // v1.8: lasts 3 seconds
             }
         }
     }
@@ -3815,7 +4263,7 @@ function damagePlayer(amt){
     if(state.mindControl.active){const mh=state.mindControl.host;mh.hp-=mh.isBoss?amt*mh.maxHp*0.03:amt;return;}
     if(state.player.invul>0)return;
     const raw=amt;   // callers pass "hearts"; convert to HP and scale with level
-    amt=Math.max(1,Math.round(raw*HP_PER_HEART*enemyDmgScale()));
+    amt=Math.max(1,Math.round(raw*HP_PER_HEART*enemyDmgScale()*(1-Math.min(60,state.player.armor||0)/100)));   // Armour reduces damage
     // Shield absorbs damage first (Noglin overheal absorption)
     if(state.player.shield>0){
         const absorbed=Math.min(state.player.shield,amt);
@@ -3824,31 +4272,9 @@ function damagePlayer(amt){
     }
     state.player.hp-=amt;state.player.invul=65;fxShake(7);fxFlash('#ff0000',0.18,8);
     popup(state.player.x,state.player.y-44,'-'+amt,'#ff5577',55);
-    // Subaru: gain madness when hit
-    if(state.player.config.id==='subaru'){
-        const gain=Math.min(15,raw*3);
-        state.player.madnessMeter=Math.min(100,(state.player.madnessMeter||0)+gain);
-        if(state.player.madnessMeter>=100)popup(state.player.x,state.player.y-70,'MADNESS FULL — USE RETURN!','#aa44ff',120);
-    }
     updateHUD();
     if(state.player.hp<=0){
-        // Subaru: trigger return by death if checkpoint exists
-        if(state.player.config.id==='subaru'&&state.subaru_checkpoint&&!state.player._returnedThisDeath){
-            state.player._returnedThisDeath=true;
-            const cp=state.subaru_checkpoint;
-            state.player.x=cp.x;state.player.y=cp.y;
-            state.player.hp=Math.max(1,Math.ceil(state.player.maxHp*0.5));
-            state.player.invul=300;
-            state.subaruCutscene={timer:160,maxTimer:160,type:'return'};
-            const RETURN_LINES=['I WILL NOT GIVE UP! I RETURN BY DEATH!','...NOT YET. I STILL HAVE PEOPLE TO PROTECT.','STARTING OVER. I KNOW WHAT I NEED TO DO.','THEY TOOK EVERYTHING FROM ME. AGAIN.'];
-            popup(state.player.x,state.player.y-80,RETURN_LINES[Math.floor(Math.random()*RETURN_LINES.length)],'#4488ff',280);
-            popup(state.player.x,state.player.y-50,'🔄 RETURN BY DEATH','#ffffff',260);
-            state.player.madnessMeter=Math.min(100,(state.player.madnessMeter||0)+60);
-            state.subaru_checkpoint=null;
-            state.player._returnedThisDeath=false;
-            updateHUD();
-            return;
-        }
+        if(subaruReturn())return;   // Return by Death catches the killing blow (if its window is open)
         state.screen='GAMEOVER';
         if(state.score>saveData.highScore)saveData.highScore=state.score;
         saveGame();
@@ -3909,6 +4335,7 @@ function gameStep(){
     const pikaChaining=state.pikaChaining&&state.player&&state.player.config.id==='pikachu';
     if(!state.ability.ready){if(!pounceActive&&!spinbotActive&&!mcActive&&!snowmanFrozen&&!blahBarrageActive&&!pikaChaining&&!shibaCoinActive){state.ability.cooldown--;if(state.ability.cooldown<=0){state.ability.ready=true;updateHUD();}}}
     if(!state.secondary.ready){if(!spinbotActive){state.secondary.cooldown--;if(state.secondary.cooldown<=0){state.secondary.ready=true;updateHUD();}}}
+    timersTick();
     burnTick();
     chocoTick();
     voltTick();
@@ -3917,29 +4344,33 @@ function gameStep(){
     if(state.frameCount%60===0) updateHUD();
     // Update boss bar every frame while boss alive
     if(state.boss&&state.frameCount%6===0)updateBossBar();
-    // Health regen — flat HP every 5 seconds (300 frames); no longer a percentage of max HP.
+    // Kira's God Mode only lasts 3 seconds
+    if(state.player&&state.player.godMode){
+        state.player.godTimer=(state.player.godTimer||0)-1;
+        if(state.player.godTimer<=0){state.player.godMode=false;state.player.godGauge=0;popup(state.player.x,state.player.y-50,'god mode faded...','#aa8844',90);}
+    }
+    // Health regen — flat HP per second (a steady passive trickle, ticking once every second).
     if(state.player && state.player.regen > 0){
         state.player.regenTick = (state.player.regenTick||0) + 1;
-        if(state.player.regenTick >= 300){
+        if(state.player.regenTick >= 60){
             state.player.regenTick = 0;
             if(state.player.hp < state.player.maxHp){
-                const healAmt = Math.max(1, Math.round(state.player.regen));
-                state.player.hp = Math.min(state.player.maxHp, state.player.hp + healAmt);
-                popup(state.player.x, state.player.y - 40, `+${healAmt} ❤`, '#ff4466', 80);
+                state.player.hp = Math.min(state.player.maxHp, state.player.hp + state.player.regen);
                 updateHUD();
             }
         }
     }
     if(state.effects.frozenTimer>0){state.effects.frozenTimer--;if(state.effects.frozenTimer<=0){state.effects.frozen=false;state.effects.frozenDamageMult=1;}}
     if(state.effects.frozen&&state.player&&state.player.config.id==='snowman'){
-        // BLIZZARD: snowfall + frostbite tick (medium damage, NOT multiplied by the brittle bonus)
+        // BLIZZARD: snowfall + frostbite tick (NOT multiplied by the brittle bonus; hits every enemy on the field, newcomers included)
         state.snow=state.snow||[];
         if(state.snow.length<420)for(let si=0;si<4;si++)state.snow.push({x:Math.random()*canvas.width,y:-10,vy:1.2+Math.random()*2.6,sw:Math.random()*6.28,r:1.5+Math.random()*3});
         state.effects.blizzardTick=(state.effects.blizzardTick||0)+1;
         if(state.effects.blizzardTick>=30){
             state.effects.blizzardTick=0;
-            const bd=state.player.damage*2;
-            const bt=[...state.enemies];if(state.boss)bt.push(state.boss);
+            // v2.0: frostbite = (1 + bosses so far) × your damage each second, applied in two 0.5s ticks
+            const bd=state.player.damage*(1+(state.bossesSpawned||0))*0.5;
+            const bt=liveTargets();   // only what is inside the arena
             let shown=0;
             bt.forEach(e=>{
                 if(e.hp<=0)return;
@@ -3976,7 +4407,7 @@ function gameStep(){
     if(state.glorpBeam){
         const gb=state.glorpBeam,gp=state.player;
         gb.timer--;
-        const gTargets=allTargets();
+        const gTargets=liveTargets();
         gb.hands.forEach((h,hi)=>{
             h.pa=h.ang;h.ph+=0.045;
             // broken-clock rhythm: each hand's speed swells and sags smoothly (no jumps or stalls)
@@ -3997,12 +4428,12 @@ function gameStep(){
                     if(state.frameCount-(e[key]||-99)<8)continue;
                     e[key]=state.frameCount;
                     if(e.isBoss){
-                        const bd=gp.damage*1.5;   // v1.7: -40%
+                        const bd=gp.damage*0.9;   // v1.8: reduced further
                         e.hp=Math.max(0,e.hp-bd);spawnBlood(e.x,e.y,6);
                         popup(e.x,e.y-40,`GLORPED -${Math.floor(bd)}`,'#00ff44',70);
                         if(e===state.boss){updateBossBar();if(e.hp<=0)killEnemy(e,-1);}
                     } else {
-                        e.hp=Math.max(0,e.hp-e.maxHp*0.6);spawnBlood(e.x,e.y,8);popup(e.x,e.y-20,'GLORPED','#00ff44');fxBurst(e.x,e.y,8,'#66ffaa',2,8,20,2.6);if(e.hp<=0)killAny(e);   // v1.7: no longer an instant kill (-40%)
+                        e.hp=Math.max(0,e.hp-e.maxHp*0.36);spawnBlood(e.x,e.y,8);popup(e.x,e.y-20,'GLORPED','#00ff44');fxBurst(e.x,e.y,8,'#66ffaa',2,8,20,2.6);if(e.hp<=0)killAny(e);   // v1.7: no longer an instant kill (-40%)
                     }
                 }
             }
@@ -4010,7 +4441,7 @@ function gameStep(){
             if(state.frameCount%2===0){const sd=Math.min(h.len,Math.random()*950+120)*Math.min(1,(gb.maxTimer-gb.timer)/14);fxSpark(gp.x+h.nx*sd,gp.y+h.ny*sd,(Math.random()-.5)*3,(Math.random()-.5)*3,20,2.6,'#88ffbb');}
         });
         if(gb.timer===gb.maxTimer-1){
-            state.enemies.forEach(e=>{if((e.x-gp.x)**2+(e.y-gp.y)**2<40000){e.confused=180;e.confuseTimer=0;}});
+            state.enemies.forEach(e=>{if((e.x-gp.x)**2+(e.y-gp.y)**2<40000){e.confused=90;e.confuseTimer=0;}});
         }
         if(gb.timer<=0){
             gp.x=Math.max(65,Math.min(canvas.width-65,state.mouseX));
@@ -4018,8 +4449,8 @@ function gameStep(){
             gp.invul=80;popup(gp.x,gp.y-30,'GLORP!','#00ff88');
             addRing(gp.x,gp.y,260,22,'#00ff88',5);fxBurst(gp.x,gp.y,26,'#88ffbb',3,11,28,3);fxShake(10);
             // Confuse all nearby enemies on arrival
-            state.enemies.forEach(e=>{if((e.x-gp.x)**2+(e.y-gp.y)**2<122500){e.confused=300;e.confuseTimer=0;}});
-            if(state.boss){if((state.boss.x-gp.x)**2+(state.boss.y-gp.y)**2<122500){state.boss.confused=180;}}
+            state.enemies.forEach(e=>{if((e.x-gp.x)**2+(e.y-gp.y)**2<122500){e.confused=150;e.confuseTimer=0;}});
+            if(state.boss){if((state.boss.x-gp.x)**2+(state.boss.y-gp.y)**2<122500){state.boss.confused=90;}}
             state.glorpBeam=null;
         }
     }
@@ -4070,7 +4501,7 @@ function gameStep(){
             state.pounce.damageTick--;
             if(state.pounce.damageTick<=0){
                 const feastPct=pt.isBoss?0.018:0.06;   // FEAST: % of the victim's max HP per bite (old flat damage is the floor)
-                const dmg=Math.max(state.pounce.damage,pt.maxHp*feastPct)*(state.effects.frozen&&!pt.isBoss?state.effects.frozenDamageMult:1);
+                const dmg=Math.max(state.pounce.damage,pt.maxHp*feastPct)*(frozenFoe(pt)?state.effects.frozenDamageMult:1);
                 fxBurst(pt.x,pt.y,8,'#ff8800',2,8,18,2.6);addRing(pt.x,pt.y,46,10,'#ff6600',3);fxShake(3);
                 pt.hp-=dmg;
                 // heal: 1hp per 5 damage ticks (see below)
@@ -4120,8 +4551,8 @@ function gameStep(){
             const p=state.player;
             if(state.bullets.length>300)state.bullets.splice(0,state.bullets.length-200);
             let nearest=null,nearDist=Infinity;
-            {const en=state.enemies;for(let i=0;i<en.length;i++){const e=en[i],dx=e.x-p.x,dy=e.y-p.y,d=dx*dx+dy*dy;if(d<nearDist){nearDist=d;nearest=e;}}}
-            if(!nearest&&state.boss)nearest=state.boss;
+            {const en=state.enemies;for(let i=0;i<en.length;i++){const e=en[i];if(e.hp<=0||!inArena(e))continue;const dx=e.x-p.x,dy=e.y-p.y,d=dx*dx+dy*dy;if(d<nearDist){nearDist=d;nearest=e;}}}
+            if(!nearest&&state.boss&&state.boss.hp>0&&inArena(state.boss))nearest=state.boss;
             let baseAng;
             if(settings.abilityTarget==='manual'){
                 baseAng=Math.atan2(state.mouseY-p.y,state.mouseX-p.x);
@@ -4132,7 +4563,7 @@ function gameStep(){
                 const randomAng=Math.random()*Math.PI*2;
                 const finalAng=nearest?baseAng+(randomAng-baseAng)*(1-0.4)+(Math.random()-.5)*2.5:randomAng;
                 const isCrit=Math.random()*100<p.crit;
-                const b=new Bullet(p.x,p.y,finalAng,p.damage*0.05*(isCrit?2:1),p.bSize+4,isCrit,1);b.homing=0.045;
+                const b=new Bullet(p.x,p.y,finalAng,p.damage*0.05*(isCrit?2:1),p.bSize+4,isCrit,1);b.homing=0.045;b.pierce=(b.pierce||0)+2;
                 state.bullets.push(b);
             }
         }
@@ -4254,7 +4685,7 @@ function gameStep(){
         // Move toward current target
         if(pd.targetIdx<pd.targets.length){
             const e=pd.targets[pd.targetIdx];
-            if(!e||e.hp<=0){pd.targetIdx++;} // skip dead enemies
+            if(!e||e.hp<=0||!inArena(e)){pd.targetIdx++;} // skip dead enemies and anything that left the arena
             else {
                 const dx=e.x-state.player.x,dy=e.y-state.player.y;
                 const dist=Math.sqrt(dx*dx+dy*dy)||1;
@@ -4298,7 +4729,6 @@ function gameStep(){
                 pl.x=pd.final.x;pl.y=pd.final.y;pd.finalDone=true;pd.vfxT=70;
                 addRing(pl.x,pl.y,280,22,'#66ff33',6);addRing(pl.x,pl.y,170,16,'#ffffff',3);addRing(pl.x,pl.y,90,12,'#99ff55',4);
                 fxBurst(pl.x,pl.y,44,'#88ff44',3,14,30,3.2);fxBurst(pl.x,pl.y,20,'#ffffff',2,9,24,2.4);fxFlash('#88ff66',0.35,12);fxShake(10);
-                popup(pl.x,pl.y-62,'✔ PICKLE COMPLETE','#99ff55',140);
             } else {pl.x+=fdx/fd*FS;pl.y+=fdy/fd*FS;}
         }
         if(pd.vfxT>0)pd.vfxT--;
@@ -4392,27 +4822,11 @@ function gameStep(){
     }
     if(state.blahCutscene&&!state.blahBarrage){state.blahCutscene.timer--;if(state.blahCutscene.timer<=0)state.blahCutscene=null;}
 
-    // ── SUBARU: Madness meter (gains on taking damage), death checkpoint, cutscene ──
+    // ── SUBARU: Return by Death window ticks down; once it closes the save is gone ──
     if(state.player&&state.player.config.id==='subaru'){
-        const p=state.player;
-        if(state.subaruCutscene){state.subaruCutscene.timer--;if(state.subaruCutscene.timer<=0)state.subaruCutscene=null;}
-        // Return by death: if HP would reach 0, teleport to checkpoint instead
-        if(p.hp<=0&&state.subaru_checkpoint&&!p._returnedThisDeath){
-            p._returnedThisDeath=true;
-            const cp=state.subaru_checkpoint;
-            p.x=cp.x;p.y=cp.y;p.hp=Math.ceil(cp.hp*0.5);// return with half HP
-            p.invul=300;
-            state.subaruCutscene={timer:160,maxTimer:160,type:'return'};
-            const RETURN_LINES=['I WILL NOT GIVE UP! I RETURN BY DEATH!','...NOT YET. I STILL HAVE PEOPLE TO PROTECT.','STARTING OVER. I KNOW WHAT I NEED TO DO.','THEY TOOK EVERYTHING FROM ME. AGAIN.'];
-            popup(p.x,p.y-80,RETURN_LINES[Math.floor(Math.random()*RETURN_LINES.length)],'#4488ff',280);
-            popup(p.x,p.y-50,'🔄 RETURN BY DEATH','#ffffff',260);
-            // Gain massive madness from the trauma
-            p.madnessMeter=Math.min(100,(p.madnessMeter||0)+60);
-            state.subaru_checkpoint=null;// checkpoint consumed
-            p._returnedThisDeath=false;
-            updateHUD();
-        }
-        // Madness bar render trigger (done in render)
+        const cp=state.subaru_checkpoint;
+        if(state.player.hp<=0)subaruReturn();
+        else if(cp&&--cp.t<=0){state.subaru_checkpoint=null;popup(state.player.x,state.player.y-50,'return window closed','#7a9acc',80);}
     }
 
     // Player bullets
@@ -4465,7 +4879,7 @@ function gameStep(){
             if(b.isMCBullet){
                 const hitR=(b.size||8)+22+(e.isBoss?20:0);// bigger hitbox for MC abilities
                 if(!isHost&&(e.x-b.x)**2+(e.y-b.y)**2<hitR*hitR){
-                    let dmg=b.damage*(state.effects.frozen&&!e.isBoss?state.effects.frozenDamageMult:1);
+                    let dmg=b.damage*(frozenFoe(e)?state.effects.frozenDamageMult:1);
                     e.hp-=dmg;state.bullets.splice(bi,1);spawnBlood(e.x,e.y,4);
                     if(b.stunOnHit&&!e.isBoss)e.stunned=Math.max(e.stunned||0,b.stunOnHit);
                     if(e.hp<=0){killEnemy(e,i);if(i<state.enemies.length)state.enemies.splice(i,1);killed=true;break;}
@@ -4475,10 +4889,11 @@ function gameStep(){
             if(isHost)continue;
             const hitR=(b.size||8)+(b instanceof IcicleProjectile?10:state.mindControl.active?22:14)+(e.isBoss?18:0);
             if((e.x-b.x)**2+(e.y-b.y)**2<hitR*hitR){
-                if(b instanceof IcicleProjectile&&b.hitSet.has(e))continue;
-                let dmg=b.damage*(state.effects.frozen&&!e.isBoss?state.effects.frozenDamageMult:1);
+                if(b.hitSet&&b.hitSet.has(e))continue;
+                let dmg=b.damage*(frozenFoe(e)?state.effects.frozenDamageMult:1);
                 e.hp-=dmg;
                 if(b instanceof IcicleProjectile){b.hitSet.add(e);b.damage*=0.9;if(--b.pierce<=0)state.bullets.splice(bi,1);fxBurst(e.x,e.y,6,'#aef4ff',1,5,16,2.2);}
+                else if(b.pierce>0){b.pierce--;(b.hitSet||(b.hitSet=new Set())).add(e);}
                 else state.bullets.splice(bi,1);
                 spawnBlood(e.x,e.y,4);
                 if(b instanceof IcicleProjectile&&!e.isBoss){e.stunned=Math.max(e.stunned,180);popup(e.x,e.y-20,'❄ FROZEN!','#aaeeff');}
@@ -4492,7 +4907,7 @@ function gameStep(){
         const tgtX=state.mindControl.active?state.mindControl.host.x:state.player.x;
         const tgtY=state.mindControl.active?state.mindControl.host.y:state.player.y;
         const dd2=(e.x-tgtX)**2+(e.y-tgtY)**2;
-        if(dd2<(e.isBoss?1936:784)&&!isHost&&e.meleeCooldown<=0&&e.meleeDmg>0&&!e.charmed){damagePlayer(e.meleeDmg);e.meleeCooldown=50;}
+        if(dd2<(e.isBoss?1936:784)&&!isHost&&e.meleeCooldown<=0&&e.meleeDmg>0&&!e.charmed&&!frozenFoe(e)){damagePlayer(e.meleeDmg);e.meleeCooldown=50;}
     }
 
     // Boss logic
@@ -4506,10 +4921,11 @@ function gameStep(){
                 const b=state.bullets[bi];if(b instanceof CoinProjectile||b instanceof PiercingBullet)continue;
                 const hr=(b.size||8)+(b instanceof IcicleProjectile?10:28);
                 if(Math.sqrt((state.boss.x-b.x)**2+(state.boss.y-b.y)**2)<hr){
-                    if(b instanceof IcicleProjectile&&b.hitSet.has(state.boss))continue;
+                    if(b.hitSet&&b.hitSet.has(state.boss))continue;
                     let dmg=b.damage*(state.effects.frozen?state.effects.frozenDamageMult:1);
                     state.boss.hp-=dmg;
                     if(b instanceof IcicleProjectile){b.hitSet.add(state.boss);b.damage*=0.9;if(--b.pierce<=0)state.bullets.splice(bi,1);fxBurst(state.boss.x,state.boss.y,6,'#aef4ff',1,5,16,2.2);}
+                    else if(b.pierce>0){b.pierce--;(b.hitSet||(b.hitSet=new Set())).add(state.boss);}
                     else state.bullets.splice(bi,1);
                     spawnBlood(state.boss.x,state.boss.y,5);
                     if(state.boss.hp<=0){killEnemy(state.boss,-1);}else updateBossBar();break;
@@ -4542,10 +4958,12 @@ function gameStep(){
         const o=state.xpOrbs[i];o.update();
         if((o.x-state.player.x)**2+(o.y-state.player.y)**2<400){
             state.xp+=o.val*state.player.xpMult;state.xpOrbs.splice(i,1);
-            if(state.xp>=state.xpNeeded){state.xp=0;state.lvl++;state.xpNeeded=Math.floor(state.xpNeeded*1.2);checkLevelUnlocks();showLevelUp();}
+            // v1.9: every level gained is queued (overflow XP carries over), so a big XP gain never swallows an upgrade
+            while(state.xp>=state.xpNeeded){state.xp-=state.xpNeeded;state.lvl++;state.xpNeeded=Math.floor(state.xpNeeded*1.2);state.pendingLevels=(state.pendingLevels||0)+1;checkLevelUnlocks();}
             updateHUD();
         }
     }
+    if(state.pendingLevels>0&&state.screen==='PLAYING')showLevelUp();
 
     // ── MC ring visual effects tick ──
     if(state.mcRings&&state.mcRings.length){for(let i=state.mcRings.length-1;i>=0;i--){const rr=state.mcRings[i];rr.timer--;if(rr.timer<=0)state.mcRings.splice(i,1);}}
@@ -4607,6 +5025,17 @@ function gameRender(){
         }
 
         state.player.draw();
+        // Subaru: where Return by Death will put you back, with the window draining around it
+        const rcp=state.subaru_checkpoint;
+        if(rcp&&state.player&&state.player.config.id==='subaru'){
+            const fr=Math.max(0,rcp.t/rcp.max),pulse=0.6+0.4*Math.sin(state.frameCount*0.2);
+            ctx.save();ctx.translate(rcp.x,rcp.y);ctx.lineCap='round';
+            ctx.globalAlpha=0.35;ctx.strokeStyle='#223a88';ctx.lineWidth=5;ctx.beginPath();ctx.arc(0,0,34,0,6.2832);ctx.stroke();
+            ctx.globalAlpha=0.55+0.4*pulse;ctx.strokeStyle=fr<0.25?'#ff8866':'#7fb2ff';ctx.shadowBlur=12;ctx.shadowColor='#4488ff';
+            ctx.beginPath();ctx.arc(0,0,34,-1.5708,-1.5708+6.2832*fr);ctx.stroke();
+            ctx.shadowBlur=0;ctx.globalAlpha=0.7;ctx.font='16px Arial';ctx.textAlign='center';ctx.textBaseline='middle';ctx.fillText('🔄',0,-48);
+            ctx.restore();
+        }
 
         // ── HITBOX DEBUG ──
         if(settings.showHitbox){
@@ -4752,12 +5181,12 @@ function gameRender(){
                 ctx.save();
                 const bw=120,bh=10,bx=p.x-bw/2,by=p.y+38;
                 ctx.fillStyle='rgba(0,0,0,0.5)';ctx.fillRect(bx,by,bw,bh);
-                const pct=p.godMode?1:(p.godGauge/p.godGaugeMax);
+                const pct=p.godMode?Math.max(0,p.godTimer/180):(p.godGauge/p.godGaugeMax);
                 ctx.fillStyle=p.godMode?'#ffd700':'#cc0000';
                 ctx.shadowBlur=p.godMode?14:0;ctx.shadowColor='#ffd700';
                 ctx.fillRect(bx,by,bw*pct,bh);
                 ctx.strokeStyle='rgba(255,255,255,0.3)';ctx.lineWidth=1;ctx.strokeRect(bx,by,bw,bh);
-                if(p.godMode){ctx.font='7px "Press Start 2P"';ctx.fillStyle='#ffd700';ctx.textAlign='center';ctx.fillText('GOD MODE',p.x,by+bh+10);}
+                if(p.godMode){ctx.font='7px "Press Start 2P"';ctx.fillStyle='#ffd700';ctx.textAlign='center';ctx.fillText('GOD MODE '+(Math.max(0,p.godTimer)/60).toFixed(1)+'s',p.x,by+bh+10);}
                 ctx.restore();
             }
         }
@@ -4824,6 +5253,7 @@ function gameRender(){
             ctx.restore();
         }
 
+        tarPuddleDraw();
         // Enemies
         for(const e of state.enemies){e.draw();}
 
@@ -4847,6 +5277,8 @@ function gameRender(){
         for(const p of state.particles){p.draw();}
         fxDraw();
         arsonDraw();
+        brineDraw();
+        handDraw();
         chocoDraw();
         voltDraw();
 
@@ -4861,13 +5293,7 @@ function gameRender(){
         // ── KIRA: Justice Monologue anime cutscene ──
         if(state.kiraCutscene){
             const kc=state.kiraCutscene;
-            const t=kc.timer/kc.maxTimer;
-            // Fade in (first 20%), hold, fade out (last 30%)
-            let alpha;
-            const fadeIn=0.15,fadeOut=0.25;
-            if(t>1-fadeIn) alpha=(1-t)/fadeIn;
-            else if(t<fadeOut) alpha=t/fadeOut;
-            else alpha=1;
+            const alpha=speechAlpha(kc);
             ctx.save();
             // Dark overlay
             ctx.fillStyle=`rgba(0,0,0,${alpha*0.88})`;ctx.fillRect(0,0,canvas.width,canvas.height);
@@ -4895,7 +5321,7 @@ function gameRender(){
             const lineH=38;const totalH=lines2.length*lineH;
             const startY=canvas.height/2-totalH/2+10;
             lines2.forEach((ln,li2)=>{
-                const prog=1-Math.min(1,Math.max(0,(kc.timer-(kc.maxTimer-(li2+1)*(kc.maxTimer/(lines2.length+1))))/40));
+                const prog=speechReveal(kc,li2);
                 ctx.font='bold 26px "Press Start 2P"';ctx.textAlign='center';ctx.textBaseline='middle';
                 ctx.shadowBlur=20;ctx.shadowColor='#ff0000';
                 ctx.fillStyle=`rgba(255,220,0,${alpha*prog})`;
@@ -4922,38 +5348,11 @@ function gameRender(){
             });
         }
 
-        // ── SUBARU: Madness meter bar render ──
-        if(state.player&&state.player.config.id==='subaru'){
-            const p=state.player;
-            const mm=p.madnessMeter||0;
-            if(mm>0||state.subaru_checkpoint){
-                ctx.save();
-                const bw=130,bh=10,bx=p.x-bw/2,by=p.y+38;
-                ctx.fillStyle='rgba(0,0,0,0.5)';ctx.fillRect(bx,by,bw,bh);
-                const pct=mm/100;
-                const barColor=mm>=80?`rgba(255,50,255,${0.7+0.3*Math.sin(state.frameCount*0.3)})`:`rgba(${Math.floor(68+pct*187)},${Math.floor(136-pct*80)},255,0.9)`;
-                ctx.fillStyle=barColor;ctx.shadowBlur=mm>=80?16:4;ctx.shadowColor='#aa44ff';
-                ctx.fillRect(bx,by,bw*pct,bh);
-                ctx.strokeStyle='rgba(180,100,255,0.4)';ctx.lineWidth=1;ctx.strokeRect(bx,by,bw,bh);
-                ctx.font='7px "Press Start 2P"';ctx.fillStyle=mm>=80?'#ff88ff':'#aaaaff';ctx.textAlign='center';
-                ctx.fillText(mm>=80?`MADNESS ${Math.floor(mm)}% — FULL!`:`MADNESS ${Math.floor(mm)}%`,p.x,by+bh+10);
-                // Checkpoint indicator
-                if(state.subaru_checkpoint){
-                    ctx.font='8px Arial';ctx.fillStyle='rgba(68,136,255,0.8)';ctx.textAlign='center';
-                    ctx.fillText('🔄',p.x,by-10);
-                }
-                ctx.restore();
-            }
-        }
 
         // ── BLAHBLAHBLAH: Ultimate Speech cutscene ──
         if(state.blahCutscene){
             const bc=state.blahCutscene;
-            const t=bc.timer/bc.maxTimer;
-            let alpha;
-            if(t>0.85)alpha=(1-t)/0.15;
-            else if(t<0.2)alpha=t/0.2;
-            else alpha=1;
+            const alpha=speechAlpha(bc);
             ctx.save();
             ctx.fillStyle=`rgba(0,0,0,${alpha*0.85})`;ctx.fillRect(0,0,canvas.width,canvas.height);
             // Purple/violet letterbox bars
@@ -4977,10 +5376,10 @@ function gameRender(){
             if(cur2)lns2.push(cur2);
             const lh2=42,tot2=lns2.length*lh2,sy2=canvas.height/2-tot2/2;
             lns2.forEach((ln,li)=>{
-                const prog=Math.min(1,(1-t)/(1/(lns2.length+1))-(li*0.15));
+                const prog=speechReveal(bc,li);
                 ctx.font='bold 28px "Press Start 2P"';ctx.textAlign='center';ctx.textBaseline='middle';
                 ctx.shadowBlur=18;ctx.shadowColor='#9900ff';
-                ctx.fillStyle=`rgba(220,150,255,${alpha*Math.max(0,Math.min(1,prog))})`;
+                ctx.fillStyle=`rgba(220,150,255,${alpha*prog})`;
                 ctx.fillText(ln,canvas.width/2,sy2+li*lh2);
             });
             ctx.font='11px "Press Start 2P"';ctx.fillStyle=`rgba(180,80,255,${alpha*0.9})`;
@@ -4990,53 +5389,6 @@ function gameRender(){
             ctx.restore();
         }
 
-        // ── SUBARU: Return by Death / Madness cutscene ──
-        if(state.subaruCutscene){
-            const sc=state.subaruCutscene;
-            const t=sc.timer/sc.maxTimer;
-            let alpha;
-            if(t>0.88)alpha=(1-t)/0.12;
-            else if(t<0.18)alpha=t/0.18;
-            else alpha=1;
-            const isReturn=sc.type==='return';
-            ctx.save();
-            ctx.fillStyle=`rgba(0,0,${isReturn?40:0},${alpha*0.9})`;ctx.fillRect(0,0,canvas.width,canvas.height);
-            const bH2=75;
-            const barColor2=isReturn?`rgba(20,60,180,${alpha*0.95})`:`rgba(120,0,200,${alpha*0.95})`;
-            ctx.fillStyle=barColor2;ctx.fillRect(0,0,canvas.width,bH2);ctx.fillRect(0,canvas.height-bH2,canvas.width,bH2);
-            // Clock-like rings for "return" type
-            if(isReturn){
-                for(let ri=0;ri<4;ri++){
-                    const rr=80+ri*60+((state.frameCount*2)%40);
-                    ctx.strokeStyle=`rgba(68,136,255,${alpha*(0.5-ri*0.1)})`;ctx.lineWidth=2;
-                    ctx.beginPath();ctx.arc(canvas.width/2,canvas.height/2,rr,0,Math.PI*2);ctx.stroke();
-                }
-            }
-            // Emoji portrait
-            ctx.font='130px Arial';ctx.textAlign='center';ctx.textBaseline='middle';
-            ctx.shadowBlur=40;ctx.shadowColor=isReturn?'#4488ff':'#aa44ff';ctx.globalAlpha=alpha*0.25;
-            ctx.fillText(isReturn?'🔄':'🌀',canvas.width*0.8,canvas.height/2);ctx.globalAlpha=alpha;
-            // Text
-            const mainLine=isReturn?'RETURN BY DEATH':'MADNESS UNLEASHED';
-            ctx.font='bold 30px "Press Start 2P"';ctx.textAlign='center';ctx.textBaseline='middle';
-            ctx.shadowBlur=22;ctx.shadowColor=isReturn?'#0044ff':'#8800ff';
-            ctx.fillStyle=`rgba(${isReturn?'100,180,255':'200,100,255'},${alpha})`;
-            ctx.fillText(mainLine,canvas.width/2,canvas.height/2-25);
-            if(sc.quote){
-                const qw=sc.quote.split(' ');const ql=[];let qc='';
-                qw.forEach(w=>{const test=qc+(qc?' ':'')+w;if(test.length>28){ql.push(qc);qc=w;}else qc=test;});
-                if(qc)ql.push(qc);
-                ql.forEach((ln,li)=>{
-                    ctx.font='14px "Press Start 2P"';ctx.fillStyle=`rgba(180,210,255,${alpha*0.9})`;
-                    ctx.fillText(ln,canvas.width/2,canvas.height/2+20+li*24);
-                });
-            }
-            ctx.font='10px "Press Start 2P"';ctx.fillStyle=`rgba(100,150,255,${alpha*0.85})`;
-            ctx.textAlign='center';ctx.textBaseline='middle';
-            ctx.fillText('— SUBARU NATSUKI —',canvas.width/2,canvas.height-bH2/2);
-            if(sc.timer>sc.maxTimer-8){ctx.fillStyle=`rgba(0,40,180,${(sc.maxTimer-sc.timer)/8*0.7})`;ctx.fillRect(0,0,canvas.width,canvas.height);}
-            ctx.restore();
-        }
 
         // Ultimates + screen flash
         ultDraw();flashDraw();
@@ -5075,8 +5427,8 @@ function spawnBoss(){
     if(countBosses()>=MAX_BOSSES){state.bossTimer=900;return;}
     const b=new Boss();
     state.bossesSpawned=(state.bossesSpawned||0)+1;
-    // First boss arrives on the starting timer; every boss after it waits much longer (and the wait keeps growing)
-    state.bossTimer=Math.min(10800,5400+(state.bossesSpawned-1)*900);
+    // First boss arrives on the starting timer; the next one follows 30 seconds later
+    state.bossTimer=1800;   // v1.8: 30s between bosses
     if(!state.boss){state.boss=b;document.getElementById('bossBar').classList.remove('hidden');updateBossBar();}
     else state.enemies.push(b);
     popup(canvas.width/2,canvas.height/2-80,'⚠ BOSS APPROACHING!','#ff6600',180);
@@ -5088,8 +5440,7 @@ function spawnBoss(){
 let previousScreen=null;
 function showScreen(id){previousScreen=state.screen;state.screen='OVERLAY';document.querySelectorAll('.ui-layer').forEach(el=>el.classList.add('hidden'));document.getElementById(id).classList.remove('hidden');}
 function closeOverlay(){
-    document.getElementById('settingsScreen').classList.add('hidden');document.getElementById('keybindsScreen').classList.add('hidden');
-    document.getElementById('infoScreen').classList.add('hidden');document.getElementById('changelogScreen').classList.add('hidden');
+    ['settingsScreen','keybindsScreen','infoScreen','changelogScreen','enemyScreen'].forEach(id=>{const el=document.getElementById(id);if(el)el.classList.add('hidden');});
     if(previousScreen==='MENU'||!state.player){document.getElementById('mainMenu').classList.remove('hidden');state.screen='MENU';}
     else{document.getElementById('pauseMenu').classList.remove('hidden');state.screen='PAUSED';const ey=document.getElementById('eyeToggle');if(ey)ey.style.display='block';updateHUD();}
 }
@@ -5106,17 +5457,6 @@ function toggleHudVisibility(){
     if(eyeBtn)eyeBtn.style.opacity=_hudVisible?'0.75':'0.4';
 }
 
-// Auto-hide HUD text after 4 seconds of inactivity
-let _hudAutoHideTimer=null;
-function _resetHudAutoHide(){
-    const hud=document.getElementById('hud');if(!hud)return;
-    hud.classList.remove('hud-hidden');
-    clearTimeout(_hudAutoHideTimer);
-    _hudAutoHideTimer=setTimeout(()=>{ if(state&&state.screen==='PLAYING') hud.classList.add('hud-hidden'); },4000);
-}
-['mousemove','mousedown','keydown','touchstart','touchmove'].forEach(ev=>{
-    window.addEventListener(ev,_resetHudAutoHide,{passive:true});
-});
 function setDifficulty(d){settings.difficulty=d==='hard'?1.6:1;document.getElementById('diffNormal').classList.toggle('active',d==='normal');document.getElementById('diffHard').classList.toggle('active',d==='hard');}
 function setParticles(on){settings.particles=on;document.getElementById('particlesOn').classList.toggle('active',on);document.getElementById('particlesOff').classList.toggle('active',!on);}
 function setAbilityTarget(t){settings.abilityTarget=t;document.getElementById('targetAuto').classList.toggle('active',t==='auto');document.getElementById('targetManual').classList.toggle('active',t==='manual');}
@@ -5133,68 +5473,98 @@ function renderCharIcon(c){
     return oc.toDataURL();
 }
 
+const ENEMY_INFO={
+    grunt:  {name:'Grunt',   note:'The bread and butter. Runs straight at you and hits on contact.',mc:['FRENZY','Charge through every visible enemy in sequence, 8× dmg each.']},
+    shooter:{name:'Shooter', note:'Hangs back (~280px) and fires single shots at you.',mc:['VOLLEY','Fire 4 homing shots at the 5 highest-HP targets simultaneously.']},
+    tank:   {name:'Tank',    note:'Very slow and very tanky; hits hard.',mc:['SHOCKWAVE SLAM','4 expanding rings of damage and massive knockback.']},
+    speeder:{name:'Speeder', note:'Fragile, zig-zags in at high speed.',mc:['PHANTOM RUSH','Teleport to 7 random enemies in rapid succession, AOE at each landing.']},
+    warlock:{name:'Warlock', note:'Keeps ~220px away and casts rapidly.',mc:['SOUL VORTEX','Pull all enemies inward for 2s dealing constant dmg, then blast them out for 14× dmg.']},
+    brute:  {name:'Brute',   note:'Slow armoured bruiser that hits hard.',mc:['HURL','Throw the nearest enemy as a living wrecking ball (18× collision dmg to everything in its path).']},
+    bomber: {name:'Bomber',  note:'Fast. Explodes when it dies, hurting everything nearby.',mc:['CHAIN DETONATION','3 growing blasts (the host loses 25% HP).']},
+    phantom:{name:'Phantom', note:'Drifts in and blinks to a spot beside you every few seconds.',mc:['HAUNT','Confuses everything nearby so they fight each other.']},
+    boar:   {name:'Boar',    note:'Winds up, then rams in a straight line.',mc:['STAMPEDE','Ram through everything in a line toward your cursor.']},
+    healer: {name:'Healer',  note:'Stays back and heals nearby allies for 20% max HP every 2.5s. At most 4 at a time.',mc:['LIFE DRAIN','Siphon HP from all nearby enemies and heal the host.']},
+    sniper: {name:'Sniper',  note:'Stays far away (~520px); a red aim line warns you before its fast shot.',mc:['HEADSHOT','3 instant long-range hits on your toughest targets.']},
+    spider: {name:'Spider',  note:'Keeps ~260px away and spawns fast baby spiders every 4s.',mc:['WEB BARRAGE','Homing webs that damage and stun.']},
+};
+function initEnemyCatalogue(){
+    const grid=document.getElementById('enemyGrid');if(!grid)return;
+    grid.innerHTML='';
+    ENEMY_DEFS.forEach(d=>{
+        const inf=ENEMY_INFO[d.type];if(!inf)return;
+        const chip=(k,v)=>`<span style="background:#1a083d;border:1px solid #3a2a7a;border-radius:4px;padding:2px 5px;font-size:6px;color:#bba8ff;white-space:nowrap">${k} <span style="color:#fff">${v}</span></span>`;
+        const card=document.createElement('div');card.className='char-info-card';
+        card.innerHTML=`
+            <div style="display:flex;align-items:center;gap:8px;margin-bottom:6px;border-bottom:1px solid rgba(255,255,255,0.1);padding-bottom:6px">
+                <span style="font-size:1.9rem;line-height:1;width:38px;text-align:center">${d.emoji}</span>
+                <div style="min-width:0"><div style="font-size:10px;font-weight:bold;color:#ff88aa">${inf.name}</div>
+                <div style="display:flex;gap:4px;flex-wrap:wrap;margin-top:4px">${chip('HP','×'+d.hpMult)}${chip('SPD','×'+d.speedMult)}${chip('HIT',d.meleeDmg>0?'×'+d.meleeDmg:'—')}${d.hasRanged?chip('RANGED','✔'):''}${chip('FROM','Lv'+(d.minLvl||1))}</div></div>
+            </div>
+            <div style="font-size:7px;color:#bbb;line-height:1.6;margin-bottom:5px">${inf.note}</div>
+            <div class="ability-row"><span class="ability-key" style="color:#ff88ff">[NOGLIN] Q — ${inf.mc[0]}</span><span class="ability-desc">${inf.mc[1]}</span></div>`;
+        grid.appendChild(card);
+    });
+}
 function initInfoScreen(){
     const CHAR_INFO=[
-        {emoji:'👹',name:'Noglin',color:'#ff00ff',stats:'Speed: Fast | HP: 250',abilities:[
+        {emoji:'👹',name:'Noglin',color:'#ff00ff',stats:'Speed: Fast | HP: 250 | Regen: 4/s',abilities:[
             {key:'SPACE — Latch',   desc:'Fire a latch toward your cursor. Hit an enemy to mind control them — piloting their body with their own speed, health and projectiles. Latch cooldown pauses during control. Host dies after 60s.'},
-            {key:'[MC] Q — Special (changes per host)',desc:'GRUNT → FRENZY: Charge through every visible enemy in sequence, 8× dmg each. SHOOTER → VOLLEY: Fire 4 homing shots at the 5 highest-HP targets simultaneously. WARLOCK → SOUL VORTEX: Pull all enemies inward for 2s dealing constant dmg, then blast them out for 14× dmg. TANK → SHOCKWAVE SLAM: 4 expanding rings of damage and massive knockback. SPEEDER → PHANTOM RUSH: Teleport to 7 random enemies in rapid succession, AOE at each landing. BRUTE → HURL: Throw the nearest enemy as a living wrecking ball (18× collision dmg to everything in its path). BOMBER → CHAIN DETONATION: 3 growing blasts (host loses 25% HP). PHANTOM → HAUNT: confuses everything nearby so they fight each other. HEALER → LIFE DRAIN: siphon HP from all nearby enemies and heal the host. SNIPER → HEADSHOT: 3 instant long-range hits on your toughest targets. BOAR → STAMPEDE: ram through everything in a line toward your cursor. SPIDER → WEB BARRAGE: homing webs that damage and stun. BOSS → a unique special per pattern, and the boss keeps firing its own attack pattern at enemies. Boss hosts take percentage damage (3% of boss HP per damage point) instead of being invincible.'},
+            {key:'[MC] Q — Host special',desc:'Changes with the enemy you control — every host type and its special is listed in the ENEMY CATALOGUE. Boss hosts get their own unique special and take percentage damage (3% of boss HP per damage point) instead of being invincible.'},
             {key:'[MC] SPACE — Delatch', desc:'Safely exit the host. You return with your original HP and the host survives.'},
             {key:'[MC] R — Kill Host', desc:'Instantly kill the controlled enemy and escape. Great for detonating a host on demand.'},
             {key:'R — Cuteness',    desc:'Stun all nearby enemies for 2 seconds. Doubles attack speed and grants 2 shots of 2× bullet damage. Noglin switches to its adorable form while enemies are stunned.'},
         ]},
-        {emoji:'⚡',name:'Pikachu',color:'#ffff00',stats:'Speed: Very Fast | HP: 200',abilities:[
+        {emoji:'⚡',name:'Pikachu',color:'#ffff00',stats:'Speed: Very Fast | HP: 200 | Regen: 4/s',abilities:[
             {key:'SPACE — Thunderbolt', desc:'Fire 8 lightning bolts that chain between nearby enemies, dealing 30 damage each hit.'},
             {key:'R — Volt Tackle',     desc:'Blast through the arena in a piercing lightning dash: every enemy in the path takes 5× damage, is stunned and knocked aside, and chains lightning to 2 neighbours. You finish with a THUNDERCLAP (230px, 3× damage + stun) and the path stays electrified for 2.5s, zapping anything that touches it.'},
         ]},
-        {emoji:'🐯',name:'Zanther',color:'#ff9900',stats:'Speed: Medium | HP: 250',abilities:[
+        {emoji:'🐯',name:'Zanther',color:'#ff9900',stats:'Speed: Medium | HP: 250 | Regen: 4/s',abilities:[
             {key:'SPACE — Pounce',  desc:'Leap onto the nearest enemy and feast — biting for 6% of their max HP every bite (1.8% on bosses), a bite every 14 ticks, while healing. All other enemies flee in terror. Hold to keep feasting, or press SPACE to release early.'},
             {key:'R — Sheer Aura', desc:'Activate a terror aura for 5 seconds — all enemies on screen flee and take increased damage. Great combo with Pounce.'},
         ]},
-        {emoji:'🐱',name:'Vitru',color:'#00ff88',stats:'Speed: Fast | HP: 250',abilities:[
+        {emoji:'🐱',name:'Vitru',color:'#00ff88',stats:'Speed: Fast | HP: 250 | Regen: 4/s',abilities:[
             {key:'SPACE — Glorp Beam', desc:'Fire a beam toward your cursor that instantly deletes everything in its path. Confuses nearby enemies. You teleport to a random point along the beam.'},
             {key:'R — Wormhole',       desc:'Teleport instantly to your cursor position and gain a burst of speed. Great for escaping or repositioning.'},
         ]},
-        {id:'arsonist',emoji:'🔥',name:'Arsonist',color:'#ff6a00',stats:'Speed: Fast | HP: 250',abilities:[
+        {id:'arsonist',emoji:'🔥',name:'Arsonist',color:'#ff6a00',stats:'Speed: Fast | HP: 250 | Regen: 4/s',abilities:[
             {key:'SPACE — Arson Party', desc:'Hurl molotov cocktails at up to 4 enemies within 620px. Each shatters into a fire pool that ignites everything inside. When a burning enemy burns to death the fire spreads to enemies near it. Burn damage scales with your damage upgrades.'},
-            {key:'R — Oil Slick',       desc:'Coat every enemy within 540px of you in oil for 9 seconds: they move slower, steer sluggishly, and take DOUBLE burn damage.'},
+            {key:'R — Tar Toss',        desc:'Hurl a glob of tar at the thickest cluster of enemies (or your cursor in manual mode). It splashes everything near the landing with oil for 9 seconds and leaves a tar puddle for 14 seconds that keeps oiling anyone standing in it. Oiled enemies move slower, steer sluggishly and take DOUBLE burn damage — and any fire touching the puddle sets it ablaze.'},
         ]},
-        {emoji:'🐕',name:'Broke Shiba',color:'#ffbbbb',stats:'Speed: Medium | HP: 300',abilities:[
+        {emoji:'🐕',name:'Broke Shiba',color:'#ffbbbb',stats:'Speed: Medium | HP: 300 | Regen: 4/s',abilities:[
             {key:'SPACE — 50 Bucks',     desc:'Throw a homing coin that bounces between enemies for 5 seconds, hitting unlimited targets. Cannot hit the same enemy twice in a row. It can never leave the arena — it ricochets off the walls and off you (without hurting you).'},
             {key:'R — Sad Whimper',      desc:'Emit a pitiful cry in a large radius. Enemies flee and drop XP orbs out of guilt. Works on bosses too.'},
         ]},
-        {emoji:'☃️',name:'Snowman',color:'#88eeff',stats:'Speed: Slow | HP: 350',abilities:[
-            {key:'SPACE — Blizzard', desc:'Summon a blizzard for 5 seconds: all non-boss enemies freeze solid and become brittle (10× damage from your shots) while snow rains down. Frostbite also deals medium tick damage (2× your damage every 0.5s) to every enemy, bosses included. Tick damage is NOT boosted by brittle.'},
+        {emoji:'☃️',name:'Snowman',color:'#88eeff',stats:'Speed: Slow | HP: 350 | Regen: 4/s',abilities:[
+            {key:'SPACE — Blizzard', desc:'Summon a blizzard for 5 seconds: all non-boss enemies freeze solid and become brittle (10× damage from your shots) while snow rains down. Everything inside the arena freezes (newcomers too once they walk in). Frostbite deals (1 + bosses so far) × your damage per second to every enemy, bosses included — NOT boosted by brittle.'},
             {key:'R — Icicle Barrage',   desc:'Launch 12 icicles outward in a full circle, each dealing 2.5× your bullet damage. Great for clearing crowds.'},
         ]},
-        {emoji:'😎',name:'Coolioioio',color:'#ff44ff',stats:'Speed: Fast | HP: 250',abilities:[
-            {key:'SPACE — Spinbot',   desc:'Spin wildly for 4 seconds, firing 10 bullets per second in all directions (with slight homing). Immune to damage while spinning.'},
+        {emoji:'😎',name:'Coolioioio',color:'#ff44ff',stats:'Speed: Fast | HP: 250 | Regen: 4/s',abilities:[
+            {key:'SPACE — Spinbot',   desc:'Spin wildly for 4 seconds, firing 10 bullets per second in all directions (with slight homing; each bullet pierces 2 enemies). Immune to damage while spinning.'},
             {key:'R — 360-No-Scope',  desc:'Fire a single massive piercing shot at your cursor that one-taps most enemies. Deals 10× bullet damage with huge knockback.'},
         ]},
-        {id:'pickle',emoji:'🥒',name:'Pickle',color:'#44cc00',stats:'Speed: Medium | HP: 300',abilities:[
-            {key:'SPACE — Brine Burst', desc:'Explode in a cloud of pickle brine, poisoning and briefly stunning all enemies within 300px. Poison ticks every 0.5 seconds, dealing 40% of your damage. Stacks on re-hit. Lasts 7 seconds.'},
+        {id:'pickle',emoji:'🥒',name:'Pickle',color:'#44cc00',stats:'Speed: Medium | HP: 300 | Regen: 4/s',abilities:[
+            {key:'SPACE — Brine Burst', desc:'Explode in a cloud of pickle brine, poisoning and briefly stunning all enemies within 460px. Poison ticks every 0.5 seconds, dealing 40% of your damage. Stacks on re-hit. Lasts 7 seconds.'},
             {key:'R — Pickle Dash', desc:'Become Tiny Pickle Rick and dash through up to 8 enemies in sequence, dealing 3× damage, poisoning everything on the path, then take one extra dash to the most isolated spot in the arena with a victory burst. Features mandatory "I\'M PICKLE RICK!" proclamation.'},
         ]},
-        {emoji:'💬',name:'BlahBlahBlah',color:'#cc44ff',stats:'Speed: Fast | HP: 250',abilities:[
+        {emoji:'💬',name:'BlahBlahBlah',color:'#cc44ff',stats:'Speed: Fast | HP: 250 | Regen: 4/s',abilities:[
             {key:'SPACE — Word Barrage', desc:'Unleash a torrent of anime catchphrases as bullets for 1 second. Each word-bullet stuns enemies briefly, deals 1.8× damage and gently homes in on enemies. Auto-tracks nearest enemy.'},
-            {key:'R — Ultimate Speech', desc:'Trigger an anime-style cutscene, then nuke everything within 600px for 15× damage just 0.6 seconds later. Full invulnerability during speech. Very dramatic.'},
+            {key:'R — Ultimate Speech', desc:'Trigger an anime-style cutscene, then nuke everything within 600px for 15× damage 1.7 seconds later (the words stay on screen for 1.6s). Full invulnerability during speech. Very dramatic.'},
         ]},
-        {id:'choco',emoji:'🍪',name:'IAmChoco',color:'#c68642',stats:'Speed: Fast | HP: 250',abilities:[
+        {id:'choco',emoji:'🍪',name:'IAmChoco',color:'#c68642',stats:'Speed: Fast | HP: 250 | Regen: 4/s',abilities:[
             {key:'SPACE — Wanna play TB?', desc:'Raise 3 wooden barricade towers in an arc toward your cursor. Each has a bow on top that fires piercing arrows at the nearest enemy (Haste = faster shots, Velocity = faster arrows). Barricades block enemies but get chewed up by anything pressing on them, and last 14 seconds.'},
-            {key:'R — Dying SMP (toggle)', desc:'Swap between your normal projectiles and a sword. The sword fights in a 3-hit combo — sweep, sweep back, then a huge 360° finisher — dealing massive damage to everything in the arc. Haste speeds up the combo, Caliber boosts damage, Velocity speeds up the animation AND extends the reach.'},
-            {key:'F — ULTIMATE: Among Us Tonight', desc:'A UFO with a suspicious crewmate descends and zaps enemies with lasers for 7 seconds, then EJECTS up to 30 enemies in a final volley.'},
+            {key:'R — Dying SMP (toggle)', desc:'Swap between your normal projectiles and a sword. The sword fights in a 3-hit combo — sweep, sweep back, then a huge 360° finisher — hitting everything in the arc. A full combo deals about 1.3× your normal gun DPS to each enemy it touches. Haste speeds up the combo, Caliber boosts damage, Velocity speeds up the animation AND extends the reach, and Heavy Rounds makes the sword bigger.'},
         ]},
-        {id:'kira',emoji:'📓',name:'Kira',color:'#cc0000',stats:'Speed: Fast | HP: 250',abilities:[
-            {key:'SPACE — Death Note', desc:'Condemn the highest-HP enemy. After 3 seconds they die. Boss takes 55% max HP instead. God Mode (10 kills) = instant kill on boss.'},
+        {id:'kira',emoji:'📓',name:'Kira',color:'#cc0000',stats:'Speed: Fast | HP: 250 | Regen: 4/s',abilities:[
+            {key:'SPACE — Death Note', desc:'Condemn the highest-HP enemy. After 3 seconds they die. Boss takes 55% max HP instead. God Mode (10 kills) lasts 3 seconds — Death Note on a boss during it = instant kill.'},
             {key:'R — Justice Monologue (40s CD)', desc:'Trigger a Death Note anime cutscene. Deals 50% max HP to ALL enemies and 35% max HP to the boss. Very long cooldown, but devastating.'},
         ]},
-        {id:'femboy',emoji:'🎀',name:'Femboy',color:'#ff88cc',stats:'Speed: Very Fast | HP: 250',abilities:[
+        {id:'femboy',emoji:'🎀',name:'Femboy',color:'#ff88cc',stats:'Speed: Very Fast | HP: 250 | Regen: 4/s',abilities:[
             {key:'SPACE — Slay', desc:'Emit a sparkle shockwave that charms all nearby enemies (range 380). Charmed enemies fight FOR you, attacking other enemies for 5 seconds.'},
             {key:'R — Twirl', desc:'Spin in place for 3 seconds releasing sparkle waves dealing 1.5× damage to all enemies in 220px range. Full invulnerability during twirl.'},
         ]},
-        {id:'subaru',emoji:'🔄',name:'Subaru',color:'#4488ff',stats:'Speed: Fast | HP: 200',abilities:[
-            {key:'SPACE — Return by Death', desc:'Set a checkpoint. If you die, you return here with 50% HP instead. While Madness Meter is filled, also releases a massive burst: 3-15× damage (scales with madness) in a huge range. Madness resets after use.'},
-            {key:'R — Unseen Hand', desc:'Yank all nearby enemies (400px range) toward you for 5× damage each, then fling them. Gain 15% madness per use.'},
-            {key:'PASSIVE — Madness Meter', desc:'Taking damage fills your Madness Meter (shown below you). At 80%+ the meter glows. Use SPACE to release it as a devastating burst. You also gain 60% madness on Return by Death activation.'},
+        {id:'subaru',emoji:'🔄',name:'Subaru',color:'#4488ff',stats:'Speed: Fast | HP: 200 | Regen: 4/s',abilities:[
+            {key:'SPACE — Return by Death', desc:'Arm a 5-second window. If you would die inside it, you respawn INSTANTLY where you cast it, at FULL HP, with enemy bullets wiped. Mistime it and the save is gone.'},
+            {key:'R — Unseen Hand', desc:'Shadowy hands seize every enemy within 400px, curl shut and drag them in for 5× damage each, then fling them.'},
         ]},
     ];
     const grid=document.getElementById('infoGrid');
@@ -5204,13 +5574,14 @@ function initInfoScreen(){
     CHAR_INFO.filter(c=>(secretsUnlocked||!SECRET_IDS.includes(c.id))&&(c.id!=='arsonist'||saveData.arsonistUnlocked)).forEach(c=>{
         const card=document.createElement('div');
         card.className='char-info-card';
-        const uInfo=ULT_INFO[c.id||(CHARACTERS.find(x=>x.name===c.name)||{}).id];
+        const cc=CHARACTERS.find(x=>(c.id&&x.id===c.id)||x.name===c.name);
+        const uInfo=ULT_INFO[c.id||(cc||{}).id];
         const abRows=c.abilities.map(a=>
             `<div class="ability-row"><span class="ability-key">${a.key}</span><span class="ability-desc">${a.desc}</span></div>`
         ).join('')+(uInfo?`<div class="ability-row"><span class="ability-key" style="color:${uInfo.color}">F — ULTIMATE: ${uInfo.name}</span><span class="ability-desc">${uInfo.desc}</span></div>`:'');
         card.innerHTML=`
             <div style="display:flex;align-items:center;gap:8px;margin-bottom:6px;border-bottom:1px solid rgba(255,255,255,0.1);padding-bottom:6px">
-                <span style="font-size:1.5rem">${c.emoji}</span>
+                <span style="display:inline-flex;align-items:center;justify-content:center;width:38px;flex-shrink:0">${cc?charIconHtml(cc,34):c.emoji}</span>
                 <div>
                     <div style="font-size:10px;font-weight:bold;color:${c.color}">${c.name}</div>
                     <div style="font-size:7px;color:#777">${c.stats}</div>
@@ -5221,11 +5592,12 @@ function initInfoScreen(){
     });
 }
 
-function charIconHtml(c){
+function charIconHtml(c,px){
+    px=px||40;
     const hasImg=c.img&&c.img.complete&&c.img.naturalWidth>0;
-    if(hasImg)return `<img src="${c.img.src}" style="width:40px;height:40px;object-fit:contain">`;
-    if(c.emojiFilter){const dataUrl=renderCharIcon(c);return `<img src="${dataUrl}" style="width:44px;height:44px">`;}
-    return `<span style="font-size:2rem">${c.emoji}</span>`;
+    if(hasImg)return `<img src="${c.img.src}" style="width:${px}px;height:${px}px;object-fit:contain">`;
+    if(c.emojiFilter){const dataUrl=renderCharIcon(c);return `<img src="${dataUrl}" style="width:${px+4}px;height:${px+4}px">`;}
+    return `<span style="font-size:${px/20}rem;line-height:1">${c.emoji}</span>`;
 }
 function closeVariantMenu(){const v=document.getElementById('variantMenu');if(v)v.remove();}
 // Characters with variants (e.g. Vitru → Glorp / Arsonist) open a picker instead of starting immediately
@@ -5268,7 +5640,7 @@ window.addEventListener('keydown',e=>{if(e.key==='Escape')closeVariantMenu();});
 function initMenu(){
     loadSave();
     secretsUnlocked=!!saveData.secrets;
-    initInfoScreen();
+    initInfoScreen();initEnemyCatalogue();
     const grid=document.getElementById('charGrid');if(!grid)return;grid.innerHTML='';
     CHARACTERS.filter(c=>(!c.secret||secretsUnlocked)&&!c.variantOf).forEach(c=>{
         const vs=CHARACTERS.filter(x=>x.variantOf===c.id&&(!x.secret||secretsUnlocked)),nv=vs.length,nu=vs.filter(charUnlocked).length;
@@ -5311,6 +5683,7 @@ function startGame(c){
         mindControl:{active:false,host:null,savedHp:0,slamCooldown:0,mcTimer:0},
     bossMultiplier:1.0,
         pounce:{active:false,target:null,timer:0,damage:0,damageTick:0,healTick:0},
+        timers:[],
         boss:null,bossTimer:2700,bossesSpawned:0,
         mouseX:canvas.width/2,mouseY:canvas.height/2,
         glorpBeam:null,voltTackle:null,noglinDash:null,pikaChaining:false,cutenessStacks:0,
@@ -5326,7 +5699,6 @@ function startGame(c){
         blahBarrage:null,     // BlahBlahBlah: word barrage state
         blahCutscene:null,    // BlahBlahBlah: cutscene
         subaru_checkpoint:null,// Subaru: saved checkpoint
-        subaruCutscene:null,  // Subaru: cinematic overlay
     };
     document.querySelectorAll('.ui-layer').forEach(el=>el.classList.add('hidden'));
     document.getElementById('hud').classList.remove('hidden');
@@ -5354,6 +5726,8 @@ function updateHUD(){
             +'<span style="position:absolute;left:0;top:0;bottom:0;width:'+pct+'%;background:linear-gradient(180deg,'+(low?'#ff4444,#a00000':'#ff6b88,#d11a44')+')"></span>'
             +'<span style="position:absolute;left:0;right:0;top:0;bottom:0;display:flex;align-items:center;justify-content:center;font-size:9px;color:#fff;text-shadow:1px 1px 0 #000,-1px -1px 0 #000,1px -1px 0 #000,-1px 1px 0 #000">'+hpN+' / '+mxN+'</span></span>';
         // Shield (yellow absorption layer)
+        hpHtml+=' <span style="color:#7dffa0;font-size:9px;vertical-align:middle">+'+(Math.round(pl.regen*10)/10)+'/s</span>';
+        if(pl.armor>0)hpHtml+=' <span style="color:#9bb8ff;font-size:9px;vertical-align:middle">🧱-'+pl.armor+'%</span>';
         if(shN>0)hpHtml+=' <span style="color:#ffd24a;font-size:9px;vertical-align:middle">🛡 '+shN+'</span>';
         if(hd._h!==hpHtml){hd._h=hpHtml;hd.innerHTML=hpHtml;}
     }
@@ -5362,7 +5736,7 @@ function updateHUD(){
     const ab2=document.getElementById('secondary-btn');
     const ABILITY_NAMES={
         noglin:{primary:'LATCH',secondary:'CUTENESS'},pikachu:{primary:'THUNDERBOLT',secondary:'VOLT TACKLE'},
-        tiger:{primary:'POUNCE',secondary:'SHEER AURA'},cat:{primary:'GLORP BEAM',secondary:'WORMHOLE'},arsonist:{primary:'ARSON PARTY',secondary:'OIL SLICK'},
+        tiger:{primary:'POUNCE',secondary:'SHEER AURA'},cat:{primary:'GLORP BEAM',secondary:'WORMHOLE'},arsonist:{primary:'ARSON PARTY',secondary:'TAR TOSS'},
         shiba:{primary:'50 BUCKS',secondary:'WHIMPER'},snowman:{primary:'BLIZZARD',secondary:'ICICLES'},
         coolioioio:{primary:'SPINBOT',secondary:'360-NOSCOPE'},
         kira:{primary:'DEATH NOTE',secondary:'MONOLOGUE'},
@@ -5410,7 +5784,12 @@ function showLevelUp(){
     state.screen='LEVELUP';
     const container=document.getElementById('upgradeOptions');container.innerHTML='';
     const picked=new Set();
-    for(let i=0;i<3;i++){
+    const nOpt=3+2*((state.player&&state.player.picky)||0);   // Picky: +2 options per stack
+    const pend=state.pendingLevels||1;
+    const lt=document.getElementById('levelUpTitle');if(lt)lt.innerText='⬆ LEVEL UP!'+(pend>1?'  ('+(pend-1)+' more)':'');
+    container.style.cssText=nOpt>3?'display:grid;grid-template-columns:repeat('+(nOpt>6?3:2)+',minmax(0,1fr));gap:0 10px;max-height:68vh;overflow-y:auto':'';
+    if(container.parentElement){const cs=container.parentElement.style;cs.minWidth=nOpt>6?'min(860px,94vw)':nOpt>3?'min(580px,94vw)':'300px';cs.maxWidth=nOpt>3?'94vw':'';cs.width=nOpt>6?'min(860px,94vw)':nOpt>3?'min(580px,94vw)':'';}
+    for(let i=0;i<nOpt;i++){
         let base,tier,tries=0;
         do{const u=pickUpgrade();base=u.base;tier=u.tier;tries++;}while(picked.has(base.id+tier.l)&&tries<30);
         picked.add(base.id+tier.l);
@@ -5425,13 +5804,19 @@ function showLevelUp(){
             if(base.id==='bullet_size') p.bSize+=tier.v;
             if(base.id==='xp_boost')  p.xpMult+=tier.v;
             if(base.id==='crit')      p.crit=Math.min(95,p.crit+tier.v);
-            if(base.id==='regen')     p.regen=Math.min(400,p.regen+tier.v);
+            if(base.id==='regen')     p.regen=Math.min(120,p.regen+tier.v);
             if(base.id==='max_hp')    {p.maxHp+=tier.v;p.hp=Math.min(p.hp+tier.v,p.maxHp);}
             if(base.id==='ability_cd'){state.ability.maxCooldown=Math.max(360,state.ability.maxCooldown-tier.v);state.secondary.maxCooldown=Math.max(360,state.secondary.maxCooldown-Math.floor(tier.v*0.7));}
             if(base.id==='bullet_spd') p.bulletSpeedMult=(p.bulletSpeedMult||1)+tier.v*0.1;
             if(base.id==='magnet')    p.magnet=(p.magnet||0)+tier.v;
-            document.getElementById('levelUpScreen').classList.add('hidden');state.screen='PLAYING';
+            if(base.id==='pierce')    p.pierce=Math.min(12,(p.pierce||0)+tier.v);
+            if(base.id==='luck')      p.luck=(p.luck||0)+tier.v;
+            if(base.id==='armor')     p.armor=Math.min(60,(p.armor||0)+tier.v);
+            if(base.id==='picky')     p.picky=Math.min(3,(p.picky||0)+1);
+            state.pendingLevels=Math.max(0,(state.pendingLevels||1)-1);
             updateHUD();
+            if(state.pendingLevels>0){showLevelUp();return;}   // more levels waiting: next set of options
+            document.getElementById('levelUpScreen').classList.add('hidden');state.screen='PLAYING';
         };
         container.appendChild(b);
     }
