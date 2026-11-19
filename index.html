@@ -17,6 +17,7 @@
         .menu-card { background:rgba(10,5,25,0.97);border:4px solid #00f2ff;padding:1.5rem;border-radius:12px;text-align:center;max-width:95%;max-height:92vh;overflow-y:auto;box-shadow:0 0 50px rgba(0,242,255,0.2); }
         .char-grid { display:grid;grid-template-columns:repeat(2,1fr);gap:10px;margin:12px 0; }
         @media(min-width:600px){.char-grid{grid-template-columns:repeat(3,1fr);}}
+        @media(min-width:900px){.char-grid{grid-template-columns:repeat(4,1fr);}}
         .char-btn { background:#1a083d;border:2px solid #4a00e0;padding:10px;border-radius:8px;cursor:pointer;transition:all 0.2s;display:flex;flex-direction:column;align-items:center;gap:5px; }
         .char-btn:hover { transform:translateY(-4px);border-color:#00f2ff;box-shadow:0 5px 15px rgba(0,242,255,0.4); }
         .char-icon { width:44px;height:44px;display:flex;align-items:center;justify-content:center;font-size:2.2rem;line-height:1; }
@@ -49,7 +50,10 @@
         .pause-btn.danger:hover { border-color:#ff0000;color:#ff4444; }
         .kb-row { display:flex;justify-content:space-between;align-items:center;padding:6px 0;border-bottom:1px solid rgba(255,255,255,0.08);font-size:9px; }
         .kb-key { background:#222;border:1px solid #555;padding:3px 8px;border-radius:4px;color:#00f2ff;font-family:'Press Start 2P',cursive;font-size:8px; }
-        .setting-row { display:flex;justify-content:space-between;align-items:center;margin:10px 0;font-size:9px; }
+        .setting-row { display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:6px 12px;margin:10px 0;font-size:9px; }
+        .set-sec { text-align:left;font-size:8px;color:#ffd700;margin:16px 0 4px;padding-bottom:4px;border-bottom:1px solid rgba(255,215,0,0.25);letter-spacing:1px; }
+        .info-tabs { display:flex;gap:6px;flex-wrap:wrap;justify-content:center;margin:6px 0 12px; }
+        .info-panel.hidden { display:none; }
         .toggle-btn { padding:5px 12px;border-radius:6px;cursor:pointer;pointer-events:auto;font-family:'Press Start 2P',cursive;font-size:8px;border:2px solid #4a00e0;background:#1a083d;color:#aaa;transition:all 0.15s; }
         .toggle-btn.active { border-color:#00f2ff;color:#00f2ff;background:rgba(0,242,255,0.1); }
         /* Character info panel */
@@ -155,7 +159,7 @@
 
     <!-- Main Menu -->
     <div id="mainMenu" class="ui-layer interactive">
-        <div class="menu-card" style="min-width:340px;max-width:620px">
+        <div class="menu-card" style="width:min(1040px,96%);max-height:96%;overflow-y:auto">
             <h1 class="text-2xl sm:text-3xl text-[#00f2ff] italic mb-1">CHAOS RUSH</h1>
             <p class="text-[10px] text-gray-400 mb-3">EVOLUTION</p>
             <div class="flex justify-center gap-4 text-[10px] mb-3 text-gray-300">
@@ -164,13 +168,8 @@
             </div>
             <div class="char-grid" id="charGrid"></div>
             <div class="flex gap-2 justify-center mt-3 flex-wrap">
-                <button onclick="showScreen('settingsScreen')" class="pause-btn" style="width:auto;padding:7px 12px;font-size:8px">⚙ SETTINGS</button>
-                <button onclick="showScreen('keybindsScreen')" class="pause-btn" style="width:auto;padding:7px 12px;font-size:8px">⌨ KEYBINDS</button>
-                <button onclick="showScreen('infoScreen')" class="pause-btn" style="width:auto;padding:7px 12px;font-size:8px">📖 ABILITIES</button>
-                <button onclick="showScreen('enemyScreen')" class="pause-btn" style="width:auto;padding:7px 12px;font-size:8px">👾 ENEMIES</button>
-                <button onclick="showScreen('upgradeScreen')" class="pause-btn" style="width:auto;padding:7px 12px;font-size:8px">⬆ UPGRADES</button>
-                <button onclick="showScreen('changelogScreen')" class="pause-btn" style="width:auto;padding:7px 12px;font-size:8px">📋 CHANGELOG</button>
-                <button onclick="downloadSave()" class="pause-btn" style="width:auto;padding:7px 12px;font-size:8px">💾 EXPORT</button>
+                <button onclick="showScreen('settingsScreen')" class="pause-btn" style="width:auto;padding:7px 16px;font-size:8px">⚙ SETTINGS</button>
+                <button onclick="openInfo()" class="pause-btn" style="width:auto;padding:7px 16px;font-size:8px">📖 INFO</button>
             </div>
         </div>
     </div>
@@ -181,46 +180,36 @@
             <h2 class="text-xl text-[#00f2ff] mb-4">PAUSED</h2>
             <button onclick="resumeGame()" class="pause-btn">▶ RESUME</button>
             <button onclick="showScreen('settingsScreen')" class="pause-btn">⚙ SETTINGS</button>
-            <button onclick="showScreen('keybindsScreen')" class="pause-btn">⌨ KEYBINDS</button>
-            <button onclick="showScreen('infoScreen')" class="pause-btn">📖 ABILITIES</button>
-            <button onclick="showScreen('enemyScreen')" class="pause-btn">👾 ENEMIES</button>
-            <button onclick="showScreen('upgradeScreen')" class="pause-btn">⬆ UPGRADES</button>
-            <button onclick="showScreen('changelogScreen')" class="pause-btn">📋 CHANGELOG</button>
+            <button onclick="openInfo()" class="pause-btn">📖 INFO</button>
             <button onclick="resetGame()" class="pause-btn danger">✖ QUIT TO MENU</button>
         </div>
     </div>
 
-    <!-- Settings -->
+    <!-- Settings (gameplay, display, keybinds) -->
     <div id="settingsScreen" class="ui-layer hidden">
-        <div class="menu-card interactive" style="min-width:320px">
-            <h2 class="text-lg text-[#00f2ff] mb-4">⚙ SETTINGS</h2>
-            <div class="setting-row"><span>DIFFICULTY</span>
-                <div class="flex gap-2">
+        <div class="menu-card interactive" style="width:min(580px,94vw);max-height:90vh;overflow-y:auto">
+            <button class="close-x" onclick="closeOverlay()" aria-label="Close">✕</button>
+            <h2 class="text-lg text-[#00f2ff] mb-2">⚙ SETTINGS</h2>
+            <div class="set-sec">GAMEPLAY</div>
+            <div class="setting-row">
+                <div><div>DIFFICULTY</div></div>
+                <div class="flex gap-2 flex-wrap">
                     <button class="toggle-btn active" id="diffNormal" onclick="setDifficulty('normal')">NORMAL</button>
                     <button class="toggle-btn" id="diffHard" onclick="setDifficulty('hard')">HARD</button>
                 </div>
             </div>
-            <div class="setting-row"><span>PARTICLES</span>
-                <div class="flex gap-2">
-                    <button class="toggle-btn active" id="particlesOn" onclick="setParticles(true)">ON</button>
-                    <button class="toggle-btn" id="particlesOff" onclick="setParticles(false)">OFF</button>
+            <div class="setting-row">
+                <div><div>ABILITY TARGET</div><div style="font-size:7px;color:#666;margin-top:3px">Where abilities &amp; ultimates aim</div></div>
+                <div class="flex gap-2 flex-wrap">
+                    <button class="toggle-btn active" id="targetAuto" onclick="setAbilityTarget('auto')" title="Each ability picks what suits it">SMART</button>
+                    <button class="toggle-btn" id="targetNearest" onclick="setAbilityTarget('nearest')" title="Closest enemy">NEAREST</button>
+                    <button class="toggle-btn" id="targetStrongest" onclick="setAbilityTarget('strongest')" title="Boss first, then highest HP">STRONGEST</button>
+                    <button class="toggle-btn" id="targetManual" onclick="setAbilityTarget('manual')" title="Your mouse">CURSOR</button>
                 </div>
+                <div id="abilityTargetHint" style="font-size:7px;color:#8a8aa8;margin-top:2px;line-height:1.8;flex-basis:100%;text-align:left"></div>
             </div>
             <div class="setting-row">
-                <div>
-                    <div>ABILITY TARGET</div>
-                    <div style="font-size:7px;color:#666;margin-top:3px">Icicles, Spinbot, Volt Tackle, 360-NoScope</div>
-                </div>
-                <div class="flex gap-2">
-                    <button class="toggle-btn active" id="targetAuto" onclick="setAbilityTarget('auto')" title="Aims at nearest enemy automatically">AUTO</button>
-                    <button class="toggle-btn" id="targetManual" onclick="setAbilityTarget('manual')" title="Aims toward your cursor">MANUAL</button>
-                </div>
-            </div>
-            <div class="setting-row">
-                <div>
-                    <div>SHOOT TARGET</div>
-                    <div style="font-size:7px;color:#666;margin-top:3px">Who your auto-fire aims at</div>
-                </div>
+                <div><div>SHOOT TARGET</div><div style="font-size:7px;color:#666;margin-top:3px">Who your auto-fire aims at</div></div>
                 <div class="flex gap-2 flex-wrap">
                     <button class="toggle-btn active" id="shootDefault" onclick="setShootTarget('default')">DEFAULT</button>
                     <button class="toggle-btn" id="shootStrongest" onclick="setShootTarget('strongest')">STRONGEST</button>
@@ -228,55 +217,78 @@
                     <button class="toggle-btn" id="shootManual" onclick="setShootTarget('manual')">MANUAL</button>
                 </div>
             </div>
-            <div class="setting-row"><span>AUTO-PAUSE ON HIDE</span>
-                <div class="flex gap-2">
-                    <button class="toggle-btn active" id="autoPauseOn" onclick="setAutoPause(true)">ON</button>
-                    <button class="toggle-btn" id="autoPauseOff" onclick="setAutoPause(false)">OFF</button>
+            <div class="set-sec">DISPLAY &amp; SYSTEM</div>
+            <div class="setting-row">
+                <div><div>PARTICLES</div></div>
+                <div class="flex gap-2 flex-wrap">
+                    <button class="toggle-btn active" id="particlesOn" onclick="setParticles(true)">ON</button>
+                    <button class="toggle-btn" id="particlesOff" onclick="setParticles(false)">OFF</button>
                 </div>
             </div>
-            <div class="setting-row"><span>SHOW HITBOXES</span>
-                <div class="flex gap-2">
+            <div class="setting-row">
+                <div><div>SHOW HITBOXES</div></div>
+                <div class="flex gap-2 flex-wrap">
                     <button class="toggle-btn" id="hitboxOn" onclick="setHitbox(true)">ON</button>
                     <button class="toggle-btn active" id="hitboxOff" onclick="setHitbox(false)">OFF</button>
                 </div>
             </div>
-            <button onclick="closeOverlay()" class="pause-btn mt-3">← BACK</button>
-        </div>
-    </div>
-
-    <!-- Keybinds -->
-    <div id="keybindsScreen" class="ui-layer hidden">
-        <div class="menu-card interactive" style="min-width:340px">
-            <h2 class="text-lg text-[#00f2ff] mb-4">⌨ KEYBINDS</h2>
+            <div class="setting-row">
+                <div><div>AUTO-PAUSE ON HIDE</div></div>
+                <div class="flex gap-2 flex-wrap">
+                    <button class="toggle-btn active" id="autoPauseOn" onclick="setAutoPause(true)">ON</button>
+                    <button class="toggle-btn" id="autoPauseOff" onclick="setAutoPause(false)">OFF</button>
+                </div>
+            </div>
+            <div class="set-sec">⌨ KEYBINDS</div>
             <div class="kb-row"><span>MOVE</span><span class="kb-key">WASD / ARROWS</span></div>
             <div class="kb-row"><span>ABILITY (PRIMARY)</span><span class="kb-key">SPACE</span></div>
             <div class="kb-row"><span>ABILITY (SECONDARY)</span><span class="kb-key">R</span></div>
+            <div class="kb-row"><span>ULTIMATE</span><span class="kb-key">F</span></div>
             <div class="kb-row"><span>PAUSE</span><span class="kb-key">ESC</span></div>
-            <div class="kb-row"><span>AIM / WORMHOLE / BEAM</span><span class="kb-key">MOUSE</span></div>
-            <div style="margin-top:12px;font-size:8px;color:#555;line-height:2;text-align:left">
-                <div style="color:#888;margin-bottom:4px">— CHARACTER ABILITIES —</div>
-                <div>👹 Noglin | SPC:Latch (dash) | R:Cuteness | [MC] R:Host Ability | SPC:Kill Host | Q:Delatch</div>
-                <div>⚡ Pikachu | SPC:Thunderbolt | R:Volt Tackle</div>
-                <div>🐯 Zanther | SPC:Pounce+Feast | R:Sheer Aura</div>
-                <div>🐱 Vitru | SPC:Glorp Beam | R:Wormhole</div>
-                <div>🐕 Shiba | SPC:50 Bucks | R:Sad Whimper</div>
-                <div>☃️ Snowman | SPC:Blizzard | R:Icicle Barrage</div>
-                <div>😎 Coolioioio | SPC:Spinbot | R:360-No-Scope</div>
-                <div>📓 Kira | SPC:Death Note | R:Justice Monologue | God Gauge fills on kills → SPC becomes instant kill</div>
-                <div>🎀 Femboy | SPC:Slay (Charm) | R:Twirl AOE | Passive aura dazes nearby enemies</div>
-                <div>🥒 Pickle | SPC:Brine Burst (Poison) | R:Pickle Dash | Poison stacks and ticks</div>
-            </div>
-            <button onclick="closeOverlay()" class="pause-btn mt-3">← BACK</button>
+            <div class="kb-row"><span>AIM</span><span class="kb-key">MOUSE</span></div>
+            <div class="kb-row"><span>NOGLIN — LATCHED: HOST SPECIAL</span><span class="kb-key">SPACE</span></div>
+            <div class="kb-row"><span>NOGLIN — LATCHED: RIP</span><span class="kb-key">R</span></div>
+            <div style="margin-top:8px;font-size:7px;color:#666;line-height:1.8;text-align:left">Every character's abilities are listed under INFO → ABILITIES.</div>
         </div>
     </div>
 
-    <!-- Changelog Screen -->
-    <div id="changelogScreen" class="ui-layer hidden">
-        <div class="menu-card interactive" style="min-width:360px;max-width:620px;max-height:85vh;overflow-y:auto">
+    <!-- Info hub: upgrades / enemies / abilities / changelog -->
+    <div id="infoScreen" class="ui-layer hidden">
+        <div class="menu-card interactive" style="width:min(840px,94vw);max-height:92vh;overflow-y:auto">
             <button class="close-x" onclick="closeOverlay()" aria-label="Close">✕</button>
-            <h2 class="text-lg text-[#00f2ff] mb-4">📋 CHANGELOG</h2>
-            <div style="text-align:left;font-size:8px;line-height:2">
-                <div style="color:#ffd700;font-size:10px;margin-bottom:6px">▶ v2.2 — Current</div>
+            <h2 class="text-lg text-[#00f2ff] mb-2">📖 INFO</h2>
+            <div class="info-tabs">
+                <button class="toggle-btn active" id="infoTab_upgrades" onclick="showInfoTab('upgrades')">⬆ UPGRADES</button>
+                <button class="toggle-btn" id="infoTab_enemies" onclick="showInfoTab('enemies')">👾 ENEMIES</button>
+                <button class="toggle-btn" id="infoTab_abilities" onclick="showInfoTab('abilities')">✨ ABILITIES</button>
+                <button class="toggle-btn" id="infoTab_changelog" onclick="showInfoTab('changelog')">📋 CHANGELOG</button>
+            </div>
+            <div id="infoPanel_upgrades" class="info-panel">
+<div style="font-size:7px;line-height:1.8;color:#8a8aa8;margin-bottom:10px">Everything the level-up screen can offer. <span style="color:#ffd700">★ Haste, Caliber and Vitality</span> come up somewhat more often (Haste a bit less than the other two) and every level-up offers at least one. Percentages are the odds of each tier <i>once that upgrade is rolled</i> (before Luck).</div>
+            <div id="upgradeGrid" style="display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:8px"></div>
+            </div>
+            <div id="infoPanel_enemies" class="info-panel hidden">
+<div style="font-size:7px;line-height:1.8;color:#8a8aa8;margin-bottom:10px">Every enemy type, bosses included. When Noglin latches onto one, <span style="color:#ff88ff">SPACE</span> unleashes that host's special (bosses have their own unique ones).</div>
+            <div id="enemyGrid" style="display:grid;grid-template-columns:repeat(auto-fill,minmax(270px,1fr));gap:8px"></div>
+            </div>
+            <div id="infoPanel_abilities" class="info-panel hidden">
+                <div style="display:grid;grid-template-columns:1fr;gap:8px" id="infoGrid"></div>
+            </div>
+            <div id="infoPanel_changelog" class="info-panel hidden">
+<div style="text-align:left;font-size:8px;line-height:2">
+                <div style="color:#ffd700;font-size:10px;margin-bottom:6px">▶ v2.3 — Current</div>
+                <div style="color:#ccc;padding-left:8px;margin-bottom:2px">• Splitter reworked: now a chance to fire <b>2 extra bullets</b> — Common +10%, Rare +20%, Legendary +40% (max 80%). Legendary also <b>guarantees a double-split at least every 3rd shot</b>; the guarantee is separate from the chance, so owning several Legendaries never changes it. Choco's towers use their own counter.</div>
+                <div style="color:#ccc;padding-left:8px;margin-bottom:2px">• Velocity cap raised to <b>+300%</b> (×4). Player bullets now use swept hit detection, so even ×4 bullets can't skip over an enemy.</div>
+                <div style="color:#ccc;padding-left:8px;margin-bottom:2px">• Menu reorganised: <b>Keybinds moved into Settings</b> (which is now grouped into Gameplay / Display &amp; System / Keybinds). New <b>📖 INFO</b> button holds four tabs — Upgrades, Enemies, Abilities and Changelog. The old separate buttons and the Export button (and its save download) are gone.</div>
+                <div style="color:#ccc;padding-left:8px;margin-bottom:2px">• Noglin: <b>Delatch removed</b>. While latched, <b>SPACE</b> is the host's special ability and <b>R</b> is <b>Rip</b>: it kills any normal host (with the usual heal and overheal shield) and on a boss instantly deals <b>50% of its max HP + 4 seconds of your gun DPS</b>, then ejects you with the heal and shield (lethal if that is enough). The 60s timer now simply lets a boss go.</div>
+                <div style="color:#ccc;padding-left:8px;margin-bottom:2px">• Ability Target setting is now meaningful: <b>SMART</b> (each ability picks what suits it — clusters for Tar Toss / Singularity / Snowball, busiest lane for Stairs Throw, nearest for the rest; 360-NoScope is the exception — its main line is always your cursor), <b>NEAREST</b>, <b>STRONGEST</b> (boss first, then highest HP) or <b>CURSOR</b>. It now drives every targeted ability and ultimate, including Word Barrage, 50 Bucks, Volt Tackle, the Spinbot and the Snowball.</div>
+                <div style="color:#ccc;padding-left:8px;margin-bottom:2px">• Enemy catalogue now lists all six <b>boss types</b> (Charger, Turret, Swirler, Bursty, Ghost, Summoner) with their attack pattern, every boss that uses it, and the Noglin special you get from it.</div>
+                <div style="color:#ccc;padding-left:8px;margin-bottom:2px">• Starred upgrades (Haste, Caliber, Vitality) show up less: 1.6× as often as others instead of 2.5×, and Haste is rarer than the other two on top of that. Every level-up still offers at least one starred upgrade.</div>
+                <div style="color:#ccc;padding-left:8px;margin-bottom:2px">• Main menu box is much wider (up to 1040px) with 4 characters per row on large screens.</div>
+                <div style="color:#ccc;padding-left:8px;margin-bottom:2px">• Coolioioio: <b>360-No-Scope</b> now works like the sniper owls' laser — up to three tracking lines (main target, closest, furthest) follow their targets, <b>lock</b> with a flash, then fire an instant piercing beam along the line, hitting everything on it (regular enemies executed, bosses take 18× bullet damage). The main line is <b>aimed with your cursor</b> (the other two hunt the closest and furthest enemy). Its cooldown starts after the shot.</div>
+                <div style="color:#ccc;padding-left:8px;margin-bottom:2px">• Fixed: Zanther's pounce left the victim stunned for up to ~16s after you cancelled it or it timed out — bosses in particular stayed frozen. Bosses are now released instantly (other enemies get a short stagger), and only enemies on the playfield can be pounced.</div>
+                <div style="color:#ccc;padding-left:8px;margin-bottom:2px">• Removed the GLORP and CRIT popups. Blah: Word Barrage damage −20%, and the R ability is renamed <b>Cringe Unskippable Monologue</b>. Choco: Dying SMP sword no longer stuns or knocks enemies back.</div>
+                <div style="color:#ffd700;font-size:10px;margin:8px 0 6px">▶ v2.2</div>
                 <div style="color:#ccc;padding-left:8px;margin-bottom:2px">• NEW Subaru variant — 👹 Aura Monster (unlocked by dying as Subaru 5 times; uses auramonster.png): Void Tearer (rip open the arena — enemies get dragged in and unmade in ~3s, but you can't cross the void either), Stairs Throw (hurl a staircase from Re:Zero), ult MY EYES TURN RED (ten hunting eyes paralyse and wither, then one all-seeing flash)</div>
                 <div style="color:#ccc;padding-left:8px;margin-bottom:2px">• Upgrades: NEW Homing (very slight steering, rarer, capped); Haste, Caliber and Vitality are rolled 2.5× as often and EVERY level-up offers at least one; Wisdom buffed (+20% / +50% XP); Velocity gains a Legendary (+150%, total capped ×3); Splitter is now a CHANCE per shot (+8% / +20% per pick, capped at 80%) and the Rare tier is gone; Lethality capped at 80%; Heavy Rounds capped at 20px; capped upgrades are hidden from the pool. New ⬆ UPGRADES catalogue on the menu / pause screen</div>
                 <div style="color:#ccc;padding-left:8px;margin-bottom:2px">• Bosses scale harder: +0.25 HP multiplier per boss kill (+0.4 on hard, cap ×6) and higher base HP. Noglin: the boss-host possession shell is nerfed ~60% (60% → 24% of boss HP)</div>
@@ -368,37 +380,7 @@
                 <div style="color:#ccc;padding-left:8px;margin-bottom:2px">• Damage popups fade after 3 seconds</div>
                 <div style="color:#ccc;padding-left:8px;margin-bottom:2px">• Noglin aspect ratio fixed (1024×585)</div>
             </div>
-            <button onclick="closeOverlay()" class="pause-btn mt-4">← BACK</button>
-        </div>
-    </div>
-
-    <!-- Character Info Screen -->
-    <div id="infoScreen" class="ui-layer hidden">
-        <div class="menu-card interactive" style="min-width:360px;max-width:680px">
-            <button class="close-x" onclick="closeOverlay()" aria-label="Close">✕</button>
-            <h2 class="text-lg text-[#00f2ff] mb-4">📖 CHARACTER ABILITIES</h2>
-            <div style="display:grid;grid-template-columns:1fr;gap:8px" id="infoGrid"></div>
-            <button onclick="closeOverlay()" class="pause-btn mt-4">← BACK</button>
-        </div>
-    </div>
-    <!-- Enemy Catalogue -->
-    <div id="enemyScreen" class="ui-layer hidden">
-        <div class="menu-card interactive" style="width:min(800px,94vw)">
-            <button class="close-x" onclick="closeOverlay()" aria-label="Close">✕</button>
-            <h2 class="text-lg text-[#00f2ff] mb-2">👾 ENEMY CATALOGUE</h2>
-            <div style="font-size:7px;line-height:1.8;color:#8a8aa8;margin-bottom:10px">Every regular enemy type. When Noglin latches onto one, <span style="color:#ff88ff">Q</span> unleashes that host's special (bosses have their own unique ones).</div>
-            <div id="enemyGrid" style="display:grid;grid-template-columns:repeat(auto-fill,minmax(270px,1fr));gap:8px"></div>
-            <button onclick="closeOverlay()" class="pause-btn mt-4">← BACK</button>
-        </div>
-    </div>
-    <!-- Upgrade Catalogue -->
-    <div id="upgradeScreen" class="ui-layer hidden">
-        <div class="menu-card interactive" style="width:min(820px,94vw);max-height:92vh;overflow-y:auto">
-            <button class="close-x" onclick="closeOverlay()" aria-label="Close">✕</button>
-            <h2 class="text-lg text-[#00f2ff] mb-2">⬆ UPGRADE CATALOGUE</h2>
-            <div style="font-size:7px;line-height:1.8;color:#8a8aa8;margin-bottom:10px">Everything the level-up screen can offer. <span style="color:#ffd700">★ Haste, Caliber and Vitality</span> come up far more often and every level-up offers at least one. Percentages are the odds of each tier <i>once that upgrade is rolled</i> (before Luck).</div>
-            <div id="upgradeGrid" style="display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:8px"></div>
-            <button onclick="closeOverlay()" class="pause-btn mt-4">← BACK</button>
+            </div>
         </div>
     </div>
     <div id="levelUpScreen" class="ui-layer hidden">
@@ -428,9 +410,8 @@
 
     <!-- Mobile MC buttons (shown when mind controlling) -->
     <div id="mc-controls">
-        <div class="mc-btn" id="mc-q-btn" style="background:rgba(255,255,255,0.1);border-color:#aaaaaa" ontouchstart="ejectMindControl()">Q</div>
-        <div class="mc-btn" id="mc-spc-btn" style="background:rgba(255,0,0,0.25);border-color:#ff4400" ontouchstart="killMindControlHost()">SPC</div>
-        <div class="mc-btn" id="mc-r-btn" style="background:rgba(204,0,255,0.25);border-color:#cc00ff" ontouchstart="triggerMCAbility('q')">R</div>
+        <div class="mc-btn" id="mc-spc-btn" style="background:rgba(204,0,255,0.25);border-color:#cc00ff" ontouchstart="triggerMCAbility('q')">SPC</div>
+        <div class="mc-btn" id="mc-r-btn" style="background:rgba(255,0,0,0.25);border-color:#ff4400" ontouchstart="killMindControlHost()">RIP</div>
     </div>
 </div>
 
@@ -471,7 +452,6 @@ function loadSave(){try{const s=localStorage.getItem(SAVE_KEY);if(s)saveData=JSO
     const h=document.getElementById('menuHighScore'),t=document.getElementById('menuTotalKills');
     if(h)h.innerText=saveData.highScore;if(t)t.innerText=saveData.totalKills;}
 function saveGame(){try{localStorage.setItem(SAVE_KEY,JSON.stringify(saveData));}catch(e){}}
-function downloadSave(){const a=document.createElement('a');a.href="data:text/json;charset=utf-8,"+encodeURIComponent(JSON.stringify(saveData));a.download="chaos_save.json";a.click();}
 
 // ── ASSETS ──
 const assets={noglin:new Image(),pikachu:new Image(),coolioso:new Image(),noglinCuteness:new Image(),shibaHomeless:new Image(),subaru:new Image(),auramonster:new Image()};
@@ -487,7 +467,7 @@ function enemyDmgScale(){return (1+Math.max(0,state.lvl-1)*0.06)*0.8;}   // v2.0
 // ── CHARACTERS ──
 const CHARACTERS=[
     {id:'noglin',    name:"Noglin",       emoji:"👹", img:assets.noglin,   speed:9.5, hp:3, abilityColor:'#ff00ff', imgSize:88,
-     desc:"Mind Control",   abilityDesc:"SPC: Dash-Latch | R: Cuteness | [MC] R: Host Ability | SPC: Kill Host | Q: Delatch"},
+     desc:"Mind Control",   abilityDesc:"SPC: Dash-Latch | R: Cuteness | [MC] SPC: Host Special | R: Rip"},
     {id:'pikachu',   name:"Pikachu",      emoji:"⚡", img:assets.pikachu,  speed:12,  hp:4, abilityColor:'#ffff00',
      desc:"Chain Lightning",abilityDesc:"SPC: Thunderbolt x20 | R: Volt Tackle"},
     {id:'tiger',     name:"Zanther",      emoji:"🐯", emojiFilter:"hue-rotate(240deg) saturate(2)", speed:7.5, hp:5, abilityColor:'#ff9900',
@@ -503,7 +483,7 @@ const CHARACTERS=[
     {id:'coolioioio',name:"Coolioioio",   emoji:"😎", img:assets.coolioso, speed:10.5, hp:5, abilityColor:'#ff44ff',
      desc:"Spinbot",       abilityDesc:"SPC: Spinbot 10/s | R: 360-No-Scope"},
     {id:'blahblahblah',name:"BlahBlahBlah", emoji:"💬", speed:9, hp:5, abilityColor:'#cc44ff',
-     desc:"Anime Nonsense", abilityDesc:"SPC: Word Barrage | R: Ultimate Speech"},
+     desc:"Anime Nonsense", abilityDesc:"SPC: Word Barrage | R: Cringe Unskippable Monologue"},
     {id:'pickle',    name:"Pickle",        emoji:"🥒", speed:9, hp:6, abilityColor:'#44cc00',
      desc:"I'm Pickle Rick!", abilityDesc:"SPC: Brine Burst (Poison) | R: Pickle Dash"},
     {id:'choco',     name:"IAmChoco",     emoji:"🍪", speed:9.5, hp:5, abilityColor:'#c68642',
@@ -521,7 +501,7 @@ const CHARACTERS=[
 
 // Weighted upgrade pool
 const UPGRADES_POOL=[
-    {id:'atk_speed',  name:"Haste",        tiers:[
+    {id:'atk_speed',  name:"Haste",        poolW:0.5, tiers:[
         {l:"Common",   v:5,  c:"white",   w:60, desc:"Shoot 5 frames faster — small but noticeable fire rate boost"},
         {l:"Rare",     v:10, c:"#bc13fe", w:30, desc:"Shoot 10 frames faster — meaningful fire rate increase"},
         {l:"Legendary",v:20, c:"#ffd700", w:8,  desc:"Shoot 20 frames faster — drastically faster firing"},
@@ -537,8 +517,9 @@ const UPGRADES_POOL=[
         {l:"Legendary",v:2.5,  c:"#ffd700", w:8,  desc:"+2.5 movement speed — zoom across the map"},
     ]},
     {id:'projectiles',name:"Splitter",     tiers:[
-        {l:"Common",   v:8, c:"white",   w:50, desc:"+8% chance that a shot fires 1 extra bullet"},
-        {l:"Legendary",v:20,c:"#ffd700", w:6,  desc:"+20% chance that a shot fires 1 extra bullet — stacks up to 80% (Choco: his towers roll it too)"},
+        {l:"Common",   v:10, c:"white",   w:50, desc:"+10% chance that a shot fires 2 extra bullets"},
+        {l:"Rare",     v:20, c:"#bc13fe", w:20, desc:"+20% chance that a shot fires 2 extra bullets"},
+        {l:"Legendary",v:40, c:"#ffd700", w:6,  desc:"+40% chance that a shot fires 2 extra bullets — and a guaranteed double-split at least every 3rd shot (stacks up to 80%; Choco: his towers roll it too)"},
     ]},
     {id:'bullet_size',name:"Heavy Rounds", tiers:[
         {l:"Common",   v:2, c:"white",   w:55, desc:"Bullets are 2px bigger — larger hitbox, easier to land"},
@@ -593,7 +574,7 @@ const UPGRADES_POOL=[
     {id:'bullet_spd', name:"Velocity",     tiers:[
         {l:"Common",   v:4, c:"white",   w:50, desc:"+40% bullet speed — harder for enemies to dodge"},
         {l:"Rare",     v:8, c:"#bc13fe", w:22, desc:"+80% bullet speed — bullets reach enemies almost instantly"},
-        {l:"Legendary",v:15,c:"#ffd700", w:6,  desc:"+150% bullet speed — bullets are basically lasers (total capped at ×3)"},
+        {l:"Legendary",v:15,c:"#ffd700", w:6,  desc:"+150% bullet speed — bullets are basically lasers (total capped at +300%)"},
     ]},
     {id:'homing',     name:"Homing",       poolW:0.4, tiers:[
         {l:"Common",   v:0.004, c:"white",   w:34, desc:"Bullets bend barely perceptibly toward the nearest enemy"},
@@ -602,7 +583,7 @@ const UPGRADES_POOL=[
     ]},
 ];
 const FAV_UPGRADES=['atk_speed','damage','max_hp'];   // Haste, Caliber, Vitality: rolled more often, and every level-up offers at least one
-const LETHALITY_CAP=80,HOMING_CAP=0.0334,VELOCITY_CAP=3,SPLIT_CAP=80,BSIZE_CAP=20;
+const LETHALITY_CAP=80,HOMING_CAP=0.0334,VELOCITY_CAP=4,SPLIT_CAP=80,BSIZE_CAP=20;
 function pickUpgrade(only){
     // Hidden once useless: Readiness at the cooldown cap, Lethality / Homing / Velocity at their caps, Armour at 60%, Picky at 3 stacks
     const pl0=state.player||{},capped=state.ability.maxCooldown<=360&&state.secondary.maxCooldown<=360;
@@ -610,8 +591,8 @@ function pickUpgrade(only){
         &&!(u.id==='crit'&&(pl0.crit||0)>=LETHALITY_CAP)&&!(u.id==='projectiles'&&(pl0.splitChance||0)>=SPLIT_CAP)&&!(u.id==='bullet_size'&&(pl0.bSize||5)>=BSIZE_CAP)&&!(u.id==='homing'&&(pl0.homing||0)>=HOMING_CAP)&&!(u.id==='bullet_spd'&&(pl0.bulletSpeedMult||1)>=VELOCITY_CAP));
     if(only){const f=pool.filter(u=>only.indexOf(u.id)!==-1);if(f.length)pool=f;}
     const L=(state.player&&state.player.luck)||0;
-    // Haste / Caliber / Vitality are 2.5x as likely to come up as anything else
-    const bw=u=>(u.poolW||1)*((!only&&FAV_UPGRADES.indexOf(u.id)!==-1)?2.5:1);
+    // Haste / Caliber / Vitality are 1.6x as likely to come up as anything else (v2.3; Haste has its own 0.5x poolW on top, which also lowers its odds in the forced slot)
+    const bw=u=>(u.poolW||1)*((!only&&FAV_UPGRADES.indexOf(u.id)!==-1)?1.6:1);
     let base,guard=0;
     do{
         let tw=0;for(const u of pool)tw+=bw(u);
@@ -939,7 +920,7 @@ function cdFrozenNow(){
     const a=(id==='tiger'&&st.pounce.active)||(id==='coolioioio'&&!!st.spinbot)||(id==='noglin'&&st.mindControl.active)||(id==='snowman'&&st.effects.frozen)
         ||(id==='blahblahblah'&&!!st.blahBarrage)||(id==='pikachu'&&!!st.pikaChaining)||(id==='shiba'&&st.bullets.some(b=>b instanceof CoinProjectile))
         ||(id==='cat'&&!!st.glorpBeam)||(id==='choco'&&!!st.towers&&st.towers.length>0)||(id==='auramonster'&&!!st.voids&&st.voids.length>0);
-    const s=(id==='coolioioio'&&!!st.spinbot)||(id==='pickle'&&!!st.pickleDash&&!!st.pickleDash.active)||(id==='cat'&&p._warpSpeedBoost>0)
+    const s=(id==='coolioioio'&&(!!st.spinbot||!!st.noScope))||(id==='pickle'&&!!st.pickleDash&&!!st.pickleDash.active)||(id==='cat'&&p._warpSpeedBoost>0)
         ||(id==='pikachu'&&!!st.voltTackle)||(id==='auramonster'&&!!st.stairs&&st.stairs.length>0);
     return{a:!!a,s:!!s};
 }
@@ -1101,7 +1082,7 @@ function triggerUltimate(){
     const u=ultState(),p=state.player;
     if(u.fx)return;
     if(!u.ready){popup(p.x,p.y-50,'ULTIMATE '+Math.floor(u.charge)+'%','#888888',50);return;}
-    if(state.mindControl.active){popup(p.x,p.y-50,'DELATCH FIRST (Q)','#ff88ff',70);return;}
+    if(state.mindControl.active){popup(p.x,p.y-50,'RIP OR LOSE THE HOST FIRST','#ff88ff',70);return;}
     if(state.pounce.active){popup(p.x,p.y-50,'FINISH THE FEAST FIRST','#ff9900',70);return;}
     const id=p.config.id,info=ULT_INFO[id],I=ULT_IMPL[id];
     if(!info||!I)return;
@@ -1322,9 +1303,11 @@ const TAR_R=230,TAR_LIFE=840,TAR_RANGE=760,TAR_MAX=4;
 function tarToss(p){
     const W=canvas.width,H=canvas.height;
     let tx,ty;
-    if(settings.abilityTarget==='manual'){tx=state.mouseX;ty=state.mouseY;}
+    const _pk=abilityPick(p.x,p.y);
+    if(_pk){tx=_pk.x;ty=_pk.y;}
+    else if(abilityMode()!=='auto'){const a=Math.atan2(state.mouseY-p.y,state.mouseX-p.x);tx=p.x+Math.cos(a)*380;ty=p.y+Math.sin(a)*380;}
     else{
-        // auto: land on the thickest cluster of in-arena enemies within throwing range (bosses count double)
+        // smart: land on the thickest cluster of in-arena enemies within throwing range (bosses count double)
         const T=liveTargets();let bc=-1,bd=Infinity,best=null;
         for(let i=0;i<T.length;i++){
             const e=T[i],dd=(e.x-p.x)**2+(e.y-p.y)**2;
@@ -1821,7 +1804,7 @@ function swordStart(p){
     // v1.9: a full 3-hit combo deals 1.3x the player's regular gun DPS (per enemy) over the time it takes; the finisher takes the biggest share
     const cdOf=(d,f)=>d+(f?Math.round(p.atkSpeed*0.6):Math.round(d*0.3)),dFin=Math.round(base*1.7);
     const Tc=cdOf(base,false)*2+cdOf(dFin,true);
-    const share=(fin?16:(idx===1?7:6))/29,mul=1.3*((p.projectileCount||1)+(p.splitChance||0)/100)*(Tc/p.atkSpeed)*share;
+    const share=(fin?16:(idx===1?7:6))/29,mul=1.3*((p.projectileCount||1)+(p.splitChance||0)/50)*(Tc/p.atkSpeed)*share;
     state.sword={active:true,idx:idx,t:0,dur:dur,dir:dir,arc:arc,sa:aim-dir*arc/2,aim:aim,reach:reach*(fin?1.25:1),mul:mul,sw:chocoSize(p),hit:new Set(),cur:aim-dir*arc/2,prev:aim-dir*arc/2};
     p.atkCooldown=dur+(fin?Math.round(p.atkSpeed*0.6):Math.round(dur*0.3));
     if(p.cutenessActive)p.atkCooldown=Math.floor(p.atkCooldown*0.5);
@@ -1844,11 +1827,9 @@ function swordTick(p){
         if(rel>lim||rel>S.arc+0.1)continue;
         S.hit.add(e);
         const crit=Math.random()*100<p.crit,dmg=p.damage*S.mul*(crit?2:1);
-        const ba=Math.atan2(dy,dx);
-        if(!e.isBoss){e.x+=Math.cos(ba)*(S.idx===2?34:16);e.y+=Math.sin(ba)*(S.idx===2?34:16);e.stunned=Math.max(e.stunned||0,S.idx===2?24:8);}
         fxBurst(e.x,e.y,S.idx===2?14:8,crit?'#ffe066':'#ffd9a0',2,9,18,2.6);addRing(e.x,e.y,S.idx===2?90:55,10,'#ffcc66',3);
         if(S.idx===2)fxShake(9);else fxShake(3);
-        hurtFlat(e,dmg,crit?'⚔️CRIT ':'⚔️','#ffcc66');
+        hurtFlat(e,dmg,'⚔️','#ffcc66');
     }
     if(S.t>=S.dur){
         S.active=false;
@@ -1919,7 +1900,7 @@ function towerTick(p){
                 t.cd=rate;
                 // the towers shoot with ALL of Choco's upgrades: Caliber, Lethality, Velocity, Pierce, Heavy Rounds (bigger arrows), Splitter (extra arrows) and Homing
                 const sp=Math.min(36,16*(p.bulletSpeedMult||1));
-                const A2=state.arrows||(state.arrows=[]),nA=volleyN(p),pr=1+(p.pierce||0),ar=Math.min(60,22+Math.max(0,(p.bSize||5)-5)*1.6);
+                const A2=state.arrows||(state.arrows=[]),nA=volleyN(p,'tower'),pr=1+(p.pierce||0),ar=Math.min(60,22+Math.max(0,(p.bSize||5)-5)*1.6);
                 for(let q=0;q<nA&&A2.length<260;q++){
                     const crit=Math.random()*100<p.crit,an=t.ang+(q-(nA-1)/2)*0.17;
                     const hs=new Set();
@@ -2265,7 +2246,9 @@ ULT_IMPL.snowman={
         const goal=26+190*Math.pow(t/F.dur,0.85)+Math.min(14,d.caught.length)*6;
         d.r+=(Math.min(300,goal)-d.r)*0.12;
         // steer toward the thickest cluster of free enemies (or the cursor in manual mode)
-        if(settings.abilityTarget==='manual'){d.tx=state.mouseX;d.ty=state.mouseY;}
+        const _pk=abilityPick(d.x,d.y);
+        if(_pk){d.tx=_pk.x;d.ty=_pk.y;}
+        else if(abilityMode()!=='auto'){d.tx=W/2;d.ty=H/2;}
         else{
             if(t%12===1||!d.tgt||d.tgt.hp<=0||d.tgt._sbCaught){
                 const T=liveTargets();let bs=-1e9,best=null;
@@ -2359,9 +2342,10 @@ ULT_IMPL.coolioioio={
         let tgt=null,bd=Infinity;const en=state.enemies;
         for(let i=0;i<en.length;i++){const e=en[i];if(e.hp<=0||!inArena(e))continue;const dx=e.x-p.x,dy=e.y-p.y,dd=dx*dx+dy*dy;if(dd<bd){bd=dd;tgt=e;}}
         if(state.boss&&state.boss.hp>0&&inArena(state.boss)){const dx=state.boss.x-p.x,dy=state.boss.y-p.y,dd=dx*dx+dy*dy;if(dd<bd){bd=dd;tgt=state.boss;}}
-        if(settings.abilityTarget==='manual')d.aim=Math.atan2(state.mouseY-p.y,state.mouseX-p.x);
-        else if(tgt)d.aim=Math.atan2(tgt.y-p.y,tgt.x-p.x);
-        if(t%5===0&&(tgt||settings.abilityTarget==='manual')){   // 12 attacks / second (v1.8)
+        const _pk=abilityPick(p.x,p.y);
+        if(_pk)d.aim=Math.atan2(_pk.y-p.y,_pk.x-p.x);
+        else if(tgt&&abilityMode()==='auto')d.aim=Math.atan2(tgt.y-p.y,tgt.x-p.x);
+        if(t%5===0&&(_pk||(tgt&&abilityMode()==='auto'))){   // 12 attacks / second (v1.8)
             const n=volleyN(p),vm=p.bulletSpeedMult||1,c=Math.cos(d.aim),s=Math.sin(d.aim);
             for(let i=0;i<n;i++){
                 const ang=d.aim+(i-(n-1)/2)*0.2+(Math.random()-.5)*0.05,crit=Math.random()*100<p.crit;
@@ -2665,6 +2649,80 @@ class PiercingBullet {
     draw(){ctx.save();ctx.fillStyle='#ff44ff';ctx.strokeStyle='#ffffff';ctx.lineWidth=1.5;ctx.shadowBlur=16;ctx.shadowColor='#ff00ff';ctx.beginPath();ctx.arc(this.x,this.y,this.size,0,Math.PI*2);ctx.fill();ctx.stroke();ctx.restore();}
 }
 
+// ── 360-NO-SCOPE (v2.3): the sniper owls' laser, turned on the enemy ──
+// R opens up to three tracking lines (main target + closest + furthest). They follow their targets (the main one follows your CURSOR in
+// cursor mode), then LOCK (flash, no more turning) and finally fire an instant piercing beam along the line. Everything on the line is hit.
+const NS_TRACK=34,NS_LOCK=20,NS_FIRE=12;
+function noScopeStart(p){
+    const all=liveTargets();
+    // v2.3: the MAIN line is always aimed with your cursor (independent of the Ability Target setting); the two extra lines hunt the closest / furthest enemy
+    const beams=[{role:'MAIN',tgt:null,cursor:true,dmg:p.damage*18,w:13,ang:0}];
+    const rest=all.slice().sort((a,b)=>(a.x-p.x)**2+(a.y-p.y)**2-((b.x-p.x)**2+(b.y-p.y)**2));
+    if(rest.length)beams.push({role:'CLOSEST',tgt:rest[0],dmg:p.damage*12,w:9,ang:0});
+    if(rest.length>1)beams.push({role:'FURTHEST',tgt:rest[rest.length-1],dmg:p.damage*12,w:9,ang:0});
+    for(const b of beams){const px=b.cursor?state.mouseX:(b.tgt?b.tgt.x:state.mouseX),py=b.cursor?state.mouseY:(b.tgt?b.tgt.y:state.mouseY);b.ang=Math.atan2(py-p.y,px-p.x);}
+    state.noScope={t:0,beams:beams,fired:false};
+    popup(p.x,p.y-55,'🎯 360-NO-SCOPE','#ff44ff',150);
+    return true;
+}
+function noScopeTick(){
+    const ns=state.noScope;if(!ns)return;
+    const p=state.player;ns.t++;
+    if(ns.t<=NS_TRACK){
+        for(const b of ns.beams){
+            let px,py;
+            if(b.cursor){px=state.mouseX;py=state.mouseY;}
+            else{
+                if(!b.tgt||b.tgt.hp<=0||!inArena(b.tgt))b.tgt=foeNearest(p.x,p.y);
+                if(!b.tgt)continue;px=b.tgt.x;py=b.tgt.y;
+            }
+            let d=Math.atan2(py-p.y,px-p.x)-b.ang;while(d>Math.PI)d-=2*Math.PI;while(d<-Math.PI)d+=2*Math.PI;
+            b.ang+=Math.max(-0.5,Math.min(0.5,d));   // swings fast enough to follow a flicking cursor
+        }
+    }
+    if(ns.t===NS_TRACK+NS_LOCK&&!ns.fired){
+        ns.fired=true;
+        const T=liveTargets(),L=Math.hypot(canvas.width,canvas.height)+300;
+        let any=false;
+        for(const b of ns.beams){
+            const dx=Math.cos(b.ang),dy=Math.sin(b.ang);b.L=L;
+            for(let i=0;i<T.length;i++){
+                const e=T[i];if(e.hp<=0)continue;
+                const rx=e.x-p.x,ry=e.y-p.y,al=rx*dx+ry*dy;if(al<0)continue;
+                const perp=Math.abs(rx*dy-ry*dx);
+                if(perp<b.w+(e.isBoss?38:18)){
+                    const dmg=(e.isBoss?b.dmg:b.dmg*10)*brittleMult(e);   // bosses take the shot itself, regular enemies are executed
+                    hurtFlat(e,dmg,'🎯','#ff44ff');fxBurst(e.x,e.y,10,'#ff66ff',2,9,20,2.6);addRing(e.x,e.y,50,12,'#ff44ff',3);any=true;
+                }
+            }
+            fxSpark(p.x+dx*30,p.y+dy*30,dx*6,dy*6,16,3,'#ffffff',{trail:false});
+        }
+        fxShake(any?10:6);fxFlash('#ff44ff',0.15,8);
+    }
+    if(ns.t>=NS_TRACK+NS_LOCK+NS_FIRE)state.noScope=null;
+}
+function noScopeDraw(){
+    const ns=state.noScope;if(!ns)return;
+    const p=state.player,t=ns.t,locked=t>NS_TRACK,fired=t>=NS_TRACK+NS_LOCK,ft=t-(NS_TRACK+NS_LOCK);
+    ctx.save();ctx.lineCap='round';
+    for(const b of ns.beams){
+        const L=b.L||Math.hypot(canvas.width,canvas.height)+300,ex=p.x+Math.cos(b.ang)*L,ey=p.y+Math.sin(b.ang)*L;
+        if(!fired){
+            const flash=locked&&((t>>2)&1);
+            ctx.globalAlpha=locked?0.95:0.45;ctx.strokeStyle=flash?'#ffffff':'#ff44ff';ctx.lineWidth=locked?3:1.5;ctx.shadowBlur=locked?14:6;ctx.shadowColor='#ff44ff';
+            if(!locked)ctx.setLineDash([10,8]);
+            ctx.beginPath();ctx.moveTo(p.x,p.y);ctx.lineTo(ex,ey);ctx.stroke();ctx.setLineDash([]);
+            if(b.cursor){ctx.globalAlpha=locked?1:0.7;ctx.lineWidth=2;ctx.beginPath();ctx.arc(state.mouseX,state.mouseY,locked?16:22,0,Math.PI*2);ctx.moveTo(state.mouseX-28,state.mouseY);ctx.lineTo(state.mouseX+28,state.mouseY);ctx.moveTo(state.mouseX,state.mouseY-28);ctx.lineTo(state.mouseX,state.mouseY+28);ctx.stroke();}
+            if(b.tgt&&b.tgt.hp>0){ctx.globalAlpha=locked?1:0.6;ctx.lineWidth=2;ctx.beginPath();ctx.arc(b.tgt.x,b.tgt.y,locked?30:38-Math.min(8,t*0.3),0,Math.PI*2);ctx.stroke();}
+        } else {
+            const a=Math.max(0,1-ft/NS_FIRE);
+            ctx.globalAlpha=a;ctx.shadowBlur=24;ctx.shadowColor='#ff00ff';
+            ctx.strokeStyle='#ff44ff';ctx.lineWidth=b.w*2*(0.4+a*0.6);ctx.beginPath();ctx.moveTo(p.x,p.y);ctx.lineTo(ex,ey);ctx.stroke();
+            ctx.strokeStyle='#ffffff';ctx.lineWidth=b.w*0.8*a+1;ctx.beginPath();ctx.moveTo(p.x,p.y);ctx.lineTo(ex,ey);ctx.stroke();
+        }
+    }
+    ctx.restore();
+}
 class CoinProjectile {
     constructor(x,y,angle,bounces){this.x=x;this.y=y;this.vx=Math.cos(angle)*28;this.vy=Math.sin(angle)*28;this.damage=state.player.damage*2.5;this.life=300;this.lastHit=null;this.bt=0;this.toShiba=false;this.bounces=0;}
     findTarget(){
@@ -2731,10 +2789,18 @@ class CoinProjectile {
 }
 
 // Splitter: every shot has a (stacking, capped) chance of one extra bullet
-function volleyN(p){return Math.max(1,p.projectileCount||1)+((Math.random()*100<(p.splitChance||0))?1:0);}
+// v2.3: a successful roll adds 2 bullets. Legendary adds a separate pity counter: if 3 shots in a row fail the roll, the 3rd is forced.
+// The guarantee is a flag, not a stat - it ignores chance, cap and how many Legendaries you own. `key` keeps Choco's towers on their own counter.
+function volleyN(p,key){
+    const base=Math.max(1,p.projectileCount||1),k=key||'main',sc=p._splitSince||(p._splitSince={});
+    let hit=Math.random()*100<(p.splitChance||0);
+    if(!hit&&p.splitGuar){sc[k]=(sc[k]||0)+1;if(sc[k]>=3)hit=true;}
+    if(hit)sc[k]=0;
+    return base+(hit?2:0);
+}
 class Bullet {
     constructor(x,y,angle,dmg,sz,crit,damageMult){this.x=x;this.y=y;this.vx=Math.cos(angle)*12;this.vy=Math.sin(angle)*12;this.damage=dmg*(damageMult||1);this.size=sz;this.crit=crit;this.life=65;this.pierce=(state.player&&state.player.pierce)|0;this.homing=(state.player&&state.player.homing)||0;}
-    update(){if(this.homing)steerHome(this,this.homing,380);this.x+=this.vx;this.y+=this.vy;this.life--;}
+    update(){if(this.homing)steerHome(this,this.homing,380);this.px=this.x;this.py=this.y;this.x+=this.vx;this.y+=this.vy;this.life--;}
     draw(){
         const c=this.col||(this.crit?'#ffd700':'#00f2ff');
         ctx.save();ctx.lineCap='round';
@@ -2838,7 +2904,7 @@ class Player {
             if(host.isBoss)bossMCTick(host);
             if(state.mindControl.slamCooldown>0)state.mindControl.slamCooldown--;
             state.mindControl.mcTimer=(state.mindControl.mcTimer||0)+1;
-            if(state.mindControl.mcTimer>=3600){killMindControlHost();return;}
+            if(state.mindControl.mcTimer>=3600){killMindControlHost(true);return;}
             // Update timer display each second
             if(state.mindControl.mcTimer%60===0){
                 mcTimerText();
@@ -3387,30 +3453,47 @@ function autoPickTarget(){
     all.forEach(e=>{if(e===skipHost||!inArena(e))return;const d=Math.sqrt((e.x-state.player.x)**2+(e.y-state.player.y)**2);if(d<bd){bd=d;best=e;}});
     return best;
 }
-// ── ABILITY TARGETING HELPER ──
-// Returns the aim angle for abilities that support both Auto and Manual targeting.
-// Auto: aims at nearest enemy (or boss). Manual: aims at cursor.
-function abilityAimAngle(px, py){
-    if(settings.abilityTarget === 'manual'){
-        return Math.atan2(state.mouseY - py, state.mouseX - px);
-    }
-    // Auto: find nearest enemy/boss
-    let best=null, bd=Infinity;
-    const all=[...state.enemies];
-    if(state.boss) all.push(state.boss);
-    all.forEach(e=>{if(!inArena(e))return;const d=Math.sqrt((e.x-px)**2+(e.y-py)**2);if(d<bd){bd=d;best=e;}});
-    if(best) return Math.atan2(best.y-py, best.x-px);
-    // Fallback to cursor if no enemies
-    return Math.atan2(state.mouseY - py, state.mouseX - px);
+// ── ABILITY TARGETING (v2.3) ──
+// One setting drives every targeted ability and ultimate:
+//   SMART    ('auto')      each ability picks what suits it: AoEs (Tar Toss, Singularity, Snowball) the thickest cluster,
+//                          Stairs Throw the busiest lane, 360-NoScope always your cursor, the rest the nearest enemy
+//   NEAREST  ('nearest')   the closest enemy, for everything
+//   STRONGEST('strongest') the boss if one is alive, otherwise the highest-HP enemy - focus the big threat
+//   CURSOR   ('manual')    wherever your mouse is
+function abilityMode(){const m=settings.abilityTarget;return(m==='nearest'||m==='strongest'||m==='manual')?m:'auto';}
+function foeNearest(px,py){const T=liveTargets();let b=null,bd=Infinity;for(let i=0;i<T.length;i++){const e=T[i],d=(e.x-px)**2+(e.y-py)**2;if(d<bd){bd=d;b=e;}}return b;}
+function foeStrongest(){const b=state.boss;if(b&&b.hp>0&&inArena(b)&&b!==(state.mindControl.active?state.mindControl.host:null))return b;const T=liveTargets();let s=null;for(let i=0;i<T.length;i++)if(!s||T[i].hp>s.hp)s=T[i];return s;}
+// Returns {x,y,e,cursor} for the NON-smart modes, or null: in SMART mode (callers run their own logic) or when there is nothing to aim at.
+function abilityPick(px,py){
+    const m=abilityMode();
+    if(m==='auto')return null;
+    if(m==='manual')return{x:state.mouseX,y:state.mouseY,e:null,cursor:true};
+    const e=m==='nearest'?foeNearest(px,py):foeStrongest();
+    return e?{x:e.x,y:e.y,e:e}:null;
+}
+// Aim angle for projectile-style abilities. SMART = nearest. Falls back to the cursor when there is nothing to aim at.
+function abilityAimAngle(px,py){
+    const pk=abilityPick(px,py)||(abilityMode()==='auto'?(()=>{const e=foeNearest(px,py);return e?{x:e.x,y:e.y}:null;})():null);
+    if(pk)return Math.atan2(pk.y-py,pk.x-px);
+    return Math.atan2(state.mouseY-py,state.mouseX-px);
 }
 
+// v2.3: one place to end a pounce. The feast used to leave the victim with the 999-frame stun it was grabbed with, so a boss you cancelled
+// (or whose feast timed out) stayed frozen for up to ~16 more seconds. Bosses are released instantly; ordinary enemies get a short stagger.
+function endPounce(){
+    const pn=state.pounce,t=pn.target;
+    if(t){t.stunned=t.isBoss?0:Math.min(t.stunned||0,20);}
+    pn.active=false;pn.target=null;pn.healTick=0;
+    state.player.invul=60;
+    const ind=document.getElementById('pounceIndicator');if(ind)ind.style.display='none';
+}
 // ── ABILITIES ──
 function triggerAbility(){
-    if(state.pounce.active){state.pounce.active=false;state.player.invul=60;state.pounce.target=null;document.getElementById('pounceIndicator').style.display='none';return;}
+    if(state.pounce.active){endPounce();return;}
     const p=state.player;
     if(state.mindControl.active){
-        // SPC = kill host
-        killMindControlHost();
+        // v2.3: SPACE = the host's special ability (R = Rip; there is no delatch any more)
+        triggerMCAbility('q');
         return;
     }
     if(!state.ability.ready)return;
@@ -3470,12 +3553,12 @@ function triggerAbility(){
         }
     } else if(p.config.id==='tiger'){
         const RANGE=460;
-        const allT=[...state.enemies];if(state.boss)allT.push(state.boss);
+        const allT=liveTargets();   // v2.3: only enemies on the playfield (an off-screen boss used to drag you out of the arena)
         const candidates=allT.filter(e=>Math.sqrt((e.x-p.x)**2+(e.y-p.y)**2)<RANGE);
         if(candidates.length>0){
             let target=candidates.reduce((best,e)=>e.hp>best.hp?e:best,candidates[0]);
             state.pounce={active:true,target:target,timer:600,damage:Math.max(5,p.damage*1.0),damageTick:0,healTick:0};
-            p.x=target.x;p.y=target.y;target.stunned=999;
+            p.x=target.x;p.y=target.y;target.stunned=10;   // held by the feast loop, which tops this up each frame
             popup(p.x,p.y-60,'POUNCE!','#ff9900');
             state.enemies.forEach(e=>{if(e!==target){const d=Math.sqrt((e.x-p.x)**2+(e.y-p.y)**2);if(d<500){e.fleeing=true;e.fleeTimer=420;}}});
             if(state.boss&&state.boss!==target){const d=Math.sqrt((state.boss.x-p.x)**2+(state.boss.y-p.y)**2);if(d<500){state.boss.fleeing=true;state.boss.fleeTimer=420;}}
@@ -3496,7 +3579,6 @@ function triggerAbility(){
         ];
         hands.forEach(h=>{h.pa=h.ang;h.nx=Math.cos(h.ang);h.ny=Math.sin(h.ang);h.hist=[];});
         state.glorpBeam={timer:180,maxTimer:180,hands};
-        popup(p.x,p.y-55,'GLORP BEAM!','#00ff44');
         fxFlash('#aaffcc',0.35,8);fxShake(8);addRing(p.x,p.y,200,18,'#00ff66',4);
         used=true;
     } else if(p.config.id==='coolioioio'){
@@ -3586,15 +3668,12 @@ function triggerAbility(){
     } else if(p.config.id==='shiba'){
         // PRIMARY: 50 BUCKS (swapped)
         const allS=liveTargets();   // v2.1: only enemies actually on the playfield
-        if(settings.abilityTarget==='manual'){
-            const ang=Math.atan2(state.mouseY-p.y,state.mouseX-p.x);
-            state.bullets.push(new CoinProjectile(p.x,p.y,ang,15));
-            popup(p.x,p.y-50,'💰 50 BUCKS!','#ffd700');used=true;
-        } else {
-            let first=null,fd=Infinity;
-            allS.forEach(e=>{const d=Math.sqrt((e.x-p.x)**2+(e.y-p.y)**2);if(d<fd){fd=d;first=e;}});
-            if(first){
-                state.bullets.push(new CoinProjectile(p.x,p.y,Math.atan2(first.y-p.y,first.x-p.x),15));
+        {
+            const _pk=abilityPick(p.x,p.y);let first=null,fd=Infinity;
+            if(!_pk)allS.forEach(e=>{const d=Math.sqrt((e.x-p.x)**2+(e.y-p.y)**2);if(d<fd){fd=d;first=e;}});
+            const aimPt=_pk||(first?{x:first.x,y:first.y}:null);
+            if(aimPt){
+                state.bullets.push(new CoinProjectile(p.x,p.y,Math.atan2(aimPt.y-p.y,aimPt.x-p.x),15));
                 popup(p.x,p.y-50,'💰 50 BUCKS!','#ffd700');used=true;
             } else popup(p.x,p.y-30,'no targets','#888');
         }
@@ -3606,10 +3685,12 @@ function triggerAbility(){
         const WORDS=['NAKAMA','BELIEVE IT','PLUS ULTRA','BANKAI','SHANNARO','GOMU GOMU','KAMEHAMEHA','STAND PROUD'];
         const all=[...state.enemies];if(state.boss)all.push(state.boss);
         let target=null,td=Infinity;
-        all.forEach(e=>{const d=Math.sqrt((e.x-p.x)**2+(e.y-p.y)**2);if(d<td){td=d;target=e;}});
-        const baseAng=target?Math.atan2(target.y-p.y,target.x-p.x):Math.atan2(state.mouseY-p.y,state.mouseX-p.x);
+        const _pk=abilityPick(p.x,p.y);
+        if(_pk&&_pk.e)target=_pk.e;
+        else if(!_pk)all.forEach(e=>{if(!inArena(e))return;const d=Math.sqrt((e.x-p.x)**2+(e.y-p.y)**2);if(d<td){td=d;target=e;}});
+        const baseAng=_pk&&_pk.cursor?Math.atan2(state.mouseY-p.y,state.mouseX-p.x):target?Math.atan2(target.y-p.y,target.x-p.x):Math.atan2(state.mouseY-p.y,state.mouseX-p.x);
         popup(p.x,p.y-60,'💬 WORD BARRAGE!','#cc44ff',180);
-        state.blahBarrage={timer:75,shootTick:0,angle:baseAng,target};
+        state.blahBarrage={timer:75,shootTick:0,angle:baseAng,target,cursor:!!(_pk&&_pk.cursor)};
         p.invul=60;
         used=true;
     } else if(p.config.id==='subaru'){
@@ -3655,8 +3736,9 @@ function triggerSecondary(){
         let target=null,md=Infinity;
         const all=liveTargets();
         for(let i=0;i<all.length;i++){const e=all[i],d=(e.x-p.x)**2+(e.y-p.y)**2;if(d<md){md=d;target=e;}}
-        if(settings.abilityTarget==='manual')used=voltStart(p,Math.atan2(state.mouseY-p.y,state.mouseX-p.x),target);
-        else if(target)used=voltStart(p,Math.atan2(target.y-p.y,target.x-p.x),target);
+        const _pk=abilityPick(p.x,p.y);
+        if(_pk)used=voltStart(p,Math.atan2(_pk.y-p.y,_pk.x-p.x),_pk.e||target);
+        else if(abilityMode()==='auto'&&target)used=voltStart(p,Math.atan2(target.y-p.y,target.x-p.x),target);
         else popup(p.x,p.y-30,'NO TARGET','#888');
     } else if(p.config.id==='tiger'){
         const AURA_ENEMY_LINES=["THAT TIGER HAS SO MUCH AURA","IM SCARED","DONT EAT ME","I DONT WANT THESE PROBLEMS","THE VIBE IS WRONG","NOPE NOPE NOPE","TOO MUCH AURA","MY INSTINCTS SAY RUN","WHAT IS THAT ENERGY","IM NOT PAID ENOUGH","SOMEONE ELSE DEAL WITH IT","BIG SCARY CAT","I FELT THAT IN MY SOUL","THE AURA RADIATES","LEAVE ME ALONE","I AM FLEEING"];
@@ -3768,30 +3850,13 @@ function triggerSecondary(){
         if(targets.length===0)popup(p.x,p.y-40,'no targets','#888');
         used=true;
     } else if(p.config.id==='coolioioio'){
-        const all=liveTargets();
-        if(all.length===0){popup(p.x,p.y-30,'no targets','#888');return;}
-        let mainTarget;
-        if(settings.abilityTarget==='manual'){
-            let cd=Infinity;
-            all.forEach(e=>{const d=Math.sqrt((e.x-state.mouseX)**2+(e.y-state.mouseY)**2);if(d<cd){cd=d;mainTarget=e;}});
-        } else {
-            mainTarget=all.reduce((best,e)=>e.hp>best.hp?e:best,all[0]);
-        }
-        state.bullets.push(new PiercingBullet(p.x,p.y,mainTarget.x,mainTarget.y,mainTarget,p.damage*18));
-        popup(p.x,p.y-55,'🎯 360-NO-SCOPE','#ff44ff',180);
-        popup(mainTarget.x,mainTarget.y-40,'MAIN TARGET','#ff00ff',140);
-        const sorted=[...all].sort((a,b)=>Math.sqrt((a.x-p.x)**2+(a.y-p.y)**2)-Math.sqrt((b.x-p.x)**2+(b.y-p.y)**2));
-        const closest=sorted[0]!==mainTarget?sorted[0]:sorted[1];
-        if(closest){state.bullets.push(new PiercingBullet(p.x,p.y,closest.x,closest.y,closest,p.damage*12));popup(closest.x,closest.y-30,'CLOSEST','#ff88ff',100);}
-        const furthest=sorted[sorted.length-1]!==mainTarget?sorted[sorted.length-1]:sorted[sorted.length-2];
-        if(furthest&&furthest!==closest){state.bullets.push(new PiercingBullet(p.x,p.y,furthest.x,furthest.y,furthest,p.damage*12));popup(furthest.x,furthest.y-30,'FURTHEST','#ff88ff',100);}
-        used=true;
+        used=noScopeStart(p);
     } else if(p.config.id==='blahblahblah'){
-        // Ultimate Speech: fullscreen anime cutscene then nuke everything in huge radius
+        // Cringe Unskippable Monologue (formerly Ultimate Speech): fullscreen anime cutscene then nuke everything in huge radius
         const SPEECHES=['I CANNOT GIVE UP NOW — MY FRIENDS NEED ME!','THIS POWER... IS THE POWER OF BONDS!','I REFUSE TO LOSE IN A PLACE LIKE THIS!','JUST WHO THE HECK DO YOU THINK I AM?!','I WILL SURPASS MY LIMITS... RIGHT HERE, RIGHT NOW!'];
         const speechLine=SPEECHES[Math.floor(Math.random()*SPEECHES.length)];
         state.blahCutscene={timer:SPEECH_FRAMES,maxTimer:SPEECH_FRAMES,line:speechLine};
-        popup(p.x,p.y-60,'💬 ULTIMATE SPEECH!','#cc44ff',200);
+        popup(p.x,p.y-60,'💬 CRINGE UNSKIPPABLE MONOLOGUE','#cc44ff',200);
         p.invul=300;
         // Massive nuke once the speech has landed (~1.7s)
         later(()=>{
@@ -3841,23 +3906,32 @@ function triggerSecondary(){
     if(used){state.secondary.ready=false;state.secondary.cooldown=state.secondary.maxCooldown;updateHUD();}
 }
 
-function killMindControlHost(){
+function killMindControlHost(timeout){
     if(!state.mindControl.active)return;
-    const h=state.mindControl.host;
-    // v1.8: a boss host is not deleted in one hit — you tear out a chunk of its health and eject instead
+    const h=state.mindControl.host,p=state.player;let fracOverride=null;
+    // v2.3 RIP: kills any normal host outright. On a boss it instantly deals 50% of the boss's max HP + 4 seconds of your gun DPS (lethal if that's enough).
+    // If the boss survives you are ejected, healed by its remaining HP and any overheal becomes shield (same as a regular rip).
     if(h.isBoss){
-        const dmg=Math.max(state.player.damage*20,h.maxHp*0.25);
-        h.hp=Math.max(1,h.hp-dmg);   // never lethal
-        const healAmt=Math.max(1,Math.ceil(h.hp/h.maxHp*state.player.maxHp*0.25));
-        popup(h.x,h.y-70,'☠ HOST RIPPED -'+Math.floor(dmg),'#ff0044',140);addRing(h.x,h.y,150,18,'#ff0044',5);fxBurst(h.x,h.y,24,'#ff3366',3,11,26,3);fxShake(12);
-        ejectMindControl();
-        state.player.hp=Math.min(state.player.maxHp,state.player.hp+healAmt);
-        if(h===state.boss)updateBossBar();
-        updateHUD();
-        return;
+        if(timeout){ejectMindControl();return;}   // the 60s timer just lets go of a boss
+        const shotsPerSec=60/Math.max(5,p.atkSpeed),dps=p.damage*shotsPerSec*((p.projectileCount||1)+(p.splitChance||0)/50);
+        const dmg=h.maxHp*0.5+dps*4;
+        if(h.hp-dmg>0){
+            h.hp-=dmg;
+            const healAmt=Math.max(1,Math.ceil(h.hp/h.maxHp*p.maxHp*0.25));
+            popup(h.x,h.y-70,'☠ RIP -'+Math.floor(dmg),'#ff0044',140);addRing(h.x,h.y,150,18,'#ff0044',5);fxBurst(h.x,h.y,24,'#ff3366',3,11,26,3);fxShake(12);
+            const sv=state.mindControl.savedHp;
+            ejectMindControl();
+            const tot=sv+healAmt,over=Math.max(0,tot-p.maxHp);
+            p.hp=Math.min(p.maxHp,tot);
+            if(over>0){p.shield=(p.shield||0)+over;popup(p.x,p.y-90,`🛡+${Math.floor(over)} SHIELD`,'#ffdd00',140);}
+            if(h===state.boss)updateBossBar();
+            updateHUD();
+            return;
+        }
+        fracOverride=0.5;h.hp=0;   // lethal rip: fall through to the kill + harvest below (full harvest)
     }
     // Heal the noglin based on remaining host HP — reward for smart early termination
-    const healPct=h.hp/h.maxHp;
+    const healPct=fracOverride!==null?fracOverride:h.hp/h.maxHp;
     const healAmt=Math.max(1,Math.ceil(healPct*state.player.maxHp*0.5));
     // Clean up in-flight MC abilities
     if(state.mindControl.hurlState){state.mindControl.hurlState.projectile&&(state.mindControl.hurlState.projectile.stunned=0);state.mindControl.hurlState=null;}
@@ -4385,9 +4459,11 @@ function voidRadius(v){
 function voidTear(p){
     const W=canvas.width,H=canvas.height,R=VOID_R;
     let tx,ty;
-    if(settings.abilityTarget==='manual'){tx=state.mouseX;ty=state.mouseY;}
+    const _pk=abilityPick(p.x,p.y);
+    if(_pk){tx=_pk.x;ty=_pk.y;}
+    else if(abilityMode()!=='auto'){const a=Math.atan2(state.mouseY-p.y,state.mouseX-p.x);tx=p.x+Math.cos(a)*420;ty=p.y+Math.sin(a)*420;}
     else{
-        // auto: open it over the thickest cluster of enemies (bosses count double)
+        // smart: open it over the thickest cluster of enemies (bosses count double)
         const T=liveTargets();let bc=-1,best=null;
         for(let i=0;i<T.length;i++){
             const e=T[i];let c=0;
@@ -4497,7 +4573,9 @@ function voidDraw(){
 const STAIR_SPEED=17;
 function stairsThrow(p){
     const T=liveTargets();let ang,dist=620;
-    if(settings.abilityTarget==='manual'||!T.length){ang=Math.atan2(state.mouseY-p.y,state.mouseX-p.x);}
+    const _pk=abilityPick(p.x,p.y);
+    if(_pk){ang=Math.atan2(_pk.y-p.y,_pk.x-p.x);if(!_pk.cursor)dist=Math.max(420,Math.min(900,Math.hypot(_pk.x-p.x,_pk.y-p.y)+170));}
+    else if(abilityMode()!=='auto'||!T.length){ang=Math.atan2(state.mouseY-p.y,state.mouseX-p.x);}
     else{
         // aim down the lane with the most enemies on it
         let bs=-1;
@@ -4706,11 +4784,7 @@ function killEnemy(e,idx){
         if(e===state.boss)state.boss=null;
         const multGain=settings.difficulty>1?0.4:0.25;
         state.bossMultiplier=Math.min(6.0,(state.bossMultiplier||1)+multGain);
-        if(state.pounce.active&&state.pounce.target===e){
-            state.pounce.active=false;state.pounce.target=null;state.player.invul=60;
-            state.pounce.healTick=0;
-            document.getElementById('pounceIndicator').style.display='none';
-        }
+        if(state.pounce.active&&state.pounce.target===e){endPounce();}
         popup(canvas.width/2,canvas.height/2-40,'BOSS SLAIN! +600','#ffd700',220);
         popup(canvas.width/2,canvas.height/2-20,`BOSS MULT NOW ${(state.bossMultiplier||1).toFixed(1)}x`,'#ff9900',200);
         if(!state.boss)document.getElementById('bossBar').classList.add('hidden');
@@ -4810,7 +4884,7 @@ function gameStep(){
     burnTick();
     chocoTick();
     voltTick();
-    voidTick();stairsTick();
+    voidTick();stairsTick();noScopeTick();
     ultTick();
     // Update HUD cooldown display every 60 ticks (once per second) so timers don't freeze
     if(state.frameCount%60===0) updateHUD();
@@ -4902,10 +4976,9 @@ function gameStep(){
                     if(e.isBoss){
                         const bd=gp.damage*0.9;   // v1.8: reduced further
                         e.hp=Math.max(0,e.hp-bd);spawnBlood(e.x,e.y,6);
-                        popup(e.x,e.y-40,`GLORPED -${Math.floor(bd)}`,'#00ff44',70);
                         if(e===state.boss){updateBossBar();if(e.hp<=0)killEnemy(e,-1);}
                     } else {
-                        e.hp=Math.max(0,e.hp-e.maxHp*0.36);spawnBlood(e.x,e.y,8);popup(e.x,e.y-20,'GLORPED','#00ff44');fxBurst(e.x,e.y,8,'#66ffaa',2,8,20,2.6);if(e.hp<=0)killAny(e);   // v1.7: no longer an instant kill (-40%)
+                        e.hp=Math.max(0,e.hp-e.maxHp*0.36);spawnBlood(e.x,e.y,8);fxBurst(e.x,e.y,8,'#66ffaa',2,8,20,2.6);if(e.hp<=0)killAny(e);   // v1.7: no longer an instant kill (-40%)
                     }
                 }
             }
@@ -4918,7 +4991,7 @@ function gameStep(){
         if(gb.timer<=0){
             gp.x=Math.max(65,Math.min(canvas.width-65,state.mouseX));
             gp.y=Math.max(65,Math.min(canvas.height-65,state.mouseY));
-            gp.invul=80;popup(gp.x,gp.y-30,'GLORP!','#00ff88');
+            gp.invul=80;
             addRing(gp.x,gp.y,260,22,'#00ff88',5);fxBurst(gp.x,gp.y,26,'#88ffbb',3,11,28,3);fxShake(10);
             // Confuse all nearby enemies on arrival
             state.enemies.forEach(e=>{if((e.x-gp.x)**2+(e.y-gp.y)**2<122500){e.confused=150;e.confuseTimer=0;}});
@@ -4966,9 +5039,7 @@ function gameStep(){
     if(state.pounce.active){
         const pt=state.pounce.target;
         if(!pt||pt.hp<=0){
-            state.pounce.active=false;state.pounce.target=null;state.player.invul=60;
-            state.pounce.healTick=0;
-            document.getElementById('pounceIndicator').style.display='none';
+            endPounce();
         } else {
             if(pt.stunned<10)pt.stunned=10;state.player.x=pt.x;state.player.y=pt.y;
             state.pounce.damageTick--;
@@ -5007,9 +5078,7 @@ function gameStep(){
                     state.player.atkSpeed=Math.max(3,Math.floor(state.player.atkSpeed/4));
                     popup(state.player.x,state.player.y-60,'🐯 FRENZY! 5x DMG!','#ff4400',180);
                 }
-                state.pounce.active=false;state.pounce.target=null;state.player.invul=60;
-                state.pounce.healTick=0;
-                document.getElementById('pounceIndicator').style.display='none';
+                endPounce();
             }
         }
     }
@@ -5027,8 +5096,9 @@ function gameStep(){
             {const en=state.enemies;for(let i=0;i<en.length;i++){const e=en[i];if(e.hp<=0||!inArena(e))continue;const dx=e.x-p.x,dy=e.y-p.y,d=dx*dx+dy*dy;if(d<nearDist){nearDist=d;nearest=e;}}}
             if(!nearest&&state.boss&&state.boss.hp>0&&inArena(state.boss))nearest=state.boss;
             let baseAng;
-            if(settings.abilityTarget==='manual'){
-                baseAng=Math.atan2(state.mouseY-p.y,state.mouseX-p.x);
+            const _pk=abilityPick(p.x,p.y);
+            if(_pk){
+                baseAng=Math.atan2(_pk.y-p.y,_pk.x-p.x);
             } else {
                 baseAng=nearest?Math.atan2(nearest.y-p.y,nearest.x-p.x):0;
             }
@@ -5279,6 +5349,8 @@ function gameStep(){
             const WORDS=['NAKAMA!','BELIEVE IT!','PLUS ULTRA!','BANKAI!','SHANNARO!','GOMU GOMU!','KAMEHAMEHA!','SENPAI!','NANI?!','SUGOI!'];
             // Re-acquire target
             let tgt=bb.target;
+            if(bb.cursor)tgt={x:state.mouseX,y:state.mouseY,hp:1};   // cursor mode: the stream follows your mouse
+            else if(!tgt||tgt.hp<=0){const _pk=abilityPick(p.x,p.y);tgt=_pk&&_pk.e?_pk.e:null;}
             if(!tgt||tgt.hp<=0){tgt=null;let td=Infinity;const all=allTargets();for(let i=0;i<all.length;i++){const e=all[i],dx=e.x-p.x,dy=e.y-p.y,d=dx*dx+dy*dy;if(d<td){td=d;tgt=e;}}}
             bb.target=tgt;
             if(tgt){
@@ -5286,7 +5358,7 @@ function gameStep(){
                 for(let w=0;w<3;w++){
                     const spread=(w-1)*0.22+(Math.random()-.5)*0.25;
                     const ang=Math.atan2(tgt.y-p.y,tgt.x-p.x)+spread,sp=17+Math.random()*3;
-                    state.bullets.push({x:p.x,y:p.y,vx:Math.cos(ang)*sp,vy:Math.sin(ang)*sp,damage:p.damage*1.8,life:70,word:WORDS[Math.floor(Math.random()*WORDS.length)],size:7,home:0.05});
+                    state.bullets.push({x:p.x,y:p.y,vx:Math.cos(ang)*sp,vy:Math.sin(ang)*sp,damage:p.damage*1.44,life:70,word:WORDS[Math.floor(Math.random()*WORDS.length)],size:7,home:0.05});
                 }
                 // Stun on hit handled in update
             }
@@ -5363,7 +5435,12 @@ function gameStep(){
             }
             if(isHost)continue;
             const hitR=(b.size||8)+(b instanceof IcicleProjectile?10:state.mindControl.active?22:14)+(e.isBoss?18:0);
-            if((e.x-b.x)**2+(e.y-b.y)**2<hitR*hitR){
+            let hd2=(e.x-b.x)**2+(e.y-b.y)**2;
+            if(b instanceof Bullet&&b.px!==undefined&&hd2>=hitR*hitR){   // v2.3: swept test so x4 velocity can't tunnel through enemies
+                const sx=b.x-b.px,sy=b.y-b.py,sl=sx*sx+sy*sy;
+                if(sl>1){let u=((e.x-b.px)*sx+(e.y-b.py)*sy)/sl;u=u<0?0:u>1?1:u;const qx=b.px+sx*u-e.x,qy=b.py+sy*u-e.y;hd2=qx*qx+qy*qy;}
+            }
+            if(hd2<hitR*hitR){
                 if(b.hitSet&&b.hitSet.has(e))continue;
                 let dmg=b.damage*brittleMult(e);
                 e.hp-=dmg;
@@ -5373,7 +5450,6 @@ function gameStep(){
                 spawnBlood(e.x,e.y,4);
                 if(b instanceof IcicleProjectile&&!e.isBoss){e.stunned=Math.max(e.stunned,180);popup(e.x,e.y-20,'❄ FROZEN!','#aaeeff');}
                 if(b.word){e.stunned=Math.max(e.stunned||0,30);popup(e.x,e.y-20,b.word,'#cc44ff',60);}
-                if(b.crit)popup(e.x,e.y-15,'CRIT!','#ffd700');
                 if(e.hp<=0){killEnemy(e,i);if(i<state.enemies.length)state.enemies.splice(i,1);killed=true;break;}
                 break;
             }
@@ -5762,7 +5838,7 @@ function gameRender(){
         for(const p of state.particles){p.draw();}
         fxDraw();
         arsonDraw();
-        brineDraw();stairsDraw();
+        brineDraw();stairsDraw();noScopeDraw();
         handDraw();
         chocoDraw();
         voltDraw();
@@ -5924,8 +6000,16 @@ function spawnBoss(){
 // ── UI ──
 let previousScreen=null;
 function showScreen(id){previousScreen=state.screen;state.screen='OVERLAY';document.querySelectorAll('.ui-layer').forEach(el=>el.classList.add('hidden'));document.getElementById(id).classList.remove('hidden');}
+function showInfoTab(t){
+    ['upgrades','enemies','abilities','changelog'].forEach(k=>{
+        const b=document.getElementById('infoTab_'+k),p=document.getElementById('infoPanel_'+k);
+        if(b)b.classList.toggle('active',k===t);if(p)p.classList.toggle('hidden',k!==t);
+    });
+    const c=document.querySelector('#infoScreen .menu-card');if(c)c.scrollTop=0;
+}
+function openInfo(t){showScreen('infoScreen');showInfoTab(t||'upgrades');}
 function closeOverlay(){
-    ['settingsScreen','keybindsScreen','infoScreen','changelogScreen','enemyScreen','upgradeScreen'].forEach(id=>{const el=document.getElementById(id);if(el)el.classList.add('hidden');});
+    ['settingsScreen','infoScreen'].forEach(id=>{const el=document.getElementById(id);if(el)el.classList.add('hidden');});
     if(previousScreen==='MENU'||!state.player){document.getElementById('mainMenu').classList.remove('hidden');state.screen='MENU';}
     else{document.getElementById('pauseMenu').classList.remove('hidden');state.screen='PAUSED';const ey=document.getElementById('eyeToggle');if(ey)ey.style.display='block';updateHUD();}
 }
@@ -5944,7 +6028,16 @@ function toggleHudVisibility(){
 
 function setDifficulty(d){settings.difficulty=d==='hard'?1.6:1;document.getElementById('diffNormal').classList.toggle('active',d==='normal');document.getElementById('diffHard').classList.toggle('active',d==='hard');}
 function setParticles(on){settings.particles=on;document.getElementById('particlesOn').classList.toggle('active',on);document.getElementById('particlesOff').classList.toggle('active',!on);}
-function setAbilityTarget(t){settings.abilityTarget=t;document.getElementById('targetAuto').classList.toggle('active',t==='auto');document.getElementById('targetManual').classList.toggle('active',t==='manual');}
+const ABILITY_TARGET_HINT={
+    auto:'SMART: each ability picks what suits it — area attacks (Tar Toss, Singularity, Snowball) land on the thickest cluster, Stairs Throw takes the busiest lane, 360-NoScope always aims its main line at your cursor, everything else fires at the nearest.',
+    nearest:'NEAREST: every targeted ability goes for the closest enemy — safest for crowd control and clearing what is on top of you.',
+    strongest:'STRONGEST: every targeted ability goes for the boss if one is alive, otherwise the highest-HP enemy — focus the big threat down.',
+    manual:'CURSOR: every targeted ability goes exactly where your mouse is — full control, you pick the cluster or the target.'};
+function setAbilityTarget(t){
+    settings.abilityTarget=t;
+    [['auto','targetAuto'],['nearest','targetNearest'],['strongest','targetStrongest'],['manual','targetManual']].forEach(([k,id])=>{const el=document.getElementById(id);if(el)el.classList.toggle('active',t===k);});
+    const h=document.getElementById('abilityTargetHint');if(h)h.textContent=ABILITY_TARGET_HINT[t]||'';
+}
 function setShootTarget(t){settings.shootTarget=t;['Default','Strongest','Closest','Manual'].forEach(s=>{const el=document.getElementById('shoot'+s);if(el)el.classList.toggle('active',t===s.toLowerCase());});}
 function setAutoPause(v){settings.autoPauseOnHide=v;document.getElementById('autoPauseOn').classList.toggle('active',v);document.getElementById('autoPauseOff').classList.toggle('active',!v);}
 function setHitbox(v){settings.showHitbox=v;document.getElementById('hitboxOn').classList.toggle('active',v);document.getElementById('hitboxOff').classList.toggle('active',!v);}
@@ -5972,6 +6065,15 @@ const ENEMY_INFO={
     sniper: {name:'Sniper',  note:'Stays far away (~520px). Charges a LASER: a thin red line tracks you, then locks and flashes (about half a second to step out of it) before a piercing beam fires. Stunning it cancels the shot.',mc:['HEADSHOT','3 instant long-range hits on your toughest targets.']},
     spider: {name:'Spider',  note:'Keeps ~260px away and spawns fast baby spiders every 4s.',mc:['WEB BARRAGE','Homing webs that damage and stun.']},
 };
+// v2.3: boss types (grouped by attack pattern; every BOSS_DEFS entry is listed under its pattern)
+const BOSS_INFO={
+    charger:{label:'CHARGER',icon:'🐲',note:'Chases you, then locks your position and RAMS in a straight line at ~6× speed for about a second, rests for under a second and starts again. Dodge sideways just before the charge lands.',mc:['CHARGE RAMPAGE','Dash toward your target (cursor in SMART mode), dealing 6× damage and a stun to everything it touches.']},
+    turret: {label:'TURRET',icon:'🤖',note:'Keeps ~320px away and strafes around you, firing 3-bullet fans every 0.6s. After 3 volleys it stops to RELOAD for 4s — that is your window to close in.',mc:['TURRET OVERLOAD','Six waves of 24-bullet rings in all directions.']},
+    swirler:{label:'SWIRLER',icon:'🦑',note:'Orbits you at ~280px and keeps firing a rotating four-way cross of bullets. Stay moving against its spin and slip between the arms.',mc:['DEATH SPIRAL','Nine expanding waves of 12-bullet rings.']},
+    bursty: {label:'BURSTY',icon:'👺',note:'Walks at you, then plants itself and unloads 8 rapid triple-shot volleys before chasing again. Back off when it stops moving.',mc:['BURST STORM','Seven homing shots at each of up to 9 enemies.']},
+    ghost:  {label:'GHOST',icon:'☠️',note:'Drifts slowly, then BLINKS to ~200px from you and sprays 6 bullets in random directions. Easy to avoid at range, dangerous up close.',mc:['PHANTOM STRIKES','Warp from enemy to enemy (up to 8), 7× damage and a stun on each.']},
+    swarm:  {label:'SUMMONER',icon:'🧟',note:'Walks straight at you, summons 3 ordinary enemies every 3s and fires a triple spread every 2s. Kill it fast or the arena fills up.',mc:['SUMMON HORDE','Ten charmed minions plus an 18-bullet ring.']},
+};
 function initEnemyCatalogue(){
     const grid=document.getElementById('enemyGrid');if(!grid)return;
     grid.innerHTML='';
@@ -5986,7 +6088,27 @@ function initEnemyCatalogue(){
                 <div style="display:flex;gap:4px;flex-wrap:wrap;margin-top:4px">${chip('HP','×'+d.hpMult)}${chip('SPD','×'+d.speedMult)}${chip('HIT',d.meleeDmg>0?'×'+d.meleeDmg:'—')}${d.hasRanged?chip('RANGED','✔'):''}${chip('FROM','Lv'+(d.minLvl||1))}</div></div>
             </div>
             <div style="font-size:7px;color:#bbb;line-height:1.6;margin-bottom:5px">${inf.note}</div>
-            <div class="ability-row"><span class="ability-key" style="color:#ff88ff">[NOGLIN] Q — ${inf.mc[0]}</span><span class="ability-desc">${inf.mc[1]}</span></div>`;
+            <div class="ability-row"><span class="ability-key" style="color:#ff88ff">[NOGLIN] SPACE — ${inf.mc[0]}</span><span class="ability-desc">${inf.mc[1]}</span></div>`;
+        grid.appendChild(card);
+    });
+    // ── bosses ──
+    const hd=document.createElement('div');
+    hd.style.cssText='grid-column:1/-1;text-align:left;margin-top:8px;border-bottom:1px solid rgba(255,215,0,0.3);padding-bottom:4px';
+    hd.innerHTML='<div style="font-size:10px;color:#ffd700">👑 BOSS TYPES</div><div style="font-size:7px;line-height:1.8;color:#8a8aa8;margin-top:4px">A boss arrives every 30s. Each one follows one of six attack patterns. Boss HP = (450 + 120 × level) × difficulty × the boss\'s own multiplier × the boss multiplier (+0.25 per boss killed, +0.4 on hard, max ×6). Bosses ignore most stuns, and when Noglin latches onto one he gets that pattern\'s special.</div>';
+    grid.appendChild(hd);
+    Object.keys(BOSS_INFO).forEach(pat=>{
+        const bi=BOSS_INFO[pat],defs=BOSS_DEFS.filter(d=>d.pattern===pat);
+        const card=document.createElement('div');card.className='char-info-card';card.style.gridColumn='1/-1';
+        const roster=defs.map(d=>`<span style="display:inline-flex;align-items:center;gap:4px;background:#1a083d;border:1px solid ${d.color}66;border-radius:4px;padding:2px 6px;margin:2px 3px 0 0;font-size:6px;color:#ddd;white-space:nowrap">${d.emoji} <span style="color:${d.color}">${d.name}</span> <span style="color:#8a8aa8">HP ×${d.hpMult}</span></span>`).join('');
+        card.innerHTML=`
+            <div style="display:flex;align-items:center;gap:8px;margin-bottom:6px;border-bottom:1px solid rgba(255,255,255,0.1);padding-bottom:6px">
+                <span style="font-size:1.9rem;line-height:1;width:38px;text-align:center">${bi.icon}</span>
+                <div style="min-width:0"><div style="font-size:10px;font-weight:bold;color:#ffd700">${bi.label} BOSSES</div>
+                <div style="font-size:6px;color:#8a8aa8;margin-top:3px">${defs.length} boss${defs.length===1?'':'es'} use this pattern</div></div>
+            </div>
+            <div style="font-size:7px;color:#bbb;line-height:1.6;margin-bottom:5px">${bi.note}</div>
+            <div style="margin-bottom:6px;text-align:left">${roster}</div>
+            <div class="ability-row"><span class="ability-key" style="color:#ff88ff">[NOGLIN] SPACE — ${bi.mc[0]}</span><span class="ability-desc">${bi.mc[1]}</span></div>`;
         grid.appendChild(card);
     });
 }
@@ -5999,8 +6121,8 @@ const UPGRADE_NOTES={
     regen:'Max 120 HP/s.',
     homing:'Very slight steering, and a rarer roll than most. Capped — hidden once maxed.',
     bullet_size:'Bullet size is capped at 20px — hidden once reached.',
-    bullet_spd:'Total bullet speed capped at ×3 — hidden once reached.',
-    projectiles:'Each shot has a chance to fire one extra bullet. Stacks up to 80% — hidden once reached. Choco\'s towers roll it too.',
+    bullet_spd:'Total bullet speed capped at +300% (×4) — hidden once reached. Fast bullets are swept, so they never skip over enemies.',
+    projectiles:'Each shot has a chance to fire 2 extra bullets. Stacks up to 80% — hidden once reached. Legendary also guarantees a double-split at least every 3rd shot (taking several Legendaries doesn\'t change that). Choco\'s towers roll it too.',
     xp_boost:'Stacks additively with Luck\'s bonus orbs.',
     damage:'Also boosts burn, towers, Pikachu etc. — everything scales off your damage.',
 };
@@ -6022,9 +6144,8 @@ function initInfoScreen(){
     const CHAR_INFO=[
         {emoji:'👹',name:'Noglin',color:'#ff00ff',stats:'Speed: Fast | HP: 250 | Regen: 4/s',abilities:[
             {key:'SPACE — Latch',   desc:'Fire a latch toward your cursor. Hit an enemy to mind control them — piloting their body with their own speed, health and projectiles. Latch cooldown pauses during control. Host dies after 60s.'},
-            {key:'[MC] Q — Host special',desc:'Changes with the enemy you control — every host type and its special is listed in the ENEMY CATALOGUE. Boss hosts are tougher to control-break: a 24% possession shell plus 2% of boss HP per hit, faster movement, and a unique, harder-hitting special per boss pattern.'},
-            {key:'[MC] SPACE — Delatch', desc:'Safely exit the host. You return with your original HP and the host survives.'},
-            {key:'[MC] R — Kill Host', desc:'Instantly kill the controlled enemy and escape. Great for detonating a host on demand.'},
+            {key:'[MC] SPACE — Host special',desc:'Changes with the enemy you control — every host type and its special is listed in the ENEMY CATALOGUE. Boss hosts are tougher to control-break: a 24% possession shell plus 2% of boss HP per hit, faster movement, and a unique, harder-hitting special per boss pattern.'},
+            {key:'[MC] R — Rip', desc:'Instantly kill the controlled enemy and escape with a heal (overheal becomes shield). On a boss it instantly deals 50% of its max HP plus 4 seconds of your gun DPS, then ejects you (lethal if that is enough). There is no delatch: Rip, or let the host die, or wait out the 60s.'},
             {key:'R — Cuteness',    desc:'Stun all nearby enemies for 2 seconds. Doubles attack speed and grants 2 shots of 2× bullet damage. Noglin switches to its adorable form while enemies are stunned.'},
         ]},
         {emoji:'⚡',name:'Pikachu',color:'#ffff00',stats:'Speed: Very Fast | HP: 200 | Regen: 4/s',abilities:[
@@ -6053,7 +6174,7 @@ function initInfoScreen(){
         ]},
         {emoji:'😎',name:'Coolioioio',color:'#ff44ff',stats:'Speed: Fast | HP: 250 | Regen: 4/s',abilities:[
             {key:'SPACE — Spinbot',   desc:'Spin wildly for 4 seconds, firing 10 bullets per second in all directions (with slight homing; each bullet pierces 2 enemies). Immune to damage while spinning.'},
-            {key:'R — 360-No-Scope',  desc:'Fire a single massive piercing shot at your cursor that one-taps most enemies. Deals 10× bullet damage with huge knockback.'},
+            {key:'R — 360-No-Scope',  desc:'Sniper-style: up to three tracking lines (main target, closest, furthest) follow their targets, lock with a flash (no more turning), then fire an instant piercing beam along the line. Everything on the line is hit — regular enemies are executed, bosses take 18× bullet damage. The main line always follows your cursor (aim it, then it locks); the other two lines hunt the closest and furthest enemies.'},
         ]},
         {id:'pickle',emoji:'🥒',name:'Pickle',color:'#44cc00',stats:'Speed: Medium | HP: 300 | Regen: 4/s',abilities:[
             {key:'SPACE — Brine Burst', desc:'Explode in a cloud of pickle brine, poisoning and briefly stunning all enemies within 460px. Poison ticks every 0.5 seconds, dealing 40% of your damage. Stacks on re-hit. Lasts 7 seconds.'},
@@ -6061,11 +6182,11 @@ function initInfoScreen(){
         ]},
         {emoji:'💬',name:'BlahBlahBlah',color:'#cc44ff',stats:'Speed: Fast | HP: 250 | Regen: 4/s',abilities:[
             {key:'SPACE — Word Barrage', desc:'Unleash a storm of anime catchphrases — three word-bullets at a time for 1.25 seconds (~75 words). Each word-bullet stuns enemies briefly, deals 1.8× damage and gently homes in on enemies. Auto-tracks nearest enemy.'},
-            {key:'R — Ultimate Speech', desc:'Trigger an anime-style cutscene, then nuke everything within 600px for 15× damage 1.7 seconds later (the words stay on screen for 1.6s). Full invulnerability during speech. Very dramatic.'},
+            {key:'R — Cringe Unskippable Monologue', desc:'Trigger an anime-style cutscene, then nuke everything within 600px for 15× damage 1.7 seconds later (the words stay on screen for 1.6s). Full invulnerability during speech. Very dramatic.'},
         ]},
         {id:'choco',emoji:'🍪',name:'IAmChoco',color:'#c68642',stats:'Speed: Fast | HP: 250 | Regen: 4/s',abilities:[
             {key:'SPACE — Wanna play TB?', desc:'Raise 3 wooden barricade towers in an arc toward your cursor. Each has a bow on top that fires arrows at the nearest enemy, and the towers use ALL of your upgrades: Caliber/Lethality (damage, crits), Haste (fire rate), Velocity (arrow speed), Pierce, Heavy Rounds (bigger arrows), Splitter (extra arrows per shot), Homing, plus Vitality and Armour for the barricades. Barricades block enemies but get chewed up by anything pressing on them, and last 14 seconds.'},
-            {key:'R — Dying SMP (toggle)', desc:'Swap between your normal projectiles and a sword. The sword fights in a 3-hit combo — sweep, sweep back, then a huge 360° finisher — hitting everything in the arc. A full combo deals about 1.3× your normal gun DPS to each enemy it touches. Haste speeds up the combo, Caliber boosts damage, Velocity speeds up the animation AND extends the reach, and Heavy Rounds makes the sword bigger.'},
+            {key:'R — Dying SMP (toggle)', desc:'Swap between your normal projectiles and a sword. The sword fights in a 3-hit combo — sweep, sweep back, then a huge 360° finisher — hitting everything in the arc (no stun or knockback). A full combo deals about 1.3× your normal gun DPS to each enemy it touches. Haste speeds up the combo, Caliber boosts damage, Velocity speeds up the animation AND extends the reach, and Heavy Rounds makes the sword bigger.'},
         ]},
         {id:'kira',emoji:'📓',name:'Kira',color:'#cc0000',stats:'Speed: Fast | HP: 250 | Regen: 4/s',abilities:[
             {key:'SPACE — Death Note', desc:'Condemn the highest-HP enemy. After 3 seconds they die. Boss takes 55% max HP instead. God Mode (10 kills) lasts 3 seconds — Death Note on a boss during it = instant kill.'},
@@ -6157,7 +6278,7 @@ window.addEventListener('keydown',e=>{if(e.key==='Escape')closeVariantMenu();});
 function initMenu(){
     loadSave();
     secretsUnlocked=!!saveData.secrets;
-    initInfoScreen();initEnemyCatalogue();initUpgradeCatalogue();
+    initInfoScreen();initEnemyCatalogue();initUpgradeCatalogue();setAbilityTarget(settings.abilityTarget||'auto');
     const grid=document.getElementById('charGrid');if(!grid)return;grid.innerHTML='';
     CHARACTERS.filter(c=>(!c.secret||secretsUnlocked)&&!c.variantOf).forEach(c=>{
         const vs=CHARACTERS.filter(x=>x.variantOf===c.id&&(!x.secret||secretsUnlocked)),nv=vs.length,nu=vs.filter(charUnlocked).length;
@@ -6261,7 +6382,7 @@ function updateHUD(){
         femboy:{primary:'SLAY',secondary:'TWIRL'},
         pickle:{primary:'BRINE BURST',secondary:'PICKLE DASH'},
         choco:{primary:'WANNA PLAY TB?',secondary:'DYING SMP'},
-        blahblahblah:{primary:'WORD BARRAGE',secondary:'ULTIMATE SPEECH'},
+        blahblahblah:{primary:'WORD BARRAGE',secondary:'CRINGE MONOLOGUE'},
         subaru:{primary:'RETURN BY DEATH',secondary:'UNSEEN HAND'},
         auramonster:{primary:'VOID TEARER',secondary:'STAIRS THROW'},
     };
@@ -6278,8 +6399,8 @@ function updateHUD(){
             const qLabel={grunt:'FRENZY',shooter:'VOLLEY',warlock:'SOUL VORTEX',tank:'SHOCKWAVE',brute:'HURL',speeder:'PHANTOM RUSH',bomber:'DETONATE',phantom:'HAUNT',healer:'LIFE DRAIN',sniper:'HEADSHOT',boar:'STAMPEDE',spider:'WEB BARRAGE',boss:'SPECIAL',turret:'TURRET OVERLOAD',charger:'CHARGE RAMPAGE',swarm:'SUMMON HORDE',swirler:'DEATH SPIRAL',bursty:'BURST STORM',ghost:'PHANTOM STRIKES'}[hostType]||(host&&host.isBoss?(host.pattern||'RAMPAGE').toUpperCase():'MIND PULSE');
             const qCd=state.mcAbilityCooldowns?state.mcAbilityCooldowns.q||0:0;
             const qReady=qCd<=0;
-            if(rows[0])rows[0].innerHTML=`R — ${qLabel}: <span style="color:${qReady?'#cc00ff':'#555'};font-weight:bold">${qReady?'READY':isPaused?'-':Math.ceil(qCd/60)+'s'}</span>`;
-            if(rows[1])rows[1].innerHTML=`<span style="color:#aaa;font-size:8px">SPC: <span style="color:#ff6666">KILL HOST</span> &nbsp;|&nbsp; Q: DELATCH</span>`;
+            if(rows[0])rows[0].innerHTML=`SPC — ${qLabel}: <span style="color:${qReady?'#cc00ff':'#555'};font-weight:bold">${qReady?'READY':isPaused?'-':Math.ceil(qCd/60)+'s'}</span>`;
+            if(rows[1])rows[1].innerHTML=`<span style="color:#aaa;font-size:8px">R: <span style="color:#ff6666">RIP</span> &nbsp;(kills the host · bosses lose 50% HP + 4s DPS)</span>`;
         } else {
             const aVal=state.ability.ready?'READY':(isPaused||abilityCdFrozen)?'-':Math.ceil(state.ability.cooldown/60)+'s';
             const sVal=charId==='choco'?(state.player.swordMode?'⚔ SWORD':'🏹 BOW'):state.secondary.ready?'READY':(isPaused||secondaryCdFrozen)?'-':Math.ceil(state.secondary.cooldown/60)+'s';
@@ -6319,7 +6440,7 @@ function showLevelUp(){
             if(base.id==='atk_speed') p.atkSpeed=Math.max(5,p.atkSpeed-tier.v);
             if(base.id==='damage')    p.damage+=tier.v;
             if(base.id==='speed')     p.speed+=tier.v;
-            if(base.id==='projectiles') p.splitChance=Math.min(SPLIT_CAP,(p.splitChance||0)+tier.v);
+            if(base.id==='projectiles'){p.splitChance=Math.min(SPLIT_CAP,(p.splitChance||0)+tier.v);if(tier.l==='Legendary')p.splitGuar=true;}
             if(base.id==='bullet_size') p.bSize=Math.min(BSIZE_CAP,p.bSize+tier.v);
             if(base.id==='xp_boost')  p.xpMult+=tier.v;
             if(base.id==='crit')      p.crit=Math.min(LETHALITY_CAP,p.crit+tier.v);
@@ -6350,10 +6471,9 @@ window.addEventListener('keydown',e=>{
     state.keys[e.key.toLowerCase()]=true;
     if(e.code==='Space'){e.preventDefault();triggerAbility();}
     if(e.key.toLowerCase()==='r'){
-        if(state.mindControl.active)triggerMCAbility('q');
+        if(state.mindControl.active)killMindControlHost();   // R = Rip
         else triggerSecondary();
     }
-    if(e.key.toLowerCase()==='q'&&state.mindControl.active){ejectMindControl();}
     if(e.key.toLowerCase()==='f'){triggerUltimate();}
     // E and F MC abilities removed
     if(e.code==='Escape'){
@@ -6423,17 +6543,17 @@ if(joyBase){
 }
 
 if(abBtn){
-    abBtn.addEventListener('touchstart', e => { e.preventDefault(); triggerAbility(); }, {passive: false});
+    abBtn.addEventListener('touchstart', e => { e.preventDefault(); triggerAbility(); }, {passive: false});   // (triggerAbility routes to the host special while latched)
     abBtn.addEventListener('click', () => triggerAbility());
 }
 if(abBtn2){
     abBtn2.addEventListener('touchstart', e => {
         e.preventDefault();
-        if(state.mindControl.active) triggerMCAbility('q');
+        if(state.mindControl.active) killMindControlHost();
         else triggerSecondary();
     }, {passive: false});
     abBtn2.addEventListener('click', () => {
-        if(state.mindControl.active) triggerMCAbility('q');
+        if(state.mindControl.active) killMindControlHost();
         else triggerSecondary();
     });
 }
