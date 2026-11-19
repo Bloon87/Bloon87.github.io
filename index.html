@@ -168,6 +168,7 @@
                 <button onclick="showScreen('keybindsScreen')" class="pause-btn" style="width:auto;padding:7px 12px;font-size:8px">⌨ KEYBINDS</button>
                 <button onclick="showScreen('infoScreen')" class="pause-btn" style="width:auto;padding:7px 12px;font-size:8px">📖 ABILITIES</button>
                 <button onclick="showScreen('enemyScreen')" class="pause-btn" style="width:auto;padding:7px 12px;font-size:8px">👾 ENEMIES</button>
+                <button onclick="showScreen('upgradeScreen')" class="pause-btn" style="width:auto;padding:7px 12px;font-size:8px">⬆ UPGRADES</button>
                 <button onclick="showScreen('changelogScreen')" class="pause-btn" style="width:auto;padding:7px 12px;font-size:8px">📋 CHANGELOG</button>
                 <button onclick="downloadSave()" class="pause-btn" style="width:auto;padding:7px 12px;font-size:8px">💾 EXPORT</button>
             </div>
@@ -183,6 +184,7 @@
             <button onclick="showScreen('keybindsScreen')" class="pause-btn">⌨ KEYBINDS</button>
             <button onclick="showScreen('infoScreen')" class="pause-btn">📖 ABILITIES</button>
             <button onclick="showScreen('enemyScreen')" class="pause-btn">👾 ENEMIES</button>
+            <button onclick="showScreen('upgradeScreen')" class="pause-btn">⬆ UPGRADES</button>
             <button onclick="showScreen('changelogScreen')" class="pause-btn">📋 CHANGELOG</button>
             <button onclick="resetGame()" class="pause-btn danger">✖ QUIT TO MENU</button>
         </div>
@@ -274,13 +276,22 @@
             <button class="close-x" onclick="closeOverlay()" aria-label="Close">✕</button>
             <h2 class="text-lg text-[#00f2ff] mb-4">📋 CHANGELOG</h2>
             <div style="text-align:left;font-size:8px;line-height:2">
-                <div style="color:#ffd700;font-size:10px;margin-bottom:6px">▶ v2.1 — Current</div>
+                <div style="color:#ffd700;font-size:10px;margin-bottom:6px">▶ v2.2 — Current</div>
+                <div style="color:#ccc;padding-left:8px;margin-bottom:2px">• NEW Subaru variant — 👹 Aura Monster (unlocked by dying as Subaru 5 times; uses auramonster.png): Void Tearer (rip open the arena — enemies get dragged in and unmade in ~3s, but you can't cross the void either), Stairs Throw (hurl a staircase from Re:Zero), ult MY EYES TURN RED (ten hunting eyes paralyse and wither, then one all-seeing flash)</div>
+                <div style="color:#ccc;padding-left:8px;margin-bottom:2px">• Upgrades: NEW Homing (very slight steering, rarer, capped); Haste, Caliber and Vitality are rolled 2.5× as often and EVERY level-up offers at least one; Wisdom buffed (+20% / +50% XP); Velocity gains a Legendary (+150%, total capped ×3); Splitter is now a CHANCE per shot (+8% / +20% per pick, capped at 80%) and the Rare tier is gone; Lethality capped at 80%; Heavy Rounds capped at 20px; capped upgrades are hidden from the pool. New ⬆ UPGRADES catalogue on the menu / pause screen</div>
+                <div style="color:#ccc;padding-left:8px;margin-bottom:2px">• Bosses scale harder: +0.25 HP multiplier per boss kill (+0.4 on hard, cap ×6) and higher base HP. Noglin: the boss-host possession shell is nerfed ~60% (60% → 24% of boss HP)</div>
+                <div style="color:#ccc;padding-left:8px;margin-bottom:2px">• Choco: his towers now fire with ALL his upgrades (damage, crits, Haste, Velocity, Pierce, Heavy Rounds, Splitter, Homing), and Vitality / Armour toughen the barricades</div>
+                <div style="color:#ccc;padding-left:8px;margin-bottom:2px">• Burn hits ~3× harder (and chips bosses by max HP). Snowman: the Snowball burst leaves enemies BRITTLE for 7s (×10 shot damage, ×3 on bosses)</div>
+                <div style="color:#ccc;padding-left:8px;margin-bottom:2px">• Shiba: 50 Bucks only targets enemies on the playfield and now ricochets enemy → Shiba → enemy — the Shiba bounce drops the XP and adds +25% coin damage</div>
+                <div style="color:#ccc;padding-left:8px;margin-bottom:2px">• Zanther's Apex Frenzy now pauses your regular attacks (the claws do the work) and runs much lighter on the framerate; player bullets no longer use shadowBlur. Word Barrage fires ~5× as many words</div>
+                <div style="color:#ccc;padding-left:8px;margin-bottom:2px">• Snipers now charge a LASER (tracking line → flashing lock → piercing beam, ~0.45s to dodge; stunning or freezing cancels it)</div>
+                <div style="color:#ccc;padding-left:8px;margin-bottom:2px">• Cooldown pause: abilities only start recharging once their effect ends (Glorp Beam / Wormhole, Pickle Dash, Blizzard, Wanna Play TB?, Volt Tackle, Void Tearer / Stairs Throw) — shown as "-" on the HUD; ultimates show "-" instead of ACTIVE. Glorp's cooldowns are up (Beam 20s → 23s, Wormhole 9s → 12s) and he can't walk into his own Singularity</div>
+                <div style="color:#ffd700;font-size:10px;margin:8px 0 6px">▶ v2.1</div>
                 <div style="color:#ccc;padding-left:8px;margin-bottom:2px">• Pikachu: all abilities buffed — Thunderbolt chains 20 targets for 7× (long stun), Volt Tackle is faster/wider/8× with a bigger thunderclap and stronger electrified trail, Thunder God lasts 6s with heavier, wider strikes; shorter cooldowns</div>
                 <div style="color:#ccc;padding-left:8px;margin-bottom:2px">• Noglin: boss hosts get a 60% possession shell + take less damage (2%/hit), move faster, and every boss special/passive fires faster, denser and harder (Horde minions are now charmed)</div>
                 <div style="color:#ccc;padding-left:8px;margin-bottom:2px">• Zanther's Apex Frenzy: 2.3× speed, triple attack rate, claw volleys every 0.1s for 8% max HP (210px), new tapered triple-claw swipes + scratch marks on victims</div>
                 <div style="color:#ccc;padding-left:8px;margin-bottom:2px">• Noglin: latch hitbox is much bigger (60px, bosses 100px; was 28/60)</div>
                 <div style="color:#ccc;padding-left:8px;margin-bottom:2px">• Snowman: 500 starting HP (was 350). Glorp's wormhole speed boost: 1.7s at ×1.3 (was 4s at ×1.8). Speeder enemies: less HP, slower, weaker bites</div>
-                <div style="color:#ccc;padding-left:8px;margin-bottom:2px">• NEW Subaru variant — 👹 Aura Monster (unlocked by dying as Subaru 5 times; uses auramonster.png): Void Tearer (rip open the arena, enemies get dragged in and unmade in ~3s, but you can't cross the void either), Stairs Throw (hurl a staircase from Re:Zero), ult Flashing Eyes (ten hunting eyes paralyse and wither, then one all-seeing flash)</div>
                 <div style="color:#ffd700;font-size:10px;margin:8px 0 6px">▶ v2.0</div>
                 <div style="color:#ccc;padding-left:8px;margin-bottom:2px">• Enemies can no longer leave the arena once they're in — fear (Sheer Aura), knockbacks and charges all stay in bounds; enemy damage −20%</div>
                 <div style="color:#ccc;padding-left:8px;margin-bottom:2px">• Arsonist: Arson Party now throws its bottles at your Tar puddles first (setting them ablaze)</div>
@@ -377,6 +388,16 @@
             <h2 class="text-lg text-[#00f2ff] mb-2">👾 ENEMY CATALOGUE</h2>
             <div style="font-size:7px;line-height:1.8;color:#8a8aa8;margin-bottom:10px">Every regular enemy type. When Noglin latches onto one, <span style="color:#ff88ff">Q</span> unleashes that host's special (bosses have their own unique ones).</div>
             <div id="enemyGrid" style="display:grid;grid-template-columns:repeat(auto-fill,minmax(270px,1fr));gap:8px"></div>
+            <button onclick="closeOverlay()" class="pause-btn mt-4">← BACK</button>
+        </div>
+    </div>
+    <!-- Upgrade Catalogue -->
+    <div id="upgradeScreen" class="ui-layer hidden">
+        <div class="menu-card interactive" style="width:min(820px,94vw);max-height:92vh;overflow-y:auto">
+            <button class="close-x" onclick="closeOverlay()" aria-label="Close">✕</button>
+            <h2 class="text-lg text-[#00f2ff] mb-2">⬆ UPGRADE CATALOGUE</h2>
+            <div style="font-size:7px;line-height:1.8;color:#8a8aa8;margin-bottom:10px">Everything the level-up screen can offer. <span style="color:#ffd700">★ Haste, Caliber and Vitality</span> come up far more often and every level-up offers at least one. Percentages are the odds of each tier <i>once that upgrade is rolled</i> (before Luck).</div>
+            <div id="upgradeGrid" style="display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:8px"></div>
             <button onclick="closeOverlay()" class="pause-btn mt-4">← BACK</button>
         </div>
     </div>
@@ -495,7 +516,7 @@ const CHARACTERS=[
      desc:"Return by Death", abilityDesc:"SPC: Return by Death | R: Unseen Hand"},
     {id:'auramonster',name:"Aura Monster",  emoji:"👹", img:assets.auramonster, variantOf:'subaru', unlockKey:'auraMonsterUnlocked',
      unlockHint:()=>'Die as Subaru 5 times ('+Math.min(5,saveData.subaruDeaths||0)+'/5)', variantName:"Aura Monster", speed:9.5, hp:5, abilityColor:'#9a5cff',
-     desc:"Void Tearer", abilityDesc:"SPC: Void Tearer | R: Stairs Throw | F: Flashing Eyes"},
+     desc:"Void Tearer", abilityDesc:"SPC: Void Tearer | R: Stairs Throw | F: My Eyes Turn Red"},
 ];
 
 // Weighted upgrade pool
@@ -516,16 +537,16 @@ const UPGRADES_POOL=[
         {l:"Legendary",v:2.5,  c:"#ffd700", w:8,  desc:"+2.5 movement speed — zoom across the map"},
     ]},
     {id:'projectiles',name:"Splitter",     tiers:[
-        {l:"Rare",     v:1, c:"#bc13fe", w:25, desc:"Fire 1 extra bullet per shot — great with damage upgrades"},
-        {l:"Legendary",v:2, c:"#ffd700", w:5,  desc:"Fire 2 extra bullets per shot — triple the pain"},
+        {l:"Common",   v:8, c:"white",   w:50, desc:"+8% chance that a shot fires 1 extra bullet"},
+        {l:"Legendary",v:20,c:"#ffd700", w:6,  desc:"+20% chance that a shot fires 1 extra bullet — stacks up to 80% (Choco: his towers roll it too)"},
     ]},
     {id:'bullet_size',name:"Heavy Rounds", tiers:[
         {l:"Common",   v:2, c:"white",   w:55, desc:"Bullets are 2px bigger — larger hitbox, easier to land"},
         {l:"Legendary",v:8, c:"#ffd700", w:7,  desc:"Bullets are 8px bigger — massive hitbox, hard to miss"},
     ]},
     {id:'xp_boost',   name:"Wisdom",       tiers:[
-        {l:"Common",   v:0.1, c:"white",   w:55, desc:"+10% XP from all sources — level up faster"},
-        {l:"Rare",     v:0.3, c:"#bc13fe", w:22, desc:"+30% XP from all sources — significantly faster levelling"},
+        {l:"Common",   v:0.2, c:"white",   w:55, desc:"+20% XP from all sources — level up faster"},
+        {l:"Rare",     v:0.5, c:"#bc13fe", w:26, desc:"+50% XP from all sources — significantly faster levelling"},
     ]},
     {id:'crit',       name:"Lethality",    tiers:[
         {l:"Common",   v:5,  c:"white",   w:60, desc:"+5% crit chance — crits deal double damage"},
@@ -572,16 +593,31 @@ const UPGRADES_POOL=[
     {id:'bullet_spd', name:"Velocity",     tiers:[
         {l:"Common",   v:4, c:"white",   w:50, desc:"+40% bullet speed — harder for enemies to dodge"},
         {l:"Rare",     v:8, c:"#bc13fe", w:22, desc:"+80% bullet speed — bullets reach enemies almost instantly"},
+        {l:"Legendary",v:15,c:"#ffd700", w:6,  desc:"+150% bullet speed — bullets are basically lasers (total capped at ×3)"},
+    ]},
+    {id:'homing',     name:"Homing",       poolW:0.4, tiers:[
+        {l:"Common",   v:0.004, c:"white",   w:34, desc:"Bullets bend barely perceptibly toward the nearest enemy"},
+        {l:"Rare",     v:0.008, c:"#bc13fe", w:12, desc:"Bullets bend slightly toward enemies"},
+        {l:"Legendary",v:0.0167,c:"#ffd700", w:3,  desc:"Bullets steer a little toward enemies (stacks to a low cap)"},
     ]},
 ];
-function pickUpgrade(){
-    // Readiness is hidden once both cooldowns are already at the minimum cap
+const FAV_UPGRADES=['atk_speed','damage','max_hp'];   // Haste, Caliber, Vitality: rolled more often, and every level-up offers at least one
+const LETHALITY_CAP=80,HOMING_CAP=0.0334,VELOCITY_CAP=3,SPLIT_CAP=80,BSIZE_CAP=20;
+function pickUpgrade(only){
+    // Hidden once useless: Readiness at the cooldown cap, Lethality / Homing / Velocity at their caps, Armour at 60%, Picky at 3 stacks
     const pl0=state.player||{},capped=state.ability.maxCooldown<=360&&state.secondary.maxCooldown<=360;
-    // Hidden once useless: Readiness at the cooldown cap, Armour at 60%, Picky at 3 stacks; Choco can't roll Splitter
-    const pool=UPGRADES_POOL.filter(u=>!(u.id==='ability_cd'&&capped)&&!(u.id==='armor'&&(pl0.armor||0)>=60)&&!(u.id==='picky'&&(pl0.picky||0)>=3)&&!(u.id==='projectiles'&&pl0.config&&pl0.config.id==='choco'));
+    let pool=UPGRADES_POOL.filter(u=>!(u.id==='ability_cd'&&capped)&&!(u.id==='armor'&&(pl0.armor||0)>=60)&&!(u.id==='picky'&&(pl0.picky||0)>=3)
+        &&!(u.id==='crit'&&(pl0.crit||0)>=LETHALITY_CAP)&&!(u.id==='projectiles'&&(pl0.splitChance||0)>=SPLIT_CAP)&&!(u.id==='bullet_size'&&(pl0.bSize||5)>=BSIZE_CAP)&&!(u.id==='homing'&&(pl0.homing||0)>=HOMING_CAP)&&!(u.id==='bullet_spd'&&(pl0.bulletSpeedMult||1)>=VELOCITY_CAP));
+    if(only){const f=pool.filter(u=>only.indexOf(u.id)!==-1);if(f.length)pool=f;}
     const L=(state.player&&state.player.luck)||0;
-    let base;
-    do{base=pool[Math.floor(Math.random()*pool.length)];}while(base.legendaryOnly&&Math.random()>0.2*(1+Math.min(2,L*0.02)));   // legendary-exclusive upgrades are rare
+    // Haste / Caliber / Vitality are 2.5x as likely to come up as anything else
+    const bw=u=>(u.poolW||1)*((!only&&FAV_UPGRADES.indexOf(u.id)!==-1)?2.5:1);
+    let base,guard=0;
+    do{
+        let tw=0;for(const u of pool)tw+=bw(u);
+        let r=Math.random()*tw;base=pool[pool.length-1];
+        for(const u of pool){r-=bw(u);if(r<=0){base=u;break;}}
+    }while(base.legendaryOnly&&Math.random()>0.2*(1+Math.min(2,L*0.02))&&++guard<200);   // legendary-exclusive upgrades are rare
     // Luck tilts the roll toward Rare / Legendary tiers
     const wf=t=>(t.w||50)*(t.l==='Rare'?1+Math.min(4,L*0.04):t.l==='Legendary'?1+Math.min(5,L*0.08):1);
     const total=base.tiers.reduce((s,t)=>s+wf(t),0);
@@ -798,7 +834,7 @@ class BloodParticle {
         ctx.globalAlpha=1;
     }
 }
-function spawnBlood(x,y,n){if(!settings.particles)return;for(let i=0;i<(n||8);i++)state.particles.push(new BloodParticle(x,y));}
+function spawnBlood(x,y,n){if(!settings.particles||state.particles.length>320)return;for(let i=0;i<(n||8);i++)state.particles.push(new BloodParticle(x,y));}
 
 // ═══════════════════════════════════════════════════
 //  FX ENGINE (v1.2): sparks, screen shake, flashes
@@ -882,20 +918,31 @@ function deathFx(e){
 const ULT_INFO={
     noglin:      {name:'UWU APOCALYPSE',    color:'#ff66ff',icon:'💖',dur:160,desc:'A tidal wave of cuteness: every enemy is stunned and takes 28% of its max HP, followed by two weaker waves. Grants +150 shield HP and heals 100 HP.'},
     pikachu:     {name:'THUNDER GOD',       color:'#ffee33',icon:'⛈️',dur:360,desc:'Call down a 6-second storm: a heavy lightning bolt every 4 ticks on random enemies with wide splash damage, then a screen-wide final judgement strike. Invulnerable.'},
-    tiger:       {name:'APEX FRENZY',       color:'#ff9900',icon:'🐯',dur:420,desc:'7 seconds of unstoppable rage: 2.3× speed, triple attack rate, invulnerable, and triple-claw volleys every 0.1s that carve 8% of every enemy\'s max HP within 210px (1.1% for bosses).'},
-    cat:         {name:'GLORP SINGULARITY', color:'#00ff88',icon:'🌀',dur:300,desc:'Tear open a black hole at your cursor that drags in every enemy on screen, grinding them down, then detonates — killing everything near it.'},
+    tiger:       {name:'APEX FRENZY',       color:'#ff9900',icon:'🐯',dur:420,desc:'7 seconds of unstoppable rage: 2.3× speed, invulnerable, your regular attacks are PAUSED (the claws do the work), and triple-claw volleys every 0.1s that carve 8% of every enemy\'s max HP within 210px (1.1% for bosses).'},
+    cat:         {name:'GLORP SINGULARITY', color:'#00ff88',icon:'🌀',dur:300,desc:'Tear open a black hole at your cursor that drags in every enemy on screen, grinding them down, then detonates — killing everything near it. Glorp can\'t walk into the hole himself.'},
     shiba:       {name:'MONEY RAIN',        color:'#ffdd55',icon:'💸',dur:360,desc:'It rains coins for 6 seconds. Each one crashes down with an area blast (big golden ones hit harder) and drops bonus XP. Ends with a JACKPOT slam.'},
     arsonist:    {name:'INFERNO STRIKE',     color:'#ff6a00',icon:'☄️',dur:130,invul:70,desc:'Launch a blazing fireball at the strongest enemy on screen. It tears straight through anything in the way, setting it ablaze, then detonates in a fire-and-spark firework for MASSIVE damage (and 40% of that to every enemy near the blast).'},
     choco:       {name:'AMONG US TONIGHT', color:'#ff3a3a',icon:'🛸',dur:420,invul:60,desc:'A UFO with a very suspicious crewmate descends and orbits you for 7 seconds, firing lasers at enemies across the arena (with splash). When it leaves it unleashes a final volley that EJECTS up to 30 enemies for 22% max HP (3% on bosses).'},
-    snowman:     {name:'GIANT SNOWBALL',     color:'#aaf4ff',icon:'⛄',dur:360,invul:60,desc:'Roll a snowball that grows bigger every second and catches every enemy it touches, carrying them inside it. After 6 seconds it BURSTS: caught enemies take 95% max HP, everything nearby takes 50%.'},
+    snowman:     {name:'GIANT SNOWBALL',     color:'#aaf4ff',icon:'⛄',dur:360,invul:60,desc:'Roll a snowball that grows bigger every second and catches every enemy it touches, carrying them inside it. After 6 seconds it BURSTS: caught enemies take 95% max HP, everything nearby takes 50%. The burst also leaves every enemy it hits BRITTLE for 7s (10× damage from your shots, 3× on bosses).'},
     coolioioio:  {name:'MINIGUN',           color:'#ffaa33',icon:'🔫',dur:300,desc:'Pull out a minigun: 12 attacks per second for 5 seconds, each hitting for 6× your damage (4× the damage output it used to have). Aim with your cursor or auto-target. You can keep moving.'},
     blahblahblah:{name:'FINAL WORD',        color:'#cc66ff',icon:'💬',dur:210,desc:'A rotating 4-arm spiral of word-bullets that stun on hit, capped by a screen-shaking FINAL WORD that deals 25% max HP to everyone.'},
     pickle:      {name:'PICKLE-ASTROPHE',   color:'#66dd22',icon:'🥒',dur:330,desc:'A colossal brine tsunami sweeps the arena, hitting and poisoning everything, followed by a rain of falling pickles.'},
     kira:        {name:'SHINIGAMI EYES',    color:'#ff2222',icon:'👁️',dur:240,desc:'Write every name at once: all enemies are condemned on staggered timers and die; bosses lose 25% max HP.'},
     femboy:      {name:'GRAND FINALE',      color:'#ff88cc',icon:'🎀',dur:300,desc:'Spotlights, confetti and a stage-wide charm: every enemy is charmed to fight for you while pulses and a twirl wreck the room, ending in a finale blast.'},
-    auramonster: {name:'FLASHING EYES',      color:'#ff4466',icon:'👁',dur:360,desc:'Ten colossal eyes tear open across the arena and hunt. Anything inside a gaze is paralysed and withers; the eyes blink-flash in turns for heavy damage, and the final all-seeing flash executes every non-boss below 40% HP and cripples the rest. You are invulnerable and faster for 6 seconds.'},
+    auramonster: {name:'MY EYES TURN RED',      color:'#ff4466',icon:'👁',dur:360,desc:'Ten colossal eyes tear open across the arena and hunt. Anything inside a gaze is paralysed and withers; the eyes blink-flash in turns for heavy damage, and the final all-seeing flash executes every non-boss below 40% HP and cripples the rest. You are invulnerable and faster for 6 seconds.'},
     subaru:      {name:'THE WORLD STOPS',   color:'#88bbff',icon:'⏱️',dur:300,desc:'Return by Death: restore full HP and stop time for 5 seconds. Enemies and bullets freeze while you move and shoot freely; time resumes with a 22% max HP burst.'},
 };
+// v2.1: cooldowns only start once the effect is over. Shown as "-" on the HUD (this replaces the old ACTIVE label for ultimates too).
+function cdFrozenNow(){
+    const p=state.player,st=state;if(!p)return{a:false,s:false};
+    const id=p.config.id;
+    const a=(id==='tiger'&&st.pounce.active)||(id==='coolioioio'&&!!st.spinbot)||(id==='noglin'&&st.mindControl.active)||(id==='snowman'&&st.effects.frozen)
+        ||(id==='blahblahblah'&&!!st.blahBarrage)||(id==='pikachu'&&!!st.pikaChaining)||(id==='shiba'&&st.bullets.some(b=>b instanceof CoinProjectile))
+        ||(id==='cat'&&!!st.glorpBeam)||(id==='choco'&&!!st.towers&&st.towers.length>0)||(id==='auramonster'&&!!st.voids&&st.voids.length>0);
+    const s=(id==='coolioioio'&&!!st.spinbot)||(id==='pickle'&&!!st.pickleDash&&!!st.pickleDash.active)||(id==='cat'&&p._warpSpeedBoost>0)
+        ||(id==='pikachu'&&!!st.voltTackle)||(id==='auramonster'&&!!st.stairs&&st.stairs.length>0);
+    return{a:!!a,s:!!s};
+}
 function ultState(){return state.ult||(state.ult={charge:0,ready:false,fx:null,_shown:''});}
 function charmEnemy(e,timer){
     if(e.charmed>0){const c=state.charmedEnemies.find(x=>x.enemy===e);if(c){if(c.timer<timer)c.timer=timer;return false;}}
@@ -929,7 +976,9 @@ function inArena(e){return e.x>=0&&e.x<=canvas.width&&e.y>=0&&e.y<=canvas.height
 // keep a unit on the playfield (knockbacks / warps never throw anything outside); mcWarp lands the piloted host safely inside the walls
 function keepInArena(o,m){m=m===undefined?24:m;o.x=Math.max(m,Math.min(canvas.width-m,o.x));o.y=Math.max(m,Math.min(canvas.height-m,o.y));}
 function mcWarp(h,x,y){h.x=Math.max(65,Math.min(canvas.width-65,x));h.y=Math.max(65,Math.min(canvas.height-65,y));}
-function frozenFoe(e){return state.effects.frozen&&!e.isBoss&&inArena(e);}   // Blizzard: freezes non-boss enemies that are on the playfield
+function frozenFoe(e){return state.effects.frozen&&!e.isBoss&&inArena(e);}
+// Brittle: Blizzard's frozen enemies take x10 from shots; the Snowball's burst leaves everything it hit brittle for 7s (x10, bosses x3)
+function brittleMult(e){if(frozenFoe(e))return state.effects.frozenDamageMult;if(e.brittle>state.frameCount)return e.isBoss?3:10;return 1;}   // Blizzard: freezes non-boss enemies that are on the playfield
 // ── Subaru ──
 const RETURN_WINDOW=300;   // 5s
 function subaruReturn(){
@@ -1004,8 +1053,8 @@ function ultHurt(e,pctN,pctB,minDmg,tag,col){
     if(!e||e.hp<=0)return;
     const dmg=Math.max(minDmg||0,e.maxHp*(e.isBoss?pctB:pctN));
     e.hp=Math.max(0,e.hp-dmg);
-    spawnBlood(e.x,e.y,3);
-    if(tag&&(e.isBoss||Math.random()<0.4))popup(e.x,e.y-22,tag+'-'+Math.floor(dmg),col||'#fff',50);
+    if(Math.random()<0.5)spawnBlood(e.x,e.y,2);   // ults tick many times a second: half the blood, same look
+    if(tag&&(e.isBoss||Math.random()<0.3))popup(e.x,e.y-22,tag+'-'+Math.floor(dmg),col||'#fff',50);
     if(e===state.boss)updateBossBar();
     if(e.hp<=0)killAny(e);
 }
@@ -1022,7 +1071,7 @@ function addUltCharge(n){
 function refreshUltHud(){
     const u=ultState(),p=state.player;if(!p)return;
     const info=ULT_INFO[p.config.id]||{name:'ULTIMATE',color:'#ffd700',icon:'✦'};
-    const txt=u.fx?'ACTIVE':u.ready?'READY':Math.floor(u.charge)+'%';
+    const txt=u.fx?'-':u.ready?'READY':Math.floor(u.charge)+'%';   // charge is paused while an ult runs (no more ACTIVE label)
     const key=txt+'|'+p.config.id;
     if(u._shown===key)return;
     u._shown=key;
@@ -1063,11 +1112,12 @@ function triggerUltimate(){
     I.start(u.fx,p,u.fx.d);
     u._shown='';refreshUltHud();
 }
+let _vigC=null;
 function ultVig(hex,a){
     if(a<=0.01)return;
-    const W=canvas.width,H=canvas.height;
-    const g=ctx.createRadialGradient(W/2,H/2,Math.min(W,H)*0.3,W/2,H/2,Math.max(W,H)*0.75);
-    g.addColorStop(0,hexA(hex,0));g.addColorStop(1,hexA(hex,1));
+    const W=canvas.width,H=canvas.height,key=hex+W+'x'+H;
+    let g;if(_vigC&&_vigC.k===key)g=_vigC.g;   // gradient is rebuilt only when colour / size changes
+    else{g=ctx.createRadialGradient(W/2,H/2,Math.min(W,H)*0.3,W/2,H/2,Math.max(W,H)*0.75);g.addColorStop(0,hexA(hex,0));g.addColorStop(1,hexA(hex,1));_vigC={k:key,g:g};}
     ctx.save();ctx.globalAlpha=a;ctx.fillStyle=g;ctx.fillRect(0,0,W,H);ctx.restore();
 }
 function ultDraw(){
@@ -1137,9 +1187,9 @@ function burnTick(){
         e.burn.t--;
         if(state.frameCount%3===0)fxSpark(e.x+(Math.random()-.5)*16,e.y-6,(Math.random()-.5)*0.8,-(1+Math.random()*1.6),22,3.4,FIRE_COLS[Math.floor(Math.random()*4)],{trail:false,g:-0.03,drag:0.98});
         e.burn.tick++;
-        if(e.burn.tick>=30){
+        if(e.burn.tick>=24){
             e.burn.tick=0;
-            const dmg=p.damage*0.6*(e.oil>0?2:1);
+            const dmg=p.damage*1.5*(e.oil>0?2:1)+(e.isBoss?e.maxHp*0.002:0);
             e.hp=Math.max(0,e.hp-dmg);
             if(e.isBoss||Math.random()<0.5)popup(e.x,e.y-24,'🔥-'+Math.floor(dmg),e.oil>0?'#ffcc33':'#ff8833',45);
             if(e===state.boss)updateBossBar();
@@ -1583,26 +1633,26 @@ ULT_IMPL.pikachu={
     draw(F,p,d,t,env){ctx.save();ctx.globalAlpha=0.38*env;ctx.fillStyle='#0a0a30';ctx.fillRect(0,0,canvas.width,canvas.height);ctx.restore();ultVig('#ffee33',0.18*env);}
 };
 ULT_IMPL.tiger={
-    // v2.1: faster (×2.3 move, triple attack rate, a claw volley every 0.1s), harder (10% max-HP slashes, 210px) and with proper tapered triple-claw swipes + scratch marks on every victim
+    // v2.1: faster (×2.3 move, regular attacks paused, a claw volley every 0.1s), harder (10% max-HP slashes, 210px) and with proper tapered triple-claw swipes + scratch marks on every victim
     start(F,p,d){d.slashes=[];d.marks=[];fxFlash('#ffaa33',0.6,12);fxShake(16);addRing(p.x,p.y,600,30,'#ff9900',6);fxBurst(p.x,p.y,34,'#ffaa33',3,12,34,3.4);popup(p.x,p.y-70,'ROOOAAAR!','#ffcc66',120);},
     run(F,p,d,t){
-        p.invul=Math.max(p.invul,2);p._warpSpeedBoost=3;p._warpMult=2.3;if(p.atkCooldown>2)p.atkCooldown-=2;
-        fxSpark(p.x+(Math.random()-.5)*34,p.y+14,(Math.random()-.5)*1.6,-(1.5+Math.random()*2.2),26,6.5,'#ff7a00',{trail:false,drag:0.98});
+        p.invul=Math.max(p.invul,2);p._warpSpeedBoost=3;p._warpMult=2.3;p.atkCooldown=Math.max(p.atkCooldown,3);   // regular attacks are paused for the whole frenzy — the claws do the work
+        if(t%2===0)fxSpark(p.x+(Math.random()-.5)*34,p.y+14,(Math.random()-.5)*1.6,-(1.5+Math.random()*2.2),26,6.5,'#ff7a00',{trail:false,drag:0.98});
         if(t%6===0){
             const R=210,R2=R*R,T=allTargets();
             let ang=Math.random()*6.2832,pick=null,seen=0;
             for(let i=0;i<T.length;i++){const e=T[i];if(e.hp>0&&(e.x-p.x)**2+(e.y-p.y)**2<R2&&Math.random()*(++seen)<1)pick=e;}   // reservoir pick: swipe at a random victim
             if(pick)ang=Math.atan2(pick.y-p.y,pick.x-p.x)+(Math.random()-.5)*0.5;
             d.slashes.push({x:p.x,y:p.y,ang:ang,t0:t,bow:(Math.random()<0.5?-1:1)*(40+Math.random()*30),len:120+Math.random()*30});
-            addRing(p.x,p.y,R,10,'#ff9900',4);
+            if(t%12===0)addRing(p.x,p.y,R,10,'#ff9900',4);
             for(let i=0;i<T.length;i++){
                 const e=T[i];
                 if(e.hp<=0||(e.x-p.x)**2+(e.y-p.y)**2>=R2)continue;
-                ultHurt(e,0.08,0.011,p.damage*5,'🐯','#ffa733');
-                if(d.marks.length<30)d.marks.push({x:e.x,y:e.y,rot:Math.random()*3.14,t0:t});
-                if(Math.random()<0.5)fxBurst(e.x,e.y,3,'#ff5522',2,7,14,2.2,{trail:false});
+                ultHurt(e,0.08,0.011,p.damage*5,(e.isBoss||t%18===0)?'🐯':'','#ffa733');
+                if(d.marks.length<16)d.marks.push({x:e.x,y:e.y,rot:Math.random()*3.14,t0:t});
+                if(Math.random()<0.25)fxBurst(e.x,e.y,2,'#ff5522',2,7,14,2.2,{trail:false});
             }
-            fxShake(5);
+            if(t%12===0)fxShake(5);
         }
         if(t%70===0&&p.hp<p.maxHp){p.hp=Math.min(p.maxHp,p.hp+HP_PER_HEART);popup(p.x,p.y-40,'+'+HP_PER_HEART+' ❤','#ff4444',60);updateHUD();}
         d.slashes=d.slashes.filter(s=>t-s.t0<16);
@@ -1621,28 +1671,34 @@ ULT_IMPL.tiger={
                 const off=j*19,bx=s.x+px*off,by=s.y+py*off;
                 // bezier from behind the paw to past the target, bowed sideways
                 const x0=bx-c*L*0.35,y0=by-sn*L*0.35,x2=bx+c*L,y2=by+sn*L,cx=(x0+x2)/2+px*s.bow,cy=(y0+y2)/2+py*s.bow;
-                const N=12;let prx=0,pry=0;
+                const N=9,P=[];let tipx=0,tipy=0;
                 for(let i=0;i<=N;i++){
                     const u=i/N;if(u>sweep)break;
-                    const q=1-u,x=q*q*x0+2*q*u*cx+u*u*x2,y=q*q*y0+2*q*u*cy+u*u*y2;
-                    if(i>0&&u>=tail){
-                        const w=Math.sin(Math.PI*Math.min(1,(u-tail)/Math.max(0.05,1-tail)))*(j===0?9:7);
-                        ctx.globalAlpha=fade*0.45;ctx.strokeStyle='#ff7a1a';ctx.lineWidth=w*2.4+2;ctx.beginPath();ctx.moveTo(prx,pry);ctx.lineTo(x,y);ctx.stroke();
-                        ctx.globalAlpha=fade;ctx.strokeStyle=j===0?'#ffffff':'#ffe9b0';ctx.lineWidth=w;ctx.beginPath();ctx.moveTo(prx,pry);ctx.lineTo(x,y);ctx.stroke();
-                    }
-                    prx=x;pry=y;
+                    const q=1-u,x=q*q*x0+2*q*u*cx+u*u*x2,y=q*q*y0+2*q*u*cy+u*u*y2;tipx=x;tipy=y;
+                    if(u<tail)continue;
+                    const tx=2*q*(cx-x0)+2*u*(x2-cx),ty=2*q*(cy-y0)+2*u*(y2-cy),tl=Math.hypot(tx,ty)||1;
+                    P.push(x,y,-ty/tl,tx/tl,Math.sin(Math.PI*Math.min(1,(u-tail)/Math.max(0.05,1-tail)))*(j===0?9:7));
                 }
-                if(sweep<1){ctx.globalAlpha=fade;ctx.fillStyle='#fff';ctx.beginPath();ctx.arc(prx,pry,4,0,6.2832);ctx.fill();}   // glinting claw tip
+                if(P.length>=10){
+                    // glow body, then the white-hot core: each one a single filled polygon
+                    for(let pass=0;pass<2;pass++){
+                        ctx.globalAlpha=pass?fade:fade*0.45;ctx.fillStyle=pass?(j===0?'#ffffff':'#ffe9b0'):'#ff7a1a';
+                        ctx.beginPath();
+                        for(let i=0;i<P.length;i+=5){const hw=(pass?P[i+4]:P[i+4]*2.4+2)*0.5;const X=P[i]+P[i+2]*hw,Y=P[i+1]+P[i+3]*hw;if(i)ctx.lineTo(X,Y);else ctx.moveTo(X,Y);}
+                        for(let i=P.length-5;i>=0;i-=5){const hw=(pass?P[i+4]:P[i+4]*2.4+2)*0.5;ctx.lineTo(P[i]-P[i+2]*hw,P[i+1]-P[i+3]*hw);}
+                        ctx.closePath();ctx.fill();
+                    }
+                }
+                if(sweep<1){ctx.globalAlpha=fade;ctx.fillStyle='#fff';ctx.beginPath();ctx.arc(tipx,tipy,4,0,6.2832);ctx.fill();}   // glinting claw tip
             }
         }
         // scratch marks left on everything that was hit
         for(const m of d.marks){
-            const k=(t-m.t0)/22,a=k<0.15?k/0.15:1-(k-0.15)/0.85,cs=Math.cos(m.rot),sn2=Math.sin(m.rot);
-            for(let j=-1;j<=1;j++){
-                const ox=-sn2*7*j,oy=cs*7*j,len=15+Math.min(1,k*5)*13;
-                ctx.globalAlpha=a*0.6;ctx.strokeStyle='#ff3b1a';ctx.lineWidth=4;ctx.beginPath();ctx.moveTo(m.x+ox-cs*len,m.y+oy-sn2*len);ctx.lineTo(m.x+ox+cs*len,m.y+oy+sn2*len);ctx.stroke();
-                ctx.globalAlpha=a;ctx.strokeStyle='#ffffff';ctx.lineWidth=1.6;ctx.stroke();
-            }
+            const k=(t-m.t0)/22,a=k<0.15?k/0.15:1-(k-0.15)/0.85,cs=Math.cos(m.rot),sn2=Math.sin(m.rot),len=15+Math.min(1,k*5)*13;
+            ctx.beginPath();
+            for(let j=-1;j<=1;j++){const ox=-sn2*7*j,oy=cs*7*j;ctx.moveTo(m.x+ox-cs*len,m.y+oy-sn2*len);ctx.lineTo(m.x+ox+cs*len,m.y+oy+sn2*len);}   // all three scratches in one path
+            ctx.globalAlpha=a*0.6;ctx.strokeStyle='#ff3b1a';ctx.lineWidth=4;ctx.stroke();
+            ctx.globalAlpha=a;ctx.strokeStyle='#ffffff';ctx.lineWidth=1.6;ctx.stroke();
         }
         ctx.restore();
     }
@@ -1765,7 +1821,7 @@ function swordStart(p){
     // v1.9: a full 3-hit combo deals 1.3x the player's regular gun DPS (per enemy) over the time it takes; the finisher takes the biggest share
     const cdOf=(d,f)=>d+(f?Math.round(p.atkSpeed*0.6):Math.round(d*0.3)),dFin=Math.round(base*1.7);
     const Tc=cdOf(base,false)*2+cdOf(dFin,true);
-    const share=(fin?16:(idx===1?7:6))/29,mul=1.3*(p.projectileCount||1)*(Tc/p.atkSpeed)*share;
+    const share=(fin?16:(idx===1?7:6))/29,mul=1.3*((p.projectileCount||1)+(p.splitChance||0)/100)*(Tc/p.atkSpeed)*share;
     state.sword={active:true,idx:idx,t:0,dur:dur,dir:dir,arc:arc,sa:aim-dir*arc/2,aim:aim,reach:reach*(fin?1.25:1),mul:mul,sw:chocoSize(p),hit:new Set(),cur:aim-dir*arc/2,prev:aim-dir*arc/2};
     p.atkCooldown=dur+(fin?Math.round(p.atkSpeed*0.6):Math.round(dur*0.3));
     if(p.cutenessActive)p.atkCooldown=Math.floor(p.atkCooldown*0.5);
@@ -1803,7 +1859,7 @@ function swordTick(p){
 function placeTowers(p){
     const aim=Math.atan2(state.mouseY-p.y,state.mouseX-p.x);
     const T=state.towers||(state.towers=[]);
-    const offs=[-0.95,0,0.95],hp=600+p.damage*15;
+    const offs=[-0.95,0,0.95],hp=600+p.damage*15+Math.max(0,p.maxHp-250)*1.5;   // Vitality hardens the barricades
     offs.forEach((o,i)=>{
         const x=Math.max(80,Math.min(canvas.width-80,p.x+Math.cos(aim+o)*190)),y=Math.max(80,Math.min(canvas.height-80,p.y+Math.sin(aim+o)*190));
         T.push({x:x,y:y,hp:hp,maxHp:hp,age:0,life:840,cd:14+i*7,ang:aim,flash:0});
@@ -1819,15 +1875,17 @@ function towerTick(p){
         const en=state.enemies;
         for(let i=A.length-1;i>=0;i--){
             const a=A[i];let dead=false;
+            if(a.home)steerHome(a,a.home,560);   // Homing upgrade
+            const rr=a.r*a.r,rb=(a.r+22)*(a.r+22);
             for(let s=0;s<2&&!dead;s++){
                 a.x+=a.vx*0.5;a.y+=a.vy*0.5;
                 for(let k=0;k<en.length;k++){
-                    const e=en[k];if(e===a.last||e.hp<=0)continue;
+                    const e=en[k];if(e.hp<=0||a.hs.has(e))continue;
                     const dx=e.x-a.x,dy=e.y-a.y;
-                    if(dx*dx+dy*dy<484){a.last=e;hurtFlat(e,a.dmg,'🏹','#ffe29a');fxBurst(a.x,a.y,4,'#ffe29a',1,5,12,2);if(--a.pierce<0){dead=true;}break;}
+                    if(dx*dx+dy*dy<rr){a.hs.add(e);hurtFlat(e,a.dmg,'🏹','#ffe29a');fxBurst(a.x,a.y,4,'#ffe29a',1,5,12,2);if(--a.pierce<0){dead=true;}break;}
                 }
                 const bb=state.boss;
-                if(!dead&&bb&&bb!==a.last&&bb.hp>0){const dx=bb.x-a.x,dy=bb.y-a.y;if(dx*dx+dy*dy<1936){a.last=bb;hurtFlat(bb,a.dmg,'🏹','#ffe29a');fxBurst(a.x,a.y,4,'#ffe29a',1,5,12,2);if(--a.pierce<0)dead=true;}}
+                if(!dead&&bb&&bb.hp>0&&!a.hs.has(bb)){const dx=bb.x-a.x,dy=bb.y-a.y;if(dx*dx+dy*dy<rb){a.hs.add(bb);hurtFlat(bb,a.dmg,'🏹','#ffe29a');fxBurst(a.x,a.y,4,'#ffe29a',1,5,12,2);if(--a.pierce<0)dead=true;}}
             }
             a.life--;
             if(dead||a.life<=0||a.x<-60||a.x>canvas.width+60||a.y<-60||a.y>canvas.height+60){A[i]=A[A.length-1];A.pop();}
@@ -1850,7 +1908,7 @@ function towerTick(p){
                 dmgIn+=(e.meleeDmg>0?e.meleeDmg:0.4)*0.45*(e.isBoss?3:1);
             }
         }
-        if(dmgIn>0){t.hp-=dmgIn;t.flash=3;}
+        if(dmgIn>0){t.hp-=dmgIn*(1-Math.min(60,p.armor||0)/100);t.flash=3;}   // Armour protects the barricades too
         // bow
         t.cd--;
         let tgt=null,bd=560*560;
@@ -1859,9 +1917,14 @@ function towerTick(p){
             const want=Math.atan2(tgt.y-(t.y-44),tgt.x-t.x);let df=want-t.ang;df=Math.atan2(Math.sin(df),Math.cos(df));t.ang+=df*0.3;
             if(t.cd<=0){
                 t.cd=rate;
-                const sp=Math.min(36,16*(p.bulletSpeedMult||1)),crit=Math.random()*100<p.crit;
-                const A2=state.arrows||(state.arrows=[]);
-                if(A2.length<220)A2.push({x:t.x,y:t.y-44,vx:Math.cos(t.ang)*sp,vy:Math.sin(t.ang)*sp,dmg:p.damage*1.6*(crit?2:1),life:70,pierce:1,crit:crit,last:null});
+                // the towers shoot with ALL of Choco's upgrades: Caliber, Lethality, Velocity, Pierce, Heavy Rounds (bigger arrows), Splitter (extra arrows) and Homing
+                const sp=Math.min(36,16*(p.bulletSpeedMult||1));
+                const A2=state.arrows||(state.arrows=[]),nA=volleyN(p),pr=1+(p.pierce||0),ar=Math.min(60,22+Math.max(0,(p.bSize||5)-5)*1.6);
+                for(let q=0;q<nA&&A2.length<260;q++){
+                    const crit=Math.random()*100<p.crit,an=t.ang+(q-(nA-1)/2)*0.17;
+                    const hs=new Set();
+                    A2.push({x:t.x,y:t.y-44,vx:Math.cos(an)*sp,vy:Math.sin(an)*sp,dmg:p.damage*1.6*(crit?2:1),life:70,pierce:pr,crit:crit,hs:hs,hitSet:hs,r:ar,home:p.homing||0});
+                }
                 t.recoil=4;
             }
         }
@@ -1925,7 +1988,7 @@ function chocoDraw(){
         ctx.save();ctx.lineCap='round';
         for(const a of A){
             const l=Math.hypot(a.vx,a.vy)||1,nx=a.vx/l,ny=a.vy/l;
-            ctx.strokeStyle=a.crit?'#ffd700':'#f4dca8';ctx.lineWidth=2.5;ctx.beginPath();ctx.moveTo(a.x-nx*16,a.y-ny*16);ctx.lineTo(a.x+nx*6,a.y+ny*6);ctx.stroke();
+            ctx.strokeStyle=a.crit?'#ffd700':'#f4dca8';ctx.lineWidth=2.5*Math.max(1,a.r/22);ctx.beginPath();ctx.moveTo(a.x-nx*16,a.y-ny*16);ctx.lineTo(a.x+nx*6,a.y+ny*6);ctx.stroke();
             ctx.fillStyle='#e8e8e8';ctx.beginPath();ctx.moveTo(a.x+nx*11,a.y+ny*11);ctx.lineTo(a.x+nx*4-ny*3.5,a.y+ny*4+nx*3.5);ctx.lineTo(a.x+nx*4+ny*3.5,a.y+ny*4-nx*3.5);ctx.closePath();ctx.fill();
         }
         ctx.restore();
@@ -2261,7 +2324,10 @@ ULT_IMPL.snowman={
             const dd=(e.x-d.x)**2+(e.y-d.y)**2,was=e._sbCaught;e._sbCaught=false;
             if(was)ultHurt(e,0.95,0.18,p.damage*14,'💥','#ffffff');
             else if(dd<R*R)ultHurt(e,0.5,0.1,p.damage*7,'💥','#bff4ff');
-            if(dd<R*R)fxBurst(e.x,e.y,10,'#cff8ff',2,10,26,2.8);
+            if(dd<R*R){
+                fxBurst(e.x,e.y,10,'#cff8ff',2,10,26,2.8);
+                if(e.hp>0){e.brittle=state.frameCount+420;state.brittleOn=true;popup(e.x,e.y-34,'❄ BRITTLE','#bff4ff',70);}   // v2.1: the burst leaves survivors brittle
+            }
         }
         d.caught.length=0;
         addRing(d.x,d.y,R,34,'#ffffff',9);addRing(d.x,d.y,R*0.65,26,'#aef0ff',6);addRing(d.x,d.y,R*0.3,18,'#ffffff',4);
@@ -2296,7 +2362,7 @@ ULT_IMPL.coolioioio={
         if(settings.abilityTarget==='manual')d.aim=Math.atan2(state.mouseY-p.y,state.mouseX-p.x);
         else if(tgt)d.aim=Math.atan2(tgt.y-p.y,tgt.x-p.x);
         if(t%5===0&&(tgt||settings.abilityTarget==='manual')){   // 12 attacks / second (v1.8)
-            const n=p.projectileCount,vm=p.bulletSpeedMult||1,c=Math.cos(d.aim),s=Math.sin(d.aim);
+            const n=volleyN(p),vm=p.bulletSpeedMult||1,c=Math.cos(d.aim),s=Math.sin(d.aim);
             for(let i=0;i<n;i++){
                 const ang=d.aim+(i-(n-1)/2)*0.2+(Math.random()-.5)*0.05,crit=Math.random()*100<p.crit;
                 const b=new Bullet(p.x+c*40,p.y+s*40,ang,p.damage*6*(crit?2:1),p.bSize+1,crit,1);
@@ -2600,22 +2666,27 @@ class PiercingBullet {
 }
 
 class CoinProjectile {
-    constructor(x,y,angle,bounces){this.x=x;this.y=y;this.vx=Math.cos(angle)*28;this.vy=Math.sin(angle)*28;this.damage=state.player.damage*2.5;this.life=300;this.lastHit=null;this.bt=0;}
+    constructor(x,y,angle,bounces){this.x=x;this.y=y;this.vx=Math.cos(angle)*28;this.vy=Math.sin(angle)*28;this.damage=state.player.damage*2.5;this.life=300;this.lastHit=null;this.bt=0;this.toShiba=false;this.bounces=0;}
     findTarget(){
         let best=null,bd=Infinity;const en=state.enemies,lh=this.lastHit;
         for(let i=0;i<en.length;i++){const e=en[i];if(e===lh||e.hp<=0||!inArena(e))continue;const dx=e.x-this.x,dy=e.y-this.y,d=dx*dx+dy*dy;if(d<bd){bd=d;best=e;}}
-        if(!best&&state.boss&&state.boss!==lh)best=state.boss;
+        if(!best&&state.boss&&state.boss!==lh&&state.boss.hp>0&&inArena(state.boss))best=state.boss;
         return best;
     }
     update(){
         const W=canvas.width,H=canvas.height,pl=state.player;
         if(this.bt>0)this.bt--;
-        const ht=this.bt>0?null:this.findTarget();   // right after a bounce the coin flies free for a few ticks so the bounce is visible
+        if(this.rh>0)this.rh--;
+        // ricochet pattern: enemy -> Shiba (bounce, pays XP, +25% coin damage) -> next enemy -> Shiba ...
+        const ht=this.bt>0?null:((this.toShiba&&pl)?{x:pl.x,y:pl.y}:this.findTarget());   // right after a bounce the coin flies free for a few ticks so the bounce is visible
+        // v2.1 fix: with a single enemy left the coin used to fly off for good — now it keeps coming back to it (after a short breather)
+        if(!ht&&this.bt<=0&&this.lastHit&&!(this.rh>0))this.lastHit=null;
         if(ht){
             const dx=ht.x-this.x,dy=ht.y-this.y,d=Math.sqrt(dx*dx+dy*dy)||1;
             const spd=Math.sqrt(this.vx*this.vx+this.vy*this.vy)||24;
             this.vx=(dx/d)*spd;this.vy=(dy/d)*spd;
         }
+        const ox=this.x,oy=this.y;
         this.x+=this.vx;this.y+=this.vy;this.life--;
         // can never leave the world: reflect off the arena walls
         const M=10;
@@ -2623,22 +2694,31 @@ class CoinProjectile {
         else if(this.x>W-M){this.x=W-M;this.vx=-Math.abs(this.vx);this.bt=5;fxSpark(this.x,this.y,-3,0,10,2.4,'#ffd700');}
         if(this.y<M){this.y=M;this.vy=Math.abs(this.vy);this.bt=5;fxSpark(this.x,this.y,0,3,10,2.4,'#ffd700');}
         else if(this.y>H-M){this.y=H-M;this.vy=-Math.abs(this.vy);this.bt=5;fxSpark(this.x,this.y,0,-3,10,2.4,'#ffd700');}
-        // bounces off Shiba too — harmlessly (it never damages the thrower)
-        if(pl){
-            const px=this.x-pl.x,py=this.y-pl.y,pd2=px*px+py*py;
-            if(pd2>4&&pd2<900&&this.bt<=0){
-                const pdist=Math.sqrt(pd2),nx=px/pdist,ny=py/pdist,dot=this.vx*nx+this.vy*ny;
-                if(dot<0){this.vx-=2*dot*nx;this.vy-=2*dot*ny;this.x=pl.x+nx*31;this.y=pl.y+ny*31;this.bt=8;fxBurst(this.x,this.y,5,'#ffe27a',1,5,14,2.2);if(Math.random()<0.5)popup(pl.x,pl.y-36,'boing','#ffd700',40);}
+        // bounce off Shiba (swept test — the coin moves ~28px a tick, so a plain distance check let it tunnel straight through him). Never hurts him.
+        if(pl&&this.toShiba&&this.bt<=0){
+            const sx=this.x-ox,sy=this.y-oy,sl=sx*sx+sy*sy||1;
+            let u=((pl.x-ox)*sx+(pl.y-oy)*sy)/sl;u=Math.max(0,Math.min(1,u));
+            const cx=ox+sx*u,cy=oy+sy*u,qx=cx-pl.x,qy=cy-pl.y;
+            if(qx*qx+qy*qy<38*38){
+                this.toShiba=false;this.lastHit=null;this.bounces++;
+                const nt=this.findTarget(),spd=Math.sqrt(this.vx*this.vx+this.vy*this.vy)||28;
+                let nx,ny;
+                if(nt){nx=nt.x-pl.x;ny=nt.y-pl.y;}else{nx=qx;ny=qy;}
+                const nl=Math.hypot(nx,ny)||1;nx/=nl;ny/=nl;
+                this.vx=nx*spd;this.vy=ny*spd;this.x=pl.x+nx*34;this.y=pl.y+ny*34;this.bt=6;
+                this.damage*=1.25;
+                if(state.xpOrbs.length<160)state.xpOrbs.push(new XpOrb(pl.x+nx*40,pl.y+ny*40,25));   // the ONLY thing that pays XP
+                fxBurst(this.x,this.y,8,'#ffe27a',1,6,16,2.4);addRing(pl.x,pl.y,46,10,'#ffd700',3);popup(pl.x,pl.y-38,'boing! +xp','#ffd700',50);
             }
         }
         let hitEnemy=null,hd=484;   // 22px, squared
         const en=state.enemies,lh=this.lastHit;
-        for(let i=0;i<en.length;i++){const e=en[i];if(e===lh)continue;const dx=e.x-this.x,dy=e.y-this.y,d2=dx*dx+dy*dy;if(d2<hd){hd=d2;hitEnemy=e;}}
-        if(!hitEnemy&&state.boss&&state.boss!==lh){const dx=state.boss.x-this.x,dy=state.boss.y-this.y;if(dx*dx+dy*dy<1444)hitEnemy=state.boss;}
+        for(let i=0;i<en.length;i++){const e=en[i];if(e===lh||e.hp<=0||!inArena(e))continue;const dx=e.x-this.x,dy=e.y-this.y,d2=dx*dx+dy*dy;if(d2<hd){hd=d2;hitEnemy=e;}}
+        if(!hitEnemy&&state.boss&&state.boss!==lh&&state.boss.hp>0&&inArena(state.boss)){const dx=state.boss.x-this.x,dy=state.boss.y-this.y;if(dx*dx+dy*dy<1444)hitEnemy=state.boss;}
         if(hitEnemy){
-            hitEnemy.hp-=this.damage;popup(hitEnemy.x,hitEnemy.y-20,`💰-${Math.floor(this.damage)}`,'#ffd700');
-            spawnBlood(hitEnemy.x,hitEnemy.y,4);
-            this.lastHit=hitEnemy;
+            this.lastHit=hitEnemy;this.rh=14;if(pl)this.toShiba=true;   // after every hit the coin heads back to Shiba
+            hurtFlat(hitEnemy,this.damage,'💰','#ffd700');
+            fxBurst(hitEnemy.x,hitEnemy.y,5,'#ffd700',1,6,14,2.2,{trail:false});
         }
     }
     draw(){ctx.save();const r=10;ctx.shadowBlur=12;ctx.shadowColor='#ffd700';
@@ -2650,15 +2730,18 @@ class CoinProjectile {
         ctx.restore();}
 }
 
+// Splitter: every shot has a (stacking, capped) chance of one extra bullet
+function volleyN(p){return Math.max(1,p.projectileCount||1)+((Math.random()*100<(p.splitChance||0))?1:0);}
 class Bullet {
-    constructor(x,y,angle,dmg,sz,crit,damageMult){this.x=x;this.y=y;this.vx=Math.cos(angle)*12;this.vy=Math.sin(angle)*12;this.damage=dmg*(damageMult||1);this.size=sz;this.crit=crit;this.life=65;this.pierce=(state.player&&state.player.pierce)|0;}
+    constructor(x,y,angle,dmg,sz,crit,damageMult){this.x=x;this.y=y;this.vx=Math.cos(angle)*12;this.vy=Math.sin(angle)*12;this.damage=dmg*(damageMult||1);this.size=sz;this.crit=crit;this.life=65;this.pierce=(state.player&&state.player.pierce)|0;this.homing=(state.player&&state.player.homing)||0;}
     update(){if(this.homing)steerHome(this,this.homing,380);this.x+=this.vx;this.y+=this.vy;this.life--;}
     draw(){
         const c=this.col||(this.crit?'#ffd700':'#00f2ff');
         ctx.save();ctx.lineCap='round';
         ctx.globalAlpha=0.3;ctx.strokeStyle=c;ctx.lineWidth=this.size*1.7;ctx.beginPath();ctx.moveTo(this.x-this.vx*2.4,this.y-this.vy*2.4);ctx.lineTo(this.x,this.y);ctx.stroke();
-        ctx.globalAlpha=1;ctx.fillStyle=c;ctx.shadowBlur=this.crit?14:7;ctx.shadowColor=c;ctx.beginPath();ctx.arc(this.x,this.y,this.size,0,Math.PI*2);ctx.fill();
-        ctx.shadowBlur=0;ctx.fillStyle='#ffffff';ctx.beginPath();ctx.arc(this.x,this.y,this.size*0.45,0,Math.PI*2);ctx.fill();
+        ctx.globalAlpha=this.crit?0.32:0.22;ctx.fillStyle=c;ctx.beginPath();ctx.arc(this.x,this.y,this.size*(this.crit?2.1:1.7),0,Math.PI*2);ctx.fill();   // v2.1: cheap halo instead of shadowBlur (big win when 100+ bullets are out)
+        ctx.globalAlpha=1;ctx.fillStyle=c;ctx.beginPath();ctx.arc(this.x,this.y,this.size,0,Math.PI*2);ctx.fill();
+        ctx.fillStyle='#ffffff';ctx.beginPath();ctx.arc(this.x,this.y,this.size*0.45,0,Math.PI*2);ctx.fill();
         ctx.restore();
     }
 }
@@ -2720,7 +2803,7 @@ class Player {
         this.hp=config.hp*HP_PER_HEART;this.maxHp=config.hp*HP_PER_HEART;this.speed=config.speed;
         this.invul=0;this.facing=1;this.atkCooldown=0;
         this.atkSpeed=config.id==='coolioioio'?22:config.id==='choco'?40.9:45;   // Choco: 1.1x attack speed
-        this.pierce=0;this.luck=0;this.armor=0;this.picky=0;this.damage=config.id==='coolioioio'?4:10;this.projectileCount=1;this.bSize=5;this.crit=5;this.xpMult=1;
+        this.pierce=0;this.luck=0;this.armor=0;this.picky=0;this.damage=config.id==='coolioioio'?4:10;this.projectileCount=1;this.splitChance=0;this.bSize=5;this.crit=5;this.xpMult=1;
         this.size=config.imgSize||50;this.cutenessBoostShots=0;this.cutenessActive=false;this.regen=(config.regen!=null?config.regen:4);this.regenTick=0;   // v1.8: HP per secondthis.magnet=0;
         this.bulletSpeedMult=1;this.pounceRegenTick=0;
         this._frenzyTimer=0;this._frenzyDmgMult=1;this._frenzyAtkBase=0;
@@ -2794,8 +2877,9 @@ class Player {
             const angle=Math.atan2(state.mouseY-this.y,state.mouseX-this.x);
             const boost=this.cutenessBoostShots>0?2:1;
             const spd=12*this.bulletSpeedMult;
-            for(let i=0;i<this.projectileCount;i++){
-                const spread=(i-(this.projectileCount-1)/2)*0.2;
+            const nV=volleyN(this);
+            for(let i=0;i<nV;i++){
+                const spread=(i-(nV-1)/2)*0.2;
                 const isCrit=Math.random()*100<this.crit;
                 const frenzyM=(this.config.id==='tiger'&&this._frenzyTimer>0)?this._frenzyDmgMult:1;
                 const b=new Bullet(this.x,this.y,angle+spread,this.damage*(isCrit?2:1)*frenzyM,this.bSize,isCrit,boost);
@@ -2819,8 +2903,9 @@ class Player {
         const angle=Math.atan2(target.y-this.y,target.x-this.x);
         const boost=this.cutenessBoostShots>0?2:1;
         const spd=12*this.bulletSpeedMult;
-        for(let i=0;i<this.projectileCount;i++){
-            const spread=(i-(this.projectileCount-1)/2)*0.2;
+        const nV2=volleyN(this);
+        for(let i=0;i<nV2;i++){
+            const spread=(i-(nV2-1)/2)*0.2;
             const isCrit=Math.random()*100<this.crit;
             const frenzyM2=(this.config.id==='tiger'&&(this._frenzyTimer||0)>0)?(this._frenzyDmgMult||1):1;
             const b=new Bullet(this.x,this.y,angle+spread,this.damage*(isCrit?2:1)*frenzyM2,this.bSize,isCrit,boost);
@@ -2983,6 +3068,7 @@ class Enemy {
     update(){
         this.aimLine=false;
         if(this.blinkFlash>0)this.blinkFlash--;
+        if(this.laser&&(this.stunned>0||frozenFoe(this))){this.laser=null;this.shootCooldown=Math.round((this.def&&this.def.shootInterval||190)*0.6);}   // stun / freeze interrupts a sniper's laser
         if(this.stunned>0){this.stunned--;return;}
         if(frozenFoe(this))return;
         if(state.pounce.active&&state.pounce.target===this)return;
@@ -3067,14 +3153,23 @@ class Enemy {
                     }
                 }
             } else {
+                // v2.1 SNIPER LASER: a thin red line tracks you for ~0.8s, then LOCKS (flashing, ~0.45s to get out of the line), then a piercing beam fires.
+                const SN_TRACK=48,SN_LOCK=28,SN_FIRE=9,L=this.laser;
                 this.shootCooldown--;
-                this.aimLine=this.shootCooldown<28&&this.shootCooldown>0;
-                if(this.shootCooldown<=0){
-                    if(!this.charmed){
-                        const sb=new EnemyBullet(this.x,this.y,Math.atan2(dy,dx),2,false);
-                        sb.vx*=2.4;sb.vy*=2.4;sb.size=8;sb.life=120;state.enemyBullets.push(sb);
+                if(L){
+                    if(state.frameCount-L.last>3||this.charmed){this.laser=null;this.shootCooldown=Math.round(this.def.shootInterval*0.6);}   // stunned / charmed: the shot is interrupted
+                    else{
+                        L.last=state.frameCount;L.t++;
+                        if(L.t<=SN_TRACK){const want=Math.atan2(dy,dx);let da=want-L.ang;da=Math.atan2(Math.sin(da),Math.cos(da));L.ang+=Math.max(-0.045,Math.min(0.045,da));}
+                        if(L.t===SN_TRACK+SN_LOCK){fxShake(4);addRing(this.x,this.y,40,10,'#ff3b3b',3);}
+                        if(L.t>=SN_TRACK+SN_LOCK&&L.t<SN_TRACK+SN_LOCK+SN_FIRE&&!L.hit){
+                            const tg=this.getTarget(),ca=Math.cos(L.ang),sa=Math.sin(L.ang),rx=tg.x-this.x,ry=tg.y-this.y;
+                            if(rx*ca+ry*sa>0&&Math.abs(-rx*sa+ry*ca)<20){L.hit=true;damagePlayer(2.5);}
+                        }
+                        if(L.t>=SN_TRACK+SN_LOCK+SN_FIRE){this.laser=null;this.shootCooldown=this.def.shootInterval;}
                     }
-                    this.shootCooldown=this.def.shootInterval;
+                } else if(this.shootCooldown<=0&&!this.charmed){
+                    this.laser={t:0,ang:Math.atan2(dy,dx),last:state.frameCount,hit:false};
                 }
             }
             this.x=Math.max(-100,Math.min(canvas.width+100,this.x));this.y=Math.max(-100,Math.min(canvas.height+100,this.y));
@@ -3103,10 +3198,24 @@ class Enemy {
         if(frozenFoe(this)&&onScreen&&!this.isHost){
             ctx.globalAlpha=0.45;ctx.fillStyle='#aaeeff';ctx.beginPath();ctx.arc(this.x,this.y,16,0,Math.PI*2);ctx.fill();ctx.globalAlpha=1;
         }
-        if(this.aimLine&&onScreen){
-            const at=this.getTarget();
-            ctx.strokeStyle='rgba(255,40,40,0.55)';ctx.lineWidth=1.5;ctx.setLineDash([6,6]);
-            ctx.beginPath();ctx.moveTo(this.x,this.y);ctx.lineTo(at.x,at.y);ctx.stroke();ctx.setLineDash([]);
+        if(this.laser){
+            const L=this.laser,TR=48,LK=28,FR=9,ca=Math.cos(L.ang),sa=Math.sin(L.ang),ex=this.x+ca*2400,ey=this.y+sa*2400;
+            ctx.save();ctx.lineCap='round';
+            if(L.t<TR){   // tracking: thin dashed line + charge glow
+                ctx.globalAlpha=0.25+0.3*L.t/TR;ctx.strokeStyle='#ff3b3b';ctx.lineWidth=1.5;ctx.setLineDash([10,8]);
+                ctx.beginPath();ctx.moveTo(this.x,this.y);ctx.lineTo(ex,ey);ctx.stroke();ctx.setLineDash([]);
+            } else if(L.t<TR+LK){   // locked: solid, flashing, widening — MOVE
+                const k=(L.t-TR)/LK,fl=(L.t%6<3)?1:0.55;
+                ctx.globalAlpha=fl*(0.6+0.4*k);ctx.strokeStyle='#ff2020';ctx.lineWidth=2+k*5;
+                ctx.beginPath();ctx.moveTo(this.x,this.y);ctx.lineTo(ex,ey);ctx.stroke();
+            } else {   // the beam
+                const k=1-(L.t-TR-LK)/FR;
+                ctx.globalCompositeOperation='lighter';
+                ctx.globalAlpha=0.45*k;ctx.strokeStyle='#ff3030';ctx.lineWidth=34;ctx.beginPath();ctx.moveTo(this.x,this.y);ctx.lineTo(ex,ey);ctx.stroke();
+                ctx.globalAlpha=k;ctx.strokeStyle='#ffffff';ctx.lineWidth=10;ctx.beginPath();ctx.moveTo(this.x,this.y);ctx.lineTo(ex,ey);ctx.stroke();
+            }
+            if(L.t<TR+LK){ctx.globalAlpha=0.5+0.5*Math.min(1,L.t/(TR+LK));ctx.fillStyle='#ff4040';ctx.beginPath();ctx.arc(this.x,this.y,6+4*Math.sin(L.t*0.5),0,6.2832);ctx.fill();}
+            ctx.restore();
         }
         if(this.def&&this.def.type==='phantom')ctx.globalAlpha=this.blinkFlash>0?1:0.6;
         const es=emojiSprite(this.type,24);
@@ -3147,7 +3256,7 @@ class Boss {
         this.isBoss=true;this.isHost=false;this.stunned=0;
         this.fleeing=false;this.fleeTimer=0;this.meleeDmg=2+(state.lvl>10?1:0);this.meleeCooldown=0;
         const hpScale=(def.hpMult||1);
-        this.maxHp=Math.floor((400+state.lvl*90)*settings.difficulty*hpScale*(state.bossMultiplier||1));
+        this.maxHp=Math.floor((450+state.lvl*120)*settings.difficulty*hpScale*(state.bossMultiplier||1));
         this.hp=this.maxHp;
         this.speedBase=1.25;   // v1.7: constant
         this.phase='chase';this.phaseTimer=180;this.shootCooldown=0;this.shootBurst=0;
@@ -3341,7 +3450,7 @@ function triggerAbility(){
                     if(!arc.to||arc.to.hp<=0){if(i===chain.length-1)later(()=>{state.pikaChaining=false;},350);return;}
                     const le=new LightningEffect(arc.from.x,arc.from.y,arc.to.x,arc.to.y);
                     state.lightningEffects.push(le);
-                    const dmg=p.damage*7*arc.mult*(frozenFoe(arc.to)?state.effects.frozenDamageMult:1);
+                    const dmg=p.damage*7*arc.mult*brittleMult(arc.to);
                     arc.to.hp=Math.max(0,arc.to.hp-dmg);
                     if(!arc.to.isBoss)arc.to.stunned=Math.max(arc.to.stunned||0,130);
                     else arc.to.stunned=Math.max(arc.to.stunned||0,40);
@@ -3476,7 +3585,7 @@ function triggerAbility(){
         used=true;
     } else if(p.config.id==='shiba'){
         // PRIMARY: 50 BUCKS (swapped)
-        const allS=[...state.enemies];if(state.boss)allS.push(state.boss);
+        const allS=liveTargets();   // v2.1: only enemies actually on the playfield
         if(settings.abilityTarget==='manual'){
             const ang=Math.atan2(state.mouseY-p.y,state.mouseX-p.x);
             state.bullets.push(new CoinProjectile(p.x,p.y,ang,15));
@@ -3500,7 +3609,7 @@ function triggerAbility(){
         all.forEach(e=>{const d=Math.sqrt((e.x-p.x)**2+(e.y-p.y)**2);if(d<td){td=d;target=e;}});
         const baseAng=target?Math.atan2(target.y-p.y,target.x-p.x):Math.atan2(state.mouseY-p.y,state.mouseX-p.x);
         popup(p.x,p.y-60,'💬 WORD BARRAGE!','#cc44ff',180);
-        state.blahBarrage={timer:60,shootTick:0,angle:baseAng,target};
+        state.blahBarrage={timer:75,shootTick:0,angle:baseAng,target};
         p.invul=60;
         used=true;
     } else if(p.config.id==='subaru'){
@@ -4264,7 +4373,7 @@ function _arenaWrap(cls){
     };
 }
 // ═══════════════════════════════════════════════════
-//  v2.2 — AURA MONSTER (Subaru variant): Void Tearer, Stairs Throw, Flashing Eyes
+//  v2.2 — AURA MONSTER (Subaru variant): Void Tearer, Stairs Throw, My Eyes Turn Red
 // ═══════════════════════════════════════════════════
 // VOID TEARER: rip a hole in the arena. Everything near it is dragged in and unmade within a few seconds —
 // but the rift is a wall for YOU too (you can't cross it), it eats a chunk of the arena for 5.5s, and it has a long cooldown.
@@ -4470,7 +4579,7 @@ function stairsDraw(){
     }
     ctx.restore();
 }
-// FLASHING EYES (ult): a dozen enormous eyes tear open across the arena and hunt. Anything caught in a gaze is paralysed and withers;
+// MY EYES TURN RED (ult): a dozen enormous eyes tear open across the arena and hunt. Anything caught in a gaze is paralysed and withers;
 // the eyes blink-flash in turns for heavy damage, and the final all-seeing flash executes the weak and ruins the rest.
 ULT_IMPL.auramonster={
     start(F,p,d){
@@ -4479,7 +4588,7 @@ ULT_IMPL.auramonster={
             const a=i/n*6.2832+Math.random()*0.5,r=(i%2?170:320)+Math.random()*70;
             d.eyes.push({x:Math.max(110,Math.min(W-110,W/2+Math.cos(a)*r*1.5)),y:Math.max(110,Math.min(H-110,H/2+Math.sin(a)*r*0.95)),i:i,born:i*7,flash:0,look:0,lx:0,ly:0,tx:null,ty:null});
         }
-        fxFlash('#330011',0.7,14);fxShake(14);addRing(p.x,p.y,900,34,'#ff2255',6);popup(p.x,p.y-70,'👁 FLASHING EYES 👁','#ff4466',150);
+        fxFlash('#330011',0.7,14);fxShake(14);addRing(p.x,p.y,900,34,'#ff2255',6);popup(p.x,p.y-70,'👁 MY EYES TURN RED 👁','#ff4466',150);
     },
     run(F,p,d,t){
         p.invul=Math.max(p.invul,2);p._warpSpeedBoost=3;p._warpMult=1.4;if(p.atkCooldown>1)p.atkCooldown--;
@@ -4553,7 +4662,17 @@ ULT_IMPL.auramonster={
     }
 };
 
-(function(){const _pu=Player.prototype.update;Player.prototype.update=function(){_pu.call(this);if(this.config.id==='auramonster')voidBlock(this);};})();
+(function(){const _pu=Player.prototype.update;Player.prototype.update=function(){
+    _pu.call(this);
+    if(this.config.id==='auramonster')voidBlock(this);
+    else if(this.config.id==='cat'){   // v2.1: the Singularity is a wall for Glorp too
+        const u=state.ult,F=u&&u.fx;
+        if(F&&F.id==='cat'&&F.d&&F.d.cx!==undefined){
+            const dx=this.x-F.d.cx,dy=this.y-F.d.cy,dd=Math.hypot(dx,dy),M=125;
+            if(dd<M){if(dd<0.01){this.x=F.d.cx;this.y=F.d.cy-M;}else{this.x=F.d.cx+dx/dd*M;this.y=F.d.cy+dy/dd*M;}}
+        }
+    }
+};})();
 _oilWrap(Enemy);_oilWrap(Boss);_arenaWrap(Enemy);_arenaWrap(Boss);
 
 function killEnemy(e,idx){
@@ -4585,8 +4704,8 @@ function killEnemy(e,idx){
     }
     if(e.isBoss){
         if(e===state.boss)state.boss=null;
-        const multGain=settings.difficulty>1?0.2:0.1;
-        state.bossMultiplier=Math.min(3.0,(state.bossMultiplier||1)+multGain);
+        const multGain=settings.difficulty>1?0.4:0.25;
+        state.bossMultiplier=Math.min(6.0,(state.bossMultiplier||1)+multGain);
         if(state.pounce.active&&state.pounce.target===e){
             state.pounce.active=false;state.pounce.target=null;state.player.invul=60;
             state.pounce.healTick=0;
@@ -4608,7 +4727,7 @@ function damagePlayer(amt){
     if(state.pounce.active)return;
     if(state.mindControl.active){
         const mh=state.mindControl.host,mc=state.mindControl;
-        if(mh.isBoss){   // boss host: a 60%-of-max-HP possession shell soaks hits first, and the rest is taken at 2% max HP per heart (was 3%)
+        if(mh.isBoss){   // boss host: a 24%-of-max-HP possession shell soaks hits first, and the rest is taken at 2% max HP per heart (was 3%)
             let d=amt*mh.maxHp*0.02;
             if(mc.shell>0){const ab=Math.min(mc.shell,d);mc.shell-=ab;d-=ab;if(mc.shell<=0)popup(mh.x,mh.y-60,'🛡 SHELL BROKEN','#ff88ff',90);}
             mh.hp-=d;mcTimerText();
@@ -4684,15 +4803,9 @@ function gameStep(){
         if(pbi!==-1){state.boss=state.enemies[pbi];state.enemies.splice(pbi,1);updateBossBar();}
     }
     // Cooldown ticking — frozen for Zanther while pouncing, Shiba while coin is active
-    const pounceActive=state.pounce.active&&state.player&&state.player.config.id==='tiger';
-    const shibaCoinActive=state.player&&state.player.config.id==='shiba'&&state.bullets.some(b=>b instanceof CoinProjectile);
-    const spinbotActive=state.spinbot&&state.player&&state.player.config.id==='coolioioio';
-    const mcActive=state.mindControl.active&&state.player&&state.player.config.id==='noglin';
-    const snowmanFrozen=state.effects.frozen&&state.player&&state.player.config.id==='snowman';
-    const blahBarrageActive=!!state.blahBarrage&&state.player&&state.player.config.id==='blahblahblah';
-    const pikaChaining=state.pikaChaining&&state.player&&state.player.config.id==='pikachu';
-    if(!state.ability.ready){if(!pounceActive&&!spinbotActive&&!mcActive&&!snowmanFrozen&&!blahBarrageActive&&!pikaChaining&&!shibaCoinActive){state.ability.cooldown--;if(state.ability.cooldown<=0){state.ability.ready=true;updateHUD();}}}
-    if(!state.secondary.ready){if(!spinbotActive){state.secondary.cooldown--;if(state.secondary.cooldown<=0){state.secondary.ready=true;updateHUD();}}}
+    const cdF=cdFrozenNow();
+    if(!state.ability.ready){if(!cdF.a){state.ability.cooldown--;if(state.ability.cooldown<=0){state.ability.ready=true;updateHUD();}}}
+    if(!state.secondary.ready){if(!cdF.s){state.secondary.cooldown--;if(state.secondary.cooldown<=0){state.secondary.ready=true;updateHUD();}}}
     timersTick();
     burnTick();
     chocoTick();
@@ -4832,7 +4945,7 @@ function gameStep(){
         if(hitEnemy){
             nd.active=false;state.noglinDash=null;
             hitEnemy.isHost=true;
-            state.mindControl={active:true,host:hitEnemy,savedHp:p.hp,slamCooldown:0,mcTimer:0,shell:hitEnemy.isBoss?hitEnemy.maxHp*0.6:0,shellMax:hitEnemy.isBoss?hitEnemy.maxHp*0.6:0};
+            state.mindControl={active:true,host:hitEnemy,savedHp:p.hp,slamCooldown:0,mcTimer:0,shell:hitEnemy.isBoss?hitEnemy.maxHp*0.24:0,shellMax:hitEnemy.isBoss?hitEnemy.maxHp*0.24:0};
             state.mcAbilityCooldowns={q:0,e:0,f:0};
             p.x=hitEnemy.x;p.y=hitEnemy.y;
             popup(p.x,p.y-60,'MIND CONTROL!','#ff00ff');
@@ -4861,7 +4974,7 @@ function gameStep(){
             state.pounce.damageTick--;
             if(state.pounce.damageTick<=0){
                 const feastPct=pt.isBoss?0.018:0.06;   // FEAST: % of the victim's max HP per bite (old flat damage is the floor)
-                const dmg=Math.max(state.pounce.damage,pt.maxHp*feastPct)*(frozenFoe(pt)?state.effects.frozenDamageMult:1);
+                const dmg=Math.max(state.pounce.damage,pt.maxHp*feastPct)*brittleMult(pt);
                 fxBurst(pt.x,pt.y,8,'#ff8800',2,8,18,2.6);addRing(pt.x,pt.y,46,10,'#ff6600',3);fxShake(3);
                 pt.hp-=dmg;
                 // heal: 1hp per 5 damage ticks (see below)
@@ -5161,7 +5274,7 @@ function gameStep(){
         const bb=state.blahBarrage;
         bb.timer--;bb.shootTick--;
         if(bb.shootTick<=0){
-            bb.shootTick=4;
+            bb.shootTick=3;
             const p=state.player;
             const WORDS=['NAKAMA!','BELIEVE IT!','PLUS ULTRA!','BANKAI!','SHANNARO!','GOMU GOMU!','KAMEHAMEHA!','SENPAI!','NANI?!','SUGOI!'];
             // Re-acquire target
@@ -5169,10 +5282,12 @@ function gameStep(){
             if(!tgt||tgt.hp<=0){tgt=null;let td=Infinity;const all=allTargets();for(let i=0;i<all.length;i++){const e=all[i],dx=e.x-p.x,dy=e.y-p.y,d=dx*dx+dy*dy;if(d<td){td=d;tgt=e;}}}
             bb.target=tgt;
             if(tgt){
-                const spread=(Math.random()-.5)*0.4;
-                const ang=Math.atan2(tgt.y-p.y,tgt.x-p.x)+spread;
-                const wb={x:p.x,y:p.y,vx:Math.cos(ang)*18,vy:Math.sin(ang)*18,damage:p.damage*1.8,life:70,word:WORDS[Math.floor(Math.random()*WORDS.length)],size:7,home:0.05};
-                state.bullets.push(wb);
+                // v2.1: 3 words per volley (was 1) over 1.25s — ~75 word-bullets instead of 15
+                for(let w=0;w<3;w++){
+                    const spread=(w-1)*0.22+(Math.random()-.5)*0.25;
+                    const ang=Math.atan2(tgt.y-p.y,tgt.x-p.x)+spread,sp=17+Math.random()*3;
+                    state.bullets.push({x:p.x,y:p.y,vx:Math.cos(ang)*sp,vy:Math.sin(ang)*sp,damage:p.damage*1.8,life:70,word:WORDS[Math.floor(Math.random()*WORDS.length)],size:7,home:0.05});
+                }
                 // Stun on hit handled in update
             }
         }
@@ -5239,7 +5354,7 @@ function gameStep(){
             if(b.isMCBullet){
                 const hitR=(b.size||8)+22+(e.isBoss?20:0);// bigger hitbox for MC abilities
                 if(!isHost&&(e.x-b.x)**2+(e.y-b.y)**2<hitR*hitR){
-                    let dmg=b.damage*(frozenFoe(e)?state.effects.frozenDamageMult:1);
+                    let dmg=b.damage*brittleMult(e);
                     e.hp-=dmg;state.bullets.splice(bi,1);spawnBlood(e.x,e.y,4);
                     if(b.stunOnHit&&!e.isBoss)e.stunned=Math.max(e.stunned||0,b.stunOnHit);
                     if(e.hp<=0){killEnemy(e,i);if(i<state.enemies.length)state.enemies.splice(i,1);killed=true;break;}
@@ -5250,7 +5365,7 @@ function gameStep(){
             const hitR=(b.size||8)+(b instanceof IcicleProjectile?10:state.mindControl.active?22:14)+(e.isBoss?18:0);
             if((e.x-b.x)**2+(e.y-b.y)**2<hitR*hitR){
                 if(b.hitSet&&b.hitSet.has(e))continue;
-                let dmg=b.damage*(frozenFoe(e)?state.effects.frozenDamageMult:1);
+                let dmg=b.damage*brittleMult(e);
                 e.hp-=dmg;
                 if(b instanceof IcicleProjectile){b.hitSet.add(e);b.damage*=0.9;if(--b.pierce<=0)state.bullets.splice(bi,1);fxBurst(e.x,e.y,6,'#aef4ff',1,5,16,2.2);}
                 else if(b.pierce>0){b.pierce--;(b.hitSet||(b.hitSet=new Set())).add(e);}
@@ -5616,6 +5731,16 @@ function gameRender(){
         tarPuddleDraw();voidDraw();
         // Enemies
         for(const e of state.enemies){e.draw();}
+        if(state.brittleOn){   // brittle marker: icy ring + cracks on anything the Snowball burst left fragile
+            ctx.save();ctx.lineWidth=2;ctx.strokeStyle='#bff4ff';ctx.fillStyle='#e6fbff';ctx.font='11px Arial';ctx.textAlign='center';ctx.textBaseline='middle';
+            const fc=state.frameCount;let any=false;
+            const bl=state.boss?state.enemies.concat([state.boss]):state.enemies;
+            for(let i=0;i<bl.length;i++){const e=bl[i];if(!(e.brittle>fc)||e.hp<=0)continue;any=true;
+                const left=e.brittle-fc,a=left<60?0.3+0.3*Math.sin(fc*0.6):0.75,r=(e.isBoss?44:26);
+                ctx.globalAlpha=a*0.55;ctx.beginPath();ctx.arc(e.x,e.y,r,0,6.2832);ctx.stroke();
+                ctx.globalAlpha=a;ctx.fillText('❄',e.x+r*0.7,e.y-r*0.7);}
+            ctx.restore();if(!any)state.brittleOn=false;
+        }
 
         // Blizzard snowfall
         if(state.snow&&state.snow.length){
@@ -5800,7 +5925,7 @@ function spawnBoss(){
 let previousScreen=null;
 function showScreen(id){previousScreen=state.screen;state.screen='OVERLAY';document.querySelectorAll('.ui-layer').forEach(el=>el.classList.add('hidden'));document.getElementById(id).classList.remove('hidden');}
 function closeOverlay(){
-    ['settingsScreen','keybindsScreen','infoScreen','changelogScreen','enemyScreen'].forEach(id=>{const el=document.getElementById(id);if(el)el.classList.add('hidden');});
+    ['settingsScreen','keybindsScreen','infoScreen','changelogScreen','enemyScreen','upgradeScreen'].forEach(id=>{const el=document.getElementById(id);if(el)el.classList.add('hidden');});
     if(previousScreen==='MENU'||!state.player){document.getElementById('mainMenu').classList.remove('hidden');state.screen='MENU';}
     else{document.getElementById('pauseMenu').classList.remove('hidden');state.screen='PAUSED';const ey=document.getElementById('eyeToggle');if(ey)ey.style.display='block';updateHUD();}
 }
@@ -5844,7 +5969,7 @@ const ENEMY_INFO={
     phantom:{name:'Phantom', note:'Drifts in and blinks to a spot beside you every few seconds.',mc:['HAUNT','Confuses everything nearby so they fight each other.']},
     boar:   {name:'Boar',    note:'Winds up, then rams in a straight line.',mc:['STAMPEDE','Ram through everything in a line toward your cursor.']},
     healer: {name:'Healer',  note:'Stays back and heals nearby allies for 20% max HP every 2.5s. At most 4 at a time.',mc:['LIFE DRAIN','Siphon HP from all nearby enemies and heal the host.']},
-    sniper: {name:'Sniper',  note:'Stays far away (~520px); a red aim line warns you before its fast shot.',mc:['HEADSHOT','3 instant long-range hits on your toughest targets.']},
+    sniper: {name:'Sniper',  note:'Stays far away (~520px). Charges a LASER: a thin red line tracks you, then locks and flashes (about half a second to step out of it) before a piercing beam fires. Stunning it cancels the shot.',mc:['HEADSHOT','3 instant long-range hits on your toughest targets.']},
     spider: {name:'Spider',  note:'Keeps ~260px away and spawns fast baby spiders every 4s.',mc:['WEB BARRAGE','Homing webs that damage and stun.']},
 };
 function initEnemyCatalogue(){
@@ -5865,11 +5990,39 @@ function initEnemyCatalogue(){
         grid.appendChild(card);
     });
 }
+const UPGRADE_NOTES={
+    ability_cd:'Hidden once both cooldowns hit the 6s floor.',
+    crit:'Capped at 80% crit chance — hidden once reached.',
+    armor:'Capped at 60% damage reduction.',
+    picky:'Legendary-only and rare. Stacks up to 3 times.',
+    pierce:'Max 12 pierce.',
+    regen:'Max 120 HP/s.',
+    homing:'Very slight steering, and a rarer roll than most. Capped — hidden once maxed.',
+    bullet_size:'Bullet size is capped at 20px — hidden once reached.',
+    bullet_spd:'Total bullet speed capped at ×3 — hidden once reached.',
+    projectiles:'Each shot has a chance to fire one extra bullet. Stacks up to 80% — hidden once reached. Choco\'s towers roll it too.',
+    xp_boost:'Stacks additively with Luck\'s bonus orbs.',
+    damage:'Also boosts burn, towers, Pikachu etc. — everything scales off your damage.',
+};
+function initUpgradeCatalogue(){
+    const grid=document.getElementById('upgradeGrid');if(!grid)return;
+    grid.innerHTML='';
+    UPGRADES_POOL.forEach(u=>{
+        const fav=FAV_UPGRADES.indexOf(u.id)!==-1,tw=u.tiers.reduce((s,t)=>s+(t.w||50),0);
+        const rows=u.tiers.map(t=>`<div style="display:flex;gap:6px;align-items:baseline;margin-top:3px"><span style="flex:0 0 58px;font-size:7px;font-weight:bold;color:${t.c}">${t.l.toUpperCase()}</span><span style="flex:1;font-size:7px;color:#ccc;line-height:1.5">${t.desc}</span><span style="flex:0 0 28px;text-align:right;font-size:6px;color:#8a8aa8">${Math.round(t.w/tw*100)}%</span></div>`).join('');
+        const note=UPGRADE_NOTES[u.id]?`<div style="font-size:6px;color:#8a8aa8;margin-top:5px;line-height:1.6">${UPGRADE_NOTES[u.id]}</div>`:'';
+        const card=document.createElement('div');card.className='char-info-card';
+        card.innerHTML=`<div style="display:flex;align-items:center;gap:8px;margin-bottom:4px;border-bottom:1px solid rgba(255,255,255,0.1);padding-bottom:5px">
+            <span style="flex-shrink:0;width:30px;height:30px;display:flex;align-items:center;justify-content:center;font-size:1.1rem;background:rgba(0,0,0,0.35);border:2px solid ${fav?'#ffd700':'#555'};border-radius:8px">${UPGRADE_ICONS[u.id]||'✨'}</span>
+            <div style="font-size:10px;font-weight:bold;color:${fav?'#ffd700':'#00f2ff'}">${fav?'★ ':''}${u.name}</div></div>${rows}${note}`;
+        grid.appendChild(card);
+    });
+}
 function initInfoScreen(){
     const CHAR_INFO=[
         {emoji:'👹',name:'Noglin',color:'#ff00ff',stats:'Speed: Fast | HP: 250 | Regen: 4/s',abilities:[
             {key:'SPACE — Latch',   desc:'Fire a latch toward your cursor. Hit an enemy to mind control them — piloting their body with their own speed, health and projectiles. Latch cooldown pauses during control. Host dies after 60s.'},
-            {key:'[MC] Q — Host special',desc:'Changes with the enemy you control — every host type and its special is listed in the ENEMY CATALOGUE. Boss hosts are tougher to control-break: a 60% possession shell plus 2% of boss HP per hit, faster movement, and a unique, harder-hitting special per boss pattern.'},
+            {key:'[MC] Q — Host special',desc:'Changes with the enemy you control — every host type and its special is listed in the ENEMY CATALOGUE. Boss hosts are tougher to control-break: a 24% possession shell plus 2% of boss HP per hit, faster movement, and a unique, harder-hitting special per boss pattern.'},
             {key:'[MC] SPACE — Delatch', desc:'Safely exit the host. You return with your original HP and the host survives.'},
             {key:'[MC] R — Kill Host', desc:'Instantly kill the controlled enemy and escape. Great for detonating a host on demand.'},
             {key:'R — Cuteness',    desc:'Stun all nearby enemies for 2 seconds. Doubles attack speed and grants 2 shots of 2× bullet damage. Noglin switches to its adorable form while enemies are stunned.'},
@@ -5891,7 +6044,7 @@ function initInfoScreen(){
             {key:'R — Tar Toss',        desc:'Hurl a glob of tar at the thickest cluster of enemies (or your cursor in manual mode). It splashes everything near the landing with oil for 9 seconds and leaves a tar puddle for 14 seconds that keeps oiling anyone standing in it. Oiled enemies move slower, steer sluggishly and take DOUBLE burn damage — and any fire touching the puddle sets it ablaze.'},
         ]},
         {emoji:'🐕',name:'Broke Shiba',color:'#ffbbbb',stats:'Speed: Medium | HP: 300 | Regen: 4/s',abilities:[
-            {key:'SPACE — 50 Bucks',     desc:'Throw a homing coin that bounces between enemies for 5 seconds, hitting unlimited targets. Cannot hit the same enemy twice in a row. It can never leave the arena — it ricochets off the walls and off you (without hurting you).'},
+            {key:'SPACE — 50 Bucks',     desc:'Throw a homing coin for 5 seconds. It ricochets enemy → Shiba → enemy: after every hit it comes back and bounces off YOU (never hurting you), which drops an XP orb and makes the coin hit 25% harder, then it picks the next target. Bounces off the arena walls too and can never leave the arena.'},
             {key:'R — Sad Whimper',      desc:'Emit a pitiful cry in a large radius. Enemies flee and drop XP orbs out of guilt. Works on bosses too.'},
         ]},
         {emoji:'☃️',name:'Snowman',color:'#88eeff',stats:'Speed: Slow | HP: 500 | Regen: 4/s',abilities:[
@@ -5907,11 +6060,11 @@ function initInfoScreen(){
             {key:'R — Pickle Dash', desc:'Become Tiny Pickle Rick and dash through up to 8 enemies in sequence, dealing 3× damage, poisoning everything on the path, then take one extra dash to the most isolated spot in the arena with a victory burst. Features mandatory "I\'M PICKLE RICK!" proclamation.'},
         ]},
         {emoji:'💬',name:'BlahBlahBlah',color:'#cc44ff',stats:'Speed: Fast | HP: 250 | Regen: 4/s',abilities:[
-            {key:'SPACE — Word Barrage', desc:'Unleash a torrent of anime catchphrases as bullets for 1 second. Each word-bullet stuns enemies briefly, deals 1.8× damage and gently homes in on enemies. Auto-tracks nearest enemy.'},
+            {key:'SPACE — Word Barrage', desc:'Unleash a storm of anime catchphrases — three word-bullets at a time for 1.25 seconds (~75 words). Each word-bullet stuns enemies briefly, deals 1.8× damage and gently homes in on enemies. Auto-tracks nearest enemy.'},
             {key:'R — Ultimate Speech', desc:'Trigger an anime-style cutscene, then nuke everything within 600px for 15× damage 1.7 seconds later (the words stay on screen for 1.6s). Full invulnerability during speech. Very dramatic.'},
         ]},
         {id:'choco',emoji:'🍪',name:'IAmChoco',color:'#c68642',stats:'Speed: Fast | HP: 250 | Regen: 4/s',abilities:[
-            {key:'SPACE — Wanna play TB?', desc:'Raise 3 wooden barricade towers in an arc toward your cursor. Each has a bow on top that fires piercing arrows at the nearest enemy (Haste = faster shots, Velocity = faster arrows). Barricades block enemies but get chewed up by anything pressing on them, and last 14 seconds.'},
+            {key:'SPACE — Wanna play TB?', desc:'Raise 3 wooden barricade towers in an arc toward your cursor. Each has a bow on top that fires arrows at the nearest enemy, and the towers use ALL of your upgrades: Caliber/Lethality (damage, crits), Haste (fire rate), Velocity (arrow speed), Pierce, Heavy Rounds (bigger arrows), Splitter (extra arrows per shot), Homing, plus Vitality and Armour for the barricades. Barricades block enemies but get chewed up by anything pressing on them, and last 14 seconds.'},
             {key:'R — Dying SMP (toggle)', desc:'Swap between your normal projectiles and a sword. The sword fights in a 3-hit combo — sweep, sweep back, then a huge 360° finisher — hitting everything in the arc. A full combo deals about 1.3× your normal gun DPS to each enemy it touches. Haste speeds up the combo, Caliber boosts damage, Velocity speeds up the animation AND extends the reach, and Heavy Rounds makes the sword bigger.'},
         ]},
         {id:'kira',emoji:'📓',name:'Kira',color:'#cc0000',stats:'Speed: Fast | HP: 250 | Regen: 4/s',abilities:[
@@ -6004,7 +6157,7 @@ window.addEventListener('keydown',e=>{if(e.key==='Escape')closeVariantMenu();});
 function initMenu(){
     loadSave();
     secretsUnlocked=!!saveData.secrets;
-    initInfoScreen();initEnemyCatalogue();
+    initInfoScreen();initEnemyCatalogue();initUpgradeCatalogue();
     const grid=document.getElementById('charGrid');if(!grid)return;grid.innerHTML='';
     CHARACTERS.filter(c=>(!c.secret||secretsUnlocked)&&!c.variantOf).forEach(c=>{
         const vs=CHARACTERS.filter(x=>x.variantOf===c.id&&(!x.secret||secretsUnlocked)),nv=vs.length,nu=vs.filter(charUnlocked).length;
@@ -6025,7 +6178,7 @@ function startGame(c){
         snowman:    {primary:1200, secondary:900},
         noglin:     {primary:1200, secondary:900},
         pikachu:    {primary:840, secondary:600},
-        cat:        {primary:1200, secondary:540},
+        cat:        {primary:1380, secondary:720},
         arsonist:   {primary:900,  secondary:1100},
         shiba:      {primary:900, secondary:1200},
         kira:       {primary:900,  secondary:2400},
@@ -6118,15 +6271,7 @@ function updateHUD(){
     if(cd&&state.player){
         const rows=cd.querySelectorAll('div');
         const isPaused=state.screen==='PAUSED';
-        const pounceActive=state.pounce.active&&state.player.config.id==='tiger';
-        const shibaCoinActive=state.player.config.id==='shiba'&&state.bullets.some(b=>b instanceof CoinProjectile);
-        const spinbotActive=state.spinbot&&state.player.config.id==='coolioioio';
-        const mcActive=state.mindControl.active&&state.player.config.id==='noglin';
-        const snowmanFrozen=state.effects.frozen&&state.player.config.id==='snowman';
-        const blahBarrageActive=!!state.blahBarrage&&state.player.config.id==='blahblahblah';
-        const pikaChaining=state.pikaChaining&&state.player.config.id==='pikachu';
-        const abilityCdFrozen=pounceActive||spinbotActive||mcActive||snowmanFrozen||blahBarrageActive||pikaChaining||shibaCoinActive;
-        const secondaryCdFrozen=spinbotActive;
+        const cdF=cdFrozenNow(),abilityCdFrozen=cdF.a,secondaryCdFrozen=cdF.s;
         if(state.mindControl&&state.mindControl.active&&charId==='noglin'){
             const host=state.mindControl.host;
             const hostType=host&&host.def?host.def.type:(host&&host.pattern)||'unknown';
@@ -6146,7 +6291,7 @@ function updateHUD(){
     if(ab2){if(state.player&&state.player.config.id==='choco'){ab2.classList.add('ready');ab2.innerText=state.player.swordMode?'⚔':'🏹';}else if(state.secondary.ready){ab2.classList.add('ready');ab2.innerText="★";}else{const s=Math.ceil(state.secondary.cooldown/60);ab2.classList.remove('ready');ab2.innerText=s;}}
 }
 
-const UPGRADE_ICONS={atk_speed:'💨',damage:'🔫',speed:'👟',projectiles:'🔱',bullet_size:'⚫',xp_boost:'🧠',crit:'🎯',regen:'💚',max_hp:'❤️',magnet:'🧲',pierce:'🏹',luck:'🍀',armor:'🛡️',picky:'🃏',ability_cd:'⏳',bullet_spd:'🚀'};
+const UPGRADE_ICONS={atk_speed:'💨',damage:'🔫',speed:'👟',projectiles:'🔱',bullet_size:'⚫',xp_boost:'🧠',crit:'🎯',regen:'💚',max_hp:'❤️',magnet:'🧲',pierce:'🏹',luck:'🍀',armor:'🛡️',picky:'🃏',ability_cd:'⏳',bullet_spd:'🚀',homing:'🧭'};
 function showLevelUp(){
     state.screen='LEVELUP';
     const container=document.getElementById('upgradeOptions');container.innerHTML='';
@@ -6157,10 +6302,15 @@ function showLevelUp(){
     container.style.cssText=nOpt>3?'max-height:calc(92vh - 120px);overflow-y:auto;padding-right:4px':'';   // always one vertical stack (up to 9 with Picky); scrolls only on very short screens
     if(container.parentElement){const cs=container.parentElement.style;cs.minWidth='min(420px,94vw)';cs.maxWidth='94vw';cs.width='min(460px,94vw)';}
     const dense=nOpt>3;
+    const picks=[];
     for(let i=0;i<nOpt;i++){
         let base,tier,tries=0;
-        do{const u=pickUpgrade();base=u.base;tier=u.tier;tries++;}while(picked.has(base.id+tier.l)&&tries<30);
-        picked.add(base.id+tier.l);
+        do{const u=pickUpgrade(i===0?FAV_UPGRADES:null);base=u.base;tier=u.tier;tries++;}while(picked.has(base.id+tier.l)&&tries<30);   // option 0 is always Haste / Caliber / Vitality
+        picked.add(base.id+tier.l);picks.push({base:base,tier:tier});
+    }
+    for(let i=picks.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));const t=picks[i];picks[i]=picks[j];picks[j]=t;}
+    for(const pk of picks){
+        const base=pk.base,tier=pk.tier;
         const b=document.createElement('button');b.className=`upgrade-btn ${tier.l.toLowerCase()}`;
         if(dense)b.style.cssText='padding:4px 8px;margin:3px 0';
         b.innerHTML=`<div style="display:flex;align-items:center;gap:${dense?9:12}px"><span style="flex-shrink:0;width:${dense?30:42}px;height:${dense?30:42}px;display:flex;align-items:center;justify-content:center;font-size:${dense?1.05:1.5}rem;line-height:1;background:rgba(0,0,0,0.35);border:2px solid ${tier.c};border-radius:8px;box-shadow:0 0 8px ${tier.c}55">${UPGRADE_ICONS[base.id]||'✨'}</span><div style="flex:1;min-width:0"><div style="display:flex;justify-content:space-between;align-items:center;gap:8px;margin-bottom:2px"><span style="font-size:10px;font-weight:bold">${base.name}</span><span style="font-size:8px;color:${tier.c};font-weight:bold">${tier.l.toUpperCase()}</span></div><div style="font-size:${dense?7:8}px;color:#ccc;line-height:1.5">${tier.desc}</div></div></div>`;
@@ -6169,14 +6319,15 @@ function showLevelUp(){
             if(base.id==='atk_speed') p.atkSpeed=Math.max(5,p.atkSpeed-tier.v);
             if(base.id==='damage')    p.damage+=tier.v;
             if(base.id==='speed')     p.speed+=tier.v;
-            if(base.id==='projectiles') p.projectileCount+=tier.v;
-            if(base.id==='bullet_size') p.bSize+=tier.v;
+            if(base.id==='projectiles') p.splitChance=Math.min(SPLIT_CAP,(p.splitChance||0)+tier.v);
+            if(base.id==='bullet_size') p.bSize=Math.min(BSIZE_CAP,p.bSize+tier.v);
             if(base.id==='xp_boost')  p.xpMult+=tier.v;
-            if(base.id==='crit')      p.crit=Math.min(95,p.crit+tier.v);
+            if(base.id==='crit')      p.crit=Math.min(LETHALITY_CAP,p.crit+tier.v);
+            if(base.id==='homing')    p.homing=Math.min(HOMING_CAP,(p.homing||0)+tier.v);
             if(base.id==='regen')     p.regen=Math.min(120,p.regen+tier.v);
             if(base.id==='max_hp')    {p.maxHp+=tier.v;p.hp=Math.min(p.hp+tier.v,p.maxHp);}
             if(base.id==='ability_cd'){state.ability.maxCooldown=Math.max(360,state.ability.maxCooldown-tier.v);state.secondary.maxCooldown=Math.max(360,state.secondary.maxCooldown-Math.floor(tier.v*0.7));}
-            if(base.id==='bullet_spd') p.bulletSpeedMult=(p.bulletSpeedMult||1)+tier.v*0.1;
+            if(base.id==='bullet_spd') p.bulletSpeedMult=Math.min(VELOCITY_CAP,(p.bulletSpeedMult||1)+tier.v*0.1);
             if(base.id==='magnet')    p.magnet=(p.magnet||0)+tier.v;
             if(base.id==='pierce')    p.pierce=Math.min(12,(p.pierce||0)+tier.v);
             if(base.id==='luck')      p.luck=(p.luck||0)+tier.v;
