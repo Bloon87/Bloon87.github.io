@@ -246,8 +246,6 @@
             <div class="kb-row"><span>ULTIMATE</span><span class="kb-key">F</span></div>
             <div class="kb-row"><span>PAUSE</span><span class="kb-key">ESC</span></div>
             <div class="kb-row"><span>AIM</span><span class="kb-key">MOUSE</span></div>
-            <div class="kb-row"><span>NOGLIN — LATCHED: HOST SPECIAL</span><span class="kb-key">SPACE</span></div>
-            <div class="kb-row"><span>NOGLIN — LATCHED: RIP</span><span class="kb-key">R</span></div>
             <div style="margin-top:8px;font-size:7px;color:#666;line-height:1.8;text-align:left">Every character's abilities are listed under INFO → ABILITIES.</div>
         </div>
     </div>
@@ -276,11 +274,17 @@
             </div>
             <div id="infoPanel_changelog" class="info-panel hidden">
 <div style="text-align:left;font-size:8px;line-height:2">
-                <div style="color:#ffd700;font-size:10px;margin-bottom:6px">▶ v2.3 — Current</div>
+                <div style="color:#ffd700;font-size:10px;margin-bottom:6px">▶ v2.4 — Current</div>
+                <div style="color:#ccc;padding-left:8px;margin-bottom:2px">• Coolioioio's <b>360-No-Scope</b> is more interactive: the <b>AIM</b> line snaps exactly to your cursor (no enemy locking, zero lag), the two sub-lines hunt the <b>STRONG</b>est (highest HP) and the <b>FAR</b>thest enemy — always two different targets, re-picked live while tracking. Each line is labelled, and pressing <b>R again</b> locks the shot early.</div>
+                <div style="color:#ccc;padding-left:8px;margin-bottom:2px">• Noglin's ultimate is now <b>HIVE MIND</b> (replaces UWU Apocalypse), a brain-slug epidemic like the original ARK parasite: everything near you is infected and the infection spreads to the nearest clean enemy every quarter second. Infected enemies are dazed, eaten by the parasite 3 times a second, and burst into slugs when they die (hurting and infecting those around them); bosses can't be dazed but take ×3 damage for 5s. After 8 seconds the hive tears out of every survivor for 30% of its max HP. Still grants +150 shield and a 100 HP heal. Far stronger than the old ult.</div>
+                <div style="color:#ccc;padding-left:8px;margin-bottom:2px">• Shiba's <b>Money Rain</b> buffed: lasts 7.5s (was 6), twice as many coins, half of them dropped on enemies, bigger blasts (92px / 140px for big ones) with ~45% more damage, more bonus XP, and a bigger, harder JACKPOT slam (640px reach, 45% of regular enemies' HP).</div>
+                <div style="color:#ccc;padding-left:8px;margin-bottom:2px">• XP orbs can no longer spawn or sit outside the playfield (they are clamped to the arena).</div>
+                <div style="color:#ccc;padding-left:8px;margin-bottom:2px">• Pikachu's ultimate is now <b>PLASMA BALL</b> (replaces Thunder God): a slow plasma ball drifts after your cursor for 8 seconds and zaps lightning <b>four times a second</b> — each strike hits the nearest enemy within 430px and arcs to up to 3 more (a nerfed Thunderbolt: ~3.5× damage, short stun on regular enemies). You are only invulnerable for the first second.</div>
+                <div style="color:#ffd700;font-size:10px;margin:8px 0 6px">▶ v2.3</div>
                 <div style="color:#ccc;padding-left:8px;margin-bottom:2px">• Splitter reworked: now a chance to fire <b>2 extra bullets</b> — Common +10%, Rare +20%, Legendary +40% (max 80%). Legendary also <b>guarantees a double-split at least every 3rd shot</b>; the guarantee is separate from the chance, so owning several Legendaries never changes it. Choco's towers use their own counter.</div>
                 <div style="color:#ccc;padding-left:8px;margin-bottom:2px">• Velocity cap raised to <b>+300%</b> (×4). Player bullets now use swept hit detection, so even ×4 bullets can't skip over an enemy.</div>
                 <div style="color:#ccc;padding-left:8px;margin-bottom:2px">• Menu reorganised: <b>Keybinds moved into Settings</b> (which is now grouped into Gameplay / Display &amp; System / Keybinds). New <b>📖 INFO</b> button holds four tabs — Upgrades, Enemies, Abilities and Changelog. The old separate buttons and the Export button (and its save download) are gone.</div>
-                <div style="color:#ccc;padding-left:8px;margin-bottom:2px">• Noglin: <b>Delatch removed</b>. While latched, <b>SPACE</b> is the host's special ability and <b>R</b> is <b>Rip</b>: it kills any normal host (with the usual heal and overheal shield) and on a boss instantly deals <b>50% of its max HP + 4 seconds of your gun DPS</b>, then ejects you with the heal and shield (lethal if that is enough). The 60s timer now simply lets a boss go.</div>
+                <div style="color:#ccc;padding-left:8px;margin-bottom:2px">• Noglin: <b>Delatch removed</b>. While latched, <b>SPACE</b> is the host's special ability and <b>R</b> is <b>Rip</b>: it kills any normal host (with the usual heal and overheal shield) and on a boss instantly deals <b>50% of its max HP + 4 seconds of your gun DPS</b>, then ejects you with the heal and shield. It can never kill a boss outright (it leaves 1 HP at least). The 60s timer now simply lets a boss go.</div>
                 <div style="color:#ccc;padding-left:8px;margin-bottom:2px">• Ability Target setting is now meaningful: <b>SMART</b> (each ability picks what suits it — clusters for Tar Toss / Singularity / Snowball, busiest lane for Stairs Throw, nearest for the rest; 360-NoScope is the exception — its main line is always your cursor), <b>NEAREST</b>, <b>STRONGEST</b> (boss first, then highest HP) or <b>CURSOR</b>. It now drives every targeted ability and ultimate, including Word Barrage, 50 Bucks, Volt Tackle, the Spinbot and the Snowball.</div>
                 <div style="color:#ccc;padding-left:8px;margin-bottom:2px">• Enemy catalogue now lists all six <b>boss types</b> (Charger, Turret, Swirler, Bursty, Ghost, Summoner) with their attack pattern, every boss that uses it, and the Noglin special you get from it.</div>
                 <div style="color:#ccc;padding-left:8px;margin-bottom:2px">• Starred upgrades (Haste, Caliber, Vitality) show up less: 1.6× as often as others instead of 2.5×, and Haste is rarer than the other two on top of that. Every level-up still offers at least one starred upgrade.</div>
@@ -897,11 +901,11 @@ function deathFx(e){
 //  ULTIMATES (v1.2) — press F when the meter is full
 // ═══════════════════════════════════════════════════
 const ULT_INFO={
-    noglin:      {name:'UWU APOCALYPSE',    color:'#ff66ff',icon:'💖',dur:160,desc:'A tidal wave of cuteness: every enemy is stunned and takes 28% of its max HP, followed by two weaker waves. Grants +150 shield HP and heals 100 HP.'},
-    pikachu:     {name:'THUNDER GOD',       color:'#ffee33',icon:'⛈️',dur:360,desc:'Call down a 6-second storm: a heavy lightning bolt every 4 ticks on random enemies with wide splash damage, then a screen-wide final judgement strike. Invulnerable.'},
+    noglin:      {name:'HIVE MIND',          color:'#ff66ff',icon:'🧠',dur:480,invul:120,desc:'Brain slugs burst out and take hold of everything near you. Infected enemies are dazed (bosses are weakened instead: x3 damage taken for 5s), eaten alive by the parasite every third of a second, and spread the infection to the next enemy. When an infected enemy dies its slugs burst, hurting and infecting those around it. After 8 seconds the hive tears out of every survivor. Grants +150 shield HP and heals 100 HP.'},
+    pikachu:     {name:'PLASMA BALL',       color:'#ffee33',icon:'🔮',dur:480,invul:60,desc:'Launch a slow plasma ball that drifts after your cursor for 8 seconds and zaps lightning four times a second: each strike hits the nearest enemy and arcs to up to 3 more (a nerfed Thunderbolt). Steer it into the crowd.'},
     tiger:       {name:'APEX FRENZY',       color:'#ff9900',icon:'🐯',dur:420,desc:'7 seconds of unstoppable rage: 2.3× speed, invulnerable, your regular attacks are PAUSED (the claws do the work), and triple-claw volleys every 0.1s that carve 8% of every enemy\'s max HP within 210px (1.1% for bosses).'},
     cat:         {name:'GLORP SINGULARITY', color:'#00ff88',icon:'🌀',dur:300,desc:'Tear open a black hole at your cursor that drags in every enemy on screen, grinding them down, then detonates — killing everything near it. Glorp can\'t walk into the hole himself.'},
-    shiba:       {name:'MONEY RAIN',        color:'#ffdd55',icon:'💸',dur:360,desc:'It rains coins for 6 seconds. Each one crashes down with an area blast (big golden ones hit harder) and drops bonus XP. Ends with a JACKPOT slam.'},
+    shiba:       {name:'MONEY RAIN',        color:'#ffdd55',icon:'💸',dur:450,desc:'It rains coins for 7.5 seconds, twice as thick as before, and half of them are aimed at enemies. Each one crashes down with a wide area blast (big golden ones hit much harder) and often drops bonus XP. Ends with a huge JACKPOT slam.'},
     arsonist:    {name:'INFERNO STRIKE',     color:'#ff6a00',icon:'☄️',dur:130,invul:70,desc:'Launch a blazing fireball at the strongest enemy on screen. It tears straight through anything in the way, setting it ablaze, then detonates in a fire-and-spark firework for MASSIVE damage (and 40% of that to every enemy near the blast).'},
     choco:       {name:'AMONG US TONIGHT', color:'#ff3a3a',icon:'🛸',dur:420,invul:60,desc:'A UFO with a very suspicious crewmate descends and orbits you for 7 seconds, firing lasers at enemies across the arena (with splash). When it leaves it unleashes a final volley that EJECTS up to 30 enemies for 22% max HP (3% on bosses).'},
     snowman:     {name:'GIANT SNOWBALL',     color:'#aaf4ff',icon:'⛄',dur:360,invul:60,desc:'Roll a snowball that grows bigger every second and catches every enemy it touches, carrying them inside it. After 6 seconds it BURSTS: caught enemies take 95% max HP, everything nearby takes 50%. The burst also leaves every enemy it hits BRITTLE for 7s (10× damage from your shots, 3× on bosses).'},
@@ -1578,42 +1582,143 @@ ULT_IMPL.arsonist={
 
 function uwu(p,pct,bpct,stun){allTargets().forEach(e=>{if(e.hp<=0)return;e.stunned=Math.max(e.stunned||0,e.isBoss?Math.floor(stun/2):stun);ultHurt(e,pct,bpct,0,'💖','#ff88ff');});}
 ULT_IMPL.noglin={
+    // v2.4 HIVE MIND (replaces UWU Apocalypse): the brain-slug epidemic. Infected enemies are dazed (non-boss), eaten by the parasite, spread it
+    // to the nearest clean enemy and burst into slugs when they die; bosses can't be dazed but are weakened (x3 damage taken) and eaten more slowly.
     start(F,p,d){
-        uwu(p,0.28,0.06,240);p.shield=(p.shield||0)+3*HP_PER_HEART;p.hp=Math.min(p.maxHp,p.hp+2*HP_PER_HEART);updateHUD();
-        addRing(p.x,p.y,1200,50,'#ff66ff',6);addRing(p.x,p.y,800,40,'#ffaaee',4);addRing(p.x,p.y,500,30,'#ffffff',3);
-        fxBurst(p.x,p.y,30,'#ff88dd',3,12,40,3);fxFlash('#ff88dd',0.5,14);fxShake(16);
-        for(let i=0;i<16;i++){const a=i/16*6.2832;fxSpark(p.x,p.y,Math.cos(a)*7,Math.sin(a)*7,50,6,'#ff88dd',{ch:'💖',trail:false,shrink:false,drag:0.97});}
-        popup(p.x,p.y-70,'💖 UWU APOCALYPSE 💖','#ff88ff',140);
+        d.list=[];d.links=[];
+        p.shield=(p.shield||0)+3*HP_PER_HEART;p.hp=Math.min(p.maxHp,p.hp+2*HP_PER_HEART);updateHUD();
+        addRing(p.x,p.y,900,40,'#ff66ff',6);addRing(p.x,p.y,560,30,'#ffaaee',4);addRing(p.x,p.y,300,22,'#ffffff',3);
+        fxBurst(p.x,p.y,34,'#ff88dd',3,12,40,3);fxFlash('#ff88dd',0.5,14);fxShake(14);
+        popup(p.x,p.y-70,'🧠 HIVE MIND','#ff88ff',140);
+        const T=liveTargets();let n=0;
+        for(const e of T){
+            if(e.isBoss||(e.x-p.x)**2+(e.y-p.y)**2<520*520){ULT_IMPL.noglin.infect(F,d,e,p);n++;}
+        }
+        if(!n&&T.length)ULT_IMPL.noglin.infect(F,d,T[0],p);
+    },
+    infect(F,d,e,p,from){
+        if(e._slug||e.hp<=0)return false;
+        e._slug=state.frameCount+1;d.list.push(e);   // +1 so it is always truthy
+        if(e.isBoss)e.brittle=Math.max(e.brittle||0,state.frameCount+300);
+        if(from)d.links.push({x1:from.x,y1:from.y,x2:e.x,y2:e.y,t:14});
+        addRing(e.x,e.y,60,12,'#ff66ff',3);fxBurst(e.x,e.y,6,'#ff88dd',2,7,16,2.4);
+        return true;
     },
     run(F,p,d,t){
-        if(t===55||t===110){uwu(p,0.14,0.03,120);addRing(p.x,p.y,1000,36,'#ff66ff',5);fxShake(10);fxFlash('#ff88dd',0.3,8);}
-        for(let k=0;k<2;k++)fxSpark(Math.random()*canvas.width,canvas.height+10,(Math.random()-.5)*1.6,-(2+Math.random()*3),90,5,'#ff88dd',{ch:'💖',trail:false,shrink:false,drag:1});
-    },
-    draw(F,p,d,t,env){ultVig('#ff44cc',0.4*env);}
-};
-ULT_IMPL.pikachu={
-    start(F,p,d){fxFlash('#ffffaa',0.8,10);fxShake(14);addRing(p.x,p.y,500,26,'#ffee33',5);popup(p.x,p.y-70,'⛈ THUNDER GOD ⛈','#ffee33',140);},
-    run(F,p,d,t){
-        p.invul=Math.max(p.invul,2);
-        if(t%4===0&&t<F.dur-1){
-            const T=liveTargets();
-            if(T.length){
-                const e=T[Math.floor(Math.random()*T.length)];
-                state.lightningEffects.push(new LightningEffect(e.x+(Math.random()-.5)*120,-30,e.x,e.y));
-                ultHurt(e,0.6,0.016,p.damage*9,'⚡','#ffee44');
-                T.forEach(o=>{if(o!==e&&o.hp>0&&(o.x-e.x)**2+(o.y-e.y)**2<14400)ultHurt(o,0.3,0.006,p.damage*3.5,'','#ffee44');});
-                addRing(e.x,e.y,120,12,'#ffff88',3);fxBurst(e.x,e.y,10,'#ffff66',3,10,20,2.6);fxShake(5);fxFlash('#ffffcc',0.16,4);
+        const f=state.frameCount,T=liveTargets(),last=F.dur-1;
+        p.shield=p.shield||0;
+        // infected: daze, parasite ticks, burst on death
+        for(let i=d.list.length-1;i>=0;i--){
+            const e=d.list[i];
+            if(e.hp<=0){
+                if(!e._slugBurst){
+                    e._slugBurst=true;
+                    addRing(e.x,e.y,190,16,'#ff66ff',4);fxBurst(e.x,e.y,16,'#ff88dd',3,10,26,2.8);fxShake(3);
+                    for(const o of T){
+                        if(o===e||o.hp<=0)continue;
+                        if((o.x-e.x)**2+(o.y-e.y)**2<190*190){ultHurt(o,0.12,0.01,p.damage*4,'🧠','#ff88ff');ULT_IMPL.noglin.infect(F,d,o,p,e);}
+                    }
+                }
+                d.list.splice(i,1);e._slug=0;continue;
+            }
+            if(!e.isBoss)e.stunned=Math.max(e.stunned||0,2);
+            if((f+1-e._slug)%20===0&&f+1!==e._slug)ultHurt(e,0.025,0.005,p.damage*1.5,'🧠','#ff66ff');
+        }
+        // spread every quarter second: each infected enemy infects the nearest clean one within 260px
+        if(t%15===0&&t<F.dur-20){
+            const src=d.list.slice();
+            for(const e of src){
+                if(e.hp<=0)continue;
+                let nx=null,nd=260*260;
+                for(const o of T){if(o._slug||o.hp<=0)continue;const q=(o.x-e.x)**2+(o.y-e.y)**2;if(q<nd){nd=q;nx=o;}}
+                if(nx)ULT_IMPL.noglin.infect(F,d,nx,p,e);
             }
         }
-        if(t===F.dur-1){
-            liveTargets().slice(0,60).forEach(e=>{
-                state.lightningEffects.push(new LightningEffect(e.x+(Math.random()-.5)*80,-30,e.x,e.y));
-                ultHurt(e,0.55,0.09,p.damage*14,'⚡','#ffffff');
-            });
-            fxFlash('#ffffff',0.95,20);fxShake(28);addRing(p.x,p.y,1200,40,'#ffff88',6);
+        // anything that walks onto the playfield while the hive is up is dragged in too
+        if(t%30===0&&t<F.dur-20){const src=d.list.length;if(src)for(const o of T)if(!o._slug&&o.hp>0&&Math.random()<0.5)ULT_IMPL.noglin.infect(F,d,o,p,d.list[Math.floor(Math.random()*src)]);}
+        for(let i=d.links.length-1;i>=0;i--){if(--d.links[i].t<=0)d.links.splice(i,1);}
+        if(t%3===0)fxSpark(Math.random()*canvas.width,canvas.height+10,(Math.random()-.5)*1.4,-(1.6+Math.random()*2.2),80,4,'#ff88dd',{ch:'🧠',trail:false,shrink:false,drag:1});
+        if(t===last){   // the hive tears out of every survivor
+            for(const e of d.list.slice()){
+                if(e.hp<=0)continue;
+                ultHurt(e,0.3,0.04,p.damage*6,'🧠','#ffaaff');addRing(e.x,e.y,90,14,'#ff66ff',4);fxBurst(e.x,e.y,10,'#ff88dd',3,10,22,2.6);
+                e._slug=0;
+            }
+            d.list.length=0;
+            fxFlash('#ff88dd',0.55,14);fxShake(14);addRing(p.x,p.y,1200,44,'#ff66ff',6);
         }
     },
-    draw(F,p,d,t,env){ctx.save();ctx.globalAlpha=0.38*env;ctx.fillStyle='#0a0a30';ctx.fillRect(0,0,canvas.width,canvas.height);ctx.restore();ultVig('#ffee33',0.18*env);}
+    end(F,p,d){for(const e of d.list)e._slug=0;d.list.length=0;},
+    draw(F,p,d,t,env){
+        ctx.save();
+        ctx.lineCap='round';
+        for(const L of d.links){ctx.globalAlpha=L.t/14*0.9;ctx.strokeStyle='#ff66ff';ctx.lineWidth=2.5;ctx.beginPath();ctx.moveTo(L.x1,L.y1);ctx.lineTo(L.x2,L.y2);ctx.stroke();}
+        let n=0;
+        for(const e of d.list){
+            if(e.hp<=0)continue;
+            const pu=0.6+0.4*Math.sin(state.frameCount*0.2+e.x*0.05);
+            ctx.globalAlpha=0.55*pu*env;ctx.strokeStyle='#ff66ff';ctx.lineWidth=2.5;
+            ctx.beginPath();ctx.arc(e.x,e.y,(e.isBoss?58:26)+pu*3,0,6.2832);ctx.stroke();
+            if(n++<30){ctx.globalAlpha=0.95*env;ctx.font=(e.isBoss?28:16)+'px sans-serif';ctx.textAlign='center';ctx.fillText('🧠',e.x,e.y-(e.isBoss?62:28));}
+        }
+        ctx.restore();
+        ultVig('#ff44cc',0.25*env);
+    }
+};
+ULT_IMPL.pikachu={
+    // v2.4 PLASMA BALL: a slow orb that chases the cursor and throws a (nerfed) Thunderbolt chain four times a second.
+    start(F,p,d){
+        d.x=p.x;d.y=p.y;d.rot=0;d.zap=0;
+        fxFlash('#ffffaa',0.5,10);fxShake(8);addRing(p.x,p.y,220,22,'#ffee33',5);fxBurst(p.x,p.y,24,'#ffff88',3,10,26,3);
+        popup(p.x,p.y-70,'🔮 PLASMA BALL','#ffee33',140);
+    },
+    run(F,p,d,t){
+        const SP=2.6,W=canvas.width,H=canvas.height;
+        const dx=state.mouseX-d.x,dy=state.mouseY-d.y,dist=Math.hypot(dx,dy);
+        if(dist>6){const m=Math.min(SP,dist);d.x+=dx/dist*m;d.y+=dy/dist*m;}
+        d.x=Math.max(30,Math.min(W-30,d.x));d.y=Math.max(30,Math.min(H-30,d.y));
+        d.rot+=0.12;
+        if(t%2===0)fxSpark(d.x+(Math.random()-.5)*20,d.y+(Math.random()-.5)*20,(Math.random()-.5)*2,(Math.random()-.5)*2,18,3.5,'#ffee66',{trail:false});
+        if(t>=10&&t%15===10&&t<F.dur-5){   // 4 strikes per second
+            const T=liveTargets();let first=null,bd=430*430;
+            for(let i=0;i<T.length;i++){const e=T[i],q=(e.x-d.x)**2+(e.y-d.y)**2;if(q<bd){bd=q;first=e;}}
+            if(first){
+                const hit=new Set([first]);let cur=first,from={x:d.x,y:d.y};
+                for(let k=0;k<4&&cur;k++){
+                    state.lightningEffects.push(new LightningEffect(from.x,from.y,cur.x,cur.y));
+                    ultHurt(cur,0.05,0.004,p.damage*3.5*Math.pow(0.85,k)*brittleMult(cur),'⚡','#ffee44');
+                    if(!cur.isBoss)cur.stunned=Math.max(cur.stunned||0,30);
+                    addRing(cur.x,cur.y,70,10,'#ffff88',2);
+                    from={x:cur.x,y:cur.y};let nx=null,nd=230*230;
+                    for(let i=0;i<T.length;i++){const e=T[i];if(hit.has(e)||e.hp<=0)continue;const q=(e.x-from.x)**2+(e.y-from.y)**2;if(q<nd){nd=q;nx=e;}}
+                    if(nx)hit.add(nx);cur=nx;
+                }
+                fxShake(3);
+            } else {   // nothing in range: a harmless crackle so you can see it is live
+                const a=Math.random()*6.283;state.lightningEffects.push(new LightningEffect(d.x,d.y,d.x+Math.cos(a)*90,d.y+Math.sin(a)*90));
+            }
+        }
+    },
+    draw(F,p,d,t,env){
+        ctx.save();
+        ctx.globalAlpha=0.16*env;ctx.fillStyle='#0a0a30';ctx.fillRect(0,0,canvas.width,canvas.height);ctx.globalAlpha=1;
+        // faint tether + cursor ring so you can see what it chases
+        ctx.globalAlpha=0.35*env;ctx.strokeStyle='#ffee66';ctx.lineWidth=1.5;ctx.setLineDash([6,8]);ctx.beginPath();ctx.moveTo(d.x,d.y);ctx.lineTo(state.mouseX,state.mouseY);ctx.stroke();ctx.setLineDash([]);
+        ctx.beginPath();ctx.arc(state.mouseX,state.mouseY,12,0,6.283);ctx.stroke();
+        // the ball
+        const pulse=1+Math.sin(t*0.3)*0.12,R=24*pulse*Math.min(1,0.4+env);
+        ctx.globalAlpha=env;ctx.shadowBlur=32;ctx.shadowColor='#ffee33';
+        const g=ctx.createRadialGradient(d.x,d.y,2,d.x,d.y,R*1.8);g.addColorStop(0,'rgba(255,255,255,1)');g.addColorStop(0.35,'rgba(255,238,90,0.95)');g.addColorStop(1,'rgba(255,200,0,0)');
+        ctx.fillStyle=g;ctx.beginPath();ctx.arc(d.x,d.y,R*1.8,0,6.283);ctx.fill();
+        ctx.shadowBlur=0;ctx.strokeStyle='#ffffcc';ctx.lineWidth=2;ctx.lineCap='round';
+        for(let k=0;k<5;k++){   // crackling arcs
+            const a=d.rot*(k%2?-1:1)+k*1.2566,l=R*(1.1+0.5*((t*7+k*13)%10)/10);
+            ctx.beginPath();ctx.moveTo(d.x+Math.cos(a)*R*0.4,d.y+Math.sin(a)*R*0.4);
+            ctx.lineTo(d.x+Math.cos(a+0.25)*l*0.8,d.y+Math.sin(a+0.25)*l*0.8);ctx.lineTo(d.x+Math.cos(a-0.1)*l,d.y+Math.sin(a-0.1)*l);ctx.stroke();
+        }
+        ctx.restore();
+        ultVig('#ffee33',0.1*env);
+    }
 };
 ULT_IMPL.tiger={
     // v2.1: faster (×2.3 move, regular attacks paused, a claw volley every 0.1s), harder (10% max-HP slashes, 210px) and with proper tapered triple-claw swipes + scratch marks on every victim
@@ -1729,17 +1834,21 @@ function coinSprite(){
 ULT_IMPL.shiba={
     start(F,p,d){d.coins=[];fxFlash('#ffdd55',0.45,12);popup(p.x,p.y-70,'💸 MONEY RAIN!','#ffdd55',120);addRing(p.x,p.y,300,22,'#ffdd55',4);},
     run(F,p,d,t){
-        if(t<F.dur-30&&t%3===0)d.coins.push({x:30+Math.random()*(canvas.width-60),y:-30,ty:70+Math.random()*(canvas.height-140),vy:13+Math.random()*6,rot:Math.random()*6,big:Math.random()<0.15});
+        if(t<F.dur-30&&t%2===0){   // v2.4: twice as thick; half the coins are dropped on a random enemy
+            let cx=30+Math.random()*(canvas.width-60),cy=70+Math.random()*(canvas.height-140);
+            if(Math.random()<0.5){const T=liveTargets();if(T.length){const e=T[Math.floor(Math.random()*T.length)];cx=Math.max(30,Math.min(canvas.width-30,e.x+(Math.random()-.5)*40));cy=Math.max(70,Math.min(canvas.height-70,e.y+(Math.random()-.5)*40));}}
+            d.coins.push({x:cx,y:-30,ty:cy,vy:13+Math.random()*6,rot:Math.random()*6,big:Math.random()<0.18});
+        }
         let TL=null;
         for(let i=d.coins.length-1;i>=0;i--){
             const c=d.coins[i];c.y+=c.vy;c.rot+=0.25;
             if(c.y>=c.ty){
-                const R=c.big?115:72;
+                const R=c.big?140:92;
                 if(!TL)TL=allTargets();
-                const R2=R*R,pc=c.big?0.16:0.09,pb=c.big?0.016:0.008,md=p.damage*2;
+                const R2=R*R,pc=c.big?0.22:0.13,pb=c.big?0.024:0.012,md=p.damage*3;
                 for(let k=0;k<TL.length;k++){const e=TL[k];if(e.hp>0){const dx=e.x-c.x,dy=e.y-c.ty;if(dx*dx+dy*dy<R2)ultHurt(e,pc,pb,md,'💰','#ffdd55');}}
                 addRing(c.x,c.ty,R,12,'#ffdd55',3);fxBurst(c.x,c.ty,c.big?16:9,'#ffd24a',2,9,24,2.8,{g:0.2});
-                if(state.xpOrbs.length<70&&Math.random()<0.4)state.xpOrbs.push(new XpOrb(c.x,c.ty,12));
+                if(state.xpOrbs.length<100&&Math.random()<0.55)state.xpOrbs.push(new XpOrb(c.x,c.ty,12));
                 if(c.big)fxShake(5);
                 d.coins.splice(i,1);
             }
@@ -1747,8 +1856,8 @@ ULT_IMPL.shiba={
     },
     end(F,p,d){
         const cx=canvas.width/2,cy=canvas.height/2;
-        allTargets().forEach(e=>{if(e.hp>0&&(e.x-cx)**2+(e.y-cy)**2<211600)ultHurt(e,0.3,0.04,p.damage*4,'💰','#fff1a8');});
-        addRing(cx,cy,520,30,'#ffdd55',8);addRing(cx,cy,320,24,'#ffffff',4);fxBurst(cx,cy,70,'#ffd24a',4,16,42,3.4,{g:0.25});fxFlash('#fff0a0',0.7,16);fxShake(24);popup(cx,cy-30,'💰 JACKPOT! 💰','#ffdd55',160);
+        allTargets().forEach(e=>{if(e.hp>0&&(e.x-cx)**2+(e.y-cy)**2<409600)ultHurt(e,0.45,0.07,p.damage*6,'💰','#fff1a8');});
+        addRing(cx,cy,640,30,'#ffdd55',8);addRing(cx,cy,400,24,'#ffffff',4);fxBurst(cx,cy,70,'#ffd24a',4,16,42,3.4,{g:0.25});fxFlash('#fff0a0',0.7,16);fxShake(24);popup(cx,cy-30,'💰 JACKPOT! 💰','#ffdd55',160);
     },
     draw(F,p,d,t,env){
         ultVig('#ffcc33',0.28*env);
@@ -2653,31 +2762,41 @@ class PiercingBullet {
 // R opens up to three tracking lines (main target + closest + furthest). They follow their targets (the main one follows your CURSOR in
 // cursor mode), then LOCK (flash, no more turning) and finally fire an instant piercing beam along the line. Everything on the line is hit.
 const NS_TRACK=34,NS_LOCK=20,NS_FIRE=12;
+function nsPickSubs(p,cur){
+    // STRONG = highest current HP, FAR = furthest away; always two DIFFERENT enemies
+    const all=liveTargets().filter(e=>e.hp>0);
+    if(!all.length)return {strong:null,far:null};
+    let strong=all[0];for(const e of all)if(e.hp>strong.hp)strong=e;
+    let far=null,fd=-1;for(const e of all){if(e===strong)continue;const d=(e.x-p.x)**2+(e.y-p.y)**2;if(d>fd){fd=d;far=e;}}
+    return {strong:strong,far:far};
+}
 function noScopeStart(p){
-    const all=liveTargets();
-    // v2.3: the MAIN line is always aimed with your cursor (independent of the Ability Target setting); the two extra lines hunt the closest / furthest enemy
-    const beams=[{role:'MAIN',tgt:null,cursor:true,dmg:p.damage*18,w:13,ang:0}];
-    const rest=all.slice().sort((a,b)=>(a.x-p.x)**2+(a.y-p.y)**2-((b.x-p.x)**2+(b.y-p.y)**2));
-    if(rest.length)beams.push({role:'CLOSEST',tgt:rest[0],dmg:p.damage*12,w:9,ang:0});
-    if(rest.length>1)beams.push({role:'FURTHEST',tgt:rest[rest.length-1],dmg:p.damage*12,w:9,ang:0});
-    for(const b of beams){const px=b.cursor?state.mouseX:(b.tgt?b.tgt.x:state.mouseX),py=b.cursor?state.mouseY:(b.tgt?b.tgt.y:state.mouseY);b.ang=Math.atan2(py-p.y,px-p.x);}
+    // v2.4: MAIN = exactly your cursor (no enemy locking, snaps instantly); the two sub-lines hunt the STRONGEST and the FURTHEST enemy (always two different ones)
+    const beams=[{role:'AIM',tgt:null,cursor:true,dmg:p.damage*18,w:13,ang:Math.atan2(state.mouseY-p.y,state.mouseX-p.x)}];
+    const s=nsPickSubs(p);
+    if(s.strong)beams.push({role:'STRONG',tgt:s.strong,dmg:p.damage*12,w:9,ang:Math.atan2(s.strong.y-p.y,s.strong.x-p.x)});
+    if(s.far)beams.push({role:'FAR',tgt:s.far,dmg:p.damage*12,w:9,ang:Math.atan2(s.far.y-p.y,s.far.x-p.x)});
     state.noScope={t:0,beams:beams,fired:false};
     popup(p.x,p.y-55,'🎯 360-NO-SCOPE','#ff44ff',150);
+    popup(p.x,p.y-80,'press R again to lock','#ffaaff',70);
     return true;
 }
 function noScopeTick(){
     const ns=state.noScope;if(!ns)return;
     const p=state.player;ns.t++;
     if(ns.t<=NS_TRACK){
+        // sub-lines re-evaluate a few times a second, so they react as the fight changes
+        const sb=ns.beams.filter(b=>!b.cursor);
+        if(sb.length&&(ns.t%6===0||sb.some(b=>!b.tgt||b.tgt.hp<=0||!inArena(b.tgt)))){
+            const s=nsPickSubs(p);
+            for(const b of sb){const w=b.role==='STRONG'?s.strong:s.far;if(w&&w!==b.tgt){b.tgt=w;b.swap=8;}}
+        }
         for(const b of ns.beams){
-            let px,py;
-            if(b.cursor){px=state.mouseX;py=state.mouseY;}
-            else{
-                if(!b.tgt||b.tgt.hp<=0||!inArena(b.tgt))b.tgt=foeNearest(p.x,p.y);
-                if(!b.tgt)continue;px=b.tgt.x;py=b.tgt.y;
-            }
-            let d=Math.atan2(py-p.y,px-p.x)-b.ang;while(d>Math.PI)d-=2*Math.PI;while(d<-Math.PI)d+=2*Math.PI;
-            b.ang+=Math.max(-0.5,Math.min(0.5,d));   // swings fast enough to follow a flicking cursor
+            if(b.swap>0)b.swap--;
+            if(b.cursor){b.ang=Math.atan2(state.mouseY-p.y,state.mouseX-p.x);continue;}   // main line = pure cursor, zero lag
+            if(!b.tgt||b.tgt.hp<=0)continue;
+            let d=Math.atan2(b.tgt.y-p.y,b.tgt.x-p.x)-b.ang;while(d>Math.PI)d-=2*Math.PI;while(d<-Math.PI)d+=2*Math.PI;
+            b.ang+=Math.max(-0.5,Math.min(0.5,d));
         }
     }
     if(ns.t===NS_TRACK+NS_LOCK&&!ns.fired){
@@ -2719,6 +2838,13 @@ function noScopeDraw(){
             ctx.globalAlpha=a;ctx.shadowBlur=24;ctx.shadowColor='#ff00ff';
             ctx.strokeStyle='#ff44ff';ctx.lineWidth=b.w*2*(0.4+a*0.6);ctx.beginPath();ctx.moveTo(p.x,p.y);ctx.lineTo(ex,ey);ctx.stroke();
             ctx.strokeStyle='#ffffff';ctx.lineWidth=b.w*0.8*a+1;ctx.beginPath();ctx.moveTo(p.x,p.y);ctx.lineTo(ex,ey);ctx.stroke();
+        }
+    }
+    if(!fired){
+        ctx.shadowBlur=0;ctx.globalAlpha=1;ctx.font='bold 11px monospace';ctx.textAlign='center';ctx.fillStyle=locked?'#ffffff':'#ff99ff';
+        for(const b of ns.beams){
+            if(b.cursor)ctx.fillText('AIM',state.mouseX,state.mouseY-34);
+            else if(b.tgt&&b.tgt.hp>0){ctx.fillText(b.role+(b.swap>0?' ›':''),b.tgt.x,b.tgt.y-(b.tgt.isBoss?60:46));}
         }
     }
     ctx.restore();
@@ -2822,8 +2948,10 @@ function orbSprite(){
     return _orbSpr=c;
 }
 class XpOrb {
-    constructor(x,y,val){this.x=x;this.y=y;this.val=val||20;this.ph=Math.random()*6.28;}
+    constructor(x,y,val){this.x=Math.max(14,Math.min(canvas.width-14,x));this.y=Math.max(14,Math.min(canvas.height-14,y));this.val=val||20;this.ph=Math.random()*6.28;}   // v2.4: orbs never spawn off the playfield
     update(){
+        if(this.x<14||this.x>canvas.width-14)this.x=Math.max(14,Math.min(canvas.width-14,this.x));
+        if(this.y<14||this.y>canvas.height-14)this.y=Math.max(14,Math.min(canvas.height-14,this.y));
         const pl=state.player,odx=pl.x-this.x,ody=pl.y-this.y,d2=odx*odx+ody*ody,mr=160+(pl.magnet||0);
         if(!this.mag&&d2<mr*mr){this.mag=true;this.mt=0;}
         if(this.mag){
@@ -3456,7 +3584,7 @@ function autoPickTarget(){
 // ── ABILITY TARGETING (v2.3) ──
 // One setting drives every targeted ability and ultimate:
 //   SMART    ('auto')      each ability picks what suits it: AoEs (Tar Toss, Singularity, Snowball) the thickest cluster,
-//                          Stairs Throw the busiest lane, 360-NoScope always your cursor, the rest the nearest enemy
+//                          Stairs Throw the busiest lane, 360-NoScope main line = your cursor, the rest the nearest enemy
 //   NEAREST  ('nearest')   the closest enemy, for everything
 //   STRONGEST('strongest') the boss if one is alive, otherwise the highest-HP enemy - focus the big threat
 //   CURSOR   ('manual')    wherever your mouse is
@@ -3710,7 +3838,8 @@ function triggerAbility(){
 }
 
 function triggerSecondary(){
-    if(state.screen==='PLAYING'&&state.player&&state.player.config.id==='choco'&&!state.mindControl.active){toggleSword(state.player);return;}   // Dying SMP is a toggle, not a cooldown ability
+    if(state.screen==='PLAYING'&&state.player&&state.player.config.id==='choco'&&!state.mindControl.active){toggleSword(state.player);return;}
+    if(state.noScope&&state.noScope.t<NS_TRACK){state.noScope.t=NS_TRACK;popup(state.player.x,state.player.y-60,'LOCKED!','#ffffff',50);fxFlash('#ff44ff',0.1,5);return;}   // 2nd R press during tracking = lock now   // Dying SMP is a toggle, not a cooldown ability
     if(!state.secondary.ready)return;
     if(state.pounce.active||state.mindControl.active)return;
     const p=state.player;
@@ -3908,17 +4037,18 @@ function triggerSecondary(){
 
 function killMindControlHost(timeout){
     if(!state.mindControl.active)return;
-    const h=state.mindControl.host,p=state.player;let fracOverride=null;
-    // v2.3 RIP: kills any normal host outright. On a boss it instantly deals 50% of the boss's max HP + 4 seconds of your gun DPS (lethal if that's enough).
-    // If the boss survives you are ejected, healed by its remaining HP and any overheal becomes shield (same as a regular rip).
+    const h=state.mindControl.host,p=state.player;let fracOverride=null;   // (kept for the normal-host path)
+    // v2.3 RIP: kills any normal host outright. On a boss it instantly deals 50% of the boss's max HP + 4 seconds of your gun DPS, but never kills it (it is left on 1 HP at least).
+    // You are then ejected, healed by the boss's remaining HP and any overheal becomes shield.
     if(h.isBoss){
         if(timeout){ejectMindControl();return;}   // the 60s timer just lets go of a boss
         const shotsPerSec=60/Math.max(5,p.atkSpeed),dps=p.damage*shotsPerSec*((p.projectileCount||1)+(p.splitChance||0)/50);
         const dmg=h.maxHp*0.5+dps*4;
-        if(h.hp-dmg>0){
-            h.hp-=dmg;
+        {   // Rip never kills a boss outright: it is left on 1 HP at the very least
+            const dealt=Math.min(dmg,h.hp-1);
+            h.hp-=dealt;
             const healAmt=Math.max(1,Math.ceil(h.hp/h.maxHp*p.maxHp*0.25));
-            popup(h.x,h.y-70,'☠ RIP -'+Math.floor(dmg),'#ff0044',140);addRing(h.x,h.y,150,18,'#ff0044',5);fxBurst(h.x,h.y,24,'#ff3366',3,11,26,3);fxShake(12);
+            popup(h.x,h.y-70,'☠ RIP -'+Math.floor(dealt),'#ff0044',140);addRing(h.x,h.y,150,18,'#ff0044',5);fxBurst(h.x,h.y,24,'#ff3366',3,11,26,3);fxShake(12);
             const sv=state.mindControl.savedHp;
             ejectMindControl();
             const tot=sv+healAmt,over=Math.max(0,tot-p.maxHp);
@@ -3928,7 +4058,6 @@ function killMindControlHost(timeout){
             updateHUD();
             return;
         }
-        fracOverride=0.5;h.hp=0;   // lethal rip: fall through to the kill + harvest below (full harvest)
     }
     // Heal the noglin based on remaining host HP — reward for smart early termination
     const healPct=fracOverride!==null?fracOverride:h.hp/h.maxHp;
@@ -6029,7 +6158,7 @@ function toggleHudVisibility(){
 function setDifficulty(d){settings.difficulty=d==='hard'?1.6:1;document.getElementById('diffNormal').classList.toggle('active',d==='normal');document.getElementById('diffHard').classList.toggle('active',d==='hard');}
 function setParticles(on){settings.particles=on;document.getElementById('particlesOn').classList.toggle('active',on);document.getElementById('particlesOff').classList.toggle('active',!on);}
 const ABILITY_TARGET_HINT={
-    auto:'SMART: each ability picks what suits it — area attacks (Tar Toss, Singularity, Snowball) land on the thickest cluster, Stairs Throw takes the busiest lane, 360-NoScope always aims its main line at your cursor, everything else fires at the nearest.',
+    auto:'SMART: each ability picks what suits it — area attacks (Tar Toss, Singularity, Snowball) land on the thickest cluster, Stairs Throw takes the busiest lane, 360-NoScope aims its AIM line exactly at your cursor, everything else fires at the nearest.',
     nearest:'NEAREST: every targeted ability goes for the closest enemy — safest for crowd control and clearing what is on top of you.',
     strongest:'STRONGEST: every targeted ability goes for the boss if one is alive, otherwise the highest-HP enemy — focus the big threat down.',
     manual:'CURSOR: every targeted ability goes exactly where your mouse is — full control, you pick the cluster or the target.'};
@@ -6145,7 +6274,7 @@ function initInfoScreen(){
         {emoji:'👹',name:'Noglin',color:'#ff00ff',stats:'Speed: Fast | HP: 250 | Regen: 4/s',abilities:[
             {key:'SPACE — Latch',   desc:'Fire a latch toward your cursor. Hit an enemy to mind control them — piloting their body with their own speed, health and projectiles. Latch cooldown pauses during control. Host dies after 60s.'},
             {key:'[MC] SPACE — Host special',desc:'Changes with the enemy you control — every host type and its special is listed in the ENEMY CATALOGUE. Boss hosts are tougher to control-break: a 24% possession shell plus 2% of boss HP per hit, faster movement, and a unique, harder-hitting special per boss pattern.'},
-            {key:'[MC] R — Rip', desc:'Instantly kill the controlled enemy and escape with a heal (overheal becomes shield). On a boss it instantly deals 50% of its max HP plus 4 seconds of your gun DPS, then ejects you (lethal if that is enough). There is no delatch: Rip, or let the host die, or wait out the 60s.'},
+            {key:'[MC] R — Rip', desc:'Instantly kill the controlled enemy and escape with a heal (overheal becomes shield). On a boss it instantly deals 50% of its max HP plus 4 seconds of your gun DPS, then ejects you — it can never kill a boss outright (leaves it on 1 HP at least). There is no delatch: Rip, or let the host die, or wait out the 60s.'},
             {key:'R — Cuteness',    desc:'Stun all nearby enemies for 2 seconds. Doubles attack speed and grants 2 shots of 2× bullet damage. Noglin switches to its adorable form while enemies are stunned.'},
         ]},
         {emoji:'⚡',name:'Pikachu',color:'#ffff00',stats:'Speed: Very Fast | HP: 200 | Regen: 4/s',abilities:[
@@ -6174,7 +6303,7 @@ function initInfoScreen(){
         ]},
         {emoji:'😎',name:'Coolioioio',color:'#ff44ff',stats:'Speed: Fast | HP: 250 | Regen: 4/s',abilities:[
             {key:'SPACE — Spinbot',   desc:'Spin wildly for 4 seconds, firing 10 bullets per second in all directions (with slight homing; each bullet pierces 2 enemies). Immune to damage while spinning.'},
-            {key:'R — 360-No-Scope',  desc:'Sniper-style: up to three tracking lines (main target, closest, furthest) follow their targets, lock with a flash (no more turning), then fire an instant piercing beam along the line. Everything on the line is hit — regular enemies are executed, bosses take 18× bullet damage. The main line always follows your cursor (aim it, then it locks); the other two lines hunt the closest and furthest enemies.'},
+            {key:'R — 360-No-Scope',  desc:'Sniper-style: up to three tracking lines: AIM snaps exactly to your cursor (no enemy locking), STRONG hunts the highest-HP enemy and FAR the furthest one (always two different enemies, re-picked live). Press R again to lock early, otherwise they lock with a flash (no more turning), then fire an instant piercing beam along the line. Everything on the line is hit — regular enemies are executed, bosses take 18× bullet damage.'},
         ]},
         {id:'pickle',emoji:'🥒',name:'Pickle',color:'#44cc00',stats:'Speed: Medium | HP: 300 | Regen: 4/s',abilities:[
             {key:'SPACE — Brine Burst', desc:'Explode in a cloud of pickle brine, poisoning and briefly stunning all enemies within 460px. Poison ticks every 0.5 seconds, dealing 40% of your damage. Stacks on re-hit. Lasts 7 seconds.'},
@@ -6399,8 +6528,8 @@ function updateHUD(){
             const qLabel={grunt:'FRENZY',shooter:'VOLLEY',warlock:'SOUL VORTEX',tank:'SHOCKWAVE',brute:'HURL',speeder:'PHANTOM RUSH',bomber:'DETONATE',phantom:'HAUNT',healer:'LIFE DRAIN',sniper:'HEADSHOT',boar:'STAMPEDE',spider:'WEB BARRAGE',boss:'SPECIAL',turret:'TURRET OVERLOAD',charger:'CHARGE RAMPAGE',swarm:'SUMMON HORDE',swirler:'DEATH SPIRAL',bursty:'BURST STORM',ghost:'PHANTOM STRIKES'}[hostType]||(host&&host.isBoss?(host.pattern||'RAMPAGE').toUpperCase():'MIND PULSE');
             const qCd=state.mcAbilityCooldowns?state.mcAbilityCooldowns.q||0:0;
             const qReady=qCd<=0;
-            if(rows[0])rows[0].innerHTML=`SPC — ${qLabel}: <span style="color:${qReady?'#cc00ff':'#555'};font-weight:bold">${qReady?'READY':isPaused?'-':Math.ceil(qCd/60)+'s'}</span>`;
-            if(rows[1])rows[1].innerHTML=`<span style="color:#aaa;font-size:8px">R: <span style="color:#ff6666">RIP</span> &nbsp;(kills the host · bosses lose 50% HP + 4s DPS)</span>`;
+            if(rows[0])rows[0].innerHTML=`${qLabel} [SPC]: <span style="color:${qReady?'#cc00ff':'#555'};font-weight:bold">${qReady?'READY':isPaused?'-':Math.ceil(qCd/60)+'s'}</span>`;
+            if(rows[1])rows[1].innerHTML=`RIP [R]: <span style="color:#ffdd00;font-weight:bold">READY</span>`;
         } else {
             const aVal=state.ability.ready?'READY':(isPaused||abilityCdFrozen)?'-':Math.ceil(state.ability.cooldown/60)+'s';
             const sVal=charId==='choco'?(state.player.swordMode?'⚔ SWORD':'🏹 BOW'):state.secondary.ready?'READY':(isPaused||secondaryCdFrozen)?'-':Math.ceil(state.secondary.cooldown/60)+'s';
