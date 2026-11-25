@@ -275,10 +275,16 @@
             <div id="infoPanel_changelog" class="info-panel hidden">
 <div style="text-align:left;font-size:8px;line-height:2">
                 <div style="color:#ffd700;font-size:10px;margin-bottom:6px">▶ v2.5 — Current</div>
-                <div style="color:#ccc;padding-left:8px;margin-bottom:2px">• <b>NEW CHARACTER: Skyblock Adict</b> ⛏️ (Coolioioio variant — unlocked by reaching <b>level 20</b> with Coolioioio). <b>MP</b>: +1 automatically for every 3 upgrades you take, and every MP adds +2 damage. SPACE = <b>God Potion</b> (+20 MP for 15s, the cooldown is paused while it lasts). R = <b>WD Swap</b> between <b>Hyperion</b> (bonus mobility, light melee), <b>Dark Claymore</b> (+5 damage, slow heavy melee) and <b>Terminator</b> (bonus pierce and velocity, a bow that fires 3 arrows at once). Each weapon auto-casts an ability every 10s that upgrades at 3 / 6 / 9 MP — Hyperion: sword beam → teleport slash → impact explosion → heal + decaying shield; Claymore: heavy cleave → combo ending with a sword dropped on your cursor → wider splash on every hit → much bigger area damage; Terminator: ignite arrows → exploding arrows → periodic beam shots. F = a <b>different ultimate per weapon</b>: Wither Impact (siphon then explode, huge decaying overshield), Dark Slashes (3 stunning slashes, the last launches every enemy into the walls) and Arrow Storm (homing arrows that explode, ignite and confuse).</div>
+                <div style="color:#ccc;padding-left:8px;margin-bottom:2px">• <b>Skyblock Addict now has its own swords</b> instead of reusing Choco's: <b>Hyperion</b> is a long ice-cyan blade with a gold winged guard, glowing runes, a star glint and a razor-thin crescent slash with cyan sparks; <b>Dark Claymore</b> is a wide jagged void-steel blade with a pulsing soul-gem, a dark violet-and-pink flame crescent and rising embers. Both have their own hit effects and held-sword look.</div>
+                <div style="color:#ccc;padding-left:8px;margin-bottom:2px">• <b>All abilities polished + faster</b>: every SPACE / R / ultimate now has a cast shockwave and spark burst. Projectile glows no longer use shadow blur (soft cached glow sprites instead), sparks are glow sprites, bullets and blood are drawn in a handful of batched calls. Minigun now has muzzle bloom, a light cone and a heating barrel; Noglin's latch leaves a neon trail and detonates on capture; Glitter Bomb and Death Note glow; Blizzard adds a frost vignette and wind streaks. Heavy scenes (spinbot, Gates of Babylon) run roughly 20-25% faster.</div>
+                <div style="color:#ccc;padding-left:8px;margin-bottom:2px">• <b>Visual polish pass</b> (all cached or batched, no measurable frame cost): the arena now has a lit tile floor, grid, centre sigil, corner glows and a starfield; soft ground shadows under the player and every enemy; a subtle screen vignette; rings are now soft additive glows (and cheaper, no more shadow blur); the Obsessed's Ea, dance and Gates of Babylon got a full VFX upgrade.</div>
+                <div style="color:#ccc;padding-left:8px;margin-bottom:2px">• <b>Spinbot buffed</b>: 2.5x damage per bullet and stronger homing. <b>Gates of Babylon</b>: blades now show hit sparks, blood and rolling damage numbers (it was doing damage but looked like it wasn't), bosses show "BOSS RESISTS" at their cap, every enemy gets a gold lock ring, and damage against regular enemies was reduced. <b>Obsession Dance</b>: text is now "NO NO, NO, NO, / YOU DON'T DO THAT!" slammed in word by word, damage pulses are 2.5x stronger, with a disco floor, spotlights and orbiting hearts.</div>
+                <div style="color:#ccc;padding-left:8px;margin-bottom:2px">• <b>NEW CHARACTER: The Obsessed</b> 🤩 (BlahBlahBlah variant — unlocked by reaching <b>level 20</b> with BlahBlahBlah). SPACE is a three-step chain: <b>Kamen Rider Kick</b> (freeze for 0.6s, then dash across the map at the strongest enemy, damaging everything on the path and where you land) → <b>Assault Boost</b> (three long, steerable stunning dashes toward your mouse, 0.5s apart; you can keep moving and shooting throughout) → <b>Ea</b> (2s charge, then a huge radiant golden explosion; the full cooldown only starts after it). R = <b>Viral Obsession Dance</b> ("NONONO YOU CANT DO THAT!" on screen, damage pulses around you). F = <b>Gates of Babylon</b>: 12 golden portals clumped together at the top centre fire 60 weapons per second each for 8 seconds, cycling through the enemies so each gets an equal share (~5,800 knives, saws, swords, daggers, shovels and blades) with low per-hit damage (reduced again in this build), visible hit numbers and a hard cap on what bosses can lose (28%, Mega 11%); the weapons are small blades. The weapon swarm runs on a typed-array pool with a spatial grid, so it costs almost nothing per frame.</div>
+                <div style="color:#ccc;padding-left:8px;margin-bottom:2px">• <b>NEW CHARACTER: Skyblock Adict</b> ⛏️ (Coolioioio variant — unlocked by reaching <b>level 20</b> with Coolioioio). <b>MP</b>: +1 automatically for every 3 upgrades you take, and every MP adds +1.5 damage. SPACE = <b>God Potion</b> (+20 MP for 12s, the cooldown is paused while it lasts). R = <b>WD Swap</b> between <b>Hyperion</b> (bonus mobility, light melee), <b>Dark Claymore</b> (+4 damage, slow heavy melee) and <b>Terminator</b> (bonus pierce and velocity, a bow that fires 3 arrows at once). Each weapon auto-casts an ability every 10s that upgrades at 3 / 6 / 9 MP — Hyperion: sword beam → teleport slash → impact explosion → heal + decaying shield; Claymore: heavy cleave → combo ending with a sword dropped on your cursor → wider splash on every hit → much bigger area damage; Terminator: ignite arrows → exploding arrows → periodic beam shots. F = a <b>different ultimate per weapon</b>: Wither Impact (siphon then explode, huge decaying overshield), Dark Slashes (3 stunning slashes, the last launches every enemy into the walls) and Arrow Storm (homing arrows that explode, ignite and confuse).</div>
                 <div style="color:#ccc;padding-left:8px;margin-bottom:2px">• <b>Mega Boss now arrives after every 5 normal bosses</b> you kill (was every 10 levels) and gets <b>6 new attacks</b>: Bullet Rain, Bloom, Thunder Pillars, Mines, Seekers and Ricochet. Its <b>Meteor Rain</b> is buffed — faster, up to 3 per beat, many land on you — and a hit now gives only 12 i-frames instead of a full second, so the other meteors actually count.</div>
+                <div style="color:#ccc;padding-left:8px;margin-bottom:2px">• <b>Balance:</b> poison damage −75%. <b>Skyblock Adict nerfed</b>: +1.5 damage per MP (was +2), Claymore +4 (was +5), God Potion lasts 12s (was 15s), Hyperion mobility reduced, and roughly 25–30% less damage on every weapon, auto-ability, ultimate and its overshield/heal.</div>
                 <div style="color:#ccc;padding-left:8px;margin-bottom:2px">• <b>Settings are saved</b> — difficulty, particles, targeting modes, auto-pause and hitbox view survive a refresh.</div>
-                <div style="color:#ccc;padding-left:8px;margin-bottom:2px">• <b>Damage-over-time rules:</b> poison tick = 5 + your DPS + 5% of the victim's max HP (1% on Mega Bosses); bleed = 10% max HP over 5s (5% on Mega Bosses); burn = 140% of your DPS per second.</div>
+                <div style="color:#ccc;padding-left:8px;margin-bottom:2px">• <b>Damage-over-time rules:</b> poison tick = 25% of (5 + your DPS + 5% of the victim\'s max HP (1% on Mega Bosses)) — poison was nerfed by 75%; bleed = 10% max HP over 5s (5% on Mega Bosses); burn = 140% of your DPS per second.</div>
                 <div style="color:#ccc;padding-left:8px;margin-bottom:2px">• Femboy's <b>Twirl nerfed</b>: no i-frames and no longer destroys projectiles. <b>Charm has been removed</b> from the game: Femboy's ultimate (Gender Reveal) now confuses every regular enemy instead, and the Summoner's <b>Summon Horde</b> (Noglin mind control) now spawns ten confused minions that brawl.</div>
                 <div style="color:#ccc;padding-left:8px;margin-bottom:2px">• <b>Pickle-Astrophe</b>: the ultimate floods the whole screen with green brine and tints it, and pickles now fall on the <b>strongest</b> enemy (not a random one), poisoning it and its neighbours.</div>
                 <div style="color:#ccc;padding-left:8px;margin-bottom:2px">• Snowman: icicles now leave enemies <b>BRITTLE</b>; the Giant Snowball lasts longer and grows bigger (up to 390px) and deals 20% max HP to Mega Bosses. Coolioioio's 360-No-Scope lines now <b>keep pivoting</b> to stay on their target while you move. God-mode Death Note no longer works on Mega Bosses. Pikachu's "plasma ball" is now consistently called <b>Electroball</b>.</div>
@@ -506,6 +512,8 @@ const CHARACTERS=[
      desc:"God Potion", abilityDesc:"SPC: God Potion | R: WD Swap | F: Weapon Ultimate"},
     {id:'blahblahblah',name:"BlahBlahBlah", emoji:"💬", speed:9, hp:5, abilityColor:'#cc44ff',
      desc:"Anime Nonsense", abilityDesc:"SPC: Word Barrage | R: Cringe Unskippable Monologue"},
+    {id:'obsessed',name:"The Obsessed", emoji:"🤩", variantOf:'blahblahblah', unlockKey:'obsessedUnlocked', unlockHint:'Reach level 20 with BlahBlahBlah', variantName:"The Obsessed", speed:9.5, hp:5, abilityColor:'#ffd84a',
+     desc:"Gates of Babylon", abilityDesc:"SPC: Rider Kick → Assault → Ea | R: Viral Dance | F: Gates of Babylon"},
     {id:'pickle',    name:"Pickle",        emoji:"🥒", speed:9, hp:6, abilityColor:'#44cc00',
      desc:"I'm Pickle Rick!", abilityDesc:"SPC: Brine Burst (Poison) | R: Pickle Dash"},
     {id:'choco',     name:"IAmChoco",     emoji:"🍪", speed:9.5, hp:5, abilityColor:'#c68642',
@@ -783,10 +791,10 @@ window.addEventListener('resize',()=>{ resize(); checkOrientation(); });
 resize();
 
 // ── CLASSES ──
-var _popC=new Map();
+var _popC=new Map(),_fontOK=false;
 function popupSprite(text,color){
     // Only cache once the pixel font is loaded, otherwise we'd freeze a fallback-font render into the cache
-    try{if(document.fonts&&document.fonts.check&&!document.fonts.check('10px "Press Start 2P"'))return null;}catch(e){return null;}
+    if(!_fontOK){try{if(document.fonts&&document.fonts.check&&!document.fonts.check('10px "Press Start 2P"'))return null;}catch(e){return null;}_fontOK=true;}
     const key=color+'|'+text;let c=_popC.get(key);
     if(c)return c;
     if(_popC.size>400)_popC.clear();   // numbers vary a lot; keep the cache bounded
@@ -841,16 +849,29 @@ function speechAlpha(c){const e=c.maxTimer-c.timer;return Math.max(0,Math.min(1,
 function speechReveal(c,i){return Math.max(0,Math.min(1,(c.maxTimer-c.timer-12-i*6)/8));}
 function popup(x,y,text,color,life){if(settings.particles){if(state.textPopups.length>140)state.textPopups.shift();state.textPopups.push(new TextPopup(x,y,text,color||'#fff',life));}}
 
+var BLOOD_COLS=['#c40d0d','#d61a14','#e02a1c','#a80a0a','#ee3b24'];
 class BloodParticle {
-    constructor(x,y){this.x=x;this.y=y;this.px=x;this.py=y;const a=Math.random()*Math.PI*2,s=1+Math.random()*4;this.vx=Math.cos(a)*s;this.vy=Math.sin(a)*s-2;this.gravity=0.18;this.r=2+Math.random()*4;this.life=40+Math.random()*30;this.maxLife=this.life;this.col='hsl('+Math.floor(Math.random()*20)+',90%,'+Math.floor(30+Math.random()*20)+'%)';}
+    constructor(x,y){this.x=x;this.y=y;this.px=x;this.py=y;const a=Math.random()*Math.PI*2,s=1+Math.random()*4;this.vx=Math.cos(a)*s;this.vy=Math.sin(a)*s-2;this.gravity=0.18;this.r=2+Math.random()*4;this.life=40+Math.random()*30;this.maxLife=this.life;this.ci=(Math.random()*5)|0;this.col=BLOOD_COLS[this.ci];}
     update(){this.px=this.x;this.py=this.y;this.x+=this.vx;this.y+=this.vy;this.vy+=this.gravity;this.life--;}
     draw(){
         const k=this.life/this.maxLife;
-        ctx.globalAlpha=k;ctx.strokeStyle=this.col;ctx.fillStyle=this.col;ctx.lineCap='round';
-        ctx.lineWidth=this.r*0.9*(0.4+k*0.6);ctx.beginPath();ctx.moveTo(this.px,this.py);ctx.lineTo(this.x,this.y);ctx.stroke();
-        ctx.beginPath();ctx.arc(this.x,this.y,this.r*(0.45+k*0.55),0,Math.PI*2);ctx.fill();
-        ctx.globalAlpha=1;
+        ctx.globalAlpha=k;if(this.col!==_bpCol){ctx.strokeStyle=_bpCol=this.col;}
+        ctx.lineWidth=this.r*(0.9+k*1.1);ctx.beginPath();ctx.moveTo(this.px,this.py);ctx.lineTo(this.x,this.y);ctx.stroke();
     }
+}
+var _bb=[];for(let i=0;i<40;i++)_bb.push([]);
+function bloodDraw(){
+    const P=state.particles,n=P.length;if(!n)return;
+    for(let i=0;i<40;i++)_bb[i].length=0;
+    for(let i=0;i<n;i++){const p=P[i],k=p.life/p.maxLife;_bb[p.ci*8+Math.min(3,(k*4)|0)*2+(p.r>=4?1:0)].push(p);}   // shade x fade level x size
+    ctx.save();ctx.lineCap='round';
+    for(let key=0;key<40;key++){
+        const L=_bb[key],m=L.length;if(!m)continue;
+        const bk=(key>>1)&3,sz=key&1;
+        ctx.globalAlpha=(bk+1)*0.25;ctx.lineWidth=(sz?5.2:2.8)*(0.9+(bk+0.5)*0.275);ctx.strokeStyle=BLOOD_COLS[(key>>3)];
+        ctx.beginPath();for(let i=0;i<m;i++){const p=L[i];ctx.moveTo(p.px,p.py);ctx.lineTo(p.x,p.y);}ctx.stroke();
+    }
+    ctx.restore();
 }
 function spawnBlood(x,y,n){if(!settings.particles||state.particles.length>320)return;for(let i=0;i<(n||8);i++)state.particles.push(new BloodParticle(x,y));}
 
@@ -858,6 +879,24 @@ function spawnBlood(x,y,n){if(!settings.particles||state.particles.length>320)re
 //  FX ENGINE (v1.2): sparks, screen shake, flashes
 // ═══════════════════════════════════════════════════
 function hexA(h,a){const n=parseInt(h.slice(1),16);return 'rgba('+(n>>16)+','+((n>>8)&255)+','+(n&255)+','+a+')';}
+var _glowC={};
+function glowSprite(color){
+    let c=_glowC[color];if(c)return c;
+    c=document.createElement('canvas');c.width=c.height=48;const g=c.getContext('2d');
+    g.fillStyle=color;g.fillRect(0,0,48,48);g.globalCompositeOperation='destination-in';
+    const m=g.createRadialGradient(24,24,0,24,24,24);m.addColorStop(0,'rgba(0,0,0,1)');m.addColorStop(0.3,'rgba(0,0,0,0.8)');m.addColorStop(0.6,'rgba(0,0,0,0.26)');m.addColorStop(1,'rgba(0,0,0,0)');
+    g.fillStyle=m;g.fillRect(0,0,48,48);g.globalCompositeOperation='source-over';
+    const w=g.createRadialGradient(24,24,0,24,24,9);w.addColorStop(0,'rgba(255,255,255,0.95)');w.addColorStop(1,'rgba(255,255,255,0)');g.fillStyle=w;g.fillRect(0,0,48,48);
+    return _glowC[color]=c;
+}
+// a glowing projectile with no shadowBlur: soft additive halo sprite + solid core + hot centre
+function glowBall(x,y,r,color,a){
+    const sp=glowSprite(color),h=r*3.2;
+    ctx.globalCompositeOperation='lighter';ctx.globalAlpha=a||0.85;ctx.drawImage(sp,x-h,y-h,h*2,h*2);
+    ctx.globalCompositeOperation='source-over';ctx.globalAlpha=1;
+    ctx.fillStyle=color;ctx.beginPath();ctx.arc(x,y,r,0,6.2832);ctx.fill();
+    ctx.fillStyle='#ffffff';ctx.globalAlpha=0.85;ctx.beginPath();ctx.arc(x,y,r*0.42,0,6.2832);ctx.fill();ctx.globalAlpha=1;
+}
 function fxSpark(x,y,vx,vy,life,size,color,o){
     if(!settings.particles)return;
     const a=state.fxp||(state.fxp=[]);
@@ -899,8 +938,8 @@ function fxDraw(){
         const k=s.life/s.max,r=s.shrink?Math.max(0.5,s.size*k):s.size;
         ctx.globalAlpha=Math.min(1,k*1.2);ctx.fillStyle=s.color;ctx.strokeStyle=s.color;
         if(s.trail){ctx.lineWidth=Math.max(1,r*1.3);ctx.beginPath();ctx.moveTo(s.x-s.vx*1.6,s.y-s.vy*1.6);ctx.lineTo(s.x,s.y);ctx.stroke();}
-        ctx.beginPath();ctx.arc(s.x,s.y,r,0,6.2832);ctx.fill();
-        if(glow){ctx.globalAlpha=k*0.22;ctx.beginPath();ctx.arc(s.x,s.y,r*2.4,0,6.2832);ctx.fill();}
+        if(glow){const h=r*2.6,sp=glowSprite(s.color);ctx.globalAlpha=Math.min(1,k*1.3);ctx.drawImage(sp,s.x-h,s.y-h,h*2,h*2);}
+        else{ctx.beginPath();ctx.arc(s.x,s.y,r,0,6.2832);ctx.fill();}
     }
     ctx.restore();
     let any=false;
@@ -944,6 +983,7 @@ const ULT_INFO={
     snowman:     {name:'GIANT SNOWBALL',     color:'#aaf4ff',icon:'⛄',dur:480,invul:60,desc:'Roll a huge snowball that grows bigger every second and catches every enemy it touches, carrying them inside it. After 8 seconds it BURSTS: caught enemies take 95% max HP, everything nearby takes 50%, and a Mega Boss takes 20% of its max HP. The burst also leaves every enemy it hits BRITTLE for 7s (10× damage from your shots, 3× on bosses, 2× on Mega Bosses).'},
     coolioioio:  {name:'MINIGUN',           color:'#ffaa33',icon:'🔫',dur:300,desc:'Pull out a minigun: 12 attacks per second for 5 seconds, each hitting for 6× your damage (4× the damage output it used to have). Aim with your cursor or auto-target. You can keep moving.'},
     blahblahblah:{name:'FINAL WORD',        color:'#cc66ff',icon:'💬',dur:210,desc:'A rotating 4-arm spiral of word-bullets that stun on hit, capped by a screen-shaking FINAL WORD that deals 25% max HP to everyone.'},
+    obsessed:    {name:'GATES OF BABYLON',color:'#ffd84a',icon:'👑',dur:560,invul:60,desc:'Twelve golden portals open across the top of the map and rain thousands of golden weapons — knives, saws, swords, daggers, shovels and blades — 60 per portal per second for 8 seconds, the gates cycle through the enemies in turn so every enemy is targeted equally. Every hit is small; the volume does the work. The portals are clumped together at the top centre. Bosses can only lose a capped share (28% of their max HP, 11% for a Mega Boss).'},
     skyblock:    {name:'WEAPON ULTIMATE',color:'#55ffff',icon:'⛏️',dur:300,invul:120,desc:'Your held weapon unleashes its ultimate. HYPERION — Wither Impact: channel and siphon health from everything near you, then detonate for a massive decaying overshield. DARK CLAYMORE — Dark Slashes: three escalating stunning slashes; the last launches every enemy into the arena walls. TERMINATOR — Arrow Storm: a barrage of homing arrows that explode, ignite and confuse.'},
     pickle:      {name:'PICKLE-ASTROPHE',   color:'#66dd22',icon:'🥒',dur:330,desc:'A colossal brine tsunami sweeps the arena, hitting and poisoning everything, then a FLOOD of brine drowns the whole screen in green while pickles rain down on the STRONGEST enemy on the field, each splash poisoning its neighbours.'},
     kira:        {name:'SHINIGAMI EYES',    color:'#ff2222',icon:'👁️',dur:240,desc:'Write every name at once: all enemies are condemned on staggered timers and die; bosses lose 25% max HP.'},
@@ -957,7 +997,7 @@ function cdFrozenNow(){
     const id=p.config.id;
     const a=(id==='tiger'&&st.pounce.active)||(id==='coolioioio'&&!!st.spinbot)||(id==='noglin'&&st.mindControl.active)||(id==='snowman'&&st.effects.frozen)
         ||(id==='blahblahblah'&&!!st.blahBarrage)||(id==='pikachu'&&!!st.pikaChaining)||(id==='shiba'&&st.bullets.some(b=>b instanceof CoinProjectile))
-        ||(id==='cat'&&!!st.glorpBeam)||(id==='choco'&&!!st.towers&&st.towers.length>0)||(id==='auramonster'&&!!st.voids&&st.voids.length>0)||(id==='skyblock'&&st.godPotion>0);
+        ||(id==='cat'&&!!st.glorpBeam)||(id==='choco'&&!!st.towers&&st.towers.length>0)||(id==='auramonster'&&!!st.voids&&st.voids.length>0)||(id==='skyblock'&&st.godPotion>0)||(id==='obsessed'&&!!st.obs&&(!!st.obs.act||!!st.obs.ea));
     const s=(id==='coolioioio'&&(!!st.spinbot||!!st.noScope))||(id==='pickle'&&!!st.pickleDash&&!!st.pickleDash.active)||(id==='cat'&&p._warpSpeedBoost>0)
         ||(id==='pikachu'&&!!st.voltTackle)||(id==='auramonster'&&!!st.stairs&&st.stairs.length>0);
     return{a:!!a,s:!!s};
@@ -1163,6 +1203,17 @@ function ultRun(u,p){
         u.fx=null;u._shown='';
     }
 }
+function castFx(p,k,col){
+    const c=col||(p.config&&p.config.color)||'#ffffff';
+    if(k===2){   // ultimate: a layered shockwave, a rising light column and a spark fountain
+        addRing(p.x,p.y,170,16,c,4);addRing(p.x,p.y,90,12,'#ffffff',2);
+        fxBurst(p.x,p.y,22,c,3,11,30,3,{g:0.02});fxBurst(p.x,p.y,10,'#ffffff',2,8,22,2.2);
+        for(let i=0;i<10;i++)fxSpark(p.x+(Math.random()-0.5)*46,p.y+10,(Math.random()-0.5)*0.8,-3-Math.random()*5,34,2.8,i&1?'#ffffff':c,{drag:0.97,trail:true});
+        return;
+    }
+    addRing(p.x,p.y,k?80:64,12,c,3);addRing(p.x,p.y,k?44:34,9,'#ffffff',1.5);
+    fxBurst(p.x,p.y,10,c,2,7,20,2.4,{trail:false});
+}
 function triggerUltimate(){
     if(state.screen!=='PLAYING'||!state.player)return;
     const u=ultState(),p=state.player;
@@ -1177,6 +1228,7 @@ function triggerUltimate(){
     p.invul=Math.max(p.invul,info.invul!==undefined?info.invul:info.dur);
     state.ultBanner={name:info.name,color:info.color,t:100,max:100};
     I.start(u.fx,p,u.fx.d);
+    castFx(p,2,info.color);
     u._shown='';refreshUltHud();
 }
 let _vigC=null;
@@ -1552,7 +1604,7 @@ function arsonDraw(){
             ctx.globalAlpha=0.25+0.4*k;ctx.strokeStyle='#ff6a00';ctx.lineWidth=2;ctx.setLineDash([6,6]);
             ctx.beginPath();ctx.arc(m.tx,m.ty,105*k,0,6.2832);ctx.stroke();ctx.setLineDash([]);
             ctx.globalAlpha=1;ctx.save();ctx.translate(m.x,m.y);ctx.rotate(m.rot);ctx.font='22px Arial';ctx.textAlign='center';ctx.textBaseline='middle';ctx.fillText('🍾',0,0);ctx.restore();
-            ctx.fillStyle='#ffb347';ctx.shadowBlur=14;ctx.shadowColor='#ff6a00';ctx.beginPath();ctx.arc(m.x,m.y-12,5,0,6.2832);ctx.fill();ctx.shadowBlur=0;
+            glowBall(m.x,m.y-12,4,'#ff9a2e',0.9);
         }
         ctx.restore();
     }
@@ -1805,7 +1857,7 @@ ULT_IMPL.pikachu={
 // ── v2.4: BLEED status (Zanther's Fury Swipes) — a damage-over-time that scales with the player's damage and the victim's max HP
 // v2.4 damage-over-time rules: POISON tick = 5 + your DPS + 5% of the victim's max HP (1% on Mega Bosses); BLEED = 10% max HP over 5s (5% on Mega Bosses); BURN = 140% of your DPS per second
 function playerDps(p){p=p||state.player;if(!p)return 0;return p.damage*(60/Math.max(5,p.atkSpeed||30))*((p.projectileCount||1)+(p.splitChance||0)/50);}
-function poisonDmg(e){return 5+playerDps()+e.maxHp*(e.isMega?0.01:0.05);}
+function poisonDmg(e){return (5+playerDps()+e.maxHp*(e.isMega?0.01:0.05))*0.25;}   // v2.5: poison nerfed by 75%
 function bleedEnemy(e,dur){
     if(!e||e.hp<=0)return false;
     state.bleedOn=true;
@@ -2049,8 +2101,7 @@ function glitterDraw(){
             const k=g.t/g.dur,x=g.x0+(g.tx-g.x0)*k,y=g.y0+(g.ty-g.y0)*k-Math.sin(k*Math.PI)*90;
             ctx.globalAlpha=0.25;ctx.fillStyle='#000';ctx.beginPath();ctx.ellipse(g.x0+(g.tx-g.x0)*k,g.y0+(g.ty-g.y0)*k+8,10,4,0,0,6.2832);ctx.fill();
             ctx.globalAlpha=0.9;ctx.strokeStyle='#ff88cc';ctx.lineWidth=2;ctx.beginPath();ctx.arc(g.tx,g.ty,GLITTER_R*(1.2-0.35*k),0,6.2832);ctx.stroke();   // landing marker
-            ctx.globalAlpha=1;ctx.fillStyle='#ff77bb';ctx.beginPath();ctx.arc(x,y,10,0,6.2832);ctx.fill();
-            ctx.fillStyle='#ffffff';ctx.beginPath();ctx.arc(x-3,y-3,3.5,0,6.2832);ctx.fill();
+            glowBall(x,y,10,'#ff77bb',0.95);
         }
     }
     ctx.restore();
@@ -2226,6 +2277,24 @@ function toggleSword(p){
     updateHUD();
 }
 // Start the next swing of the 3-hit combo (sweep, sweep back, 360° finisher). Haste shortens it, Caliber hits harder, Velocity speeds it up and extends reach.
+function skySwordTipFx(p,S){
+    const a=S.cur,x=p.x+Math.cos(a)*S.reach*0.95,y=p.y+Math.sin(a)*S.reach*0.95;
+    if(S.theme===1)fxSpark(x,y,(Math.random()-0.5)*1.4,-0.6-Math.random()*1.2,26,3.2,Math.random()<0.5?'#b07cff':'#ff5f9a',{drag:0.97,g:-0.03,trail:false});
+    else fxSpark(x,y,-Math.sin(a)*S.dir*(1.5+Math.random()*2),Math.cos(a)*S.dir*(1.5+Math.random()*2),16,2.2,Math.random()<0.4?'#ffffff':'#7ff4ff',{drag:0.9});
+}
+function skySwordHitFx(e,S,crit){
+    const big=S.idx===2;
+    if(S.theme===1){
+        fxBurst(e.x,e.y,big?18:10,'#b07cff',2,9,24,3.2,{g:-0.05,trail:false});fxBurst(e.x,e.y,big?6:3,'#ff5f9a',1,5,22,3,{g:-0.06,trail:false});
+        addRing(e.x,e.y,big?130:85,12,'#8a45ff',4);addRing(e.x,e.y,big?70:44,9,'#e6d4ff',2);
+    }else{
+        const a=Math.atan2(e.y-state.player.y,e.x-state.player.x);
+        for(let i=0;i<(big?8:5);i++){const q=a+(Math.random()-0.5)*1.1,sp=5+Math.random()*7;fxSpark(e.x,e.y,Math.cos(q)*sp,Math.sin(q)*sp,16,2.2,i&1?'#ffffff':'#55ffff',{drag:0.88});}
+        fxBurst(e.x,e.y,big?10:5,'#9ff6ff',1,6,14,2,{trail:false});
+        addRing(e.x,e.y,big?100:60,9,'#55ffff',3);
+        fxSpark(e.x,e.y,0,0,7,big?30:20,'#e6ffff',{drag:1,trail:false,shrink:true});
+    }
+}
 function swordStart(p){
     const S=state.sword;
     if(S&&S.active){p.atkCooldown=2;return;}
@@ -2261,6 +2330,7 @@ function swordTick(p){
     const prog=Math.min(1,S.t/S.dur),fr=1-(1-prog)*(1-prog);   // ease-out sweep: fast cut, soft finish
     S.prev=S.cur;S.cur=S.sa+S.dir*S.arc*fr;
     const lim=S.arc*fr+0.1,R=S.reach;
+    if(S.sky&&(S.t&1)===0)skySwordTipFx(p,S);
     const tg=allTargets();
     for(let i=0;i<tg.length;i++){
         const e=tg[i];
@@ -2271,7 +2341,8 @@ function swordTick(p){
         if(rel>lim||rel>S.arc+0.1)continue;
         S.hit.add(e);
         const crit=Math.random()*100<p.crit,dmg=p.damage*S.mul*(crit?2:1);
-        fxBurst(e.x,e.y,S.idx===2?14:8,crit?'#ffe066':'#ffd9a0',2,9,18,2.6);addRing(e.x,e.y,S.idx===2?90:55,10,'#ffcc66',3);
+        if(S.sky)skySwordHitFx(e,S,crit);
+        else{fxBurst(e.x,e.y,S.idx===2?14:8,crit?'#ffe066':'#ffd9a0',2,9,18,2.6);addRing(e.x,e.y,S.idx===2?90:55,10,'#ffcc66',3);}
         if(S.idx===2)fxShake(9);else fxShake(3);
         hurtFlat(e,dmg,'⚔️',S.sky?(S.theme===1?'#b07cff':'#55ffff'):'#ffcc66');
         if(S.sky)skySwordAoE(p,e,dmg,S);
@@ -2369,6 +2440,52 @@ function chocoTick(){
     if((state.towers&&state.towers.length)||(state.arrows&&state.arrows.length))towerTick(p);
 }
 function tbBox(x,y,w,h,fill,edge){ctx.fillStyle=fill;ctx.fillRect(x,y,w,h);ctx.strokeStyle=edge;ctx.lineWidth=1.5;ctx.strokeRect(x,y,w,h);}   // flat Roblox-style block
+function skyBlade(th,len,sw,tm){
+    if(th===1){   // DARK CLAYMORE — wide, jagged void steel, glowing fuller, heavy guard and a pulsing soul-gem
+        const w=11*sw,pu=0.6+0.4*Math.sin(tm*0.12);
+        ctx.fillStyle='#120622';ctx.strokeStyle='#8a45ff';ctx.lineWidth=2;ctx.lineJoin='round';
+        ctx.fillRect(10,-3.4,22,6.8);ctx.strokeRect(10,-3.4,22,6.8);
+        ctx.fillStyle='#ff5f9a';for(let i=0;i<3;i++)ctx.fillRect(14+i*7,-3.4,2.4,6.8);
+        ctx.fillStyle='#1d0a35';ctx.beginPath();ctx.moveTo(30,-20);ctx.lineTo(37,-13);ctx.lineTo(37,13);ctx.lineTo(30,20);ctx.lineTo(27,12);ctx.lineTo(27,-12);ctx.closePath();ctx.fill();ctx.stroke();
+        ctx.beginPath();ctx.moveTo(37,-w);ctx.lineTo(len*0.55,-w-2);
+        for(let i=0;i<4;i++){const x=len*0.55+i*(len*0.45-12)/4;ctx.lineTo(x+4,-w-5);ctx.lineTo(x+9,-w-1);}
+        ctx.lineTo(len+2,0);ctx.lineTo(len-18,w);ctx.lineTo(37,w);ctx.closePath();
+        ctx.fillStyle='#2a1050';ctx.fill();ctx.stroke();
+        ctx.strokeStyle='#e6d4ff';ctx.globalAlpha=0.55+0.4*pu;ctx.lineWidth=2.2;ctx.beginPath();ctx.moveTo(42,0);ctx.lineTo(len-12,0);ctx.stroke();ctx.globalAlpha=1;
+        ctx.fillStyle='#ff5f9a';for(let i=0;i<3;i++){const x=len*0.3+i*len*0.2;ctx.beginPath();ctx.moveTo(x,-w*0.5);ctx.lineTo(x+4,0);ctx.lineTo(x,w*0.5);ctx.lineTo(x-4,0);ctx.closePath();ctx.globalAlpha=0.5+0.5*pu;ctx.fill();}ctx.globalAlpha=1;
+        ctx.fillStyle='#ff5f9a';ctx.beginPath();ctx.arc(8,0,5+pu,0,6.2832);ctx.fill();ctx.fillStyle='#fff';ctx.beginPath();ctx.arc(7,-1,1.8,0,6.2832);ctx.fill();
+    }else{        // HYPERION — long ice-cyan blade, gold winged guard, glowing runes and a star glint on the tip
+        const w=4.6*sw,pu=0.6+0.4*Math.sin(tm*0.2);
+        ctx.lineJoin='round';
+        ctx.fillStyle='#0d3a5a';ctx.strokeStyle='#ffd54a';ctx.lineWidth=1.4;ctx.fillRect(12,-2.6,22,5.2);
+        ctx.fillStyle='#ffd54a';for(let i=0;i<3;i++)ctx.fillRect(15+i*6,-2.6,2,5.2);
+        ctx.fillStyle='#ffd54a';ctx.strokeStyle='#8a5a00';ctx.lineWidth=1.2;ctx.beginPath();ctx.moveTo(33,-3);ctx.lineTo(26,-18);ctx.lineTo(41,-9);ctx.lineTo(43,0);ctx.lineTo(41,9);ctx.lineTo(26,18);ctx.lineTo(33,3);ctx.closePath();ctx.fill();ctx.stroke();
+        ctx.fillStyle='#55ffff';ctx.beginPath();ctx.arc(35,0,2.6,0,6.2832);ctx.fill();
+        const g=ctx.createLinearGradient(40,0,len,0);g.addColorStop(0,'#e9ffff');g.addColorStop(0.7,'#9ff6ff');g.addColorStop(1,'#35c8ff');
+        ctx.fillStyle=g;ctx.strokeStyle='#ffffff';ctx.lineWidth=1.3;ctx.beginPath();ctx.moveTo(41,-w);ctx.lineTo(len-20,-w);ctx.lineTo(len,0);ctx.lineTo(len-20,w);ctx.lineTo(41,w);ctx.closePath();ctx.fill();ctx.stroke();
+        ctx.strokeStyle='#35c8ff';ctx.lineWidth=1.2;ctx.beginPath();ctx.moveTo(46,0);ctx.lineTo(len-24,0);ctx.stroke();
+        ctx.fillStyle='#ffd54a';ctx.globalAlpha=0.5+0.5*pu;for(let i=0;i<3;i++){const x=len*0.34+i*len*0.17;ctx.beginPath();ctx.moveTo(x,-2.2);ctx.lineTo(x+2.2,0);ctx.lineTo(x,2.2);ctx.lineTo(x-2.2,0);ctx.closePath();ctx.fill();}ctx.globalAlpha=1;
+        ctx.globalCompositeOperation='lighter';ctx.strokeStyle='#e6ffff';ctx.globalAlpha=0.7*pu;ctx.lineWidth=1.5;const L=9+5*pu;ctx.beginPath();ctx.moveTo(len-L,0);ctx.lineTo(len+L,0);ctx.moveTo(len,-L);ctx.lineTo(len,L);ctx.stroke();ctx.globalAlpha=1;ctx.globalCompositeOperation='source-over';
+    }
+}
+function skySwordSwing(S,cur,a0,ccw,fadeA,R){
+    const th=S.theme===1,fc=state.frameCount;
+    if(th){   // a wide void crescent: dark core, violet flames, pink/white edge
+        ctx.globalCompositeOperation='source-over';ctx.globalAlpha=0.38*fadeA;ctx.strokeStyle='#0a0216';ctx.lineWidth=R*0.34;ctx.beginPath();ctx.arc(0,0,R*0.74,a0,cur,ccw);ctx.stroke();
+        ctx.globalCompositeOperation='lighter';
+        ctx.globalAlpha=0.22*fadeA;ctx.strokeStyle='#6a2fd0';ctx.lineWidth=R*0.46;ctx.beginPath();ctx.arc(0,0,R*0.72,a0,cur,ccw);ctx.stroke();
+        ctx.globalAlpha=0.4*fadeA;ctx.strokeStyle='#b07cff';ctx.lineWidth=R*0.2;ctx.beginPath();ctx.arc(0,0,R*0.86,a0,cur,ccw);ctx.stroke();
+        ctx.globalAlpha=0.85*fadeA;ctx.strokeStyle='#ff9ac8';ctx.lineWidth=3;ctx.beginPath();ctx.arc(0,0,R*0.97,cur-S.dir*Math.min(1.4,Math.abs(cur-a0)),cur,ccw);ctx.stroke();
+    }else{    // a thin razor crescent: ice core, double edge, and a faint afterimage
+        ctx.globalCompositeOperation='lighter';
+        ctx.globalAlpha=0.14*fadeA;ctx.strokeStyle='#1fb8d6';ctx.lineWidth=R*0.3;ctx.beginPath();ctx.arc(0,0,R*0.8,a0,cur,ccw);ctx.stroke();
+        ctx.globalAlpha=0.3*fadeA;ctx.strokeStyle='#55ffff';ctx.lineWidth=R*0.09;ctx.beginPath();ctx.arc(0,0,R*0.88,a0,cur,ccw);ctx.stroke();
+        ctx.globalAlpha=0.55*fadeA;ctx.strokeStyle='#9ff6ff';ctx.lineWidth=1.6;ctx.beginPath();ctx.arc(0,0,R*0.74,cur-S.dir*Math.min(1.8,Math.abs(cur-a0)),cur,ccw);ctx.stroke();
+        ctx.globalAlpha=0.95*fadeA;ctx.strokeStyle='#ffffff';ctx.lineWidth=2.6;ctx.beginPath();ctx.arc(0,0,R*0.97,cur-S.dir*Math.min(1.6,Math.abs(cur-a0)),cur,ccw);ctx.stroke();
+    }
+    ctx.globalCompositeOperation='source-over';ctx.globalAlpha=1;
+    ctx.save();ctx.rotate(cur);skyBlade(S.theme,R,S.sw||1,fc);ctx.restore();
+}
 function chocoDraw(){
     const p=state.player;if(!p||(p.config.id!=='choco'&&p.config.id!=='skyblock'))return;
     const TH=p.config.id==='skyblock'?(p.weapon===1?['#6a2fd0','#b07cff','#f1e6ff','#e6d4ff']:['#1fb8d6','#55ffff','#e6ffff','#e9ffff']):['#ff9d2e','#ffc766','#fff6d8','#e9f3ff'];
@@ -2427,6 +2544,8 @@ function chocoDraw(){
         ctx.save();ctx.translate(p.x,p.y);ctx.lineCap='round';ctx.globalCompositeOperation='lighter';
         const trail=Math.min(S.arc*(1-(1-k)*(1-k)),S.idx===2?4.2:2.3),a0=cur-S.dir*trail,ccw=S.dir<0;
         const fadeA=k>0.8?(1-k)/0.2:1;
+        if(S.sky){skySwordSwing(S,cur,a0,ccw,fadeA,R);ctx.restore();}
+        else{
         ctx.globalAlpha=0.16*fadeA;ctx.strokeStyle=TH[0];ctx.lineWidth=R*0.42;ctx.beginPath();ctx.arc(0,0,R*0.74,a0,cur,ccw);ctx.stroke();
         ctx.globalAlpha=0.34*fadeA;ctx.strokeStyle=TH[1];ctx.lineWidth=R*0.2;ctx.beginPath();ctx.arc(0,0,R*0.84,a0,cur,ccw);ctx.stroke();
         ctx.globalAlpha=0.9*fadeA;ctx.strokeStyle=TH[2];ctx.lineWidth=4;ctx.beginPath();ctx.arc(0,0,R*0.93,Math.max(Math.min(a0,cur),cur-S.dir*Math.min(trail,1.1)),cur,ccw);ctx.stroke();
@@ -2437,7 +2556,11 @@ function chocoDraw(){
         ctx.strokeStyle='#ffffff';ctx.lineWidth=2;ctx.beginPath();ctx.moveTo(c*40,s*40);ctx.lineTo(c*R,s*R);ctx.stroke();
         ctx.strokeStyle='#d6a15e';ctx.lineWidth=7;ctx.beginPath();ctx.moveTo(c*36-s*13,s*36+c*13);ctx.lineTo(c*36+s*13,s*36-c*13);ctx.stroke();
         ctx.fillStyle='#6b3f14';ctx.beginPath();ctx.arc(c*16,s*16,5,0,CH_TAU);ctx.fill();
-        ctx.restore();
+        ctx.restore();}
+    } else if(p.swordMode&&p.config.id==='skyblock'){
+        const a=p.facing===-1?2.3:0.85,bob=Math.sin(state.frameCount*0.07)*0.05;
+        ctx.save();ctx.translate(p.x,p.y);ctx.rotate(a+bob);ctx.globalAlpha=0.95;
+        skyBlade(p.weapon,74,0.8,state.frameCount);ctx.restore();
     } else if(p.swordMode){
         const a=p.facing===-1?2.3:0.85;
         ctx.save();ctx.translate(p.x,p.y);ctx.globalAlpha=0.9;ctx.lineCap='round';
@@ -2845,10 +2968,14 @@ ULT_IMPL.coolioioio={
         ctx.fillStyle='#d9a020';ctx.fillRect(14-k,-4,10,8);
         for(let i=0;i<5;i++){const y=Math.sin(d.spin+i*1.2566)*7;ctx.fillStyle=(i%2)?'#8b909c':'#b4bac6';ctx.fillRect(36-k,y-2.2,36,4.4);}
         ctx.fillStyle='#262a33';ctx.fillRect(70-k,-11,7,22);ctx.fillRect(48-k,-11,4,22);
-        if(t%10<3){
-            ctx.globalCompositeOperation='lighter';ctx.fillStyle='rgba(255,190,80,0.95)';
-            ctx.beginPath();ctx.moveTo(77,0);ctx.lineTo(104+Math.random()*16,-9);ctx.lineTo(96,0);ctx.lineTo(104+Math.random()*16,9);ctx.closePath();ctx.fill();
-            ctx.fillStyle='#fff';ctx.beginPath();ctx.arc(80,0,5,0,6.2832);ctx.fill();
+        {const heat=Math.min(0.45,t*0.004);if(heat>0.02){ctx.globalCompositeOperation='lighter';ctx.globalAlpha=heat*(0.7+0.3*Math.sin(t*0.4));ctx.fillStyle='#ff5a1a';ctx.fillRect(36-k,-9,36,18);ctx.globalAlpha=1;ctx.globalCompositeOperation='source-over';}}
+        if(k>0){   // every volley: bloom, flame star, faint light cone
+            const f=k/4;ctx.globalCompositeOperation='lighter';
+            ctx.globalAlpha=0.6*f;ctx.drawImage(glowSprite('#ffb347'),56,-52,104,104);
+            ctx.globalAlpha=f;ctx.fillStyle='rgba(255,190,80,0.95)';
+            ctx.beginPath();ctx.moveTo(77,0);ctx.lineTo(100+f*26+Math.random()*10,-9*f-3);ctx.lineTo(96,0);ctx.lineTo(100+f*26+Math.random()*10,9*f+3);ctx.closePath();ctx.fill();
+            ctx.globalAlpha=0.1*f;ctx.beginPath();ctx.moveTo(78,-3);ctx.lineTo(330,-52);ctx.lineTo(330,52);ctx.lineTo(78,3);ctx.closePath();ctx.fill();
+            ctx.globalAlpha=1;ctx.fillStyle='#fff';ctx.beginPath();ctx.arc(80,0,5*f+2,0,6.2832);ctx.fill();
         }
         ctx.restore();
     }
@@ -2973,7 +3100,7 @@ function skyPickTarget(p,strong){   // honours the ability-target setting
     return strong?foeStrongest():skyNearestTo(p.x,p.y);
 }
 function skyPotion(p){
-    state.godPotion=900;   // 15s — the SPACE cooldown stays frozen while it lasts (cdFrozenNow)
+    state.godPotion=720;   // 15s — the SPACE cooldown stays frozen while it lasts (cdFrozenNow)
     popup(p.x,p.y-80,'🧪 GOD POTION! +20 MP','#55ffff',160);
     addRing(p.x,p.y,220,22,'#55ffff',5);addRing(p.x,p.y,130,16,'#ffee66',3);
     fxFlash('#55ffff',0.25,10);fxShake(5);fxBurst(p.x,p.y,24,'#7eeaff',2,10,26,3,{trail:false});
@@ -2992,12 +3119,13 @@ function skySwap(p){
 function skyAdjustSword(p){
     const S=state.sword;if(!S)return;
     S.sky=true;S.theme=p.weapon;
-    if(p.weapon===0){S.mul*=0.7;}                                                              // Hyperion: lighter than Choco's blade
-    else{S.mul*=1.9;S.dur=Math.round(S.dur*1.6);p.atkCooldown=Math.round(p.atkCooldown*1.5);}   // Claymore: slow, heavy
+    {const c=p.weapon===1?'#b07cff':'#55ffff';addRing(p.x,p.y,p.weapon===1?110:90,10,c,3);fxBurst(p.x+Math.cos(S.aim)*40,p.y+Math.sin(S.aim)*40,p.weapon===1?10:6,c,2,7,16,2.4,{trail:false});}
+    if(p.weapon===0){S.mul*=0.6;}                                                              // Hyperion: lighter than Choco's blade
+    else{S.mul*=1.6;S.dur=Math.round(S.dur*1.6);p.atkCooldown=Math.round(p.atkCooldown*1.5);}   // Claymore: slow, heavy
 }
 function skySwordAoE(p,e,dmg,S){   // Claymore splash: limited at MP 0, wider at 6+, much wider at 9+
     if(S.theme!==1)return;
-    const tier=skyTier(),R=tier>=9?190:tier>=6?125:70,f=tier>=9?0.65:tier>=6?0.32:0.12;
+    const tier=skyTier(),R=tier>=9?170:tier>=6?115:65,f=tier>=9?0.5:tier>=6?0.25:0.1;
     const T=liveTargets();let n=0;
     for(let i=0;i<T.length&&n<8;i++){const o=T[i];if(o===e||o.hp<=0)continue;const dx=o.x-e.x,dy=o.y-e.y;if(dx*dx+dy*dy>R*R)continue;n++;hurtFlat(o,dmg*f,'','#b07cff');}
     if(tier>=6)addRing(e.x,e.y,R,10,'#b07cff',3);
@@ -3019,21 +3147,21 @@ function skyTeleSlash(p,tg){
     skyFxAdd({k:'trail',x0:p.x,y0:p.y,x1:tg.x,y1:tg.y,max:18,col:'#55ffff'});
     p.x=Math.max(65,Math.min(W-65,tg.x-Math.cos(ang)*55));p.y=Math.max(65,Math.min(H-65,tg.y-Math.sin(ang)*55));
     p.invul=Math.max(p.invul,20);
-    const base=p.damage*14,T=liveTargets();
+    const base=p.damage*10,T=liveTargets();
     for(let i=0;i<T.length;i++){
         const o=T[i];if(o.hp<=0)continue;
-        if(o===tg)hurtFlat(o,Math.max(base,o.maxHp*(o.isBoss?0.012:0.1)),'⚔️','#55ffff');
+        if(o===tg)hurtFlat(o,Math.max(base,o.maxHp*(o.isBoss?0.009:0.07)),'⚔️','#55ffff');
         else if((o.x-tg.x)**2+(o.y-tg.y)**2<140*140)hurtFlat(o,base*0.5,'⚔️','#55ffff');
     }
     skyFxAdd({k:'x',x:tg.x,y:tg.y,max:16,col:'#bff4ff'});fxShake(8);fxBurst(tg.x,tg.y,14,'#7eeaff',2,9,20,2.6);
     if(tier>=6){   // impact explosion — and the next auto-cast comes sooner
         const T2=liveTargets();
-        for(let i=0;i<T2.length;i++){const o=T2[i];if(o.hp<=0)continue;if((o.x-tg.x)**2+(o.y-tg.y)**2<210*210)hurtFlat(o,p.damage*8+o.maxHp*(o.isBoss?0.004:0.04),'💥','#ffee66');}
+        for(let i=0;i<T2.length;i++){const o=T2[i];if(o.hp<=0)continue;if((o.x-tg.x)**2+(o.y-tg.y)**2<210*210)hurtFlat(o,p.damage*5.5+o.maxHp*(o.isBoss?0.003:0.028),'💥','#ffee66');}
         addRing(tg.x,tg.y,210,16,'#ffee66',5);addRing(tg.x,tg.y,120,12,'#ffffff',3);fxFlash('#ffee66',0.2,8);fxShake(12);
-        state.skyCdCut=150;
+        state.skyCdCut=100;
     }
     if(tier>=9){
-        p.hp=Math.min(p.maxHp,p.hp+HP_PER_HEART);skyShield(p,HP_PER_HEART*1.5,300);updateHUD();
+        p.hp=Math.min(p.maxHp,p.hp+HP_PER_HEART*0.6);skyShield(p,HP_PER_HEART*1,240);updateHUD();
         popup(p.x,p.y-70,'💚 +HEAL  🛡 SHIELD','#7dffb0',90);
     }
 }
@@ -3044,7 +3172,7 @@ function skyHyperionAuto(p){
         else{const tg=skyPickTarget(p,true);if(!tg)return false;ang=Math.atan2(tg.y-p.y,tg.x-p.x);}
         popup(p.x,p.y-70,'🗡️ GIANT SWORD BEAM','#55ffff',70);
         skyFxAdd({k:'tele',x:p.x,y:p.y,ang:ang,w:70,max:16,col:'#55ffff'});
-        (state.skyQ||(state.skyQ=[])).push({at:state.frameCount+16,k:'beam',ang:ang,dmg:p.damage*9,w:70,col:'#55ffff'});
+        (state.skyQ||(state.skyQ=[])).push({at:state.frameCount+16,k:'beam',ang:ang,dmg:p.damage*6.5,w:70,col:'#55ffff'});
         return true;
     }
     const tg=skyPickTarget(p,true);if(!tg)return false;
@@ -3076,8 +3204,8 @@ function skyQRun(p,q){
         for(let i=0;i<T.length;i++){
             const o=T[i];if(o.hp<=0)continue;
             if((o.x-cx)**2+(o.y-cy)**2>R*R)continue;
-            if(q.k==='cleave')hurtFlat(o,o===q.e?Math.max(p.damage*18*q.am,o.maxHp*(o.isBoss?0.012:0.12)):p.damage*5.4*q.am,'⚔️','#b07cff');
-            else hurtFlat(o,p.damage*5*q.am+o.maxHp*(o.isBoss?0.002:0.02),'⚔️','#b07cff');
+            if(q.k==='cleave')hurtFlat(o,o===q.e?Math.max(p.damage*13*q.am,o.maxHp*(o.isBoss?0.009:0.085)):p.damage*4*q.am,'⚔️','#b07cff');
+            else hurtFlat(o,p.damage*3.6*q.am+o.maxHp*(o.isBoss?0.0015:0.015),'⚔️','#b07cff');
         }
         if(q.k==='cleave'){addRing(cx,cy,R,14,'#b07cff',5);fxBurst(cx,cy,18,'#c9a4ff',2,10,22,3);fxShake(10);}
         else{skyFxAdd({k:'x',x:cx,y:cy,max:14,col:'#d8c4ff'});fxShake(4);}
@@ -3093,7 +3221,7 @@ function skyQRun(p,q){
         for(let i=0;i<T.length;i++){
             const o=T[i];if(o.hp<=0)continue;
             if((o.x-q.x)**2+(o.y-q.y)**2>R*R)continue;
-            hurtFlat(o,Math.max(p.damage*9*q.am,o.maxHp*(o.isBoss?0.005:0.05)*q.am),'🗡️','#b07cff');
+            hurtFlat(o,Math.max(p.damage*6.5*q.am,o.maxHp*(o.isBoss?0.0035:0.035)*q.am),'🗡️','#b07cff');
             if(!o.isBoss&&!o.isMega)o.stunned=Math.max(o.stunned||0,60);
         }
         addRing(q.x,q.y,R,18,'#b07cff',6);addRing(q.x,q.y,R*0.55,12,'#ffffff',3);fxBurst(q.x,q.y,26,'#c9a4ff',3,12,26,3.2);fxFlash('#b07cff',0.2,8);fxShake(16);
@@ -3115,7 +3243,7 @@ function skyArrowFx(a,e){
 }
 function skyArrowBoom(a,e){
     const R=120,T=liveTargets();
-    for(let i=0;i<T.length;i++){const o=T[i];if(o===e||o.hp<=0)continue;if((o.x-a.x)**2+(o.y-a.y)**2<R*R){hurtFlat(o,a.dmg*0.7,'💥','#ffcc44');if(a.ign)igniteEnemy(o,300);}}
+    for(let i=0;i<T.length;i++){const o=T[i];if(o===e||o.hp<=0)continue;if((o.x-a.x)**2+(o.y-a.y)**2<R*R){hurtFlat(o,a.dmg*0.55,'💥','#ffcc44');if(a.ign)igniteEnemy(o,300);}}
     addRing(a.x,a.y,R,10,'#ffcc44',3);fxBurst(a.x,a.y,8,'#ffcc44',2,8,16,2.4);fxShake(2);
 }
 function skyBow(p){
@@ -3124,9 +3252,9 @@ function skyBow(p){
     else{const tg=mode==='strongest'?foeStrongest():skyNearestTo(p.x,p.y);if(!tg){p.atkCooldown=3;return;}ang=Math.atan2(tg.y-p.y,tg.x-p.x);}
     p._aimA=ang;
     const n=2+volleyN(p,'sky'),spd=16*(p.bulletSpeedMult||1)*1.3;   // Terminator: bonus velocity (and pierce, see skyArrow)
-    for(let i=0;i<n;i++)skyArrow(p,p.x,p.y,ang+(i-(n-1)/2)*0.13,p.damage*0.9,spd);
+    for(let i=0;i<n;i++)skyArrow(p,p.x,p.y,ang+(i-(n-1)/2)*0.13,p.damage*0.7,spd);
     p._skyShots=(p._skyShots||0)+1;
-    if(skyTier()>=9&&p._skyShots%4===0)skyBeam(p,ang,p.damage*10,28,1500,'#ffcc44',true,0.02);
+    if(skyTier()>=9&&p._skyShots%4===0)skyBeam(p,ang,p.damage*7,28,1500,'#ffcc44',true,0.015);
     p.atkCooldown=Math.round(p.atkSpeed*1.15);
     fxSpark(p.x+Math.cos(ang)*30,p.y+Math.sin(ang)*30,Math.cos(ang)*4,Math.sin(ang)*4,8,3,'#ffe29a',{trail:false});
 }
@@ -3144,8 +3272,8 @@ function skyTick(){
     if(base>(p._mpBase||0)){p._mpBase=base;popup(p.x,p.y-70,'+1 MP  ('+base+')','#55ffff',90);addRing(p.x,p.y,90,12,'#55ffff',3);updateHUD();}
     const mp=skyMP();
     // stat bonuses: +2 damage per MP, +5 on the Claymore, +mobility on the Hyperion
-    const wd=2*mp+(p.weapon===1?5:0);if(wd!==(p._skyD||0)){p.damage+=wd-(p._skyD||0);p._skyD=wd;}
-    const ws=p.weapon===0?2.5:0;if(ws!==(p._skyS||0)){p.speed+=ws-(p._skyS||0);p._skyS=ws;}
+    const wd=1.5*mp+(p.weapon===1?4:0);if(wd!==(p._skyD||0)){p.damage+=wd-(p._skyD||0);p._skyD=wd;}
+    const ws=p.weapon===0?1.8:0;if(ws!==(p._skyS||0)){p.speed+=ws-(p._skyS||0);p._skyS=ws;}
     if(state.godPotion>0){
         state.godPotion--;
         if(state.frameCount%5===0)fxSpark(p.x+(Math.random()-.5)*44,p.y+22,0,-2.2,22,3,Math.random()<0.5?'#7eeaff':'#ffee66',{trail:false});
@@ -3171,7 +3299,7 @@ function skyTick(){
         if(st.t%3===0){
             const T=liveTargets();let ang;
             if(T.length){const e=T[Math.floor(Math.random()*T.length)];ang=Math.atan2(e.y-p.y,e.x-p.x)+(Math.random()-.5)*0.2;}else ang=Math.atan2(state.mouseY-p.y,state.mouseX-p.x);
-            skyArrow(p,p.x,p.y,ang,p.damage*1.2,18*(p.bulletSpeedMult||1));
+            skyArrow(p,p.x,p.y,ang,p.damage*0.9,18*(p.bulletSpeedMult||1));
             if(--st.n<=0)state.skyStorm=null;
         }
     }
@@ -3240,25 +3368,25 @@ ULT_IMPL.skyblock={
                     const T=liveTargets();let n=0;d.src.length=0;
                     for(let i=0;i<T.length;i++){
                         const e=T[i];if(e.hp<=0)continue;const dx=e.x-p.x,dy=e.y-p.y;if(dx*dx+dy*dy>480*480)continue;
-                        ultHurt(e,0.012,0.0015,p.damage*0.6,'🩸','#ff4466');n++;if(d.src.length<14)d.src.push({x:e.x,y:e.y});
+                        ultHurt(e,0.009,0.001,p.damage*0.45,'🩸','#ff4466');n++;if(d.src.length<14)d.src.push({x:e.x,y:e.y});
                     }
                     if(n){p.hp=Math.min(p.maxHp,p.hp+HP_PER_HEART*0.12*Math.min(3,1+n/6));updateHUD();}
                 }
             } else if(t===210){
                 const T=liveTargets();
-                for(let i=0;i<T.length;i++){const e=T[i];if(e.hp<=0)continue;if((e.x-p.x)**2+(e.y-p.y)**2<650*650)ultHurt(e,0.2,0.03,p.damage*12,'💥','#ff6688');}
-                skyShield(p,p.maxHp*1.6,600);
+                for(let i=0;i<T.length;i++){const e=T[i];if(e.hp<=0)continue;if((e.x-p.x)**2+(e.y-p.y)**2<650*650)ultHurt(e,0.15,0.02,p.damage*9,'💥','#ff6688');}
+                skyShield(p,p.maxHp*1.1,480);
                 addRing(p.x,p.y,650,26,'#ff4466',8);addRing(p.x,p.y,400,20,'#ffffff',5);addRing(p.x,p.y,200,14,'#55ffff',4);
                 fxFlash('#ff4466',0.6,14);fxShake(26);popup(p.x,p.y-90,'🛡 OVERSHIELD','#55ffff',140);d.src.length=0;updateHUD();
             }
         } else if(d.w===1){   // three escalating slashes; the last launches EVERY enemy into the walls and stuns them all
-            const R=[320,480,700],PN=[0.10,0.16,0.22],PB=[0.008,0.012,0.016],ST=[90,130,180],AT=[40,100,160],k=AT.indexOf(t);
+            const R=[300,440,650],PN=[0.075,0.12,0.165],PB=[0.006,0.009,0.012],ST=[90,130,180],AT=[40,100,160],k=AT.indexOf(t);
             if(k>=0){
                 const T=liveTargets();d.sl.push({t0:t,r:R[k],k:k});
                 for(let i=0;i<T.length;i++){
                     const e=T[i];if(e.hp<=0)continue;
                     if((e.x-p.x)**2+(e.y-p.y)**2<R[k]*R[k]){
-                        ultHurt(e,PN[k],PB[k],p.damage*(6+k*4),'⚔','#b07cff');
+                        ultHurt(e,PN[k],PB[k],p.damage*(4.5+k*3),'⚔','#b07cff');
                         if(e.hp>0&&!e.isBoss&&!e.isMega)e.stunned=Math.max(e.stunned||0,ST[k]);
                     }
                 }
@@ -3283,7 +3411,7 @@ ULT_IMPL.skyblock={
                 e.x=l.x0+(l.x1-l.x0)*ease;e.y=l.y0+(l.y1-l.y0)*ease;if(!e.isBoss)e.stunned=Math.max(e.stunned||0,200);
                 if(l.t>=18){
                     fxBurst(e.x,e.y,6,'#e6d4ff',2,8,16,2.4);if(Math.random()<0.4)addRing(e.x,e.y,50,8,'#ffffff',2);
-                    ultHurt(e,0.12,0.015,p.damage*8,'💢','#ffddff');
+                    ultHurt(e,0.09,0.011,p.damage*6,'💢','#ffddff');
                     Ln[i]=Ln[Ln.length-1];Ln.pop();
                 }
             }
@@ -3293,7 +3421,7 @@ ULT_IMPL.skyblock={
                 for(let q=0;q<3;q++){
                     let ang;
                     if(T.length){const e=T[Math.floor(Math.random()*T.length)];ang=Math.atan2(e.y-p.y,e.x-p.x)+(Math.random()-.5)*0.6;}else ang=Math.random()*6.2832;
-                    const a=skyArrow(p,p.x,p.y,ang,p.damage*1.1,18);
+                    const a=skyArrow(p,p.x,p.y,ang,p.damage*0.8,18);
                     if(a){a.home=0.1;a.ign=true;a.boom=true;a.conf=true;a.life=90;a.pierce=1;}
                 }
             }
@@ -3331,6 +3459,347 @@ ULT_IMPL.skyblock={
         } else {
             ultVig('#ffcc44',0.22*env);
         }
+    }
+};
+// ═══════════════════════════════════════════════════
+//  v2.5 THE OBSESSED 🤩 (BlahBlahBlah variant)
+//  SPACE is a 3-step chain: RIDER KICK (0.6s stop, then a dash across the map to the strongest enemy) → ASSAULT BOOST (3 stunning dashes toward the mouse) → EA
+//  (2s charge, huge golden explosion; only then does the full cooldown start). R = viral obsession dance. F = GATES OF BABYLON (12 portals, 60 weapons/s each, 8s).
+//  Gates of Babylon runs on a typed-array projectile pool (no per-weapon objects) with a spatial grid for hit-tests, so ~5,800 weapons cost almost nothing.
+// ═══════════════════════════════════════════════════
+const OBS_NAMES=['RIDER KICK','ASSAULT BOOST','EA'];
+function obsEnsure(){return state.obs||(state.obs={stage:0,act:null,ea:null,dance:null,chainT:0,hid:0,fx:[],trail:[]});}
+function obsReady(p,O,stage,msg){
+    O.stage=stage;O.chainT=420;O.act=null;state.obsAct=false;
+    state.ability.ready=true;state.ability.cooldown=0;
+    popup(p.x,p.y-80,msg,'#ffd84a',90);updateHUD();
+}
+function obsSpace(p){
+    const O=obsEnsure();if(O.act||O.ea)return false;
+    if(O.stage===0){
+        const tg=skyPickTarget(p,true);if(!tg){popup(p.x,p.y-60,'no target','#9ab',50);return false;}
+        O.act={k:'kick',t:0,tg:tg};state.obsAct=true;
+        popup(p.x,p.y-70,'🦶 KAMEN RIDER KICK','#ffd84a',70);fxFlash('#ffd84a',0.12,6);
+        return true;
+    }
+    if(O.stage===1){
+        O.act={k:'assault',t:0};state.obsAct=false;   // Assault Boost never roots you: WASD movement and shooting keep working
+        popup(p.x,p.y-70,'⚡ ASSAULT BOOST','#ffb020',70);return true;
+    }
+    O.ea={t:0};popup(p.x,p.y-70,'☀ EA ☀','#fff0a0',90);
+    return true;
+}
+function obsDance(p){
+    const O=obsEnsure();O.dance={t:0};
+    popup(p.x,p.y-70,'💃 OBSESSION','#ff77bb',60);fxFlash('#ff77bb',0.14,6);
+    return true;
+}
+function obsSweep(x0,y0,x1,y1,w,hid,p,mode){   // everything within w of the dash segment, once per dash
+    const T=liveTargets(),dx=x1-x0,dy=y1-y0,l2=dx*dx+dy*dy||1;
+    for(let i=0;i<T.length;i++){
+        const e=T[i];if(e._obsH===hid||e.hp<=0)continue;
+        let u=((e.x-x0)*dx+(e.y-y0)*dy)/l2;u=u<0?0:u>1?1:u;
+        const px=x0+dx*u-e.x,py=y0+dy*u-e.y,R=w+(e.isBoss?(e.isMega?70:30):0);
+        if(px*px+py*py>R*R)continue;
+        e._obsH=hid;
+        if(mode===0)ultHurt(e,0.035,0.004,p.damage*3,'🦶','#ffdd55');
+        else{ultHurt(e,0.07,0.007,p.damage*5,'⚡','#ffb020');if(e.hp>0&&!e.isBoss&&!e.isMega)e.stunned=Math.max(e.stunned||0,90);}
+        fxBurst(e.x,e.y,4,'#ffd84a',2,7,14,2.4,{trail:false});
+    }
+}
+function obsTick(){
+    const p=state.player;if(!p||p.config.id!=='obsessed')return;
+    const O=obsEnsure(),W=canvas.width,H=canvas.height,A=O.act;
+    if(O.stage>0&&!A&&!O.ea&&--O.chainT<=0){   // chain dropped: back to the start, with a (shorter) cooldown
+        O.stage=0;state.ability.ready=false;state.ability.cooldown=Math.round(state.ability.maxCooldown*0.6);popup(p.x,p.y-60,'chain lost','#9ab',70);updateHUD();
+    }
+    if(A){
+        A.t++;
+        if(A.k==='kick'){
+            if(A.t===36){   // the wind-up is over: lock onto the strongest enemy and fly
+                let tg=A.tg;if(!tg||tg.hp<=0||!inArena(tg))tg=skyPickTarget(p,true);
+                if(!tg){O.act=null;state.obsAct=false;state.ability.ready=true;state.ability.cooldown=0;updateHUD();return;}
+                const ang=Math.atan2(tg.y-p.y,tg.x-p.x);
+                A.x0=p.x;A.y0=p.y;A.x1=Math.max(65,Math.min(W-65,tg.x-Math.cos(ang)*48));A.y1=Math.max(65,Math.min(H-65,tg.y-Math.sin(ang)*48));
+                A.n=Math.max(8,Math.min(26,Math.round(Math.hypot(A.x1-A.x0,A.y1-A.y0)/55)));A.hid=++O.hid;
+                fxShake(5);fxFlash('#fff0a0',0.18,5);
+            } else if(A.t>36){
+                const q=Math.min(1,(A.t-36)/A.n),px=p.x,py=p.y;
+                p.x=A.x0+(A.x1-A.x0)*q;p.y=A.y0+(A.y1-A.y0)*q;p.invul=Math.max(p.invul,4);
+                obsSweep(px,py,p.x,p.y,48,A.hid,p,0);
+                O.trail.push({x:p.x,y:p.y,t:0});if(O.trail.length>24)O.trail.shift();
+                if(q>=1){   // landing blast
+                    const T=liveTargets(),R=170;
+                    for(let i=0;i<T.length;i++){const e=T[i];if(e.hp<=0)continue;if((e.x-p.x)**2+(e.y-p.y)**2<R*R)ultHurt(e,0.06,0.006,p.damage*4.5,'💥','#ffd84a');}
+                    addRing(p.x,p.y,R,14,'#ffd84a',5);addRing(p.x,p.y,R*0.6,10,'#ffffff',3);fxShake(12);fxFlash('#ffd84a',0.2,7);fxBurst(p.x,p.y,16,'#ffe27a',2,10,22,3,{trail:false});
+                    obsReady(p,O,1,'ASSAULT BOOST READY');
+                }
+            }
+        } else {   // ASSAULT BOOST: three long dashes (12 frames each, 0.5s apart). You steer toward your mouse while dashing; between dashes you move and shoot normally.
+            const PER=42,DASH=12,i=Math.floor((A.t-1)/PER),k=(A.t-1)%PER;
+            if(i<3&&k===0){
+                let dx=state.mouseX-p.x,dy=state.mouseY-p.y;const m=Math.hypot(dx,dy);
+                A.ang=m<12?((p.facing||1)>0?0:Math.PI):Math.atan2(dy,dx);A.hid=++O.hid;
+                fxShake(6);addRing(p.x,p.y,70,8,'#ffb020',3);
+            }
+            if(i<3&&k<DASH){
+                let df=Math.atan2(state.mouseY-p.y,state.mouseX-p.x)-A.ang;df=Math.atan2(Math.sin(df),Math.cos(df));
+                if(Math.hypot(state.mouseX-p.x,state.mouseY-p.y)>24)A.ang+=Math.max(-0.16,Math.min(0.16,df));   // turning rate: ~9° per frame
+                const px=p.x,py=p.y;
+                p.x=Math.max(65,Math.min(W-65,p.x+Math.cos(A.ang)*36));p.y=Math.max(65,Math.min(H-65,p.y+Math.sin(A.ang)*36));
+                const cs=Math.cos(A.ang);if(cs>0.2)p.facing=1;else if(cs<-0.2)p.facing=-1;
+                p.invul=Math.max(p.invul,4);
+                obsSweep(px,py,p.x,p.y,52,A.hid,p,1);
+                O.trail.push({x:p.x,y:p.y,t:0});if(O.trail.length>24)O.trail.shift();
+            }
+            if(A.t>=2*PER+DASH)obsReady(p,O,2,'☀ EA READY');
+        }
+    }
+    const tr=O.trail;if(tr.length){for(let i=tr.length-1;i>=0;i--){if(++tr[i].t>14)tr.splice(i,1);}}
+    const E=O.ea;
+    if(E){
+        E.t++;
+        if(E.t===120){   // release: a huge golden explosion centred on where you stand now
+            const T=liveTargets(),R=460;
+            for(let i=0;i<T.length;i++){
+                const e=T[i];if(e.hp<=0)continue;const dx=e.x-p.x,dy=e.y-p.y;if(dx*dx+dy*dy>R*R)continue;
+                ultHurt(e,0.22,0.025,p.damage*14,'☀','#ffd84a');
+                if(e.hp>0&&!e.isBoss&&!e.isMega){e.stunned=Math.max(e.stunned||0,70);const m=Math.hypot(dx,dy)||1;e.x+=dx/m*70;e.y+=dy/m*70;keepInArena(e,30);}
+            }
+            addRing(p.x,p.y,R,22,'#ffd84a',9);addRing(p.x,p.y,R*0.7,18,'#fff0a0',6);addRing(p.x,p.y,R*0.4,14,'#ffffff',4);
+            fxFlash('#ffe27a',0.6,16);fxShake(28);fxBurst(p.x,p.y,34,'#ffe27a',3,14,30,3.4,{trail:false});
+            O.fx.push({k:'ea',x:p.x,y:p.y,t:0,max:60});
+            O.ea=null;O.stage=0;state.ability.ready=false;state.ability.cooldown=state.ability.maxCooldown;updateHUD();
+        }
+    }
+    const D=O.dance;
+    if(D){
+        D.t++;
+        if(D.t%10===0&&D.t<=150){
+            const T=liveTargets(),R=330;
+            for(let i=0;i<T.length;i++){const e=T[i];if(e.hp<=0)continue;if((e.x-p.x)**2+(e.y-p.y)**2<R*R)ultHurt(e,0.03,0.003,p.damage*2.6,'💗','#ff77bb');}
+            const cc=D.t%30===0?'#ff77bb':D.t%20===0?'#77eaff':'#ffe27a';addRing(p.x,p.y,R,12,cc,4);addRing(p.x,p.y,R*0.6,9,'#ffffff',2);fxBurst(p.x,p.y,10,cc,2,8,20,2.6,{trail:false});fxBurst(p.x,p.y,3,'#ffffff',1,4,26,3,{ch:'💖',trail:false,g:-0.04});fxShake(3);
+        }
+        if(D.t>=170)O.dance=null;
+    }
+    const F=O.fx;if(F.length)for(let i=F.length-1;i>=0;i--){if(++F[i].t>=F[i].max){F[i]=F[F.length-1];F.pop();}}
+}
+function obsDraw(){
+    const p=state.player;if(!p||p.config.id!=='obsessed')return;const O=state.obs;if(!O)return;
+    const W=canvas.width,H=canvas.height;
+    ctx.save();ctx.lineCap='round';
+    const tr=O.trail;
+    if(tr.length){ctx.globalCompositeOperation='lighter';ctx.fillStyle='#ffd84a';for(let i=0;i<tr.length;i++){const g=tr[i];ctx.globalAlpha=0.4*(1-g.t/14);ctx.beginPath();ctx.arc(g.x,g.y,26*(1-g.t/20),0,6.2832);ctx.fill();}ctx.globalCompositeOperation='source-over';}
+    const A=O.act;
+    if(A&&A.k==='kick'&&A.t<36){   // wind-up: charging ring + a line to the target
+        const k=A.t/36,tg=A.tg;
+        ctx.globalAlpha=0.25+0.5*k;ctx.strokeStyle='#ffd84a';ctx.lineWidth=3;ctx.beginPath();ctx.arc(p.x,p.y,70*(1-k)+20,0,6.2832);ctx.stroke();
+        if(tg&&tg.hp>0){ctx.setLineDash([14,10]);ctx.globalAlpha=0.2+0.5*k;ctx.lineWidth=2+k*4;ctx.beginPath();ctx.moveTo(p.x,p.y);ctx.lineTo(tg.x,tg.y);ctx.stroke();ctx.setLineDash([]);
+            ctx.beginPath();ctx.arc(tg.x,tg.y,34+8*Math.sin(A.t*0.5),0,6.2832);ctx.stroke();}
+    }
+    const E=O.ea;
+    if(E){   // Ea charging: rotating golden sigil, converging motes, the blast radius outlined
+        const k=E.t/120,fc=state.frameCount;
+        ctx.globalCompositeOperation='lighter';
+        ctx.globalAlpha=0.12+0.2*k;ctx.fillStyle='#ffd84a';ctx.beginPath();ctx.arc(p.x,p.y,460*k,0,6.2832);ctx.fill();
+        ctx.globalAlpha=0.3+0.4*k;ctx.strokeStyle='#ffe27a';ctx.lineWidth=2;ctx.setLineDash([18,14]);ctx.beginPath();ctx.arc(p.x,p.y,460,0,6.2832);ctx.stroke();ctx.setLineDash([]);
+        ctx.lineWidth=3;for(let r=0;r<3;r++){ctx.globalAlpha=0.5;ctx.beginPath();ctx.arc(p.x,p.y,60+r*45+Math.sin(fc*0.2+r)*4,fc*0.05*(r%2?-1:1),fc*0.05*(r%2?-1:1)+4.2);ctx.stroke();}
+        ctx.globalAlpha=0.8;ctx.strokeStyle='#fff6c8';ctx.lineWidth=2;ctx.beginPath();
+        for(let i=0;i<12;i++){const a=i*0.5236+fc*0.03,r0=460*(1-((k*3+i/12)%1)),r1=r0-22;ctx.moveTo(p.x+Math.cos(a)*r0,p.y+Math.sin(a)*r0);ctx.lineTo(p.x+Math.cos(a)*Math.max(0,r1),p.y+Math.sin(a)*Math.max(0,r1));}
+        ctx.stroke();ctx.globalCompositeOperation='source-over';
+    }
+    const F=O.fx;
+    for(let i=0;i<F.length;i++){   // Ea sunburst
+        const f=F[i],k=f.t/f.max;ctx.globalCompositeOperation='lighter';
+        ctx.globalAlpha=(1-k)*0.5;ctx.fillStyle='#ffc933';ctx.beginPath();ctx.arc(f.x,f.y,460*Math.min(1,k*3),0,6.2832);ctx.fill();
+        ctx.globalAlpha=1-k;ctx.strokeStyle='#ffe27a';ctx.lineWidth=5*(1-k)+1;ctx.beginPath();
+        for(let r=0;r<24;r++){const a=r*0.2618,r0=60+k*200,r1=r0+120+k*500*(r%2?1:0.6);ctx.moveTo(f.x+Math.cos(a)*r0,f.y+Math.sin(a)*r0);ctx.lineTo(f.x+Math.cos(a)*r1,f.y+Math.sin(a)*r1);}
+        ctx.stroke();
+        // pillar of light that builds as the charge completes
+        const pw=40+90*k;ctx.globalAlpha=0.1+0.25*k;ctx.fillStyle='#ffe27a';ctx.fillRect(p.x-pw/2,0,pw,p.y);ctx.globalAlpha=0.2+0.4*k;ctx.fillStyle='#ffffff';ctx.fillRect(p.x-pw*0.18,0,pw*0.36,p.y);
+        ctx.globalCompositeOperation='source-over';
+    }
+    const D=O.dance;
+    if(D){   // the viral dance: disco floor, sunburst, orbiting hearts and a comic-book slam of "NO NO, NO, NO, YOU DON'T DO THAT!"
+        const t=D.t,fade=Math.max(0,Math.min(1,t/6,(170-t)/24)),beat=Math.max(0,1-(t%10)/10),cx=W/2,cy=H*0.27;
+        // disco floor under the dancer
+        ctx.globalCompositeOperation='lighter';
+        for(let r=0;r<3;r++){ctx.globalAlpha=0.16*fade;ctx.fillStyle='hsl('+((t*9+r*70)%360)+',100%,60%)';ctx.beginPath();ctx.ellipse(p.x,p.y+26,150-r*38+beat*10,48-r*12+beat*3,0,0,6.2832);ctx.fill();}
+        ctx.globalAlpha=0.5*fade;ctx.strokeStyle='#ffffff';ctx.lineWidth=2;ctx.beginPath();ctx.ellipse(p.x,p.y+26,150+beat*10,48+beat*3,0,0,6.2832);ctx.stroke();
+        // spotlight beams sweeping from above the dancer
+        for(let i=0;i<3;i++){const a=-1.5708+Math.sin(t*0.07+i*2.1)*0.9;ctx.globalAlpha=0.09*fade;ctx.fillStyle=i===0?'#ff77bb':i===1?'#77eaff':'#ffe27a';ctx.beginPath();ctx.moveTo(p.x-6,p.y-20);ctx.lineTo(p.x+6,p.y-20);ctx.lineTo(p.x+Math.cos(a)*420+60,p.y-20+Math.sin(a)*420);ctx.lineTo(p.x+Math.cos(a)*420-60,p.y-20+Math.sin(a)*420);ctx.closePath();ctx.fill();}
+        // orbiting hearts and stars
+        ctx.globalCompositeOperation='source-over';
+        {const ems=['💖','✨','⭐','💗','🤩','💫'];for(let i=0;i<6;i++){const a=t*0.09+i*1.0472,r=62+10*Math.sin(t*0.2+i),sp=emojiSprite(ems[i],18);ctx.globalAlpha=fade;ctx.drawImage(sp,p.x+Math.cos(a)*r-sp.width/2,p.y-6+Math.sin(a)*r*0.55-sp.height/2);}}
+        // sunburst + comic burst behind the words
+        ctx.globalCompositeOperation='lighter';
+        ctx.globalAlpha=0.11*fade;ctx.fillStyle='#ff5fb0';
+        for(let i=0;i<16;i++){const a=i*0.3927+t*0.015;ctx.beginPath();ctx.moveTo(cx,cy);ctx.arc(cx,cy,Math.max(W,H)*0.55,a,a+0.1963);ctx.closePath();ctx.fill();}
+        ctx.globalCompositeOperation='source-over';
+        {const R1=Math.min(W*0.46,420)*(0.92+0.08*beat)*Math.min(1,t/8),R0=R1*0.72;ctx.beginPath();for(let i=0;i<28;i++){const a=i*0.2244+t*0.01,r=i%2?R0:R1;ctx.lineTo(cx+Math.cos(a)*r,cy+Math.sin(a)*r*0.55);}ctx.closePath();
+         ctx.globalAlpha=0.55*fade;ctx.fillStyle='#2a0626';ctx.fill();ctx.globalAlpha=fade;ctx.lineWidth=5;ctx.strokeStyle='#ff3d9a';ctx.lineJoin='round';ctx.stroke();ctx.lineWidth=2;ctx.strokeStyle='#ffffff';ctx.stroke();}
+        // the words slam in one by one
+        const fs1=Math.max(22,Math.min(70,Math.floor(W*0.06))),fs2=Math.max(14,Math.min(44,Math.floor(W*0.88/19)));
+        const word=(txt,x,y,fs,age,hue)=>{
+            if(age<0)return;
+            const slam=age<9?1+(9-age)*0.14:1,wob=Math.sin(t*0.45+x)*0.03;
+            ctx.save();ctx.translate(x+(age<6?Math.sin(age*7)*6:0),y+(age<6?Math.cos(age*9)*5:0));ctx.rotate(wob);ctx.scale(slam*(1+0.05*beat),slam*(1+0.05*beat));
+            ctx.font='bold '+fs+'px "Press Start 2P"';ctx.textAlign='center';ctx.textBaseline='middle';ctx.lineJoin='round';ctx.globalAlpha=fade;
+            ctx.fillStyle='#00e5ff';ctx.fillText(txt,-4,0);ctx.fillStyle='#ff2d6f';ctx.fillText(txt,4,0);   // chromatic split
+            ctx.lineWidth=Math.max(5,fs*0.2);ctx.strokeStyle='#1a0018';ctx.strokeText(txt,0,2);
+            ctx.lineWidth=Math.max(2,fs*0.07);ctx.strokeStyle='#ff3d9a';ctx.strokeText(txt,0,0);
+            ctx.fillStyle=(Math.floor(t/4)+hue)%2?'#ffffff':'#ffe27a';ctx.fillText(txt,0,0);
+            ctx.restore();
+        };
+        {const ny=cy-fs1*0.55,sp=3.5*fs1;word('NO',cx-1.5*sp,ny,fs1,t-0,0);word('NO,',cx-0.5*sp,ny,fs1,t-8,1);word('NO,',cx+0.5*sp,ny,fs1,t-16,0);word('NO,',cx+1.5*sp,ny,fs1,t-24,1);}
+        word("YOU DON'T DO THAT!",cx,cy+fs1*0.75,fs2,t-36,1);
+        if(t===0||t===8||t===16||t===24||t===36){fxShake(8);}
+    }
+    ctx.restore();
+}
+// ── GATES OF BABYLON — typed-array weapon pool + spatial grid ──
+const GOB_MAX=1200,GOB_CELL=80;
+const gob={n:0,x:new Float32Array(GOB_MAX),y:new Float32Array(GOB_MAX),vx:new Float32Array(GOB_MAX),vy:new Float32Array(GOB_MAX),rot:new Float32Array(GOB_MAX),kind:new Uint8Array(GOB_MAX),life:new Int16Array(GOB_MAX),sp:new Float32Array(GOB_MAX),tg:new Array(GOB_MAX).fill(null)};
+let gobHead=new Int16Array(1024);const gobNext=new Int16Array(64),gobEn=[],gobBig=[];
+let _gobSpr=null;
+function gobSprites(){
+    if(_gobSpr)return _gobSpr;
+    const S=[],mk=(w,fn)=>{const c=document.createElement('canvas');c.width=c.height=w;const g=c.getContext('2d');g.translate(w/2,w/2);fn(g);S.push(c);};
+    const gold=g=>{const gr=g.createLinearGradient(-8,0,28,0);gr.addColorStop(0,'#fff6c8');gr.addColorStop(1,'#ffc928');return gr;};
+    const edge=g=>{g.lineWidth=1.5;g.strokeStyle='#fffbe0';g.stroke();};
+    const glow=g=>{g.shadowColor='#ffcf40';g.shadowBlur=9;};
+    mk(64,g=>{glow(g);g.fillStyle='#9a6a1c';g.fillRect(-18,-3,15,6);g.fillStyle=gold(g);g.beginPath();g.moveTo(-3,-5);g.lineTo(18,-5);g.lineTo(28,0);g.lineTo(18,4);g.lineTo(-3,4);g.closePath();g.fill();edge(g);});   // knife
+    mk(64,g=>{glow(g);g.fillStyle=gold(g);g.beginPath();for(let i=0;i<24;i++){const r=i%2?11:16,a=i*0.2618;g.lineTo(Math.cos(a)*r,Math.sin(a)*r);}g.closePath();g.fill();edge(g);g.fillStyle='#7a4a10';g.beginPath();g.arc(0,0,4,0,6.2832);g.fill();});   // saw
+    mk(80,g=>{glow(g);g.fillStyle='#9a6a1c';g.fillRect(-26,-2.5,14,5);g.fillStyle=gold(g);g.fillRect(-12,-9,4,18);g.beginPath();g.moveTo(-8,-4);g.lineTo(26,-4);g.lineTo(36,0);g.lineTo(26,4);g.lineTo(-8,4);g.closePath();g.fill();edge(g);});   // sword
+    mk(64,g=>{glow(g);g.fillStyle='#9a6a1c';g.fillRect(-16,-2.5,10,5);g.fillStyle=gold(g);g.fillRect(-6,-7,3,14);g.beginPath();g.moveTo(-3,-6);g.lineTo(14,-6);g.lineTo(26,0);g.lineTo(14,6);g.lineTo(-3,6);g.closePath();g.fill();edge(g);});   // dagger
+    mk(80,g=>{glow(g);g.strokeStyle='#9a6a1c';g.lineWidth=4;g.beginPath();g.moveTo(-28,0);g.lineTo(8,0);g.stroke();g.fillStyle=gold(g);g.beginPath();g.moveTo(8,-3);g.quadraticCurveTo(20,-16,36,0);g.quadraticCurveTo(20,16,8,3);g.closePath();g.fill();edge(g);});   // shovel
+    mk(64,g=>{glow(g);g.fillStyle='#9a6a1c';g.fillRect(-18,-2.5,10,5);g.fillStyle=gold(g);g.beginPath();g.moveTo(-8,-3);g.quadraticCurveTo(14,-16,28,-2);g.quadraticCurveTo(14,-6,-8,3);g.closePath();g.fill();edge(g);});   // curved blade
+    mk(160,g=>{   // portal
+        const gr=g.createRadialGradient(0,0,6,0,0,70);gr.addColorStop(0,'rgba(255,255,230,0.95)');gr.addColorStop(0.45,'rgba(255,214,80,0.55)');gr.addColorStop(1,'rgba(255,180,20,0)');
+        g.fillStyle=gr;g.beginPath();g.arc(0,0,70,0,6.2832);g.fill();g.strokeStyle='#fff3b0';g.lineWidth=3;g.shadowColor='#ffcf40';g.shadowBlur=12;
+        g.beginPath();g.arc(0,0,46,0,6.2832);g.stroke();g.lineWidth=2;g.setLineDash([10,8]);g.beginPath();g.arc(0,0,58,0,6.2832);g.stroke();g.setLineDash([]);
+        g.beginPath();for(let i=0;i<8;i++){const a=i*0.7854;g.moveTo(Math.cos(a)*30,Math.sin(a)*30);g.lineTo(Math.cos(a+0.4)*44,Math.sin(a+0.4)*44);}g.stroke();
+    });
+    _gobSpr=S;return S;
+}
+function gobHit(e,p,d){
+    let dm=Math.max(p.damage*0.45,e.maxHp*0.0045);   // regular enemies: low per-hit damage; they die from the sheer volume (v2.5: toned down)
+    if(e.isBoss){   // bosses: tiny hits and a hard cap on what the whole ultimate can take (28% max HP, 11% on a Mega Boss)
+        dm=Math.max(p.damage*0.8,e.maxHp*0.0005);
+        if(e._gobId!==d.id){e._gobId=d.id;e._gobA=0;e._gobS=0;e._gobN=0;e._gobCap=false;}
+        const room=e.maxHp*(e.isMega?0.11:0.28)-e._gobA;
+        if(room<=0){if(!e._gobCap){e._gobCap=true;popup(e.x,e.y-50,'BOSS RESISTS','#ffe9a0',70);}return;}
+        if(dm>room)dm=room;e._gobA+=dm;d.bossHit=true;
+    }
+    e.hp-=dm;
+    // visible feedback on every hit (this is what made the ult look like it did nothing): blood, gold sparks and a rolling damage number
+    const fc=state.frameCount;e._gobS=(e._gobS||0)+dm;
+    if(fc>=(e._gobN||0)){popup(e.x,e.y-26,'-'+Math.floor(e._gobS),'#ffd84a',38);e._gobS=0;e._gobN=fc+12+((Math.random()*6)|0);}
+    if(Math.random()<0.3)spawnBlood(e.x,e.y,1);
+    if(e.isBoss)d.bossHit=true;
+    if(e.hp<=0){e.hp=0;killAny(e);}
+}
+function gobRemove(i){const l=--gob.n;if(i!==l){gob.x[i]=gob.x[l];gob.y[i]=gob.y[l];gob.vx[i]=gob.vx[l];gob.vy[i]=gob.vy[l];gob.rot[i]=gob.rot[l];gob.kind[i]=gob.kind[l];gob.life[i]=gob.life[l];gob.sp[i]=gob.sp[l];gob.tg[i]=gob.tg[l];}gob.tg[l]=null;}
+function gobStep(p,d,t){
+    const W=canvas.width,H=canvas.height,T=liveTargets(),PW=12;
+    if(t>=30&&t<510){   // 12 portals × 1 weapon per frame = 60/s each
+        for(let i=0;i<PW&&gob.n<GOB_MAX;i++){
+            const px=W/2+((i%6)-2.5)*78+(Math.random()-.5)*16,py=62+((i/6)|0)*58+(Math.random()-.5)*10;let a,tgt=null;
+            if(T.length){tgt=T[(d.rr=(d.rr||0)+1)%T.length];a=Math.atan2(tgt.y-py,tgt.x-px)+(Math.random()-.5)*0.08;}else a=1.5708+(Math.random()-.5)*1.0;
+            const sp=18+Math.random()*8,k=gob.n++,kind=(Math.random()*6)|0;
+            gob.x[k]=px;gob.y[k]=py;gob.vx[k]=Math.cos(a)*sp;gob.vy[k]=Math.sin(a)*sp;gob.kind[k]=kind;gob.life[k]=80;gob.rot[k]=kind===1?Math.random()*6.28:a;gob.sp[k]=sp;gob.tg[k]=tgt;
+        }
+    }
+    if(!gob.n)return;
+    const GW=((W/GOB_CELL)|0)+3,GH=((H/GOB_CELL)|0)+3;
+    if(gobHead.length<GW*GH)gobHead=new Int16Array(GW*GH);
+    gobHead.fill(-1,0,GW*GH);gobEn.length=0;gobBig.length=0;let ne=0;
+    for(let i=0;i<T.length;i++){
+        const e=T[i];
+        if(e.isBoss){gobBig.push(e);continue;}
+        if(ne>=64)continue;
+        let cx=((e.x/GOB_CELL)|0)+1,cy=((e.y/GOB_CELL)|0)+1;cx=cx<0?0:cx>=GW?GW-1:cx;cy=cy<0?0:cy>=GH?GH-1:cy;
+        gobEn[ne]=e;gobNext[ne]=gobHead[cy*GW+cx];gobHead[cy*GW+cx]=ne;ne++;
+    }
+    let hc=d.hc||0;
+    for(let i=gob.n-1;i>=0;i--){
+        const tg=gob.tg[i],lock=tg!==null&&tg.hp>0;   // each weapon belongs to one enemy: it homes in lightly and only hurts that enemy (so every enemy gets an equal share)
+        if(lock){const dx=tg.x-gob.x[i],dy=tg.y-gob.y[i],m=Math.sqrt(dx*dx+dy*dy)||1,sp=gob.sp[i];gob.vx[i]+=(dx/m*sp-gob.vx[i])*0.14;gob.vy[i]+=(dy/m*sp-gob.vy[i])*0.14;}
+        const x=gob.x[i]+gob.vx[i],y=gob.y[i]+gob.vy[i];gob.x[i]=x;gob.y[i]=y;
+        if(gob.kind[i]===1)gob.rot[i]+=0.45;else if(lock)gob.rot[i]=Math.atan2(gob.vy[i],gob.vx[i]);
+        let dead=--gob.life[i]<=0||x<-60||x>W+60||y<-60||y>H+60;
+        if(!dead&&ne){
+            const cx=((x/GOB_CELL)|0)+1,cy=((y/GOB_CELL)|0)+1;
+            for(let gy=cy-1;gy<=cy+1&&!dead;gy++){
+                if(gy<0||gy>=GH)continue;
+                for(let gx=cx-1;gx<=cx+1;gx++){
+                    if(gx<0||gx>=GW)continue;
+                    for(let j=gobHead[gy*GW+gx];j>=0;j=gobNext[j]){
+                        const e=gobEn[j];if(e.hp<=0||(lock&&e!==tg))continue;
+                        const dx=e.x-x,dy=e.y-y;
+                        if(dx*dx+dy*dy<(lock?1764:1296)){gobHit(e,p,d);dead=true;break;}
+                    }
+                    if(dead)break;
+                }
+            }
+        }
+        if(!dead&&gobBig.length){
+            for(let j=0;j<gobBig.length;j++){const b=gobBig[j];if(b.hp<=0||(lock&&b!==tg))continue;const R=b.isMega?115:72,dx=b.x-x,dy=b.y-y;if(dx*dx+dy*dy<R*R){gobHit(b,p,d);dead=true;break;}}
+        }
+        if(dead){if((++hc&1)===0)fxSpark(x,y,(Math.random()-.5)*6,(Math.random()-.5)*6,14,3.2,(hc&2)?'#ffd84a':'#fff3b0',{trail:false});gobRemove(i);}
+    }
+    d.hc=hc;
+    if(d.bossHit){d.bossHit=false;updateBossBar();}
+}
+ULT_IMPL.obsessed={
+    start(F,p,d){
+        d.id=state.frameCount+1;gob.n=0;d.hc=0;d.bossHit=false;
+        popup(p.x,p.y-80,'👑 GATES OF BABYLON','#ffd84a',150);fxFlash('#ffd84a',0.4,14);fxShake(10);addRing(p.x,p.y,300,24,'#ffd84a',5);
+    },
+    run(F,p,d,t){gobStep(p,d,t);},
+    end(F,p,d){gob.n=0;},
+    draw(F,p,d,t,env){
+        const W=canvas.width,H=canvas.height,S=gobSprites(),PW=12,k=Math.min(1,t/30),out=Math.min(1,(F.dur-t)/30),firing=t>=30&&t<510;
+        const cx=W/2,cy=91;
+        ultVig('#ffbb22',0.24*env);
+        ctx.save();ctx.globalCompositeOperation='lighter';ctx.lineCap='round';
+        // light shafts pouring down from the gates
+        if(firing){
+            const f=Math.min(1,(t-30)/20)*Math.min(1,(510-t)/20);
+            for(let i=0;i<5;i++){const a=1.5708+(i-2)*0.32+Math.sin(t*0.03+i)*0.04;ctx.globalAlpha=0.05*f;ctx.fillStyle='#ffd84a';ctx.beginPath();ctx.moveTo(cx-60,cy);ctx.lineTo(cx+60,cy);ctx.lineTo(cx+Math.cos(a)*1500+60,cy+Math.sin(a)*1500);ctx.lineTo(cx+Math.cos(a)*1500-60,cy+Math.sin(a)*1500);ctx.closePath();ctx.fill();}
+        }
+        // the sigil behind the gates
+        const sr=250*k*out;
+        if(sr>4){
+            ctx.globalAlpha=0.5*k*out;ctx.strokeStyle='#ffd84a';ctx.lineWidth=3;ctx.beginPath();ctx.arc(cx,cy,sr,0,6.2832);ctx.stroke();ctx.beginPath();ctx.arc(cx,cy,sr*0.82,0,6.2832);ctx.stroke();
+            ctx.globalAlpha=0.35*k*out;ctx.lineWidth=2;ctx.beginPath();
+            for(let i=0;i<36;i++){const a=i*0.1745+t*0.012,r0=sr*0.82,r1=sr*(i%3?0.92:1.0);ctx.moveTo(cx+Math.cos(a)*r0,cy+Math.sin(a)*r0);ctx.lineTo(cx+Math.cos(a)*r1,cy+Math.sin(a)*r1);}
+            ctx.stroke();
+            ctx.beginPath();for(let i=0;i<6;i++){const a=i*1.0472-t*0.02;ctx.lineTo(cx+Math.cos(a)*sr*0.6,cy+Math.sin(a)*sr*0.6);}ctx.closePath();ctx.stroke();
+            ctx.beginPath();for(let i=0;i<6;i++){const a=i*1.0472+0.5236+t*0.02;ctx.lineTo(cx+Math.cos(a)*sr*0.6,cy+Math.sin(a)*sr*0.6);}ctx.closePath();ctx.stroke();
+        }
+        // portals
+        const sc=k*out*0.66*(1+0.06*Math.sin(t*0.5)),ps=S[6];
+        if(sc>0.02)for(let i=0;i<PW;i++){
+            const x=cx+((i%6)-2.5)*78,y=62+((i/6)|0)*58,r=t*0.05*(i&1?-1:1),c=Math.cos(r)*sc,s=Math.sin(r)*sc;
+            ctx.globalAlpha=0.95;ctx.setTransform(c,s,-s,c,x,y);ctx.drawImage(ps,-80,-80);
+            ctx.setTransform(c*0.7,-s*0.7,s*0.7,c*0.7,x,y);ctx.globalAlpha=0.5;ctx.drawImage(ps,-80,-80);
+        }
+        ctx.setTransform(1,0,0,1,0,0);
+        // every enemy gets a rotating gold lock while the gates are open
+        if(firing){
+            ctx.lineWidth=2;ctx.strokeStyle='#ffe27a';ctx.globalAlpha=0.55;ctx.beginPath();
+            const en=state.enemies,a0=t*0.08;
+            for(let i=0;i<en.length;i++){const e=en[i];if(e.hp<=0||!inArena(e))continue;const r=e.isBoss?(e.isMega?95:56):24;ctx.moveTo(e.x+Math.cos(a0)*r,e.y+Math.sin(a0)*r);ctx.arc(e.x,e.y,r,a0,a0+1.2);ctx.moveTo(e.x+Math.cos(a0+3.14)*r,e.y+Math.sin(a0+3.14)*r);ctx.arc(e.x,e.y,r,a0+3.14,a0+4.34);}
+            ctx.stroke();
+        }
+        // motion trails for every weapon, drawn as one batched path
+        const n=gob.n;
+        if(n){ctx.globalAlpha=0.4;ctx.strokeStyle='#ffd24a';ctx.lineWidth=3;ctx.beginPath();for(let i=0;i<n;i++){ctx.moveTo(gob.x[i]-gob.vx[i]*2.8,gob.y[i]-gob.vy[i]*2.8);ctx.lineTo(gob.x[i],gob.y[i]);}ctx.stroke();}
+        ctx.restore();
+        ctx.save();
+        for(let i=0;i<n;i++){const r=gob.rot[i],c=Math.cos(r)*0.6,s=Math.sin(r)*0.6;ctx.setTransform(c,s,-s,c,gob.x[i],gob.y[i]);const sp=S[gob.kind[i]],h=sp.width/2;ctx.drawImage(sp,-h,-h);}
+        ctx.restore();
     }
 };
 function kiraMarkAll(F){
@@ -3473,7 +3942,7 @@ class EnemyBullet {
             ctx.globalAlpha=1;ctx.beginPath();ctx.arc(this.x,this.y,r,0,6.2832);ctx.fill();
             ctx.fillStyle='#fff';ctx.beginPath();ctx.arc(this.x,this.y,r*0.45,0,6.2832);ctx.fill();return;
         }
-        ctx.save();ctx.fillStyle=this.isBoss?'#ff6600':'#ff4400';ctx.shadowBlur=8;ctx.shadowColor=this.isBoss?'#ff9900':'#ff4400';ctx.beginPath();ctx.arc(this.x,this.y,this.size,0,Math.PI*2);ctx.fill();ctx.restore();}
+        ctx.save();glowBall(this.x,this.y,this.size,this.isBoss?'#ff7a1a':'#ff4400',0.8);ctx.restore();}
 }
 
 class IcicleProjectile {
@@ -3535,7 +4004,7 @@ class PiercingBullet {
             this.life=0;this.isDone=true;
         }
     }
-    draw(){ctx.save();ctx.fillStyle='#ff44ff';ctx.strokeStyle='#ffffff';ctx.lineWidth=1.5;ctx.shadowBlur=16;ctx.shadowColor='#ff00ff';ctx.beginPath();ctx.arc(this.x,this.y,this.size,0,Math.PI*2);ctx.fill();ctx.stroke();ctx.restore();}
+    draw(){ctx.save();glowBall(this.x,this.y,this.size,'#ff44ff',0.9);ctx.strokeStyle='#ffffff';ctx.lineWidth=1.5;ctx.beginPath();ctx.arc(this.x,this.y,this.size,0,Math.PI*2);ctx.stroke();ctx.restore();}
 }
 
 // ── 360-NO-SCOPE (v2.3): the sniper owls' laser, turned on the enemy ──
@@ -3724,6 +4193,38 @@ class Bullet {
     }
 }
 
+function bulletsDraw(){
+    const B=state.bullets,n=B.length;if(!n)return;
+    let std=0;
+    for(let i=0;i<n;i++){const b=B[i];if(b.word)continue;if(b.constructor===Bullet&&b.draw===Bullet.prototype.draw)std++;else b.draw();}
+    if(!std)return;
+    ctx.save();ctx.lineCap='round';
+    // 1) soft capsule trails, one stroke per run of identical style
+    ctx.globalAlpha=0.3;let key='',open=false;
+    for(let i=0;i<n;i++){
+        const b=B[i];if(b.word||b.constructor!==Bullet||b.draw!==Bullet.prototype.draw)continue;
+        const c=b.col||(b.crit?'#ffd700':'#00f2ff'),w=b.size*(b.crit?2.8:1.9),k=c+w;
+        if(k!==key){if(open)ctx.stroke();ctx.strokeStyle=c;ctx.lineWidth=w;ctx.beginPath();key=k;open=true;}
+        ctx.moveTo(b.x-b.vx*2.4,b.y-b.vy*2.4);ctx.lineTo(b.x,b.y);
+    }
+    if(open)ctx.stroke();
+    // 2) coloured cores
+    ctx.globalAlpha=1;key='';open=false;
+    for(let i=0;i<n;i++){
+        const b=B[i];if(b.word||b.constructor!==Bullet||b.draw!==Bullet.prototype.draw)continue;
+        const c=b.col||(b.crit?'#ffd700':'#00f2ff');
+        if(c!==key){if(open)ctx.fill();ctx.fillStyle=c;ctx.beginPath();key=c;open=true;}
+        ctx.moveTo(b.x+b.size,b.y);ctx.arc(b.x,b.y,b.size,0,6.2832);
+    }
+    if(open)ctx.fill();
+    // 3) hot white centres, one fill for every bullet
+    ctx.fillStyle='#ffffff';ctx.beginPath();
+    for(let i=0;i<n;i++){
+        const b=B[i];if(b.word||b.constructor!==Bullet||b.draw!==Bullet.prototype.draw)continue;
+        const r=b.size*0.45;ctx.moveTo(b.x+r,b.y);ctx.arc(b.x,b.y,r,0,6.2832);
+    }
+    ctx.fill();ctx.restore();
+}
 var _orbSpr=null;
 function orbSprite(){
     if(_orbSpr)return _orbSpr;
@@ -3791,6 +4292,7 @@ class Player {
         // Subaru
     }
     update(){
+        if(state.obsAct){if(this.invul>0)this.invul--;return;}   // The Obsessed: rooted during the kick wind-up, driven by obsTick while dashing
         if(state.pounce.active){if(state.pounce.target){this.x=state.pounce.target.x;this.y=state.pounce.target.y;}if(this.invul>0)this.invul--;return;}
         if(state.mindControl.active){
             const host=state.mindControl.host;
@@ -3943,7 +4445,7 @@ function addRing(cx,cy,maxR,timer,color,lw,r0){
 function makeMCBullet(x,y,ang,spd,dmg,color,size,life,track,strength){
     return{x:x,y:y,vx:Math.cos(ang)*spd,vy:Math.sin(ang)*spd,damage:dmg,life:life||170,size:size||7,isMCBullet:true,
         trackTarget:track||null,trackStrength:strength||0,color:color||'#ff66ff',
-        draw(){ctx.fillStyle=this.color;ctx.shadowBlur=8;ctx.shadowColor=this.color;ctx.beginPath();ctx.arc(this.x,this.y,this.size,0,Math.PI*2);ctx.fill();ctx.shadowBlur=0;}};
+        draw(){glowBall(this.x,this.y,this.size,this.color,0.7);}};
 }
 function nearestTargetFor(h){
     let best=null,bd=Infinity;
@@ -5106,8 +5608,9 @@ function triggerAbility(){
     if(p.config.id==='arsonist'){used=arsonParty(p);}
     if(p.config.id==='auramonster'){used=voidTear(p);}
     if(p.config.id==='skyblock'){used=skyPotion(p);}
+    if(p.config.id==='obsessed'){used=obsSpace(p);}
 
-    if(used){state.ability.ready=false;state.ability.cooldown=state.ability.maxCooldown;updateHUD();}
+    if(used){state.ability.ready=false;state.ability.cooldown=state.ability.maxCooldown;castFx(p,0);updateHUD();}
 }
 
 function triggerSecondary(){
@@ -5298,8 +5801,9 @@ function triggerSecondary(){
 
     if(p.config.id==='arsonist'){used=tarToss(p);}
     if(p.config.id==='auramonster'){used=stairsThrow(p);}
+    if(p.config.id==='obsessed'){used=obsDance(p);}
 
-    if(used){state.secondary.ready=false;state.secondary.cooldown=state.secondary.maxCooldown;updateHUD();}
+    if(used){state.secondary.ready=false;state.secondary.cooldown=state.secondary.maxCooldown;castFx(p,1);updateHUD();}
 }
 
 function killMindControlHost(timeout){
@@ -5424,7 +5928,7 @@ function triggerMCAbility(key){
                         const hb={x:host.x,y:host.y,vx:Math.cos(ang)*11,vy:Math.sin(ang)*11,
                             damage:p.damage*1.5,// nerfed from 2.5x
                             life:180,size:7,isMCBullet:true,trackTarget:tgt,trackStrength:0.15,
-                            draw(){ctx.fillStyle='#ffaa00';ctx.shadowBlur=8;ctx.shadowColor='#ffdd44';ctx.beginPath();ctx.arc(this.x,this.y,this.size,0,Math.PI*2);ctx.fill();ctx.shadowBlur=0;}};
+                            draw(){glowBall(this.x,this.y,this.size,'#ffaa00',0.7);}};
                         state.bullets.push(hb);
                     },ti*90+s*18);
                 }
@@ -5711,7 +6215,7 @@ function triggerMCAbility(key){
                         const SHOTS=24;
                         for(let i=0;i<SHOTS;i++){
                             const a=(i/SHOTS)*Math.PI*2+wave*0.3;
-                            const rb={x:host.x,y:host.y,vx:Math.cos(a)*10,vy:Math.sin(a)*10,damage:p.damage*1.8,life:200,size:8,isMCBullet:true,trackTarget:null,trackStrength:0,draw(){ctx.fillStyle='#00ffcc';ctx.shadowBlur=8;ctx.shadowColor='#00ffcc';ctx.beginPath();ctx.arc(this.x,this.y,this.size,0,Math.PI*2);ctx.fill();ctx.shadowBlur=0;}};
+                            const rb={x:host.x,y:host.y,vx:Math.cos(a)*10,vy:Math.sin(a)*10,damage:p.damage*1.8,life:200,size:8,isMCBullet:true,trackTarget:null,trackStrength:0,draw(){glowBall(this.x,this.y,this.size,'#00ffcc',0.7);}};
                             state.bullets.push(rb);
                         }
                     },wave*220);
@@ -5738,7 +6242,7 @@ function triggerMCAbility(key){
                 popup(host.x,host.y-60,'🧟 SUMMON HORDE!','#44ff88',220);
                 for(let ri=0;ri<2;ri++)state.mcRings.push({cx:host.x,cy:host.y,r:ri*40,maxR:300+ri*80,timer:18,maxTimer:18,color:'#44ff88',lw:3});
                 for(let s=0;s<10&&state.enemies.length<MAX_ENEMIES;s++){const e=new Enemy();e.x=host.x+(Math.random()-.5)*80;e.y=host.y+(Math.random()-.5)*80;e.entered=true;e.confused=600;e.confuseTimer=0;state.enemies.push(e);}   // v2.5: charm removed — the horde is confused and brawls instead
-                const SHOTS=18;for(let i=0;i<SHOTS;i++){const a=(i/SHOTS)*Math.PI*2;const rb={x:host.x,y:host.y,vx:Math.cos(a)*7,vy:Math.sin(a)*7,damage:p.damage*1.6,life:180,size:7,isMCBullet:true,trackTarget:null,trackStrength:0,draw(){ctx.fillStyle='#44ff88';ctx.shadowBlur=8;ctx.shadowColor='#44ff88';ctx.beginPath();ctx.arc(this.x,this.y,this.size,0,Math.PI*2);ctx.fill();ctx.shadowBlur=0;}};state.bullets.push(rb);}
+                const SHOTS=18;for(let i=0;i<SHOTS;i++){const a=(i/SHOTS)*Math.PI*2;const rb={x:host.x,y:host.y,vx:Math.cos(a)*7,vy:Math.sin(a)*7,damage:p.damage*1.6,life:180,size:7,isMCBullet:true,trackTarget:null,trackStrength:0,draw(){glowBall(this.x,this.y,this.size,'#44ff88',0.7);}};state.bullets.push(rb);}
                 popup(host.x,host.y-80,'ARISE, MY MINIONS!','#44ff88',200);
                 cd.q=330;
             } else if(bossPattern==='swirler'){
@@ -5748,7 +6252,7 @@ function triggerMCAbility(key){
                 for(let wave=0;wave<9;wave++){
                     later(()=>{
                         if(state.screen!=='PLAYING'||!state.mindControl.active)return;
-                        for(let i=0;i<12;i++){const a=(i/12)*Math.PI*2+wave*0.5;const rb={x:host.x,y:host.y,vx:Math.cos(a)*8,vy:Math.sin(a)*8,damage:p.damage*1.4,life:220,size:7,isMCBullet:true,trackTarget:null,trackStrength:0,draw(){ctx.fillStyle='#cc44ff';ctx.shadowBlur=8;ctx.shadowColor='#9900ff';ctx.beginPath();ctx.arc(this.x,this.y,this.size,0,Math.PI*2);ctx.fill();ctx.shadowBlur=0;}};state.bullets.push(rb);}
+                        for(let i=0;i<12;i++){const a=(i/12)*Math.PI*2+wave*0.5;const rb={x:host.x,y:host.y,vx:Math.cos(a)*8,vy:Math.sin(a)*8,damage:p.damage*1.4,life:220,size:7,isMCBullet:true,trackTarget:null,trackStrength:0,draw(){glowBall(this.x,this.y,this.size,'#cc44ff',0.7);}};state.bullets.push(rb);}
                     },wave*150);
                 }
                 cd.q=380;
@@ -5761,7 +6265,7 @@ function triggerMCAbility(key){
                     for(let s=0;s<7;s++){later(()=>{
                         if(state.screen!=='PLAYING'||!state.mindControl.active)return;
                         const a=Math.atan2(tgt.y-host.y,tgt.x-host.x)+(Math.random()-.5)*0.25;
-                        const rb={x:host.x,y:host.y,vx:Math.cos(a)*12,vy:Math.sin(a)*12,damage:p.damage*1.7,life:160,size:8,isMCBullet:true,trackTarget:tgt,trackStrength:0.1,draw(){ctx.fillStyle='#ff8800';ctx.shadowBlur=8;ctx.shadowColor='#ff6600';ctx.beginPath();ctx.arc(this.x,this.y,this.size,0,Math.PI*2);ctx.fill();ctx.shadowBlur=0;}};
+                        const rb={x:host.x,y:host.y,vx:Math.cos(a)*12,vy:Math.sin(a)*12,damage:p.damage*1.7,life:160,size:8,isMCBullet:true,trackTarget:tgt,trackStrength:0.1,draw(){glowBall(this.x,this.y,this.size,'#ff8800',0.7);}};
                         state.bullets.push(rb);
                     },ti*100+s*18);}
                 });
@@ -6282,7 +6786,7 @@ function gameStep(){
     burnTick();bleedTick();furyTick();glitterTick();twirlTick();
     chocoTick();
     voltTick();
-    voidTick();stairsTick();noScopeTick();skyTick();
+    voidTick();stairsTick();noScopeTick();skyTick();obsTick();
     ultTick();megaTick();
     // Update HUD cooldown display every 60 ticks (once per second) so timers don't freeze
     if(state.frameCount%60===0) updateHUD();
@@ -6406,6 +6910,7 @@ function gameStep(){
         p.x+=nd.nx*step;p.y+=nd.ny*step;
         p.x=Math.max(65,Math.min(canvas.width-65,p.x));p.y=Math.max(65,Math.min(canvas.height-65,p.y));
         nd.distLeft-=step;
+        {const tr=nd.tr||(nd.tr=[]);tr.push(p.x,p.y);if(tr.length>30)tr.splice(0,2);fxSpark(p.x,p.y,(Math.random()-0.5)*2-nd.nx*2,(Math.random()-0.5)*2-nd.ny*2,16,2.6,Math.random()<0.5?'#ff44ff':'#ffffff',{drag:0.92,trail:false});}
         // Check for enemy hit
         const hitR=60;   // v2.1: much more forgiving latch hitbox (was 28 / 60 for bosses)
         let hitEnemy=null;
@@ -6416,6 +6921,7 @@ function gameStep(){
         if(hitEnemy){
             nd.active=false;state.noglinDash=null;
             hitEnemy.isHost=true;
+            addRing(hitEnemy.x,hitEnemy.y,150,16,'#ff44ff',5);addRing(hitEnemy.x,hitEnemy.y,80,12,'#ffffff',3);fxBurst(hitEnemy.x,hitEnemy.y,22,'#ff66ff',3,10,26,3);fxFlash('#ff00ff',0.25,8);fxShake(8);
             state.mindControl={active:true,host:hitEnemy,savedHp:p.hp,slamCooldown:0,mcTimer:0,shell:hitEnemy.isBoss?hitEnemy.maxHp*0.24:0,shellMax:hitEnemy.isBoss?hitEnemy.maxHp*0.24:0};
             state.mcAbilityCooldowns={q:0,e:0,f:0};
             p.x=hitEnemy.x;p.y=hitEnemy.y;
@@ -6510,7 +7016,7 @@ function gameStep(){
                 const randomAng=Math.random()*Math.PI*2;
                 const finalAng=nearest?baseAng+(randomAng-baseAng)*(1-0.4)+(Math.random()-.5)*2.5:randomAng;
                 const isCrit=Math.random()*100<p.crit;
-                const b=new Bullet(p.x,p.y,finalAng,p.damage*0.05*(isCrit?2:1),p.bSize+4,isCrit,1);b.homing=0.045;b.pierce=(b.pierce||0)+2;
+                const b=new Bullet(p.x,p.y,finalAng,p.damage*0.125*(isCrit?2:1),p.bSize+4,isCrit,1);b.homing=0.06;b.pierce=(b.pierce||0)+2;
                 state.bullets.push(b);
             }
         }
@@ -6918,7 +7424,20 @@ function gameStep(){
     }
 }
 
-let _bgCache=null;
+let _bgCache=null,_vigCache=null;
+function shadowsDraw(){
+    const p=state.player,en=state.enemies,W=canvas.width,H=canvas.height;
+    ctx.save();ctx.fillStyle='rgba(0,0,0,0.26)';ctx.beginPath();
+    if(p&&!(state.pounce&&state.pounce.active)){const rx=(p.size||40)*0.34,y=p.y+(p.size||40)*0.4;ctx.moveTo(p.x+rx,y);ctx.ellipse(p.x,y,rx,rx*0.32,0,0,6.2832);}
+    for(let i=0;i<en.length;i++){const e=en[i];if(e.hp<=0||e.x<-30||e.x>W+30||e.y<-30||e.y>H+30)continue;const rx=e.isBoss?(e.isMega?70:38):12;ctx.moveTo(e.x+rx,e.y+rx*1.05);ctx.ellipse(e.x,e.y+rx*1.05,rx,rx*0.32,0,0,6.2832);}
+    const b=state.boss;if(b&&b.hp>0&&en.indexOf(b)<0){const rx=b.isMega?70:38;ctx.moveTo(b.x+rx,b.y+rx*1.05);ctx.ellipse(b.x,b.y+rx*1.05,rx,rx*0.32,0,0,6.2832);}
+    ctx.fill();ctx.restore();
+}
+function vignetteDraw(){
+    const W=canvas.width,H=canvas.height;
+    if(!_vigCache||_vigCache.width!==W||_vigCache.height!==H){_vigCache=document.createElement('canvas');_vigCache.width=W;_vigCache.height=H;const g=_vigCache.getContext('2d');const gr=g.createRadialGradient(W/2,H/2,Math.min(W,H)*0.45,W/2,H/2,Math.hypot(W,H)*0.55);gr.addColorStop(0,'rgba(0,0,0,0)');gr.addColorStop(1,'rgba(0,0,12,0.5)');g.fillStyle=gr;g.fillRect(0,0,W,H);}
+    ctx.drawImage(_vigCache,0,0);
+}
 let _shaking=false;
 let _renderAlpha=0;
 function gameRender(){
@@ -6931,6 +7450,23 @@ function gameRender(){
         const grad=bc.createRadialGradient(canvas.width/2,canvas.height/2,0,canvas.width/2,canvas.height/2,Math.max(canvas.width,canvas.height));
         grad.addColorStop(0,'#1a0b2e');grad.addColorStop(1,'#050112');
         bc.fillStyle=grad;bc.fillRect(0,0,canvas.width,canvas.height);
+        {   // v2.5 polish: starfield in the margin, a lit arena floor with a fine tile grid, a centre sigil and corner glows
+            const W=canvas.width,H=canvas.height,B=60;let sd=12345;const rnd=()=>(sd=(sd*1664525+1013904223)>>>0)/4294967296;
+            for(let i=0;i<150;i++){const x=rnd()*W,y=rnd()*H,r=rnd()*1.4+0.3;bc.globalAlpha=0.15+rnd()*0.5;bc.fillStyle=rnd()<0.2?'#9fd8ff':'#ffffff';bc.beginPath();bc.arc(x,y,r,0,6.2832);bc.fill();}
+            bc.globalAlpha=1;
+            const fl=bc.createLinearGradient(0,B,0,H-B);fl.addColorStop(0,'rgba(60,30,110,0.30)');fl.addColorStop(0.5,'rgba(38,18,78,0.22)');fl.addColorStop(1,'rgba(70,24,100,0.30)');
+            bc.fillStyle=fl;bc.fillRect(B,B,W-B*2,H-B*2);
+            bc.save();bc.beginPath();bc.rect(B,B,W-B*2,H-B*2);bc.clip();
+            bc.lineWidth=1;bc.strokeStyle='rgba(120,200,255,0.055)';bc.beginPath();
+            for(let x=B;x<=W-B;x+=48){bc.moveTo(x,B);bc.lineTo(x,H-B);}for(let y=B;y<=H-B;y+=48){bc.moveTo(B,y);bc.lineTo(W-B,y);}bc.stroke();
+            bc.strokeStyle='rgba(160,120,255,0.10)';bc.beginPath();
+            for(let x=B;x<=W-B;x+=240){bc.moveTo(x,B);bc.lineTo(x,H-B);}for(let y=B;y<=H-B;y+=240){bc.moveTo(B,y);bc.lineTo(W-B,y);}bc.stroke();
+            const cg=bc.createRadialGradient(W/2,H/2,0,W/2,H/2,Math.min(W,H)*0.55);cg.addColorStop(0,'rgba(150,90,255,0.16)');cg.addColorStop(1,'rgba(150,90,255,0)');bc.fillStyle=cg;bc.fillRect(B,B,W-B*2,H-B*2);
+            bc.strokeStyle='rgba(180,140,255,0.13)';bc.lineWidth=2;for(const r of [90,170,260]){bc.beginPath();bc.arc(W/2,H/2,r,0,6.2832);bc.stroke();}
+            bc.beginPath();for(let i=0;i<12;i++){const a=i*0.5236;bc.moveTo(W/2+Math.cos(a)*90,H/2+Math.sin(a)*90);bc.lineTo(W/2+Math.cos(a)*260,H/2+Math.sin(a)*260);}bc.stroke();
+            for(const [cx,cy,col] of [[B,B,'0,220,255'],[W-B,B,'255,90,200'],[B,H-B,'255,200,80'],[W-B,H-B,'120,255,170']]){const g=bc.createRadialGradient(cx,cy,0,cx,cy,260);g.addColorStop(0,'rgba('+col+',0.16)');g.addColorStop(1,'rgba('+col+',0)');bc.fillStyle=g;bc.fillRect(B,B,W-B*2,H-B*2);}
+            bc.restore();
+        }
     }
     ctx.drawImage(_bgCache,0,0);
 
@@ -6964,6 +7500,7 @@ function gameRender(){
             ctx.strokeRect(2,2,canvas.width-4,canvas.height-4);ctx.restore();
         }
 
+        shadowsDraw();
         state.player.draw();
         // Subaru: where Return by Death will put you back, with the window draining around it
         const rcp=state.subaru_checkpoint;
@@ -6995,9 +7532,13 @@ function gameRender(){
 
         // Noglin dash trail
         if(state.noglinDash&&state.noglinDash.active){
-            ctx.save();ctx.globalAlpha=0.5;ctx.strokeStyle='#ff00ff';ctx.lineWidth=3;ctx.shadowBlur=10;ctx.shadowColor='#ff00ff';
-            const p=state.player;
-            ctx.beginPath();ctx.arc(p.x,p.y,state.player.size*0.4,0,Math.PI*2);ctx.stroke();
+            const nd=state.noglinDash,p=state.player,tr=nd.tr||[];
+            ctx.save();ctx.globalCompositeOperation='lighter';ctx.lineCap='round';ctx.lineJoin='round';
+            for(let w=0;w<3;w++){
+                ctx.globalAlpha=w===0?0.2:w===1?0.45:0.9;ctx.strokeStyle=w===0?'#9a00ff':w===1?'#ff44ff':'#ffffff';ctx.lineWidth=w===0?24:w===1?11:3;
+                ctx.beginPath();if(tr.length>=2){ctx.moveTo(tr[0],tr[1]);for(let i=2;i<tr.length;i+=2)ctx.lineTo(tr[i],tr[i+1]);}ctx.lineTo(p.x,p.y);ctx.stroke();
+            }
+            ctx.globalAlpha=0.9;ctx.drawImage(glowSprite('#ff44ff'),p.x-50,p.y-50,100,100);
             ctx.restore();
         }
 
@@ -7091,17 +7632,14 @@ function gameRender(){
                 const ep=1-(1-progress)*(1-progress);const curR=rr.inward?rr.r*(1-ep):rr.r+(rr.maxR-rr.r)*ep;
                 const alpha=rr.timer/rr.maxTimer;
                 const cr=Math.max(1,curR);
-                ctx.globalAlpha=alpha*0.12;ctx.fillStyle=rr.color;ctx.beginPath();ctx.arc(rr.cx,rr.cy,cr,0,Math.PI*2);ctx.fill();
-                ctx.strokeStyle=rr.color;ctx.lineWidth=rr.lw*(0.6+alpha*0.8);
-                if(cr>260){
-                    const lw0=ctx.lineWidth;
-                    ctx.globalAlpha=alpha*0.12;ctx.lineWidth=lw0+26;ctx.beginPath();ctx.arc(rr.cx,rr.cy,cr,0,Math.PI*2);ctx.stroke();
-                    ctx.globalAlpha=alpha*0.2;ctx.lineWidth=lw0+12;ctx.stroke();
-                    ctx.globalAlpha=alpha*0.9;ctx.lineWidth=lw0;ctx.stroke();
-                } else {
-                    ctx.globalAlpha=alpha*0.9;ctx.shadowBlur=18;ctx.shadowColor=rr.color;
-                    ctx.beginPath();ctx.arc(rr.cx,rr.cy,cr,0,Math.PI*2);ctx.stroke();
-                }
+                ctx.globalCompositeOperation='lighter';
+                ctx.globalAlpha=alpha*0.1;ctx.fillStyle=rr.color;ctx.beginPath();ctx.arc(rr.cx,rr.cy,cr,0,Math.PI*2);ctx.fill();
+                ctx.strokeStyle=rr.color;const lw0=rr.lw*(0.6+alpha*0.8);
+                ctx.beginPath();ctx.arc(rr.cx,rr.cy,cr,0,Math.PI*2);
+                ctx.globalAlpha=alpha*0.13;ctx.lineWidth=lw0+(cr>260?26:14);ctx.stroke();
+                ctx.globalAlpha=alpha*0.28;ctx.lineWidth=lw0+(cr>260?12:6);ctx.stroke();
+                ctx.globalAlpha=alpha*0.95;ctx.lineWidth=lw0;ctx.stroke();
+                ctx.globalCompositeOperation='source-over';
                 ctx.shadowBlur=0;ctx.globalAlpha=alpha*0.6;ctx.strokeStyle='#ffffff';ctx.lineWidth=Math.max(1,rr.lw*0.35);
                 ctx.beginPath();ctx.arc(rr.cx,rr.cy,cr*0.985,0,Math.PI*2);ctx.stroke();
             }
@@ -7109,7 +7647,7 @@ function gameRender(){
         }
 
         // Player bullets
-        for(const b of state.bullets){if(!b.word)b.draw();}
+        bulletsDraw();
 
         // ── KIRA: draw death note overlay on condemned enemies ──
         if(state.player&&state.player.config.id==='kira'){
@@ -7121,8 +7659,9 @@ function gameRender(){
                 ctx.save();
                 // Outer pulsing ring
                 ctx.strokeStyle=`rgba(204,0,0,${0.5+pulse*0.5})`;ctx.lineWidth=dn.isBoss?5:3;
-                ctx.shadowBlur=dn.isBoss?24:14;ctx.shadowColor='#cc0000';
+                {const gh=r*2.8;ctx.globalCompositeOperation='lighter';ctx.globalAlpha=0.3+pulse*0.3;ctx.drawImage(glowSprite('#cc0000'),e.x-gh,e.y-gh,gh*2,gh*2);ctx.globalCompositeOperation='source-over';ctx.globalAlpha=1;}
                 ctx.beginPath();ctx.arc(e.x,e.y,r,0,Math.PI*2);ctx.stroke();
+                ctx.fillStyle='#f4f0e0';for(let q=0;q<3;q++){const qa=state.frameCount*0.06+q*2.094;ctx.fillRect(e.x+Math.cos(qa)*(r+7)-3,e.y+Math.sin(qa)*(r+7)*0.6-4,6,8);}
                 // Second ring for boss
                 if(dn.isBoss){
                     ctx.strokeStyle=`rgba(255,220,0,${0.3+pulse*0.4})`;ctx.lineWidth=2;
@@ -7138,7 +7677,7 @@ function gameRender(){
                 }
                 // Countdown text
                 ctx.font=`${dn.isBoss?16:10}px "Press Start 2P"`;ctx.fillStyle='#ff4444';ctx.textAlign='center';ctx.textBaseline='middle';
-                ctx.shadowBlur=8;ctx.shadowColor='#ff0000';
+                ctx.lineJoin='round';ctx.lineWidth=4;ctx.strokeStyle='#220000';ctx.strokeText(secs+'s',e.x,e.y-(r+16));
                 ctx.fillText(secs+'s',e.x,e.y-(r+16));
                 ctx.restore();
             });
@@ -7224,6 +7763,15 @@ function gameRender(){
             ctx.restore();if(!any)state.brittleOn=false;
         }
 
+        // Blizzard: frost vignette + wind streaks
+        if(state.effects.frozen&&state.player.config.id==='snowman'){
+            const fz=state.effects.frozenTimer,fa=Math.max(0,Math.min(1,fz/30,(300-fz)/20));
+            ultVig('#8fe4ff',0.3*fa);
+            ctx.save();ctx.globalAlpha=0.16*fa;ctx.strokeStyle='#ffffff';ctx.lineWidth=1.4;ctx.beginPath();
+            const W=canvas.width,H=canvas.height,fc=state.frameCount;
+            for(let i=0;i<14;i++){const x=((i*173+fc*11)%(W+240))-120,y=(i*97+((i*i)%5)*40)%H;ctx.moveTo(x,y);ctx.lineTo(x+80+(i%3)*30,y+14);}
+            ctx.stroke();ctx.restore();
+        }
         // Blizzard snowfall
         if(state.snow&&state.snow.length){
             ctx.save();ctx.fillStyle='rgba(235,248,255,0.85)';ctx.beginPath();
@@ -7242,12 +7790,12 @@ function gameRender(){
         if(state.xpOrbs.length){ctx.save();ctx.globalCompositeOperation='lighter';ctx.globalAlpha=1;for(const o of state.xpOrbs){o.draw();}ctx.restore();}
 
         // Particles
-        for(const p of state.particles){p.draw();}
+        bloodDraw();
         fxDraw();
         arsonDraw();
         brineDraw();stairsDraw();noScopeDraw();bleedDraw();furyDraw();glitterDraw();revealDraw();
         handDraw();
-        chocoDraw();skyDraw();
+        chocoDraw();skyDraw();obsDraw();
         voltDraw();
 
         // Lightning
@@ -7358,6 +7906,7 @@ function gameRender(){
         }
 
 
+        vignetteDraw();
         // Ultimates + screen flash
         ultDraw();flashDraw();
 
@@ -7600,12 +8149,18 @@ function initInfoScreen(){
             {key:'R — Tar Toss',        desc:'Hurl a glob of tar at the thickest cluster of enemies (or your cursor in manual mode). It splashes everything near the landing with oil for 9 seconds and leaves a tar puddle for 14 seconds that keeps oiling anyone standing in it. Oiled enemies move slower, steer sluggishly and take DOUBLE burn damage — and any fire touching the puddle sets it ablaze.'},
         ]},
         {id:'skyblock',emoji:'⛏️',name:'Skyblock Adict',color:'#55ffff',stats:'Speed: Medium-Fast | HP: 250 | Regen: 4/s',abilities:[
-            {key:'MP (Magic Power)',  desc:'You gain 1 MP automatically for every 3 upgrades you take. Each MP adds +2 damage, and MP tiers (0 / 3 / 6 / 9+) upgrade every weapon.'},
-            {key:'SPACE — God Potion', desc:'Temporarily grants +20 MP for 15 seconds. The cooldown stays paused while the potion is active.'},
+            {key:'MP (Magic Power)',  desc:'You gain 1 MP automatically for every 3 upgrades you take. Each MP adds +1.5 damage, and MP tiers (0 / 3 / 6 / 9+) upgrade every weapon.'},
+            {key:'SPACE — God Potion', desc:'Temporarily grants +20 MP for 12 seconds. The cooldown stays paused while the potion is active.'},
             {key:'R — WD Swap',       desc:'Switch between your three weapons: Hyperion, Dark Claymore and Terminator. Each one auto-casts a special ability every 10 seconds.'},
             {key:'Hyperion',          desc:'Bonus mobility, melee. 0+ MP: wide, slow, high-pierce beam. 3+: teleporting slash straight into an enemy for heavy damage. 6+: the slash causes an impact explosion and shortens the next cooldown. 9+: teleporting attacks heal you and give a decaying shield.'},
-            {key:'Dark Claymore',     desc:'+5 damage, slow heavy melee. 0+ MP: close-range heavy single-target cleave with limited AoE. 3+: multi-hit combo; the last hit drops a sword on your cursor for high area damage. 6+: regular attacks splash weaker area damage. 9+: much bigger area damage everywhere.'},
+            {key:'Dark Claymore',     desc:'+4 damage, slow heavy melee. 0+ MP: close-range heavy single-target cleave with limited AoE. 3+: multi-hit combo; the last hit drops a sword on your cursor for high area damage. 6+: regular attacks splash weaker area damage. 9+: much bigger area damage everywhere.'},
             {key:'Terminator',        desc:'Bonus pierce and velocity. A bow that fires three arrows at once. 3+ MP: arrows ignite. 6+: arrows explode on the first enemy hit (and keep their pierce). 9+: every few shots the bow fires a powerful beam. Its 10s ability is an Arrow Storm.'},
+        ]},
+        {id:'obsessed',emoji:'🤩',name:'The Obsessed',color:'#ffd84a',stats:'Speed: Medium-Fast | HP: 250 | Regen: 4/s',abilities:[
+            {key:'SPACE — Kamen Rider Kick', desc:'Stop dead for 0.6 seconds, then dash across the whole map at your strongest enemy. Small damage to everything along the path and in a blast where you land. Switches SPACE to Assault Boost.'},
+            {key:'SPACE — Assault Boost', desc:'Three long dashes (about 430px each, 0.5 seconds apart). You steer toward your mouse while dashing (and can still move with WASD and keep shooting the whole time), and each dash hits everything on its path for medium damage and stuns it. Switches SPACE to Ea.'},
+            {key:'SPACE — Ea', desc:'Wait 2 seconds, then release a huge radiant golden explosion (460px): big damage, stun and knockback. Only now does the full cooldown start. If you leave the chain idle for 7 seconds it resets with a shorter cooldown.'},
+            {key:'R — Viral Obsession Dance', desc:'Slam "No no, no, no, YOU DON\'T DO THAT!" across the screen and dance for 2.5 seconds, damaging every enemy within 330px ten-plus times. You can keep moving and shooting.'},
         ]},
         {emoji:'🐕',name:'Broke Shiba',color:'#ffbbbb',stats:'Speed: Medium | HP: 300 | Regen: 4/s',abilities:[
             {key:'SPACE — 50 Bucks',     desc:'Throw a homing coin for 5 seconds. It ricochets enemy → Shiba → enemy: after every hit it comes back and bounces off YOU (never hurting you), which drops an XP orb and makes the coin hit 25% harder, then it picks the next target. Bounces off the arena walls too and can never leave the arena.'},
@@ -7616,11 +8171,11 @@ function initInfoScreen(){
             {key:'R — Icicle Barrage',   desc:'Launch 12 icicles outward in a full circle, each dealing 2.5× your bullet damage and leaving the victim BRITTLE for 7s (takes ×10 shot damage, ×3 on bosses, ×2 on Mega Bosses). Great for clearing crowds.'},
         ]},
         {emoji:'😎',name:'Coolioioio',color:'#ff44ff',stats:'Speed: Fast | HP: 250 | Regen: 4/s',abilities:[
-            {key:'SPACE — Spinbot',   desc:'Spin wildly for 4 seconds, firing 10 bullets per second in all directions (with slight homing; each bullet pierces 2 enemies). Immune to damage while spinning.'},
+            {key:'SPACE — Spinbot',   desc:'Spin wildly for 4 seconds, firing a storm of bullets in all directions (2.5x damage per bullet since v2.5, stronger homing; each bullet pierces 2 enemies). Immune to damage while spinning.'},
             {key:'R — 360-No-Scope',  desc:'Sniper-style: up to three tracking lines: AIM snaps exactly to your cursor (no enemy locking), STRONG hunts the highest-HP enemy and FAR the furthest one (always two different enemies, re-picked live). Press R again to lock early, otherwise they lock with a flash (no more turning), then fire an instant piercing beam along the line. Everything on the line is hit — regular enemies are executed, bosses take 18× bullet damage.'},
         ]},
         {id:'pickle',emoji:'🥒',name:'Pickle',color:'#44cc00',stats:'Speed: Medium | HP: 300 | Regen: 4/s',abilities:[
-            {key:'SPACE — Brine Burst', desc:'Explode in a cloud of pickle brine, poisoning and briefly stunning all enemies within 460px. Each poison tick deals 5 + your DPS + 5% of the victim\'s max HP (1% on Mega Bosses). Re-hits refresh it. Lasts 7 seconds.'},
+            {key:'SPACE — Brine Burst', desc:'Explode in a cloud of pickle brine, poisoning and briefly stunning all enemies within 460px. Each poison tick deals 25% of (5 + your DPS + 5% of the victim\'s max HP, 1% on Mega Bosses). Re-hits refresh it. Lasts 7 seconds.'},
             {key:'R — Pickle Dash', desc:'Become Tiny Pickle Rick and dash through up to 8 enemies in sequence, dealing 3× damage, poisoning everything on the path, then take one extra dash to the most isolated spot in the arena with a victory burst. Features mandatory "I\'M PICKLE RICK!" proclamation.'},
         ]},
         {emoji:'💬',name:'BlahBlahBlah',color:'#cc44ff',stats:'Speed: Fast | HP: 250 | Regen: 4/s',abilities:[
@@ -7652,7 +8207,7 @@ function initInfoScreen(){
     if(!grid)return;
     grid.innerHTML='';
     const SECRET_IDS=['kira','femboy','subaru','auramonster'];
-    CHAR_INFO.filter(c=>(secretsUnlocked||!SECRET_IDS.includes(c.id))&&(c.id!=='arsonist'||saveData.arsonistUnlocked)&&(c.id!=='auramonster'||saveData.auraMonsterUnlocked)&&(c.id!=='skyblock'||saveData.skyblockUnlocked)).forEach(c=>{
+    CHAR_INFO.filter(c=>(secretsUnlocked||!SECRET_IDS.includes(c.id))&&(c.id!=='arsonist'||saveData.arsonistUnlocked)&&(c.id!=='auramonster'||saveData.auraMonsterUnlocked)&&(c.id!=='skyblock'||saveData.skyblockUnlocked)&&(c.id!=='obsessed'||saveData.obsessedUnlocked)).forEach(c=>{
         const card=document.createElement('div');
         card.className='char-info-card';
         const cc=CHARACTERS.find(x=>(c.id&&x.id===c.id)||x.name===c.name);
@@ -7750,6 +8305,7 @@ function startGame(c){
         femboy:     {primary:1200, secondary:900},
         choco:      {primary:1100, secondary:60},
         skyblock:   {primary:1500, secondary:60},
+        obsessed:   {primary:1500, secondary:900},
         pickle:     {primary:900,  secondary:1200},
         blahblahblah:{primary:900, secondary:1500},
         subaru:     {primary:900,  secondary:1200},
@@ -7831,9 +8387,11 @@ function updateHUD(){
         subaru:{primary:'RETURN BY DEATH',secondary:'UNSEEN HAND'},
         auramonster:{primary:'VOID TEARER',secondary:'STAIRS THROW'},
         skyblock:{primary:'GOD POTION',secondary:'WD SWAP'},
+        obsessed:{primary:'RIDER KICK',secondary:'OBSESSION DANCE'},
     };
     const charId=state.player?state.player.config.id:'';
-    const names=ABILITY_NAMES[charId]||{primary:'ABILITY',secondary:'SECONDARY'};
+    let names=ABILITY_NAMES[charId]||{primary:'ABILITY',secondary:'SECONDARY'};
+    if(charId==='obsessed'&&state.obs)names={primary:OBS_NAMES[state.obs.stage]||'EA',secondary:names.secondary};
     const cd=document.getElementById('cooldown-display');
     if(cd&&state.player){
         const rows=cd.querySelectorAll('div');
@@ -8038,6 +8596,12 @@ let _konamiBuf=[];
 function charUnlocked(c){return (!c.secret||secretsUnlocked)&&(!c.unlockKey||!!saveData[c.unlockKey]);}
 function checkLevelUnlocks(){
     const p=state.player;if(!p)return;
+    if(p.config.id==='blahblahblah'&&state.lvl>=20&&!saveData.obsessedUnlocked){
+        saveData.obsessedUnlocked=true;saveGame();
+        showToast('🤩 THE OBSESSED UNLOCKED — pick it from the BlahBlahBlah menu!','#ffd84a');
+        popup(p.x,p.y-80,'🤩 THE OBSESSED UNLOCKED!','#ffd84a',220);
+        fxFlash('#ffd84a',0.4,12);addRing(p.x,p.y,300,26,'#ffd84a',5);
+    }
     if(p.config.id==='coolioioio'&&state.lvl>=20&&!saveData.skyblockUnlocked){
         saveData.skyblockUnlocked=true;saveGame();
         showToast('⛏️ SKYBLOCK ADICT UNLOCKED — pick it from the Coolioioio menu!','#55ffff');
