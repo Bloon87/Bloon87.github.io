@@ -163,7 +163,7 @@
             <h1 class="text-2xl sm:text-3xl text-[#00f2ff] italic mb-1">CHAOS RUSH</h1>
             <p class="text-[10px] text-gray-400 mb-3">EVOLUTION</p>
             <div class="flex justify-center gap-4 text-[10px] mb-3 text-gray-300">
-                <div>HIGH SCORE: <span id="menuHighScore" class="text-yellow-400">0</span></div>
+                <div>HIGHEST LEVEL: <span id="menuHighScore" class="text-yellow-400">0</span></div>
                 <div>KILLS: <span id="menuTotalKills" class="text-red-400">0</span></div>
             </div>
             <div class="char-grid" id="charGrid"></div>
@@ -183,6 +183,7 @@
             <button onclick="openInfo()" class="pause-btn">📖 INFO</button>
             <button onclick="resetGame()" class="pause-btn danger">✖ QUIT TO MENU</button>
         </div>
+        <div id="pauseUpgrades" class="interactive" style="position:fixed;right:12px;bottom:12px;width:min(330px,46vw);max-height:42vh;overflow-y:auto;background:rgba(8,6,22,0.88);border:2px solid #00f2ff;border-radius:6px;padding:8px 10px;text-align:left;font-size:8px;line-height:1.7;z-index:5"></div>
     </div>
 
     <!-- Settings (gameplay, display, keybinds) -->
@@ -274,7 +275,12 @@
             </div>
             <div id="infoPanel_changelog" class="info-panel hidden">
 <div style="text-align:left;font-size:8px;line-height:2">
-                <div style="color:#ffd700;font-size:10px;margin-bottom:6px">▶ v2.5 — Current</div>
+                <div style="color:#ffd700;font-size:10px;margin-bottom:6px">▶ v2.6 — Current</div>
+                <div style="color:#ccc;padding-left:8px;margin-bottom:2px">• <b>Choco's Dying SMP is now its own thing</b>: a Minecraft-style pixel sword (cookie blade, gold guard, heart pommel), a blocky pixel-spray swing trail, hits that shatter into pixel blocks, and <b>Lifesteal SMP</b> kills — every enemy the sword kills steals a heart-fragment (+4 HP, up to 3 per swing).</div>
+                <div style="color:#ccc;padding-left:8px;margin-bottom:2px">• <b>Pause menu</b> now lists every upgrade you have taken (bottom-right corner), coloured by your best rarity, with the count.</div>
+                <div style="color:#ccc;padding-left:8px;margin-bottom:2px">• <b>Skyblock Adict</b>: the weapon auto-ability cooldown is <b>cut by 0.5s on every kill</b> (so it fires constantly in big crowds); the cooldowns (AUTO / SPC / R) now show under MP. <b>Terminator</b> has a new bow sprite, all of its damage is <b>-66%</b>, and each volley's damage is split <b>70% centre arrow / 15% each side arrow</b>.</div>
+                <div style="color:#ccc;padding-left:8px;margin-bottom:2px">• The <b>high score is now HIGHEST LEVEL</b> (shown on the main menu and on the game-over screen); it saves the moment you level up.</div>
+                <div style="color:#ffd700;font-size:10px;margin:8px 0 6px">▶ v2.5</div>
                 <div style="color:#ccc;padding-left:8px;margin-bottom:2px">• <b>Skyblock Addict now has its own swords</b> instead of reusing Choco's: <b>Hyperion</b> is a long ice-cyan blade with a gold winged guard, glowing runes, a star glint and a razor-thin crescent slash with cyan sparks; <b>Dark Claymore</b> is a wide jagged void-steel blade with a pulsing soul-gem, a dark violet-and-pink flame crescent and rising embers. Both have their own hit effects and held-sword look.</div>
                 <div style="color:#ccc;padding-left:8px;margin-bottom:2px">• <b>All abilities polished + faster</b>: every SPACE / R / ultimate now has a cast shockwave and spark burst. Projectile glows no longer use shadow blur (soft cached glow sprites instead), sparks are glow sprites, bullets and blood are drawn in a handful of batched calls. Minigun now has muzzle bloom, a light cone and a heating barrel; Noglin's latch leaves a neon trail and detonates on capture; Glitter Bomb and Death Note glow; Blizzard adds a frost vignette and wind streaks. Heavy scenes (spinbot, Gates of Babylon) run roughly 20-25% faster.</div>
                 <div style="color:#ccc;padding-left:8px;margin-bottom:2px">• <b>Visual polish pass</b> (all cached or batched, no measurable frame cost): the arena now has a lit tile floor, grid, centre sigil, corner glows and a starfield; soft ground shadows under the player and every enemy; a subtle screen vignette; rings are now soft additive glows (and cheaper, no more shadow blur); the Obsessed's Ea, dance and Gates of Babylon got a full VFX upgrade.</div>
@@ -421,7 +427,7 @@
         <div class="menu-card interactive">
             <h1 class="text-3xl text-red-500 mb-2" id="deathMsg">WASTED</h1>
             <p class="text-xs text-gray-400 mb-3" id="deathSubMsg"></p>
-            <p class="mb-4 text-sm">FINAL SCORE: <span id="finalScore">0</span></p>
+            <p class="mb-4 text-sm">LEVEL REACHED: <span id="finalScore">0</span></p>
             <button onclick="resetGame()" class="px-6 py-3 bg-[#00f2ff] text-black font-bold rounded interactive">RETRY</button>
         </div>
     </div>
@@ -472,11 +478,11 @@ window.addEventListener('orientationchange', () => setTimeout(checkOrientation, 
 
 // ── SAVE ──
 const SAVE_KEY='chaos_rush_v4_save';
-let saveData={highScore:0,totalKills:0};
+let saveData={highLevel:0,totalKills:0};
 let secretsUnlocked=false;
 function loadSave(){try{const s=localStorage.getItem(SAVE_KEY);if(s)saveData=JSON.parse(s);}catch(e){}
     const h=document.getElementById('menuHighScore'),t=document.getElementById('menuTotalKills');
-    if(h)h.innerText=saveData.highScore;if(t)t.innerText=saveData.totalKills;}
+    if(h)h.innerText=saveData.highLevel||0;if(t)t.innerText=saveData.totalKills;}
 function saveGame(){try{localStorage.setItem(SAVE_KEY,JSON.stringify(saveData));}catch(e){}}
 
 // ── ASSETS ──
@@ -902,7 +908,7 @@ function fxSpark(x,y,vx,vy,life,size,color,o){
     const a=state.fxp||(state.fxp=[]);
     if(a.length>650)return;
     a.push(o?{x:x,y:y,vx:vx,vy:vy,life:life,max:life,size:size,color:color,
-        drag:o.drag!==undefined?o.drag:0.96,g:o.g||0,trail:o.trail!==undefined?o.trail:true,shrink:o.shrink!==undefined?o.shrink:true,ch:o.ch||null}
+        drag:o.drag!==undefined?o.drag:0.96,g:o.g||0,trail:o.trail!==undefined?o.trail:true,shrink:o.shrink!==undefined?o.shrink:true,ch:o.ch||null,sq:!!o.sq}
       :{x:x,y:y,vx:vx,vy:vy,life:life,max:life,size:size,color:color,drag:0.96,g:0,trail:true,shrink:true,ch:null});
 }
 function fxBurst(x,y,n,color,smin,smax,life,size,o){
@@ -937,6 +943,7 @@ function fxDraw(){
         if(s.ch)continue;
         const k=s.life/s.max,r=s.shrink?Math.max(0.5,s.size*k):s.size;
         ctx.globalAlpha=Math.min(1,k*1.2);ctx.fillStyle=s.color;ctx.strokeStyle=s.color;
+        if(s.sq){ctx.fillRect(s.x-r,s.y-r,r*2,r*2);continue;}
         if(s.trail){ctx.lineWidth=Math.max(1,r*1.3);ctx.beginPath();ctx.moveTo(s.x-s.vx*1.6,s.y-s.vy*1.6);ctx.lineTo(s.x,s.y);ctx.stroke();}
         if(glow){const h=r*2.6,sp=glowSprite(s.color);ctx.globalAlpha=Math.min(1,k*1.3);ctx.drawImage(sp,s.x-h,s.y-h,h*2,h*2);}
         else{ctx.beginPath();ctx.arc(s.x,s.y,r,0,6.2832);ctx.fill();}
@@ -2317,7 +2324,7 @@ function swordStart(p){
     const cdOf=(d,f)=>d+(f?Math.round(p.atkSpeed*0.6):Math.round(d*0.3)),dFin=Math.round(base*1.7);
     const Tc=cdOf(base,false)*2+cdOf(dFin,true);
     const share=(fin?16:(idx===1?7:6))/29,mul=1.3*((p.projectileCount||1)+(p.splitChance||0)/50)*(Tc/p.atkSpeed)*share;
-    state.sword={active:true,idx:idx,t:0,dur:dur,dir:dir,arc:arc,sa:aim-dir*arc/2,aim:aim,reach:reach*(fin?1.25:1),mul:mul,sw:chocoSize(p),hit:new Set(),cur:aim-dir*arc/2,prev:aim-dir*arc/2};
+    state.sword={active:true,idx:idx,t:0,dur:dur,dir:dir,arc:arc,sa:aim-dir*arc/2,aim:aim,reach:reach*(fin?1.25:1),mul:mul,sw:chocoSize(p),hit:new Set(),heals:0,cur:aim-dir*arc/2,prev:aim-dir*arc/2};
     p.atkCooldown=dur+(fin?Math.round(p.atkSpeed*0.6):Math.round(dur*0.3));
     if(p.cutenessActive)p.atkCooldown=Math.floor(p.atkCooldown*0.5);
     fxShake(fin?4:1.5);
@@ -2342,10 +2349,18 @@ function swordTick(p){
         S.hit.add(e);
         const crit=Math.random()*100<p.crit,dmg=p.damage*S.mul*(crit?2:1);
         if(S.sky)skySwordHitFx(e,S,crit);
-        else{fxBurst(e.x,e.y,S.idx===2?14:8,crit?'#ffe066':'#ffd9a0',2,9,18,2.6);addRing(e.x,e.y,S.idx===2?90:55,10,'#ffcc66',3);}
+        else{   // Dying SMP: hits shatter into Minecraft-style pixel blocks
+            const fz=S.idx===2;
+            fxBurst(e.x,e.y,fz?16:9,crit?'#ffe066':'#ffb347',2,8,24,3.4,{sq:true,trail:false,g:0.22});fxBurst(e.x,e.y,fz?8:4,'#fff1c9',2,9,18,2.6,{sq:true,trail:false,g:0.15});
+            addRing(e.x,e.y,fz?90:55,10,'#ffcc66',3);
+        }
         if(S.idx===2)fxShake(9);else fxShake(3);
         hurtFlat(e,dmg,'⚔️',S.sky?(S.theme===1?'#b07cff':'#55ffff'):'#ffcc66');
         if(S.sky)skySwordAoE(p,e,dmg,S);
+        else if(e.hp<=0&&S.heals<3){   // Lifesteal SMP: every kill with the sword steals a heart-fragment (max 3 per swing)
+            S.heals++;p.hp=Math.min(p.maxHp,p.hp+4);
+            fxSpark(e.x,e.y,(Math.random()-0.5)*1.2,-1.5,46,9,'#ff3b55',{ch:'❤️',trail:false,g:-0.02,drag:0.98,shrink:false});
+        }
     }
     if(S.t>=S.dur){
         S.active=false;
@@ -2486,6 +2501,23 @@ function skySwordSwing(S,cur,a0,ccw,fadeA,R){
     ctx.globalCompositeOperation='source-over';ctx.globalAlpha=1;
     ctx.save();ctx.rotate(cur);skyBlade(S.theme,R,S.sw||1,fc);ctx.restore();
 }
+function pxSword(R,sw,fin){   // Choco's Dying SMP blade: a Minecraft-style pixel sword, chocolate-chip cookie blade, gold guard, heart pommel
+    const u=Math.max(6,Math.round(8*sw)),n=Math.max(2,Math.floor((R-44)/u));
+    ctx.fillStyle='#1a0f06';ctx.fillRect(15,-u*0.5-1,22,u+2);
+    ctx.fillStyle='#6b3f14';ctx.fillRect(16,-u*0.5,20,u);
+    for(let i=0;i<n;i++){
+        const x=44+i*u,h=(i===n-1?0.8:1.6)*u;
+        ctx.fillStyle='#1a0f06';ctx.fillRect(x-1,-h/2-1,u+2,h+2);
+        ctx.fillStyle=i&1?'#d9964f':'#c47d38';ctx.fillRect(x,-h/2,u,h);
+        ctx.fillStyle='#f0b878';ctx.fillRect(x,-h/2,u,h*0.22);
+        if(i%3===1){ctx.fillStyle='#3b1f0d';ctx.fillRect(x+u*0.2,-u*0.25,u*0.5,u*0.5);}
+    }
+    ctx.fillStyle='#1a0f06';ctx.fillRect(34,-u*2.5-1,u+2,u*5+2);ctx.fillStyle='#ffcf4a';ctx.fillRect(35,-u*2.5,u,u*5);ctx.fillStyle='#fff3b0';ctx.fillRect(35,-u*2.5,u*0.4,u*5);
+    // heart pommel (pixel heart)
+    const h=Math.max(2.5,u*0.5),H=[[0,1,0,1,0],[1,1,1,1,1],[0,1,1,1,0],[0,0,1,0,0]];
+    ctx.fillStyle='#ff3b55';
+    for(let r=0;r<4;r++)for(let c=0;c<5;c++)if(H[r][c])ctx.fillRect(4+r*h-h*1.5,(c-2)*h-h*0.5,h,h);
+}
 function chocoDraw(){
     const p=state.player;if(!p||(p.config.id!=='choco'&&p.config.id!=='skyblock'))return;
     const TH=p.config.id==='skyblock'?(p.weapon===1?['#6a2fd0','#b07cff','#f1e6ff','#e6d4ff']:['#1fb8d6','#55ffff','#e6ffff','#e9ffff']):['#ff9d2e','#ffc766','#fff6d8','#e9f3ff'];
@@ -2546,16 +2578,16 @@ function chocoDraw(){
         const fadeA=k>0.8?(1-k)/0.2:1;
         if(S.sky){skySwordSwing(S,cur,a0,ccw,fadeA,R);ctx.restore();}
         else{
-        ctx.globalAlpha=0.16*fadeA;ctx.strokeStyle=TH[0];ctx.lineWidth=R*0.42;ctx.beginPath();ctx.arc(0,0,R*0.74,a0,cur,ccw);ctx.stroke();
-        ctx.globalAlpha=0.34*fadeA;ctx.strokeStyle=TH[1];ctx.lineWidth=R*0.2;ctx.beginPath();ctx.arc(0,0,R*0.84,a0,cur,ccw);ctx.stroke();
-        ctx.globalAlpha=0.9*fadeA;ctx.strokeStyle=TH[2];ctx.lineWidth=4;ctx.beginPath();ctx.arc(0,0,R*0.93,Math.max(Math.min(a0,cur),cur-S.dir*Math.min(trail,1.1)),cur,ccw);ctx.stroke();
+        ctx.globalAlpha=0.14*fadeA;ctx.strokeStyle=TH[0];ctx.lineWidth=R*0.4;ctx.beginPath();ctx.arc(0,0,R*0.74,a0,cur,ccw);ctx.stroke();
+        // blocky pixel trail: a spray of square "pixels" that shrink and fade behind the blade
+        const NP=Math.min(18,Math.ceil(trail*8)),sw=S.sw||1;
+        for(let j=0;j<NP;j++){
+            const f=j/NP,ang=cur-S.dir*trail*f,rr=R*(0.6+0.36*(((j*37)%10)/10)),sz=Math.round((9-f*6)*sw);
+            ctx.globalAlpha=(1-f)*0.85*fadeA;ctx.fillStyle=j%3===0?'#fff1c9':j%3===1?'#ffc766':'#ff9d2e';
+            ctx.fillRect(Math.round(Math.cos(ang)*rr-sz/2),Math.round(Math.sin(ang)*rr-sz/2),sz,sz);
+        }
         ctx.globalCompositeOperation='source-over';ctx.globalAlpha=1;
-        const c=Math.cos(cur),s=Math.sin(cur);
-        ctx.strokeStyle='#5a3a12';ctx.lineWidth=9*(S.sw||1);ctx.beginPath();ctx.moveTo(c*18,s*18);ctx.lineTo(c*R,s*R);ctx.stroke();
-        ctx.strokeStyle=TH[3];ctx.lineWidth=6*(S.sw||1);ctx.beginPath();ctx.moveTo(c*40,s*40);ctx.lineTo(c*R,s*R);ctx.stroke();
-        ctx.strokeStyle='#ffffff';ctx.lineWidth=2;ctx.beginPath();ctx.moveTo(c*40,s*40);ctx.lineTo(c*R,s*R);ctx.stroke();
-        ctx.strokeStyle='#d6a15e';ctx.lineWidth=7;ctx.beginPath();ctx.moveTo(c*36-s*13,s*36+c*13);ctx.lineTo(c*36+s*13,s*36-c*13);ctx.stroke();
-        ctx.fillStyle='#6b3f14';ctx.beginPath();ctx.arc(c*16,s*16,5,0,CH_TAU);ctx.fill();
+        ctx.save();ctx.rotate(cur);pxSword(R,sw,S.idx===2);ctx.restore();
         ctx.restore();}
     } else if(p.swordMode&&p.config.id==='skyblock'){
         const a=p.facing===-1?2.3:0.85,bob=Math.sin(state.frameCount*0.07)*0.05;
@@ -2564,10 +2596,7 @@ function chocoDraw(){
     } else if(p.swordMode){
         const a=p.facing===-1?2.3:0.85;
         ctx.save();ctx.translate(p.x,p.y);ctx.globalAlpha=0.9;ctx.lineCap='round';
-        const c=Math.cos(a),s=Math.sin(a);
-        ctx.strokeStyle='#5a3a12';ctx.lineWidth=7;ctx.beginPath();ctx.moveTo(c*16,s*16);ctx.lineTo(c*34,s*34);ctx.stroke();
-        ctx.strokeStyle=TH[3];ctx.lineWidth=5;ctx.beginPath();ctx.moveTo(c*34,s*34);ctx.lineTo(c*74,s*74);ctx.stroke();
-        ctx.strokeStyle='#d6a15e';ctx.lineWidth=6;ctx.beginPath();ctx.moveTo(c*32-s*9,s*32+c*9);ctx.lineTo(c*32+s*9,s*32-c*9);ctx.stroke();
+        ctx.rotate(a+Math.sin(state.frameCount*0.07)*0.05);pxSword(80,0.8,false);
         ctx.restore();
     }
 }
@@ -3228,10 +3257,11 @@ function skyQRun(p,q){
     }
 }
 // ── Terminator: three arrows at once; MP 3+ ignite, 6+ first-contact explosion (pierce kept), 9+ every 4th volley adds a beam ──
+const TERM_DMG=0.34;   // v2.6: all Terminator damage -66%
 function skyArrow(p,x,y,ang,dmg,spd){
     const A=state.arrows||(state.arrows=[]);if(A.length>=260)return null;
     const tier=skyTier(),crit=Math.random()*100<p.crit,hs=new Set();
-    const a={x:x,y:y,vx:Math.cos(ang)*spd,vy:Math.sin(ang)*spd,dmg:dmg*(crit?2:1),life:80,pierce:3+(p.pierce||0),crit:crit,hs:hs,hitSet:hs,r:Math.min(60,22+Math.max(0,(p.bSize||5)-5)*1.6),home:p.homing||0};
+    const a={x:x,y:y,vx:Math.cos(ang)*spd,vy:Math.sin(ang)*spd,dmg:dmg*TERM_DMG*(crit?2:1),life:80,pierce:3+(p.pierce||0),crit:crit,hs:hs,hitSet:hs,r:Math.min(60,22+Math.max(0,(p.bSize||5)-5)*1.6),home:p.homing||0};
     if(tier>=3)a.ign=true;
     if(tier>=6)a.boom=true;
     A.push(a);return a;
@@ -3246,15 +3276,37 @@ function skyArrowBoom(a,e){
     for(let i=0;i<T.length;i++){const o=T[i];if(o===e||o.hp<=0)continue;if((o.x-a.x)**2+(o.y-a.y)**2<R*R){hurtFlat(o,a.dmg*0.55,'💥','#ffcc44');if(a.ign)igniteEnemy(o,300);}}
     addRing(a.x,a.y,R,10,'#ffcc44',3);fxBurst(a.x,a.y,8,'#ffcc44',2,8,16,2.4);fxShake(2);
 }
+var _termSpr=null;
+function terminatorSprite(){   // cached 100x100 sprite, bow faces +x: dark limbs with a glowing red string, gold tips and three nocked arrows
+    if(_termSpr)return _termSpr;
+    const c=document.createElement('canvas');c.width=c.height=100;const g=c.getContext('2d');
+    g.lineCap='round';
+    g.strokeStyle='#ff4a2a';g.globalAlpha=0.35;g.lineWidth=7;g.beginPath();g.moveTo(34,12);g.lineTo(18,50);g.lineTo(34,88);g.stroke();g.globalAlpha=1;
+    g.strokeStyle='#ff7a4a';g.lineWidth=1.6;g.beginPath();g.moveTo(34,12);g.lineTo(18,50);g.lineTo(34,88);g.stroke();
+    for(const ao of [-0.2,0,0.2]){   // three arrows
+        const ex=88*Math.cos(ao)+0,ey=50+88*Math.sin(ao)*0.5;
+        g.strokeStyle='#d9dde6';g.lineWidth=2;g.beginPath();g.moveTo(18,50);g.lineTo(18+70*Math.cos(ao),50+70*Math.sin(ao));g.stroke();
+        g.fillStyle='#ff4a2a';g.beginPath();g.moveTo(18,50);g.lineTo(26,50-3.5);g.lineTo(26,50+3.5);g.closePath();g.fill();
+        g.fillStyle='#ffd9a0';const tx=18+70*Math.cos(ao),ty=50+70*Math.sin(ao);g.beginPath();g.moveTo(tx+9*Math.cos(ao),ty+9*Math.sin(ao));g.lineTo(tx-3*Math.sin(ao)*-1,ty+3*Math.cos(ao)*-1+0);g.lineTo(tx+3*Math.sin(ao),ty-3*Math.cos(ao));g.closePath();g.fill();
+    }
+    g.strokeStyle='#0c0c12';g.lineWidth=9;g.beginPath();g.arc(8,50,52,-1.15,1.15);g.stroke();
+    g.strokeStyle='#2b2d3a';g.lineWidth=6;g.stroke();
+    g.strokeStyle='#6b6f86';g.lineWidth=1.5;g.beginPath();g.arc(8,50,52,-1.12,1.12);g.stroke();
+    g.fillStyle='#ffcf4a';for(const sgn of [-1,1]){const a=sgn*1.15;g.beginPath();g.arc(8+52*Math.cos(a),50+52*Math.sin(a),4.2,0,6.2832);g.fill();}
+    g.fillStyle='#ff4a2a';for(const a of [-0.6,0.6]){g.save();g.translate(8+52*Math.cos(a),50+52*Math.sin(a));g.rotate(a);g.beginPath();g.moveTo(0,-4);g.lineTo(3,0);g.lineTo(0,4);g.lineTo(-3,0);g.closePath();g.fill();g.restore();}
+    g.fillStyle='#14141c';g.fillRect(56,42,9,16);g.fillStyle='#ffcf4a';g.fillRect(58,43,5,3);g.fillRect(58,54,5,3);g.fillStyle='#ff4a2a';g.fillRect(59,48,3,4);
+    return _termSpr=c;
+}
 function skyBow(p){
     const mode=settings.shootTarget||'default';let ang;
     if(mode==='manual')ang=Math.atan2(state.mouseY-p.y,state.mouseX-p.x);
     else{const tg=mode==='strongest'?foeStrongest():skyNearestTo(p.x,p.y);if(!tg){p.atkCooldown=3;return;}ang=Math.atan2(tg.y-p.y,tg.x-p.x);}
     p._aimA=ang;
     const n=2+volleyN(p,'sky'),spd=16*(p.bulletSpeedMult||1)*1.3;   // Terminator: bonus velocity (and pierce, see skyArrow)
-    for(let i=0;i<n;i++)skyArrow(p,p.x,p.y,ang+(i-(n-1)/2)*0.13,p.damage*0.7,spd);
+    {const main=(n-1)>>1,tot=p.damage*2.1;   // v2.6: the centre arrow carries 70% of the volley's damage, each extra arrow 15%
+    for(let i=0;i<n;i++)skyArrow(p,p.x,p.y,ang+(i-(n-1)/2)*0.13,tot*(i===main?0.7:0.15),spd);}
     p._skyShots=(p._skyShots||0)+1;
-    if(skyTier()>=9&&p._skyShots%4===0)skyBeam(p,ang,p.damage*7,28,1500,'#ffcc44',true,0.015);
+    if(skyTier()>=9&&p._skyShots%4===0)skyBeam(p,ang,p.damage*7*TERM_DMG,28,1500,'#ffcc44',true,0.015*TERM_DMG);
     p.atkCooldown=Math.round(p.atkSpeed*1.15);
     fxSpark(p.x+Math.cos(ang)*30,p.y+Math.sin(ang)*30,Math.cos(ang)*4,Math.sin(ang)*4,8,3,'#ffe29a',{trail:false});
 }
@@ -3345,11 +3397,17 @@ function skyDraw(){
     }
     ctx.globalAlpha=1;
     if(p.weapon===2){   // the bow
-        const a=p._aimA!==undefined?p._aimA:Math.atan2(state.mouseY-p.y,state.mouseX-p.x),sp=emojiSprite('🏹',30);
-        ctx.translate(p.x+Math.cos(a)*30,p.y+Math.sin(a)*30);ctx.rotate(a+0.78);ctx.drawImage(sp,-sp.width/2,-sp.height/2);ctx.rotate(-a-0.78);ctx.translate(-(p.x+Math.cos(a)*30),-(p.y+Math.sin(a)*30));
+        const a=p._aimA!==undefined?p._aimA:Math.atan2(state.mouseY-p.y,state.mouseX-p.x),sp=terminatorSprite(),pull=p.atkCooldown>0&&p.atkCooldown<8?0:1;
+        ctx.translate(p.x,p.y);ctx.rotate(a);ctx.drawImage(sp,12,-42,84,84);ctx.rotate(-a);ctx.translate(-p.x,-p.y);
     }
     ctx.font='8px "Press Start 2P"';ctx.textAlign='center';ctx.fillStyle=w.col;ctx.globalAlpha=0.9;
     ctx.fillText(w.icon+' MP '+skyMP()+(skyTier()?' · T'+skyTier():''),p.x,p.y+50);
+    {   // cooldowns: weapon auto-ability (shortened by kills), SPACE potion, R swap
+        const cdT=(f,rdy)=>f>0?(f/60).toFixed(1)+'s':(rdy||'RDY'),sa=state.skyAuto||0;
+        const gp=state.godPotion>0?'ON '+(state.godPotion/60).toFixed(0)+'s':cdT(state.ability.cooldown);
+        ctx.font='7px "Press Start 2P"';ctx.globalAlpha=0.9;ctx.fillStyle='#ffffff';
+        ctx.fillText('AUTO '+cdT(sa,'NOW')+' | SPC '+gp+' | R '+cdT(state.secondary.cooldown),p.x,p.y+63);
+    }
     ctx.restore();
 }
 // ── ULTIMATES (the F key uses the weapon in your hands) ──
@@ -6671,6 +6729,7 @@ function killEnemy(e,idx){
         for(let i=0;i<xpCount;i++)state.xpOrbs.push(new XpOrb(e.x+(Math.random()-.5)*50,e.y+(Math.random()-.5)*50,xpV));
         {const lk=(state.player&&state.player.luck)||0;if(!e.isBoss&&lk>0&&Math.random()<Math.min(0.5,lk*0.012))state.xpOrbs.push(new XpOrb(e.x+(Math.random()-.5)*50,e.y+(Math.random()-.5)*50,xpV));}
         state.score+=e.isBoss?600:10;saveData.totalKills++;
+        if(state.skyAuto>0&&state.player&&state.player.config.id==='skyblock')state.skyAuto=Math.max(0,state.skyAuto-30);   // v2.6: every kill shaves 0.5s off the weapon ability
         // Kira god gauge
         if(state.player&&state.player.config.id==='kira'){
             const gain=e.isBoss?5:1;
@@ -6729,9 +6788,9 @@ function damagePlayer(amt,ifr){   // ifr = i-frames granted by this hit (default
             saveData.subaruDeaths=(saveData.subaruDeaths||0)+1;
             if(saveData.subaruDeaths>=5&&!saveData.auraMonsterUnlocked){saveData.auraMonsterUnlocked=true;showToast('👹 AURA MONSTER UNLOCKED — pick it from the Subaru menu!','#b080ff');}
         }
-        if(state.score>saveData.highScore)saveData.highScore=state.score;
+        if(state.lvl>(saveData.highLevel||0))saveData.highLevel=state.lvl;
         saveGame();
-        const fs=document.getElementById('finalScore');if(fs)fs.innerText=state.score;
+        const fs=document.getElementById('finalScore');if(fs)fs.innerText=state.lvl+'  (BEST '+Math.max(state.lvl,saveData.highLevel||0)+')';
         const DEATH_MSGS=[
             {h:"WASTED",s:"skill issue"},{h:"YOU DIED",s:"not even close"},{h:"COOKED",s:"absolutely cooked"},
             {h:"DEMOLISHED",s:"they didn't even try"},{h:"GONE",s:"poof. just like that."},
@@ -7405,7 +7464,7 @@ function gameStep(){
         if((o.x-state.player.x)**2+(o.y-state.player.y)**2<400){
             state.xp+=o.val*state.player.xpMult;state.xpOrbs.splice(i,1);
             // v1.9: every level gained is queued (overflow XP carries over), so a big XP gain never swallows an upgrade
-            while(state.xp>=state.xpNeeded){state.xp-=state.xpNeeded;state.lvl++;state.xpNeeded=Math.floor(state.xpNeeded*1.2);state.pendingLevels=(state.pendingLevels||0)+1;checkLevelUnlocks();}
+            while(state.xp>=state.xpNeeded){state.xp-=state.xpNeeded;state.lvl++;state.xpNeeded=Math.floor(state.xpNeeded*1.2);state.pendingLevels=(state.pendingLevels||0)+1;if(state.lvl>(saveData.highLevel||0)){saveData.highLevel=state.lvl;saveGame();}checkLevelUnlocks();}
             updateHUD();
         }
     }
@@ -7967,7 +8026,25 @@ function openInfo(t){showScreen('infoScreen');showInfoTab(t||'upgrades');}
 function closeOverlay(){
     ['settingsScreen','infoScreen'].forEach(id=>{const el=document.getElementById(id);if(el)el.classList.add('hidden');});
     if(previousScreen==='MENU'||!state.player){document.getElementById('mainMenu').classList.remove('hidden');state.screen='MENU';}
-    else{document.getElementById('pauseMenu').classList.remove('hidden');state.screen='PAUSED';const ey=document.getElementById('eyeToggle');if(ey)ey.style.display='block';updateHUD();}
+    else{document.getElementById('pauseMenu').classList.remove('hidden');renderPauseUpgrades();state.screen='PAUSED';const ey=document.getElementById('eyeToggle');if(ey)ey.style.display='block';updateHUD();}
+}
+const TIER_RANK={Common:0,Rare:1,Legendary:2};
+function renderPauseUpgrades(){
+    const el=document.getElementById('pauseUpgrades');if(!el)return;
+    const L=state.upgLog||{},ids=Object.keys(L);
+    let h='<div style="color:#00f2ff;font-size:9px;margin-bottom:5px">YOUR UPGRADES ('+(state.upgradesTaken||0)+')</div>';
+    if(!ids.length)h+='<div style="color:#888">none yet — level up to pick some</div>';
+    else{
+        ids.sort((a,b)=>L[b].n-L[a].n);
+        h+='<div style="display:flex;flex-wrap:wrap;gap:4px">';
+        for(const id of ids){
+            const u=L[id],b=u.base;let top='Common';for(const k in u.t)if(TIER_RANK[k]>TIER_RANK[top])top=k;
+            const col=(b.tiers.find(t=>t.l===top)||{}).c||'white',tip=Object.keys(u.t).map(k=>k+' x'+u.t[k]).join(', ');
+            h+='<span title="'+tip+'" style="border:1px solid '+col+';color:'+col+';padding:2px 5px;border-radius:3px;background:rgba(255,255,255,0.05);white-space:nowrap">'+(UPGRADE_ICONS[id]||'⭐')+' '+b.name+' ×'+u.n+'</span>';
+        }
+        h+='</div>';
+    }
+    el.innerHTML=h;
 }
 function resumeGame(){document.getElementById('pauseMenu').classList.add('hidden');state.screen='PLAYING';const ey=document.getElementById('eyeToggle');if(ey)ey.style.display='none';updateHUD();}
 let _hudVisible=true;
@@ -7978,6 +8055,7 @@ function toggleHudVisibility(){
     // Also toggle pause menu card visibility
     const pauseCard=document.querySelector('#pauseMenu .menu-card');
     if(pauseCard)pauseCard.style.visibility=_hudVisible?'':'hidden';
+    const pu=document.getElementById('pauseUpgrades');if(pu)pu.style.visibility=_hudVisible?'':'hidden';
     const eyeBtn=document.getElementById('eyeToggle');
     if(eyeBtn)eyeBtn.style.opacity=_hudVisible?'0.75':'0.4';
 }
@@ -8154,7 +8232,7 @@ function initInfoScreen(){
             {key:'R — WD Swap',       desc:'Switch between your three weapons: Hyperion, Dark Claymore and Terminator. Each one auto-casts a special ability every 10 seconds.'},
             {key:'Hyperion',          desc:'Bonus mobility, melee. 0+ MP: wide, slow, high-pierce beam. 3+: teleporting slash straight into an enemy for heavy damage. 6+: the slash causes an impact explosion and shortens the next cooldown. 9+: teleporting attacks heal you and give a decaying shield.'},
             {key:'Dark Claymore',     desc:'+4 damage, slow heavy melee. 0+ MP: close-range heavy single-target cleave with limited AoE. 3+: multi-hit combo; the last hit drops a sword on your cursor for high area damage. 6+: regular attacks splash weaker area damage. 9+: much bigger area damage everywhere.'},
-            {key:'Terminator',        desc:'Bonus pierce and velocity. A bow that fires three arrows at once. 3+ MP: arrows ignite. 6+: arrows explode on the first enemy hit (and keep their pierce). 9+: every few shots the bow fires a powerful beam. Its 10s ability is an Arrow Storm.'},
+            {key:'Terminator',        desc:'Bonus pierce and velocity. A bow that fires three arrows at once (the centre arrow does 70% of the volley damage, each side arrow 15%; all Terminator damage was cut by 66% in v2.6). 3+ MP: arrows ignite. 6+: arrows explode on the first enemy hit (and keep their pierce). 9+: every few shots the bow fires a powerful beam. Its 10s ability is an Arrow Storm.'},
         ]},
         {id:'obsessed',emoji:'🤩',name:'The Obsessed',color:'#ffd84a',stats:'Speed: Medium-Fast | HP: 250 | Regen: 4/s',abilities:[
             {key:'SPACE — Kamen Rider Kick', desc:'Stop dead for 0.6 seconds, then dash across the whole map at your strongest enemy. Small damage to everything along the path and in a blast where you land. Switches SPACE to Assault Boost.'},
@@ -8184,7 +8262,7 @@ function initInfoScreen(){
         ]},
         {id:'choco',emoji:'🍪',name:'IAmChoco',color:'#c68642',stats:'Speed: Fast | HP: 250 | Regen: 4/s',abilities:[
             {key:'SPACE — Wanna play TB?', desc:'Raise 3 wooden barricade towers in an arc toward your cursor. Each has a bow on top that fires arrows at the nearest enemy, and the towers use ALL of your upgrades: Caliber/Lethality (damage, crits), Haste (fire rate), Velocity (arrow speed), Pierce, Heavy Rounds (bigger arrows), Splitter (extra arrows per shot), Homing, plus Vitality and Armour for the barricades. Barricades block enemies but get chewed up by anything pressing on them, and last 14 seconds.'},
-            {key:'R — Dying SMP (toggle)', desc:'Swap between your normal projectiles and a sword. The sword fights in a 3-hit combo — sweep, sweep back, then a huge 360° finisher — hitting everything in the arc (no stun or knockback). A full combo deals about 1.3× your normal gun DPS to each enemy it touches. Haste speeds up the combo, Caliber boosts damage, Velocity speeds up the animation AND extends the reach, and Heavy Rounds makes the sword bigger.'},
+            {key:'R — Dying SMP (toggle)', desc:'Swap between your normal projectiles and a sword. The sword fights in a 3-hit combo — sweep, sweep back, then a huge 360° finisher — hitting everything in the arc (no stun or knockback). A full combo deals about 1.3× your normal gun DPS to each enemy it touches. Haste speeds up the combo, Caliber boosts damage, Velocity speeds up the animation AND extends the reach, and Heavy Rounds makes the sword bigger. It is a Minecraft-style pixel sword with a cookie blade and a heart pommel, its hits shatter into blocks, and kills steal heart-fragments (+4 HP per kill, up to 3 per swing) — Lifesteal SMP rules.'},
         ]},
         {id:'kira',emoji:'📓',name:'Kira',color:'#cc0000',stats:'Speed: Fast | HP: 250 | Regen: 4/s',abilities:[
             {key:'SPACE — Death Note', desc:'Condemn the highest-HP enemy. After 3 seconds they die. Boss takes 55% max HP instead. God Mode (10 kills) lasts 3 seconds — Death Note on a normal boss during it = instant kill (Mega Bosses are immune to this).'},
@@ -8441,6 +8519,7 @@ function showLevelUp(){
         b.innerHTML=`<div style="display:flex;align-items:center;gap:${dense?9:12}px"><span style="flex-shrink:0;width:${dense?30:42}px;height:${dense?30:42}px;display:flex;align-items:center;justify-content:center;font-size:${dense?1.05:1.5}rem;line-height:1;background:rgba(0,0,0,0.35);border:2px solid ${tier.c};border-radius:8px;box-shadow:0 0 8px ${tier.c}55">${UPGRADE_ICONS[base.id]||'✨'}</span><div style="flex:1;min-width:0"><div style="display:flex;justify-content:space-between;align-items:center;gap:8px;margin-bottom:2px"><span style="font-size:10px;font-weight:bold">${base.name}</span><span style="font-size:8px;color:${tier.c};font-weight:bold">${tier.l.toUpperCase()}</span></div><div style="font-size:${dense?7:8}px;color:#ccc;line-height:1.5">${tier.desc}</div></div></div>`;
         b.onclick=()=>{
             const p=state.player;state.upgradesTaken=(state.upgradesTaken||0)+1;
+            {const L=state.upgLog||(state.upgLog={}),u=L[base.id]||(L[base.id]={base:base,n:0,t:{}});u.n++;u.t[tier.l]=(u.t[tier.l]||0)+1;}
             if(base.id==='atk_speed') p.atkSpeed=Math.max(5,p.atkSpeed-tier.v);
             if(base.id==='damage')    p.damage+=tier.v;
             if(base.id==='speed')     p.speed+=tier.v;
@@ -8481,7 +8560,7 @@ window.addEventListener('keydown',e=>{
     if(e.key.toLowerCase()==='f'){triggerUltimate();}
     // E and F MC abilities removed
     if(e.code==='Escape'){
-        if(state.screen==='PLAYING'){state.screen='PAUSED';document.getElementById('pauseMenu').classList.remove('hidden');const ey=document.getElementById('eyeToggle');if(ey)ey.style.display='block';updateHUD();}
+        if(state.screen==='PLAYING'){state.screen='PAUSED';document.getElementById('pauseMenu').classList.remove('hidden');renderPauseUpgrades();const ey=document.getElementById('eyeToggle');if(ey)ey.style.display='block';updateHUD();}
         else if(state.screen==='PAUSED')resumeGame();
         else if(state.screen==='OVERLAY')closeOverlay();
     }
@@ -8585,7 +8664,7 @@ function handleJoy(t){
 document.addEventListener('visibilitychange', () => {
     if(document.hidden && state.screen === 'PLAYING' && settings.autoPauseOnHide){
         state.screen = 'PAUSED';
-        document.getElementById('pauseMenu').classList.remove('hidden');
+        document.getElementById('pauseMenu').classList.remove('hidden');renderPauseUpgrades();
         const ey=document.getElementById('eyeToggle');if(ey)ey.style.display='block';
     }
 });
