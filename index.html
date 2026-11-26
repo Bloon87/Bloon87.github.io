@@ -183,7 +183,7 @@
             <button onclick="openInfo()" class="pause-btn">📖 INFO</button>
             <button onclick="resetGame()" class="pause-btn danger">✖ QUIT TO MENU</button>
         </div>
-        <div id="pauseUpgrades" class="interactive" style="position:fixed;left:12px;bottom:56px;width:min(330px,calc(50vw - 196px));min-width:150px;max-height:40vh;overflow-y:auto;background:rgba(8,6,22,0.88);border:2px solid #00f2ff;border-radius:6px;padding:8px 10px;text-align:left;font-size:8px;line-height:1.7;z-index:5"></div>
+        <div id="pauseUpgrades" class="interactive" style="position:fixed;right:12px;bottom:12px;width:min(330px,46vw);max-height:42vh;overflow-y:auto;background:rgba(8,6,22,0.88);border:2px solid #00f2ff;border-radius:6px;padding:8px 10px;text-align:left;font-size:8px;line-height:1.7;z-index:5"></div>
     </div>
 
     <!-- Settings (gameplay, display, keybinds) -->
@@ -275,18 +275,7 @@
             </div>
             <div id="infoPanel_changelog" class="info-panel hidden">
 <div style="text-align:left;font-size:8px;line-height:2">
-                <div style="color:#ffd700;font-size:10px;margin-bottom:6px">▶ v2.8 — Current</div>
-                <div style="color:#ccc;padding-left:8px;margin-bottom:2px">• <b>Living sky</b>: the random white dots are gone. The arena is now a glassy floor reflecting a procedurally generated night sky: high-resolution nebulae (cloud + glowing filament layers), twinkling and fading stars with rippling reflections, and the odd shooting star. A brand-new scene is generated and crossfaded in every ~25 seconds (generated in small slices, so no hitches).</div>
-                <div style="color:#ccc;padding-left:8px;margin-bottom:2px">• The four corner glows are now <b>fireflies</b> that drift a short way around each corner, each glowing on its own rhythm. The arena floor has a subtle gradient from the old purple to a slightly lighter violet.</div>
-                <div style="color:#ccc;padding-left:8px;margin-bottom:2px">• <b>Arsonist</b>: Phirebranded Phoenix is ~2x faster, has a limited range and fades out. Tar pools are smaller; blobs now splat, bounce back up like slime (joined by a stretching string) and split into smaller puddles with a jelly landing. Stuck enemies can move, but past a short leash are yanked all the way back to where they stuck. Tar is now drawn under enemies and the player. Sparks added to the phoenix, molotovs, tar ignition and Arson Party.</div>
-                <div style="color:#ccc;padding-left:8px;margin-bottom:2px">• The pause menu's upgrades panel moved to the bottom-left so it never overlaps the ability readouts.</div>
-                <div style="color:#888;font-size:10px;margin:8px 0 6px">▶ v2.7</div>
-                <div style="color:#ccc;padding-left:8px;margin-bottom:2px">• <b>Arsonist reworked</b>: SPACE is now <b>PHIREBRANDED PHOENIX</b> — an aimable cone-shaped flaming bird (head, spread wings) that burns everything it crosses. R is now <b>ARSON PARTY</b> (replaces Tar Toss): 4 tar blobs that bounce into smaller blobs, plus molotovs at your nearest / strongest / weakest / furthest enemy and at every tar puddle.</div>
-                <div style="color:#ccc;padding-left:8px;margin-bottom:2px">• <b>Tar now sticks</b>: enemies touching tar are slowed, dragged back when they stray from the puddle, and tied to it by a V of sticky tar strands (they break free after a few seconds).</div>
-                <div style="color:#ccc;padding-left:8px;margin-bottom:2px">• Arsonist: Inferno Strike hits much harder. Skyblock: Hyperion teleport now gives longer i-frames; Terminator's Arrow Storm fires the 70% / 15% / 15% three-arrow fan.</div>
-                <div style="color:#ccc;padding-left:8px;margin-bottom:2px">• Femboy: more base damage, stronger Glitter Bomb, Gender Reveal has a bigger radius and hits harder. Shiba: 50 Bucks pays more XP per bounce off him and splashes 20% of its damage, split evenly, onto nearby enemies.</div>
-                <div style="color:#ccc;padding-left:8px;margin-bottom:2px">• Zanther's Pounce now works on the Mega Boss. Hive Mind hits the Mega Boss harder but regular enemies less. Pickle-Astrophe's brine tsunami shockwave VFX is gone (the flood and damage stay). Wisdom is buffed again and gains a <b>Legendary</b> tier (+200% XP).</div>
-                <div style="color:#888;font-size:10px;margin:8px 0 6px">▶ v2.6</div>
+                <div style="color:#ffd700;font-size:10px;margin-bottom:6px">▶ v2.6 — Current</div>
                 <div style="color:#ccc;padding-left:8px;margin-bottom:2px">• <b>Choco's Dying SMP is now its own thing</b>: a Minecraft-style pixel sword (cookie blade, gold guard, heart pommel), a blocky pixel-spray swing trail, hits that shatter into pixel blocks, and <b>Lifesteal SMP</b> kills — every enemy the sword kills steals a heart-fragment (+4 HP, up to 3 per swing).</div>
                 <div style="color:#ccc;padding-left:8px;margin-bottom:2px">• <b>Pause menu</b> now lists every upgrade you have taken (bottom-right corner), coloured by your best rarity, with the count.</div>
                 <div style="color:#ccc;padding-left:8px;margin-bottom:2px">• <b>Skyblock Adict</b>: the weapon auto-ability cooldown is <b>cut by 0.5s on every kill</b> (so it fires constantly in big crowds); the cooldowns (AUTO / SPC / R) now show under MP. <b>Terminator</b> has a new bow sprite, all of its damage is <b>-66%</b>, and each volley's damage is split <b>70% centre arrow / 15% each side arrow</b>.</div>
@@ -518,7 +507,7 @@ const CHARACTERS=[
     {id:'cat',       name:"Vitru",        emoji:"🐱", emojiFilter:"hue-rotate(110deg) saturate(3)", variantName:"Glorp", speed:9, hp:5, abilityColor:'#00ff88',
      desc:"Glorp Beam",     abilityDesc:"SPC: Glorp Beam | R: Wormhole"},
     {id:'arsonist',  name:"Arsonist",     emoji:"🐱", emojiFilter:"hue-rotate(-32deg) saturate(3) brightness(1.1)", variantOf:'cat', unlockKey:'arsonistUnlocked', unlockHint:'Reach level 15 with Vitru (Glorp)', variantName:"Arsonist", speed:9, hp:5, abilityColor:'#ff6a00',
-     desc:"Arson Party",    abilityDesc:"SPC: Phirebranded Phoenix | R: Arson Party"},
+     desc:"Arson Party",    abilityDesc:"SPC: Arson Party | R: Tar Toss"},
     {id:'shiba',     name:"Broke Shiba",  emoji:"🐕",  img:assets.shibaHomeless, speed:8, hp:6, abilityColor:'#ffbbbb',
      desc:"50 Bucks",   abilityDesc:"SPC: 50 Bucks | R: Sad Whimper"},
     {id:'snowman',   name:"Snowman",      emoji:"☃️", speed:6,   hp:10, abilityColor:'#88eeff',
@@ -573,9 +562,8 @@ const UPGRADES_POOL=[
         {l:"Legendary",v:8, c:"#ffd700", w:7,  desc:"Bullets are 8px bigger — massive hitbox, hard to miss"},
     ]},
     {id:'xp_boost',   name:"Wisdom",       tiers:[
-        {l:"Common",   v:0.35, c:"white",   w:55, desc:"+35% XP from all sources — level up faster"},
-        {l:"Rare",     v:0.9, c:"#bc13fe", w:26, desc:"+90% XP from all sources — significantly faster levelling"},
-        {l:"Legendary",v:2.0, c:"#ffd700", w:7,  desc:"+200% XP from all sources — triple XP, levels fly by"},
+        {l:"Common",   v:0.2, c:"white",   w:55, desc:"+20% XP from all sources — level up faster"},
+        {l:"Rare",     v:0.5, c:"#bc13fe", w:26, desc:"+50% XP from all sources — significantly faster levelling"},
     ]},
     {id:'crit',       name:"Lethality",    tiers:[
         {l:"Common",   v:5,  c:"white",   w:60, desc:"+5% crit chance — crits deal double damage"},
@@ -1320,31 +1308,11 @@ function burnTick(){
     const list=allTargets();
     for(const e of list){
         if(e.oil>0){e.oil--;if(e.oil<=0)e.oilAng=undefined;else stay=true;}
-        if(e.stuckImm>0)e.stuckImm--;
-        if(e.stuckTo){
-            // v2.8: stuck to the tar — free to move, but past a leash distance it is yanked ALL the way back to where it got stuck
-            const f=e.stuckTo;stay=true;
-            if(--e.stuckT<=0||f.t<=0||e.hp<=0){e.stuckTo=null;e.reel=0;e.stuckImm=150;}
-            else{
-                const dx=e.sx-e.x,dy=e.sy-e.y,d=Math.sqrt(dx*dx+dy*dy);
-                if(e.reel>0){
-                    e.reel++;
-                    const sp=Math.min(d,(12+e.reel*2.4)*(e.isMega?0.3:e.isBoss?0.6:1));
-                    if(d>0.5){e.x+=dx/d*sp;e.y+=dy/d*sp;}
-                    if(d<26){e.reel=0;fxBurst(e.sx,e.sy,5,'#7a5ad0',1,5,18,2.6,{g:0.1,trail:false});}
-                }else if(d>(e.isMega?110:e.isBoss?125:150)){
-                    e.reel=1;addRing(e.sx,e.sy,40,10,'#8a6ae0',3);
-                    for(let k=0;k<6;k++){const a=Math.random()*6.2832;fxSpark(e.x,e.y,Math.cos(a)*3,Math.sin(a)*3-1,16,2.6,'#8a6ae0',{trail:false,g:0.15});}
-                    if(e.isBoss||Math.random()<0.3)popup(e.x,e.y-26,'STUCK!','#a98cf0',40);
-                }
-            }
-        }
         if(!e.burn)continue;
         if(e.hp<=0){e.burn=null;continue;}
         e.burn.t--;
         if(state.frameCount%3===0)fxSpark(e.x+(Math.random()-.5)*16,e.y-6,(Math.random()-.5)*0.8,-(1+Math.random()*1.6),22,3.4,FIRE_COLS[Math.floor(Math.random()*4)],{trail:false,g:-0.03,drag:0.98});
         e.burn.tick++;
-        if(state.frameCount%11===e.burn.tick%11)fxSpark(e.x,e.y-8,(Math.random()-.5)*4,-(2+Math.random()*3),20,2.2,'#ffd27a',{drag:0.93,g:0.1});
         if(e.burn.tick>=24){
             e.burn.tick=0;
             const dmg=playerDps(p)*1.4*0.4*(e.oil>0?2:1);   // 140% of DPS per second (a tick is 0.4s)
@@ -1372,22 +1340,15 @@ function burnTick(){
             const k=Math.min(1,m.t/m.dur);
             m.x=m.x0+(m.tx-m.x0)*k;m.y=m.y0+(m.ty-m.y0)*k-Math.sin(k*Math.PI)*120;m.rot+=0.4;
             fxSpark(m.x,m.y,(Math.random()-.5)*1.2,(Math.random()-.5)*1.2,16,3,FIRE_COLS[Math.floor(Math.random()*4)],{trail:false,g:-0.02});
-            fxSpark(m.x,m.y,(Math.random()-.5)*3,(Math.random()-.2)*3,18,2.2,'#ffd27a',{drag:0.92,g:0.1});
             if(m.t>=m.dur){
                 const R=105;
                 for(const o of list){
                     if(o.hp<=0||(o.x-m.tx)**2+(o.y-m.ty)**2>R*R)continue;
                     igniteEnemy(o,360);hurtFlat(o,p.damage*1.5,'🍾','#ff9933');
                 }
-                for(let k=0;k<16;k++){const a=Math.random()*6.2832,v=3+Math.random()*9;fxSpark(m.tx,m.ty,Math.cos(a)*v,Math.sin(a)*v-2,26+Math.random()*14,2.4+Math.random()*2,FIRE_COLS[k%5],{drag:0.94,g:0.13});}   // shattering glass + sparks
-                if(m.pud){   // aimed at tar: the bottle sets the puddle ablaze directly
-                    if(!(m.pud.fire>0)&&m.pud.t>0)lightTar(m.pud);
-                    fxBurst(m.tx,m.ty,12,'#ff8800',2,9,24,3,{g:0.05});
-                }else{
-                    state.firePools=state.firePools||[];if(state.firePools.length>16)state.firePools.shift();state.firePools.push({x:m.tx,y:m.ty,r:R,t:240});
-                    addRing(m.tx,m.ty,R+20,18,'#ff6a00',5);addRing(m.tx,m.ty,R*0.6,12,'#ffe066',3);
-                    fxBurst(m.tx,m.ty,32,'#ff8800',2,10,28,3,{g:0.05});fxBurst(m.tx,m.ty,10,'#fff0a0',1,6,20,3);fxShake(6);
-                }
+                state.firePools=state.firePools||[];state.firePools.push({x:m.tx,y:m.ty,r:R,t:240});
+                addRing(m.tx,m.ty,R+20,18,'#ff6a00',5);addRing(m.tx,m.ty,R*0.6,12,'#ffe066',3);
+                fxBurst(m.tx,m.ty,32,'#ff8800',2,10,28,3,{g:0.05});fxBurst(m.tx,m.ty,10,'#fff0a0',1,6,20,3);fxShake(6);
                 ms.splice(i,1);
             }
         }
@@ -1406,25 +1367,11 @@ function burnTick(){
     const tb=state.tarBlobs;
     if(tb&&tb.length){
         for(let i=tb.length-1;i>=0;i--){
-            const m=tb[i];m.t++;if(m.t<0)continue;
+            const m=tb[i];m.t++;
             const k=Math.min(1,m.t/m.dur);
-            m.x=m.x0+(m.tx-m.x0)*k;m.y=m.y0+(m.ty-m.y0)*k-Math.sin(k*Math.PI)*(m.hop||110);m.rot+=0.3;
+            m.x=m.x0+(m.tx-m.x0)*k;m.y=m.y0+(m.ty-m.y0)*k-Math.sin(k*Math.PI)*110;m.rot+=0.3;
             if(m.t%2===0)fxSpark(m.x,m.y,(Math.random()-.5)*1.4,0.6+Math.random(),18,3,Math.random()<0.5?'#6a4fb0':'#8a6ae0',{trail:false,g:0.12});
-            if(m.t>=m.dur){
-                const pud=tarLand(m.tx,m.ty,{r:m.r});
-                tb.splice(i,1);
-                if(m.kids>0){   // it bounces: the glob splits into smaller blobs that hop out of the splash
-                    const pair=[];
-                    for(let j=0;j<m.kids;j++){
-                        const a=Math.random()*6.2832,rr=100+Math.random()*90;
-                        const kx=Math.max(50,Math.min(canvas.width-50,m.tx+Math.cos(a)*rr)),ky=Math.max(50,Math.min(canvas.height-50,m.ty+Math.sin(a)*rr));
-                        const kb={x0:m.tx,y0:m.ty,x:m.tx,y:m.ty,tx:kx,ty:ky,t:-j*2,dur:20+Math.floor(Math.random()*7),rot:0,gen:m.gen+1,kids:0,r:88,hop:95,sib:null};tb.push(kb);pair.push(kb);
-                    }
-                    if(pair.length>1){pair[0].sib=pair[1];pair[1].sib=pair[0];pair[0].lead=true;}
-                    for(let k=0;k<10;k++){const a=-1.57+(Math.random()-.5)*2.2,v=4+Math.random()*7;fxSpark(m.tx,m.ty,Math.cos(a)*v,Math.sin(a)*v,26,3.2,Math.random()<0.5?'#6a4fb0':'#8a6ae0',{trail:false,g:0.26,drag:0.97});}   // droplet crown as the slime bounces back up
-                    if(m.gen===0&&state.player){const pl=state.player;(state.molotovs=state.molotovs||[]).push({x0:pl.x,y0:pl.y,x:pl.x,y:pl.y,tgt:null,pud:pud,tx:m.tx,ty:m.ty,t:-(16+Math.floor(Math.random()*10)),dur:Math.max(26,Math.min(44,Math.round(Math.hypot(m.tx-pl.x,m.ty-pl.y)/18))),rot:0});}
-                }
-            }
+            if(m.t>=m.dur){tarLand(m.tx,m.ty);tb.splice(i,1);}
         }
     }
     const tp=state.tarPuddles;
@@ -1448,175 +1395,98 @@ function burnTick(){
                     const dx=o.x-f.x,dy=(o.y-f.y)/0.8;
                     if(dx*dx+dy*dy>=rr)continue;
                     o.oil=Math.max(o.oil||0,180);
-                    if(!o.stuckTo&&!(o.stuckImm>0))tarStick(o,f);
                     if(burning)igniteEnemy(o,300);else if(o.burn)lit=true;
                 }
-                if(lit&&!burning)lightTar(f);
+                if(lit&&!burning){
+                    f.fire=300;f.t=Math.min(f.t,300);
+                    popup(f.x,f.y-34,'🔥 TAR IGNITES!','#ff8a2a',90);
+                    addRing(f.x,f.y,f.r,18,'#ff6a00',5);addRing(f.x,f.y,f.r*0.6,12,'#ffe066',3);
+                    fxBurst(f.x,f.y,30,'#ff8800',2,10,28,3,{g:0.05});fxShake(5);
+                }
             }
             if(f.t<=0)tp.splice(i,1);
         }
     }
 
-    state.fireOn=stay||!!state._fireNew||(ms&&ms.length>0)||(fp&&fp.length>0)||(state.tarBlobs&&state.tarBlobs.length>0)||(state.tarPuddles&&state.tarPuddles.length>0)||!!state.phoenix;state._fireNew=false;
+    state.fireOn=stay||!!state._fireNew||(ms&&ms.length>0)||(fp&&fp.length>0)||(state.tarBlobs&&state.tarBlobs.length>0)||(state.tarPuddles&&state.tarPuddles.length>0);state._fireNew=false;
 }
-function tarStick(e,f){e.stuckTo=f;e.stuckT=e.isMega?100:e.isBoss?160:260;e.sx=e.x;e.sy=e.y;e.reel=0;}   // remembers where it got stuck: that is the point it gets reeled back to
-function lightTar(f){
-    f.fire=300;f.t=Math.min(f.t,300);
-    popup(f.x,f.y-34,'🔥 TAR IGNITES!','#ff8a2a',90);
-    addRing(f.x,f.y,f.r,18,'#ff6a00',5);addRing(f.x,f.y,f.r*0.6,12,'#ffe066',3);
-    fxBurst(f.x,f.y,f.r>110?26:16,'#ff8800',2,10,28,3,{g:0.05});fxShake(5);
-    for(let i=0;i<22;i++){const a=Math.random()*6.2832,v=3+Math.random()*9;fxSpark(f.x+Math.cos(a)*f.r*0.5,f.y+Math.sin(a)*f.r*0.4,Math.cos(a)*v,Math.sin(a)*v-3,28+Math.random()*16,2.4+Math.random()*2,FIRE_COLS[i%5],{drag:0.94,g:0.12});}
-}
-// ═══════════════════════════════════════════════════
-//  v2.7 — PHIREBRANDED PHOENIX (SPACE): a huge flaming bird, wings spread, that flies in a cone and sets everything it crosses ablaze
-// ═══════════════════════════════════════════════════
-function phoenixCast(p){
-    const ang=Math.atan2(state.mouseY-p.y,state.mouseX-p.x);   // v2.8: always flies at the cursor (the auto-target setting no longer redirects it)
-    state.phoenix={x:p.x+Math.cos(ang)*40,y:p.y+Math.sin(ang)*40,ang:ang,t:0,dist:0,range:720,hit:new Set()};
-    state.fireOn=true;state._fireNew=true;
-    popup(p.x,p.y-55,'🔥 PHIREBRANDED PHOENIX!','#ff8a2a',130);
-    addRing(p.x,p.y,150,16,'#ff8a2a',5);addRing(p.x,p.y,90,12,'#ffe066',3);
-    fxBurst(p.x,p.y,18,'#ffaa33',2,9,22,2.8,{g:-0.03});fxShake(8);
-    for(let k=0;k<22;k++){const a=ang+(Math.random()-.5)*1.6,v=6+Math.random()*10;fxSpark(p.x,p.y,Math.cos(a)*v,Math.sin(a)*v,24+Math.random()*14,2.4+Math.random()*2.2,FIRE_COLS[k%5],{drag:0.94,g:0.05});}
-    return true;
-}
-function phoenixTick(){
-    const ph=state.phoenix,p=state.player;
-    if(!ph||!p)return;
-    ph.t++;
-    const sp=ph.t<8?10+ph.t*1.9:25,c=Math.cos(ph.ang),s=Math.sin(ph.ang);   // v2.8: ~2x faster, with a limited range
-    ph.x+=c*sp;ph.y+=s*sp;ph.dist+=sp;
-    const fade=Math.max(0,Math.min(1,(ph.range-ph.dist)/260));
-    // the cone: tip at the beak (+95), flaring to 197px either side at the tail (-130)
-    const T=liveTargets();
-    for(let i=0;i<T.length&&fade>0.12;i++){
-        const o=T[i];if(ph.hit.has(o))continue;
-        const dx=o.x-ph.x,dy=o.y-ph.y,lx=dx*c+dy*s,ly=-dx*s+dy*c,pad=o.isBoss?20:0;
-        if(lx<-130-pad||lx>95+pad||Math.abs(ly)>22+175*(95-lx)/225+pad)continue;
-        ph.hit.add(o);
-        ultHurt(o,0.1,o.isMega?0.004:0.012,p.damage*6,'🔥','#ff8a2a');
-        igniteEnemy(o,540);
-        fxBurst(o.x,o.y,8,'#ff8800',2,7,22,3,{g:-0.04});addRing(o.x,o.y,60,12,'#ffcc33',3);
-        for(let k=0;k<12;k++){const a=Math.random()*6.2832,v=4+Math.random()*9;fxSpark(o.x,o.y,Math.cos(a)*v+c*4,Math.sin(a)*v+s*4,26+Math.random()*16,2.4+Math.random()*2,FIRE_COLS[k%5],{drag:0.93,g:0.1});}   // sparks fly off every enemy it scorches
-        fxShake(3);
-    }
-    // wing-tip fire and a trail of embers
-    if(settings.particles&&fade>0.05){
-        for(let k=0;k<3;k++){const lx=60-Math.random()*190,w=22+175*(95-lx)/225,ly=(Math.random()<0.5?-1:1)*w*(0.7+Math.random()*0.3);fxSpark(ph.x+lx*c-ly*s,ph.y+lx*s+ly*c,-c*(2+Math.random()*3)+(Math.random()-.5)*3,-s*(2+Math.random()*3)+(Math.random()-.5)*3,22+Math.random()*14,2+Math.random()*2.2,FIRE_COLS[Math.floor(Math.random()*5)],{drag:0.94,g:0.05});}   // spark spray off the wings
-        for(let k=-1;k<=1;k+=2){
-            const lx=-100+Math.random()*30,ly=k*(150+Math.random()*35);
-            fxSpark(ph.x+lx*c-ly*s,ph.y+lx*s+ly*c,-c*1.5+(Math.random()-.5),-s*1.5+(Math.random()-.5)-0.6,26,4.2,FIRE_COLS[Math.floor(Math.random()*5)],{trail:false,g:-0.03,drag:0.97});
-        }
-        if(ph.t%2===0){const lx=-130-Math.random()*20,ly=(Math.random()-.5)*60;fxSpark(ph.x+lx*c-ly*s,ph.y+lx*s+ly*c,-c*2,-s*2,30,4,FIRE_COLS[Math.floor(Math.random()*5)],{trail:false,g:-0.03,drag:0.96});}
-    }
-    const W=canvas.width,H=canvas.height;
-    if(ph.dist>=ph.range||ph.x<-260||ph.x>W+260||ph.y<-260||ph.y>H+260){
-        addRing(ph.x,ph.y,140,18,'#ff6a00',4);fxBurst(ph.x,ph.y,18,'#ffaa33',2,9,28,3,{g:-0.02});
-        state.phoenix=null;
-    }
-}
-function _phPoly(pts){
-    // consistent (positive) winding so overlapping sub-paths never punch holes in the non-zero fill
-    let a=0;for(let i=0;i<pts.length;i++){const q=pts[i],n=pts[(i+1)%pts.length];a+=q[0]*n[1]-n[0]*q[1];}
-    if(a<0)pts=pts.slice().reverse();
-    ctx.moveTo(pts[0][0],pts[0][1]);for(let i=1;i<pts.length;i++)ctx.lineTo(pts[i][0],pts[i][1]);ctx.closePath();
-}
-function _phoenixPath(fl){
-    ctx.beginPath();
-    ctx.ellipse(18,0,58,19,0,0,6.2832);                 // body
-    ctx.moveTo(98,0);ctx.arc(82,0,16,0,6.2832);           // head
-    _phPoly([[93,-7],[121,1],[93,8]]);                    // beak
-    _phPoly([[76,-12],[52,-30],[66,-5]]);_phPoly([[78,-6],[46,-14],[64,2]]);_phPoly([[76,10],[50,24],[66,0]]);   // crest flames
-    for(let sg=-1;sg<=1;sg+=2){
-        const W=(x,y)=>[x,y*sg*fl];
-        _phPoly([W(50,10),W(15,55),W(-35,110),W(-100,185),W(-108,150),W(-135,165),W(-125,130),W(-148,125),W(-135,95),W(-150,85),W(-135,60),W(-140,50),W(-115,32),W(-125,18),W(-10,8)]);   // swept wing, feathered trailing edge
-    }
-    _phPoly([[-20,-9],[-150,-34],[-100,-4]]);_phPoly([[-20,0],[-170,0],[-30,12]]);_phPoly([[-20,9],[-150,34],[-100,4]]);   // tail plumes
-}
-function phoenixDraw(){
-    const ph=state.phoenix;if(!ph)return;
-    const fadeIn=Math.min(1,ph.t/5),fadeOut=Math.max(0,Math.min(1,(ph.range-ph.dist)/260)),al=fadeIn*fadeOut;
-    const fl=1+0.13*Math.sin(ph.t*0.32);
-    ctx.save();ctx.translate(ph.x,ph.y);ctx.rotate(ph.ang);
-    ctx.globalCompositeOperation='lighter';
-    // the cone itself: a soft flame wedge so the shape of the attack reads
-    const g=ctx.createLinearGradient(95,0,-135,0);g.addColorStop(0,'rgba(255,200,80,0.26)');g.addColorStop(1,'rgba(255,90,0,0.07)');
-    ctx.globalAlpha=al;ctx.fillStyle=g;ctx.beginPath();ctx.moveTo(95,-22);ctx.lineTo(95,22);ctx.lineTo(-130,197);ctx.lineTo(-130,-197);ctx.closePath();ctx.fill();
-    const gs=glowSprite('#ff7a1a');ctx.globalAlpha=0.5*al;ctx.drawImage(gs,-210,-210,420,420);
-    _phoenixPath(fl);
-    ctx.globalAlpha=0.35*al;ctx.strokeStyle='#ff5a00';ctx.lineWidth=16;ctx.lineJoin='round';ctx.stroke();
-    ctx.globalAlpha=0.62*al;ctx.fillStyle='#ff4a00';ctx.fill();
-    ctx.save();ctx.translate(-8,0);ctx.scale(0.8,0.8);_phoenixPath(fl);ctx.globalAlpha=0.8*al;ctx.fillStyle='#ff9a2a';ctx.fill();ctx.restore();
-    ctx.save();ctx.translate(-4,0);ctx.scale(0.55,0.55);_phoenixPath(fl);ctx.globalAlpha=0.75*al;ctx.fillStyle='#ffe066';ctx.fill();ctx.restore();
-    ctx.save();ctx.translate(0,0);ctx.scale(0.28,0.28);_phoenixPath(fl);ctx.globalAlpha=0.7*al;ctx.fillStyle='#fff6d0';ctx.fill();ctx.restore();
-    ctx.globalCompositeOperation='source-over';
-    ctx.globalAlpha=al;ctx.fillStyle='#2a0a00';ctx.beginPath();ctx.arc(87,-4,3.6,0,6.2832);ctx.fill();   // eye
-    ctx.fillStyle='#ffffff';ctx.beginPath();ctx.arc(88,-5,1.2,0,6.2832);ctx.fill();
-    ctx.restore();
-}
-// ═══════════════════════════════════════════════════
-//  v2.7 — ARSON PARTY (R): bouncing tar blobs + molotovs for the nearest / strongest / weakest / furthest and every tar puddle
-// ═══════════════════════════════════════════════════
-const TAR_R=175,TAR_LIFE=840,TAR_RANGE=760,TAR_MAX=14;
 function arsonParty(p){
-    const RANGE=620,W=canvas.width,H=canvas.height;
-    const T=liveTargets().filter(e=>(e.x-p.x)**2+(e.y-p.y)**2<RANGE*RANGE);
-    const tp=state.tarPuddles||[];
-    if(!T.length&&!tp.length){popup(p.x,p.y-40,'no targets in range','#ff9944',80);return false;}
-    const ms=(state.molotovs=state.molotovs||[]),tb=(state.tarBlobs=state.tarBlobs||[]);
-    const clampX=x=>Math.max(50,Math.min(W-50,x)),clampY=y=>Math.max(50,Math.min(H-50,y));
-    const mol=(x,y,tgt,pud,delay)=>{
-        const tx=clampX(x),ty=clampY(y),d=Math.sqrt((tx-p.x)**2+(ty-p.y)**2);
-        ms.push({x0:p.x,y0:p.y,x:p.x,y:p.y,tgt:tgt,pud:pud,tx:tx,ty:ty,t:-delay,dur:Math.max(26,Math.min(44,Math.round(d/18))),rot:0});
-    };
-    // 4 tar blobs: thickest clusters first, then they bounce into smaller blobs
-    const spots=[];
-    for(let i=0;i<4;i++){
-        let best=null,bc=-1;
-        for(const e of T){
-            if(spots.some(s=>(s.x-e.x)**2+(s.y-e.y)**2<150*150))continue;
-            let c=0;for(const o of T)if((o.x-e.x)**2+(o.y-e.y)**2<250*250)c+=o.isBoss?2:1;
-            if(c>bc){bc=c;best=e;}
+    // v2.0: the bottles go for the TAR first — one per unlit puddle (the fullest ones first), spare bottles splash on the next-best spot
+    const RANGE=620,SHOTS=4,ms=(state.molotovs=state.molotovs||[]);
+    const T=liveTargets();
+    const aim=[];
+    const pud=(state.tarPuddles||[]).filter(f=>!(f.fire>0));
+    if(pud.length){
+        const fill=f=>{let n=0;for(const e of T)if((e.x-f.x)**2+(e.y-f.y)**2<f.r*f.r)n+=e.isBoss?2:1;return n;};
+        pud.map(f=>({f,n:fill(f)})).sort((a,b)=>b.n-a.n).forEach(o=>{if(aim.length<SHOTS)aim.push({x:o.f.x,y:o.f.y,tgt:null});});
+        // spare bottles: spread over the biggest puddles (offset so they don't stack) 
+        for(let k=0;aim.length<SHOTS&&k<SHOTS;k++){
+            const f=pud[k%pud.length],a=k*2.4+Math.random(),r=f.r*0.45;
+            aim.push({x:f.x+Math.cos(a)*r,y:f.y+Math.sin(a)*r*0.8,tgt:null});
         }
-        if(best)spots.push({x:best.x,y:best.y});
-        else{const a=Math.random()*6.2832,r=200+Math.random()*260;spots.push({x:p.x+Math.cos(a)*r,y:p.y+Math.sin(a)*r});}
+        // this was a fire-in-the-hole for the tar, so only add enemy bottles if every puddle is already covered
+    } else {
+        const near=T.filter(e=>(e.x-p.x)**2+(e.y-p.y)**2<RANGE*RANGE).sort((a,b)=>(a.x-p.x)**2+(a.y-p.y)**2-((b.x-p.x)**2+(b.y-p.y)**2));
+        near.slice(0,SHOTS).forEach(e=>aim.push({x:e.x,y:e.y,tgt:e}));
     }
-    spots.forEach((s,i)=>{
-        const tx=clampX(s.x),ty=clampY(s.y),fd=Math.sqrt((tx-p.x)**2+(ty-p.y)**2);
-        tb.push({x0:p.x,y0:p.y,x:p.x,y:p.y,tx:tx,ty:ty,t:-i*5,dur:Math.max(18,Math.min(34,Math.round(fd/20))),rot:0,gen:0,kids:2,r:125,hop:110});
+    if(!aim.length){popup(p.x,p.y-40,'no targets in range','#ff9944',80);return false;}
+    state.fireOn=true;
+    const W=canvas.width,H=canvas.height;
+    aim.forEach((a,i)=>{
+        const tx=Math.max(40,Math.min(W-40,a.x)),ty=Math.max(40,Math.min(H-40,a.y));
+        const d=Math.sqrt((tx-p.x)**2+(ty-p.y)**2);
+        ms.push({x0:p.x,y0:p.y,x:p.x,y:p.y,tgt:a.tgt,tx:tx,ty:ty,t:-i*6,dur:Math.max(26,Math.min(44,Math.round(d/18))),rot:0});
     });
-    // molotovs: nearest / strongest / weakest / furthest (distinct enemies), plus one onto every tar puddle already on the floor
-    const used=new Set(),d2=e=>(e.x-p.x)**2+(e.y-p.y)**2;
-    const pick=cmp=>{let b=null;for(const e of T){if(used.has(e))continue;if(!b||cmp(e,b)<0)b=e;}if(b){used.add(b);mol(b.x,b.y,b,null,used.size*4);}};
-    pick((a,b)=>d2(a)-d2(b));pick((a,b)=>b.hp-a.hp);pick((a,b)=>a.hp-b.hp);pick((a,b)=>d2(b)-d2(a));
-    let k=0;for(const f of tp){if(!(f.fire>0)){mol(f.x,f.y,null,f,18+k*3);k++;}}
-    state.fireOn=true;state._fireNew=true;
-    popup(p.x,p.y-55,'🍾 ARSON PARTY!','#ff8800',140);
-    fxBurst(p.x,p.y,12,'#8a6ae0',2,8,20,2.6,{g:0.08});fxBurst(p.x,p.y,8,'#ffaa33',2,7,18,2.4);
-    for(let k=0;k<18;k++){const a=Math.random()*6.2832,v=3+Math.random()*8;fxSpark(p.x,p.y,Math.cos(a)*v,Math.sin(a)*v,24+Math.random()*12,2.2+Math.random()*2,FIRE_COLS[k%5],{drag:0.93,g:0.06});}
+    popup(p.x,p.y-55,pud.length?'🍾 FIRE IN THE TAR!':'🍾 ARSON PARTY!','#ff8800',140);
+    fxBurst(p.x,p.y,10,'#ffaa33',2,7,18,2.4);
     return true;
 }
-// a tar blob hits the ground: splash-oil everything nearby, stick the ones inside and leave a puddle
-function tarLand(x,y,o){
-    o=o||{};
+// ═══════════════════════════════════════════════════
+//  v1.8 — TAR TOSS: a thrown tar glob that splashes oil and leaves a puddle
+// ═══════════════════════════════════════════════════
+const TAR_R=230,TAR_LIFE=840,TAR_RANGE=760,TAR_MAX=4;
+function tarToss(p){
+    const W=canvas.width,H=canvas.height;
+    let tx,ty;
+    const _pk=abilityPick(p.x,p.y);
+    if(_pk){tx=_pk.x;ty=_pk.y;}
+    else if(abilityMode()!=='auto'){const a=Math.atan2(state.mouseY-p.y,state.mouseX-p.x);tx=p.x+Math.cos(a)*380;ty=p.y+Math.sin(a)*380;}
+    else{
+        // smart: land on the thickest cluster of in-arena enemies within throwing range (bosses count double)
+        const T=liveTargets();let bc=-1,bd=Infinity,best=null;
+        for(let i=0;i<T.length;i++){
+            const e=T[i],dd=(e.x-p.x)**2+(e.y-p.y)**2;
+            if(dd>TAR_RANGE*TAR_RANGE)continue;
+            let c=0;for(let k=0;k<T.length;k++){if((T[k].x-e.x)**2+(T[k].y-e.y)**2<250*250)c+=T[k].isBoss?2:1;}
+            if(c>bc||(c===bc&&dd<bd)){bc=c;bd=dd;best=e;}
+        }
+        if(best){tx=best.x;ty=best.y;}
+        else{const a=Math.atan2(state.mouseY-p.y,state.mouseX-p.x);tx=p.x+Math.cos(a)*380;ty=p.y+Math.sin(a)*380;}
+    }
+    const dx=tx-p.x,dy=ty-p.y,d=Math.sqrt(dx*dx+dy*dy)||1;
+    if(d>TAR_RANGE){tx=p.x+dx/d*TAR_RANGE;ty=p.y+dy/d*TAR_RANGE;}
+    tx=Math.max(60,Math.min(W-60,tx));ty=Math.max(60,Math.min(H-60,ty));
+    const fd=Math.sqrt((tx-p.x)**2+(ty-p.y)**2);
+    (state.tarBlobs||(state.tarBlobs=[])).push({x0:p.x,y0:p.y,x:p.x,y:p.y,tx:tx,ty:ty,t:0,dur:Math.max(18,Math.min(36,Math.round(fd/20))),rot:0});
+    state.fireOn=true;state._fireNew=true;
+    popup(p.x,p.y-55,'🛢 TAR TOSS!','#a98cf0',110);
+    fxBurst(p.x,p.y,10,'#8a6ae0',2,7,20,2.6,{g:0.08});
+    return true;
+}
+// the glob hits the ground: splash-oil everything nearby and leave a puddle
+function tarLand(x,y){
     const tp=state.tarPuddles||(state.tarPuddles=[]);
     while(tp.length>=TAR_MAX)tp.shift();
-    const r=o.r||TAR_R;
-    const pud={x:x,y:y,r:r,t:TAR_LIFE,age:0,fire:0,seed:Math.random()*6.28};
-    tp.push(pud);
-    const R=r+35,small=r<110;let n=0;
+    tp.push({x:x,y:y,r:TAR_R,t:TAR_LIFE,age:0,fire:0,seed:Math.random()*6.28});
+    const R=TAR_R+50;let n=0;
     for(const e of allTargets()){
-        if(e.hp<=0)continue;
-        const dd=(e.x-x)**2+(e.y-y)**2;
-        if(dd>R*R)continue;
+        if(e.hp<=0||(e.x-x)**2+(e.y-y)**2>R*R)continue;
         e.oil=Math.max(e.oil||0,540);e.oilAng=undefined;n++;
-        if(dd<r*r&&!e.stuckTo&&!(e.stuckImm>0))tarStick(e,pud);
-        if(!small||n<6)fxBurst(e.x,e.y,5,'#7a5ad0',1,4,22,2.8,{g:0.1,trail:false});
+        fxBurst(e.x,e.y,6,'#7a5ad0',1,4,22,2.8,{g:0.1,trail:false});
     }
-    if(!small)popup(x,y-48,'🛢 TAR! ('+n+')','#a98cf0',110);
-    addRing(x,y,r,20,'#6a4fb0',small?5:7);addRing(x,y,r*0.62,14,'#88ddff',3);
-    fxBurst(x,y,small?16:30,'#8a6ae0',3,12,28,3.2,{g:0.12});fxBurst(x,y,small?6:12,'#1b0f33',2,8,24,4,{g:0.15,trail:false});fxShake(small?3:6);
-    return pud;
+    popup(x,y-48,'🛢 TAR! ('+n+')','#a98cf0',120);
+    addRing(x,y,TAR_R,22,'#6a4fb0',7);addRing(x,y,TAR_R*0.62,16,'#88ddff',3);addRing(x,y,TAR_R*0.3,12,'#c9b3ff',2);
+    fxBurst(x,y,34,'#8a6ae0',3,12,30,3.2,{g:0.12});fxBurst(x,y,14,'#1b0f33',2,8,26,4,{g:0.15,trail:false});fxShake(7);
 }
 let _tarSpr=null;
 function tarSprite(){
@@ -1687,9 +1557,8 @@ function tarPuddleDraw(){
         const spr=tarSprite(),fs=fireSprite();
         ctx.save();
         for(const f of tpd){
-            // jelly landing: it flattens out past its size, then wobbles back like slime
-            const a=f.age,wob=Math.exp(-a/7)*Math.cos(a*0.5),amp=0.32+0.6*Math.max(0,1-a/4),sc=Math.max(0.12,1-wob*amp),fade=Math.min(1,f.t/45);
-            const w=f.r*2*sc*(1+0.08*wob),h=f.r*1.6*sc*(1-0.1*wob);
+            const grow=Math.min(1,f.age/14),sc=0.25+0.75*(1-Math.pow(1-grow,3)),fade=Math.min(1,f.t/45);
+            const w=f.r*2*sc,h=f.r*1.6*sc;
             ctx.globalAlpha=0.93*fade;ctx.drawImage(spr,f.x-w/2,f.y-h/2,w,h);
             ctx.globalAlpha=0.3*fade*(0.6+0.4*Math.sin(state.frameCount*0.07+f.seed));   // slow glossy shimmer
             ctx.strokeStyle='#9fe6ff';ctx.lineWidth=3;ctx.beginPath();ctx.ellipse(f.x-f.r*0.25*sc,f.y-f.r*0.18*sc,f.r*0.38*sc,f.r*0.2*sc,-0.3,3.5,4.9);ctx.stroke();
@@ -1702,16 +1571,6 @@ function tarPuddleDraw(){
         }
         ctx.restore();
     }
-    // oil sheen under enemies (drawn here, BEFORE the entities, so they stay on top of the tar)
-    const list=allTargets();
-    ctx.save();
-    for(const e of list){
-        if(e.hp<=0||!(e.oil>0)||e.x<-40||e.x>canvas.width+40||e.y<-40||e.y>canvas.height+40)continue;
-        const r=e.isBoss?34:19,fade=Math.min(1,e.oil/40);
-        ctx.globalAlpha=0.45*fade;ctx.fillStyle='#1b0f33';ctx.beginPath();ctx.ellipse(e.x,e.y+r*0.6,r,r*0.45,0,0,6.2832);ctx.fill();
-        ctx.globalAlpha=0.5*fade;ctx.strokeStyle='#8fd8ff';ctx.lineWidth=2;ctx.beginPath();ctx.ellipse(e.x,e.y+r*0.6,r*0.7,r*0.32,0,3.6,4.9);ctx.stroke();
-    }
-    ctx.restore();
 }
 function arsonDraw(){
     const p=state.player;if(!p||!state.fireOn)return;
@@ -1719,20 +1578,14 @@ function arsonDraw(){
     if(tbl&&tbl.length){
         ctx.save();
         for(const m of tbl){
-            if(m.t<0)continue;
             const k=Math.min(1,m.t/m.dur),gx=m.x0+(m.tx-m.x0)*k,gy=m.y0+(m.ty-m.y0)*k;
             ctx.globalAlpha=0.25+0.35*k;ctx.strokeStyle='#8a6ae0';ctx.lineWidth=2;ctx.setLineDash([6,6]);
-            ctx.beginPath();ctx.ellipse(m.tx,m.ty,(m.r||TAR_R)*k,(m.r||TAR_R)*0.8*k,0,0,6.2832);ctx.stroke();ctx.setLineDash([]);
-            ctx.globalAlpha=0.3;ctx.fillStyle='#000';ctx.beginPath();ctx.ellipse(gx,gy+6,m.gen?9:13,m.gen?4:6,0,0,6.2832);ctx.fill();   // ground shadow
-            // slime: stretches along its flight, squashes just before it hits, wobbles
-            const cv=Math.cos(k*Math.PI),R=m.gen?10:14,sq=1+0.3*Math.abs(cv)*(k<0.88?1:-0.8)+0.06*Math.sin(m.rot*2.4),rx=R/sq,ry=R*sq;
-            if(m.sib&&m.sib.t>=0&&m.lead){   // the two halves are still joined by a stretching string of tar
-                const o=m.sib,dd=Math.hypot(o.x-m.x,o.y-m.y);
-                if(dd<120){ctx.globalAlpha=0.95;ctx.strokeStyle='#140b27';ctx.lineCap='round';ctx.lineWidth=Math.max(1.5,9-dd/14);ctx.beginPath();ctx.moveTo(m.x,m.y);ctx.quadraticCurveTo((m.x+o.x)/2,(m.y+o.y)/2+dd*0.18,o.x,o.y);ctx.stroke();}
-            }
-            ctx.globalAlpha=1;ctx.fillStyle='#140b27';ctx.beginPath();ctx.ellipse(m.x,m.y,rx,ry,0,0,6.2832);ctx.fill();
-            ctx.fillStyle='#3d2a73';ctx.beginPath();ctx.ellipse(m.x-rx*0.27,m.y-ry*0.33,rx*0.4,ry*0.27,-0.5,0,6.2832);ctx.fill();
-            ctx.globalAlpha=0.9;ctx.fillStyle='#cfeaff';ctx.beginPath();ctx.arc(m.x-rx*0.33,m.y-ry*0.4,R*0.16,0,6.2832);ctx.fill();
+            ctx.beginPath();ctx.ellipse(m.tx,m.ty,TAR_R*k,TAR_R*0.8*k,0,0,6.2832);ctx.stroke();ctx.setLineDash([]);
+            ctx.globalAlpha=0.3;ctx.fillStyle='#000';ctx.beginPath();ctx.ellipse(gx,gy+6,14,6,0,0,6.2832);ctx.fill();   // ground shadow
+            const sq=1+0.18*Math.sin(m.rot*2);
+            ctx.globalAlpha=1;ctx.fillStyle='#140b27';ctx.beginPath();ctx.ellipse(m.x,m.y,15*sq,15/sq,0,0,6.2832);ctx.fill();
+            ctx.fillStyle='#3d2a73';ctx.beginPath();ctx.ellipse(m.x-4,m.y-5,6,4,-0.5,0,6.2832);ctx.fill();
+            ctx.globalAlpha=0.9;ctx.fillStyle='#cfeaff';ctx.beginPath();ctx.arc(m.x-5,m.y-6,2.4,0,6.2832);ctx.fill();
         }
         ctx.restore();
     }
@@ -1762,32 +1615,17 @@ function arsonDraw(){
         }
         ctx.restore();
     }
-    phoenixDraw();
     // oil sheen + flames on afflicted enemies
     const list=allTargets();
-    // v2.7: tar strands — a V of sticky tar between each stuck enemy and the puddle holding it
-    let sv=false;
-    for(const e of list){
-        if(!e.stuckTo||e.hp<=0||e.x<-40||e.x>canvas.width+40||e.y<-40||e.y>canvas.height+40)continue;
-        if(!sv){sv=true;ctx.save();ctx.lineCap='round';ctx.beginPath();}
-        const r=e.isBoss?32:17,dist=Math.hypot(e.sx-e.x,e.sy-e.y),near=dist<36,ax=near?e.x:e.sx,ay=near?e.y+r*0.9+8:e.sy,sag=Math.max(0,16-dist*0.07);
-        let px=e.x-r*0.85,py=e.y+r*0.25;ctx.moveTo(px,py);ctx.quadraticCurveTo((px+ax)/2,(py+ay)/2+sag,ax,ay);
-        px=e.x+r*0.85;ctx.moveTo(px,py);ctx.quadraticCurveTo((px+ax)/2,(py+ay)/2+sag,ax,ay);
-    }
-    if(sv){
-        ctx.globalAlpha=0.95;ctx.strokeStyle='#150a2b';ctx.lineWidth=5;ctx.stroke();
-        ctx.globalAlpha=0.8;ctx.strokeStyle='#7a5ad0';ctx.lineWidth=1.6;ctx.stroke();
-        ctx.globalAlpha=0.95;ctx.fillStyle='#150a2b';ctx.beginPath();
-        for(const e of list){
-            if(!e.stuckTo||e.hp<=0||e.x<-40||e.x>canvas.width+40||e.y<-40||e.y>canvas.height+40)continue;
-            const r=e.isBoss?32:17,dist=Math.hypot(e.sx-e.x,e.sy-e.y),near=dist<36,ax=near?e.x:e.sx,ay=near?e.y+r*0.9+8:e.sy,w=near?8:10+(e.reel>0?3:0);
-            ctx.moveTo(ax+w,ay);ctx.ellipse(ax,ay,w,w*0.55,0,0,6.2832);
-        }
-        ctx.fill();ctx.restore();
-    }
     ctx.save();ctx.textAlign='center';ctx.textBaseline='middle';
     for(const e of list){
         if(e.hp<=0||e.x<-40||e.x>canvas.width+40||e.y<-40||e.y>canvas.height+40)continue;
+        if(e.oil>0){
+            const r=e.isBoss?34:19,fade=Math.min(1,e.oil/40);
+            ctx.globalAlpha=0.5*fade;ctx.fillStyle='#1b0f33';ctx.beginPath();ctx.ellipse(e.x,e.y+4,r,r*0.85,0,0,6.2832);ctx.fill();
+            ctx.globalAlpha=0.55*fade;ctx.strokeStyle='#8fd8ff';ctx.lineWidth=2;ctx.beginPath();ctx.arc(e.x,e.y+4,r*0.7,3.6,4.7);ctx.stroke();
+            ctx.strokeStyle='#c9a0ff';ctx.beginPath();ctx.arc(e.x,e.y+4,r*0.7,4.8,5.6);ctx.stroke();
+        }
         if(e.burn){
             const s=(e.isBoss?30:18)+Math.sin(state.frameCount*0.6+e.x)*3;
             ctx.globalAlpha=0.9;ctx.font=_flameFont(Math.round(s));ctx.fillText('🔥',e.x,e.y-(e.isBoss?22:14));
@@ -1798,11 +1636,11 @@ function arsonDraw(){
 function infernoImpact(F,p,d,x,y){
     const main=d.tgt&&d.tgt.hp>0?d.tgt:null;
     // MASSIVE hit on the target, 1/4 of it to everything nearby
-    const base=Math.max(p.damage*120,main?main.maxHp*(main.isMega?0.04:main.isBoss?0.5:1.0):0);   // v2.7: hits harder still
+    const base=Math.max(p.damage*72,main?main.maxHp*(main.isBoss?0.4:0.9):0);   // v1.8: hits harder
     if(main){popup(main.x,main.y-50,'☄ -'+Math.floor(base),'#ffcc33',120);hurtFlat(main,base);}
     for(const o of allTargets()){
         if(o===main||o.hp<=0||(o.x-x)**2+(o.y-y)**2>280*280)continue;
-        igniteEnemy(o,480);hurtFlat(o,base*0.5,'🔥','#ff8833');
+        igniteEnemy(o,480);hurtFlat(o,base*0.4,'🔥','#ff8833');
     }
     fxFlash('#fff2cc',0.9,18);fxShake(30);
     addRing(x,y,440,34,'#ff5500',9);addRing(x,y,270,26,'#ffcc33',6);addRing(x,y,140,18,'#ffffff',4);
@@ -1919,13 +1757,13 @@ ULT_IMPL.noglin={
                     addRing(e.x,e.y,190,16,'#ff66ff',4);fxBurst(e.x,e.y,16,'#ff88dd',3,10,26,2.8);fxShake(3);
                     for(const o of T){
                         if(o===e||o.hp<=0)continue;
-                        if((o.x-e.x)**2+(o.y-e.y)**2<190*190){hiveHurt(o,0.06,0.01,0.022,p.damage*2.5,'🧠','#ff88ff');ULT_IMPL.noglin.infect(F,d,o,p,e);}
+                        if((o.x-e.x)**2+(o.y-e.y)**2<190*190){ultHurt(o,0.12,0.01,p.damage*4,'🧠','#ff88ff');ULT_IMPL.noglin.infect(F,d,o,p,e);}
                     }
                 }
                 d.list.splice(i,1);e._slug=0;continue;
             }
             if(!e.isBoss)e.stunned=Math.max(e.stunned||0,2);
-            if((f+1-e._slug)%20===0&&f+1!==e._slug)hiveHurt(e,0.012,0.005,0.012,p.damage*0.9,'🧠','#ff66ff');
+            if((f+1-e._slug)%20===0&&f+1!==e._slug)ultHurt(e,0.025,0.005,p.damage*1.5,'🧠','#ff66ff');
         }
         // spread every quarter second: each infected enemy infects the nearest clean one within 260px
         if(t%15===0&&t<F.dur-20){
@@ -1944,7 +1782,7 @@ ULT_IMPL.noglin={
         if(t===last){   // the hive tears out of every survivor
             for(const e of d.list.slice()){
                 if(e.hp<=0)continue;
-                hiveHurt(e,0.16,0.04,0.09,p.damage*4,'🧠','#ffaaff');addRing(e.x,e.y,90,14,'#ff66ff',4);fxBurst(e.x,e.y,10,'#ff88dd',3,10,22,2.6);
+                ultHurt(e,0.3,0.04,p.damage*6,'🧠','#ffaaff');addRing(e.x,e.y,90,14,'#ff66ff',4);fxBurst(e.x,e.y,10,'#ff88dd',3,10,22,2.6);
                 e._slug=0;
             }
             d.list.length=0;
@@ -2229,7 +2067,7 @@ function glitterTick(){
                 for(let k=0;k<T.length;k++){
                     const e=T[k];if((e.x-g.tx)**2+(e.y-g.ty)**2>R2||e.hp<=0)continue;
                     if(!e.isBoss&&!e.isMega)e.confused=Math.max(e.confused||0,40);
-                    hurtFlat(e,Math.max(p.damage*1.3,e.maxHp*(e.isBoss?0.001:0.011)),k%4===0?'✨':'','#ff99dd');
+                    hurtFlat(e,Math.max(p.damage*0.9,e.maxHp*(e.isBoss?0.0008:0.008)),k%4===0?'✨':'','#ff99dd');
                 }
             }
             if(g.zone<=0)L.splice(i,1);
@@ -2243,7 +2081,7 @@ function glitterTick(){
             const e=T[k];if(e.hp<=0||(e.x-g.tx)**2+(e.y-g.ty)**2>R2)continue;
             hit++;
             if(!e.isBoss&&!e.isMega){e.confused=Math.max(e.confused||0,240);e.stunned=Math.max(e.stunned||0,45);}
-            hurtFlat(e,Math.max(p.damage*9,e.maxHp*(e.isBoss?0.015:0.24)),'💥','#ff88cc');
+            hurtFlat(e,Math.max(p.damage*7,e.maxHp*(e.isBoss?0.012:0.18)),'💥','#ff88cc');
         }
         fxFlash('#ff88cc',0.22,8);fxShake(9);
         addRing(g.tx,g.ty,GLITTER_R*1.15,16,'#ff88cc',6);addRing(g.tx,g.ty,GLITTER_R*0.7,12,'#ffffff',4);
@@ -3200,7 +3038,6 @@ ULT_IMPL.blahblahblah={
     }
 };
 // v2.4 PICKLE-ASTROPHE: a brine FLOOD drowns the arena in green; a pickle drops on the STRONGEST enemy every 0.1s (splashing and poisoning its neighbours)
-function hiveHurt(e,pn,pb,pm,min,tag,col){ultHurt(e,pn,e&&e.isMega?pm:pb,min,tag,col);}   // v2.7: separate Hive Mind percentages for regular / boss / Mega
 function strongestFoe(){const T=liveTargets();let b=null;for(let i=0;i<T.length;i++){const e=T[i];if(e.hp>0&&(!b||e.hp>b.hp))b=e;}return b;}
 function picklePoison(e,timer){
     if(!e||e.hp<=0)return;
@@ -3259,6 +3096,11 @@ ULT_IMPL.pickle={
         }
         // splash puddles where pickles landed
         for(let i=0;i<d.pud.length;i++){const q=d.pud[i],k=q.t/50;if(k>=1)continue;ctx.globalAlpha=0.4*(1-k);ctx.fillStyle='#7fe03a';ctx.beginPath();ctx.arc(q.x,q.y,40+k*70,0,6.2832);ctx.fill();}
+        if(t<=90){
+            ctx.globalAlpha=0.12;ctx.fillStyle='#3ca010';ctx.beginPath();ctx.arc(d.ox,d.oy,d.r,0,6.2832);ctx.fill();
+            ctx.globalAlpha=0.42;ctx.strokeStyle='#5adc1e';ctx.lineWidth=46;ctx.beginPath();ctx.arc(d.ox,d.oy,Math.max(1,d.r),0,6.2832);ctx.stroke();
+            ctx.globalAlpha=0.9;ctx.strokeStyle='#bfff77';ctx.lineWidth=7;ctx.stroke();
+        }
         ctx.restore();
         if(t<70){
             ctx.save();ctx.globalAlpha=1-t/70;ctx.translate(W/2,H/2);ctx.rotate(t*0.15);const z=1+t*0.02;ctx.scale(z,z);
@@ -3333,7 +3175,7 @@ function skyTeleSlash(p,tg){
     const tier=skyTier(),W=canvas.width,H=canvas.height,ang=Math.atan2(tg.y-p.y,tg.x-p.x);
     skyFxAdd({k:'trail',x0:p.x,y0:p.y,x1:tg.x,y1:tg.y,max:18,col:'#55ffff'});
     p.x=Math.max(65,Math.min(W-65,tg.x-Math.cos(ang)*55));p.y=Math.max(65,Math.min(H-65,tg.y-Math.sin(ang)*55));
-    p.invul=Math.max(p.invul,50);   // v2.7: the teleport grants i-frames (20 -> 50)
+    p.invul=Math.max(p.invul,20);
     const base=p.damage*10,T=liveTargets();
     for(let i=0;i<T.length;i++){
         const o=T[i];if(o.hp<=0)continue;
@@ -3509,7 +3351,7 @@ function skyTick(){
         if(st.t%3===0){
             const T=liveTargets();let ang;
             if(T.length){const e=T[Math.floor(Math.random()*T.length)];ang=Math.atan2(e.y-p.y,e.x-p.x)+(Math.random()-.5)*0.2;}else ang=Math.atan2(state.mouseY-p.y,state.mouseX-p.x);
-            {const tot=p.damage*1.2,sp=18*(p.bulletSpeedMult||1);for(let i=0;i<3;i++)skyArrow(p,p.x,p.y,ang+(i-1)*0.13,tot*(i===1?0.7:0.15),sp);}   // v2.7: the storm fires the same 3-arrow fan (70% / 15% / 15%)
+            skyArrow(p,p.x,p.y,ang,p.damage*0.9,18*(p.bulletSpeedMult||1));
             if(--st.n<=0)state.skyStorm=null;
         }
     }
@@ -4055,14 +3897,14 @@ ULT_IMPL.femboy={
     },
     run(F,p,d,t){
         p.invul=Math.max(p.invul,2);
-        if(t%30===0){allTargets().forEach(e=>{if(e.hp>0&&(e.x-p.x)**2+(e.y-p.y)**2<414000)ultHurt(e,0.1,0.017,p.damage*3.5,'💕','#ff88cc');});addRing(p.x,p.y,643,22,'#ff88cc',4);fxShake(4);}
+        if(t%30===0){allTargets().forEach(e=>{if(e.hp>0&&(e.x-p.x)**2+(e.y-p.y)**2<193600)ultHurt(e,0.07,0.012,p.damage*2,'💕','#ff88cc');});addRing(p.x,p.y,440,20,'#ff88cc',4);fxShake(4);}
         const cols=['#ff88cc','#ffee66','#66eeff','#aa88ff','#ffffff'];
         for(let k=0;k<2;k++)fxSpark(Math.random()*canvas.width,-10,(Math.random()-.5)*2,2+Math.random()*3,90,4,cols[Math.floor(Math.random()*5)],{trail:false,drag:1,shrink:false});
         if(t%60===0){allTargets().forEach(e=>{if(e.hp>0&&!e.isBoss&&!e.isMega&&!e.isHost&&!(e.confused>0)){e.confused=200;e.confuseTimer=0;}});}
     },
     end(F,p,d){
         // the reveal: it's a BOY — a massive blue explosion
-        allTargets().forEach(e=>{if(e.hp>0)ultHurt(e,0.34,0.06,p.damage*7,'💙','#66bbff');});
+        allTargets().forEach(e=>{if(e.hp>0)ultHurt(e,0.24,0.045,p.damage*5,'💙','#66bbff');});
         state.reveal={t:0,x:p.x,y:p.y};
         popup(p.x,p.y-90,"IT'S A BOY!! 💙",'#66ccff',200);popup(p.x,p.y-65,'(we knew)','#aaddff',160);
         fxFlash('#66bbff',0.95,24);fxShake(30);
@@ -4362,7 +4204,7 @@ class CoinProjectile {
                 const nl=Math.hypot(nx,ny)||1;nx/=nl;ny/=nl;
                 this.vx=nx*spd;this.vy=ny*spd;this.x=pl.x+nx*34;this.y=pl.y+ny*34;this.bt=6;
                 this.damage*=1.25;
-                if(state.xpOrbs.length<160)state.xpOrbs.push(new XpOrb(pl.x+nx*40,pl.y+ny*40,60));   // the ONLY thing that pays XP
+                if(state.xpOrbs.length<160)state.xpOrbs.push(new XpOrb(pl.x+nx*40,pl.y+ny*40,25));   // the ONLY thing that pays XP
                 fxBurst(this.x,this.y,8,'#ffe27a',1,6,16,2.4);addRing(pl.x,pl.y,46,10,'#ffd700',3);popup(pl.x,pl.y-38,'boing! +xp','#ffd700',50);
             }
         }
@@ -4374,11 +4216,6 @@ class CoinProjectile {
             this.lastHit=hitEnemy;this.rh=14;if(pl)this.toShiba=true;   // after every hit the coin heads back to Shiba
             hurtFlat(hitEnemy,this.damage,'💰','#ffd700');
             fxBurst(hitEnemy.x,hitEnemy.y,5,'#ffd700',1,6,14,2.2,{trail:false});
-            // v2.7 splash: 20% of the hit is split evenly between the other enemies within 170px
-            {const near=[];const R2=170*170,hx=hitEnemy.x,hy=hitEnemy.y;
-             for(let i=0;i<en.length;i++){const e=en[i];if(e===hitEnemy||e.hp<=0||!inArena(e))continue;if((e.x-hx)**2+(e.y-hy)**2<R2)near.push(e);}
-             const bs=state.boss;if(bs&&bs!==hitEnemy&&bs.hp>0&&inArena(bs)&&(bs.x-hx)**2+(bs.y-hy)**2<R2)near.push(bs);
-             if(near.length){const sh=this.damage*0.2/near.length;for(let i=0;i<near.length;i++){const o=near[i];hurtFlat(o,sh,'',null);if(i<3)fxSpark(o.x,o.y,0,0,8,3,'#ffd700',{trail:false});}}}
         }
     }
     draw(){ctx.save();const r=10;ctx.shadowBlur=12;ctx.shadowColor='#ffd700';
@@ -4503,7 +4340,7 @@ class Player {
         this.hp=config.hp*HP_PER_HEART;this.maxHp=config.hp*HP_PER_HEART;this.speed=config.speed;
         this.invul=0;this.facing=1;this.atkCooldown=0;
         this.atkSpeed=config.id==='coolioioio'?22:config.id==='choco'?40.9:45;   // Choco: 1.1x attack speed
-        this.pierce=0;this.luck=0;this.armor=0;this.picky=0;this.damage=config.id==='coolioioio'?4:config.id==='femboy'?14:10;if(config.id==='skyblock'){this.weapon=0;this.swordMode=true;}this.projectileCount=1;this.splitChance=0;this.bSize=5;this.crit=5;this.xpMult=1;
+        this.pierce=0;this.luck=0;this.armor=0;this.picky=0;this.damage=config.id==='coolioioio'?4:10;if(config.id==='skyblock'){this.weapon=0;this.swordMode=true;}this.projectileCount=1;this.splitChance=0;this.bSize=5;this.crit=5;this.xpMult=1;
         this.size=config.imgSize||50;this.cutenessBoostShots=0;this.cutenessActive=false;this.regen=(config.regen!=null?config.regen:4);this.regenTick=0;   // v1.8: HP per secondthis.magnet=0;
         this.bulletSpeedMult=1;this.pounceRegenTick=0;
         this._frenzyTimer=0;this._frenzyDmgMult=1;this._frenzyAtkBase=0;
@@ -5611,7 +5448,7 @@ function pounceJump(){
     let best=null;
     const T=liveTargets();
     for(let i=0;i<T.length;i++){
-        const e=T[i];if(e===dead||e.hp<=0||(e.x-p.x)**2+(e.y-p.y)**2>POUNCE_JUMP_R*POUNCE_JUMP_R)continue;
+        const e=T[i];if(e===dead||e.isMega||e.hp<=0||(e.x-p.x)**2+(e.y-p.y)**2>POUNCE_JUMP_R*POUNCE_JUMP_R)continue;
         if(!best||e.hp>best.hp)best=e;
     }
     if(!best)return false;
@@ -5689,7 +5526,7 @@ function triggerAbility(){
     } else if(p.config.id==='tiger'){
         const RANGE=460;
         const allT=liveTargets();   // v2.3: only enemies on the playfield (an off-screen boss used to drag you out of the arena)
-        const candidates=allT.filter(e=>Math.sqrt((e.x-p.x)**2+(e.y-p.y)**2)<RANGE);
+        const candidates=allT.filter(e=>!e.isMega&&Math.sqrt((e.x-p.x)**2+(e.y-p.y)**2)<RANGE);
         if(candidates.length>0){
             let target=candidates.reduce((best,e)=>e.hp>best.hp?e:best,candidates[0]);
             state.pounce={active:true,target:target,timer:600,timerMax:600,damage:Math.max(5,p.damage*1.0),damageTick:12,healTick:0,leap:{x0:p.x,y0:p.y,t:0,dur:12},slashes:[],marks:[],jumps:0};
@@ -5826,7 +5663,7 @@ function triggerAbility(){
         used=true;
     }
 
-    if(p.config.id==='arsonist'){used=phoenixCast(p);}
+    if(p.config.id==='arsonist'){used=arsonParty(p);}
     if(p.config.id==='auramonster'){used=voidTear(p);}
     if(p.config.id==='skyblock'){used=skyPotion(p);}
     if(p.config.id==='obsessed'){used=obsSpace(p);}
@@ -6020,7 +5857,7 @@ function triggerSecondary(){
         used=true;
     }
 
-    if(p.config.id==='arsonist'){used=arsonParty(p);}
+    if(p.config.id==='arsonist'){used=tarToss(p);}
     if(p.config.id==='auramonster'){used=stairsThrow(p);}
     if(p.config.id==='obsessed'){used=obsDance(p);}
 
@@ -7005,7 +6842,7 @@ function gameStep(){
     if(!state.ability.ready){if(!cdF.a){state.ability.cooldown--;if(state.ability.cooldown<=0){state.ability.ready=true;updateHUD();}}}
     if(!state.secondary.ready){if(!cdF.s){state.secondary.cooldown--;if(state.secondary.cooldown<=0){state.secondary.ready=true;updateHUD();}}}
     timersTick();
-    burnTick();phoenixTick();bleedTick();furyTick();glitterTick();twirlTick();
+    burnTick();bleedTick();furyTick();glitterTick();twirlTick();
     chocoTick();
     voltTick();
     voidTick();stairsTick();noScopeTick();skyTick();obsTick();
@@ -7172,7 +7009,7 @@ function gameStep(){
             if(lp&&lp.t<lp.dur){lp.t++;if(lp.t===lp.dur){addRing(pt.x,pt.y,90,12,'#ff9900',5);fxBurst(pt.x,pt.y,14,'#ffaa33',3,10,22,3);fxShake(7);}}
             state.pounce.damageTick--;
             if(state.pounce.damageTick<=0){
-                const feastPct=pt.isMega?0.006:pt.isBoss?0.018:0.06;   // FEAST: % of the victim's max HP per bite (old flat damage is the floor)
+                const feastPct=pt.isBoss?0.018:0.06;   // FEAST: % of the victim's max HP per bite (old flat damage is the floor)
                 const dmg=Math.max(state.pounce.damage,pt.maxHp*feastPct)*brittleMult(pt);
                 fxBurst(pt.x,pt.y,8,'#ff8800',2,8,18,2.6);addRing(pt.x,pt.y,46,10,'#ff6600',3);fxShake(3);
                 {const pn=state.pounce,fc=state.frameCount;pn.slashes=(pn.slashes||[]).filter(s=>fc-s.t0<14);pn.marks=(pn.marks||[]).filter(m=>fc-m.t0<24);
@@ -7646,222 +7483,6 @@ function gameStep(){
     }
 }
 
-// ═══════════════════════════════════════════════════
-//  v2.8 — LIVING SKY. A generated night sky (procedural nebula + twinkling stars) is reflected in the arena floor,
-//  and a new scene is generated and faded in every ~25s. Four fireflies hover around the corners.
-//  Nebulae are rendered in time-sliced chunks (≈3ms/frame) so generation never causes a hitch; per-frame cost is 1-2 blits + a few batched fills.
-// ═══════════════════════════════════════════════════
-const _pnow=()=>typeof performance!=='undefined'?performance.now():Date.now();
-const _NZ=(()=>{const t=new Float32Array(65536);let s=1337;for(let i=0;i<65536;i++){s=(s*1664525+1013904223)>>>0;t[i]=s/4294967296;}return t;})();
-function _vn(x,y){
-    const xi=Math.floor(x),yi=Math.floor(y),xf=x-xi,yf=y-yi,u=xf*xf*(3-2*xf),v=yf*yf*(3-2*yf);
-    const x0=xi&255,y0=(yi&255)<<8,x1=(xi+1)&255,y1=((yi+1)&255)<<8;
-    const a=_NZ[y0+x0],b=_NZ[y0+x1],c=_NZ[y1+x0],d=_NZ[y1+x1];
-    return a+(b-a)*u+(c-a)*v+(a-b-c+d)*u*v;
-}
-function _fbm(x,y,o){let a=0.5,f=1,s=0;for(let i=0;i<o;i++){s+=a*_vn(x*f,y*f);f*=2.03;a*=0.5;}return s;}
-const SKY_PAL=[
-    {a:[140,55,225],b:[55,105,255],c:[255,165,235],s:[215,225,255]},    // violet / blue / pink
-    {a:[35,195,215],b:[125,65,230],c:[205,255,250],s:[205,245,255]},    // teal / violet
-    {a:[225,60,150],b:[255,140,60],c:[255,230,190],s:[255,225,205]},    // rose / amber
-    {a:[50,215,150],b:[55,125,255],c:[200,255,230],s:[205,255,235]},    // emerald / blue
-    {a:[195,45,105],b:[110,60,220],c:[255,205,120],s:[255,215,225]},    // crimson / violet / gold
-    {a:[70,90,255],b:[185,70,230],c:[170,220,255],s:[210,220,255]}      // indigo / magenta
-];
-const SKY={cur:null,nxt:null,age:0,last:0,pool:[],lastPal:-1,shoot:null,nextShoot:600};
-const SKY_LIFE=1500,SKY_XFADE=420;
-function skyNew(W,H){
-    const gw=Math.round(W/1.5),gh=Math.round(H/1.5);
-    if(!SKY.gA||SKY.gA.cv.width!==gw||SKY.gA.cv.height!==gh){
-        const mk=()=>{const cv=document.createElement('canvas');cv.width=gw;cv.height=gh;const cx=cv.getContext('2d');return {cv:cv,cx:cx,img:cx.createImageData(gw,gh)};};
-        SKY.gA=mk();SKY.gB=mk();
-    }
-    let sc=SKY.pool.pop();
-    if(!sc||sc.W!==W||sc.H!==H){
-        const mk=()=>{const cv=document.createElement('canvas');cv.width=W;cv.height=H;return {cv:cv,cx:cv.getContext('2d')};};
-        sc={W:W,H:H,gw:gw,gh:gh,cw:Math.ceil(gw/4)+2,ch:Math.ceil(gh/4)+2,cA:mk(),cB:mk()};
-        sc.WX=new Float32Array(sc.cw*sc.ch);sc.WY=new Float32Array(sc.cw*sc.ch);sc.CM=new Float32Array(sc.cw*sc.ch);
-    }
-    sc.stage=0;
-    let pi;do{pi=Math.floor(Math.random()*SKY_PAL.length);}while(pi===SKY.lastPal);SKY.lastPal=pi;
-    const R=Math.random;
-    sc.pal=SKY_PAL[pi];sc.S=2.3+R()*1.5;sc.lo=0.37+R()*0.07;sc.hi=sc.lo+0.26;
-    sc.o=[];for(let i=0;i<12;i++)sc.o.push(R()*200);
-    sc.row=0;sc.crow=0;sc.ready=false;sc.a=0;sc.p1=R()*6.28;sc.p2=R()*6.28;sc.p3=R()*6.28;
-    // stars: a few big ones (sprites) and many small ones (batched rects)
-    sc.big=[];for(let i=0;i<34;i++){const c=sc.pal.s;sc.big.push({x:R()*W,y:R()*H,r:1.5+R()*2.4,ph:R()*6.28,sp:0.025+R()*0.06,lf:0.003+R()*0.007,lp:R()*6.28,col:(R()<0.3?'#ffffff':'rgb('+c[0]+','+c[1]+','+c[2]+')')});}
-    sc.sm=new Float32Array(190*6);for(let i=0;i<190;i++){const k=i*6;sc.sm[k]=R()*W;sc.sm[k+1]=R()*H;sc.sm[k+2]=R()*6.28;sc.sm[k+3]=0.03+R()*0.09;sc.sm[k+4]=0.003+R()*0.009;sc.sm[k+5]=R()*6.28;}
-    return sc;
-}
-// one slice of nebula generation; returns when the time budget is spent
-function skyWork(sc,budget){
-    const t0=_pnow(),gw=sc.gw,gh=sc.gh,cw=sc.cw,o=sc.o,S=sc.S,asp=gw/gh;
-    // phase 0: coarse domain-warp + colour fields (1 sample per 4x4 block)
-    while(sc.crow<sc.ch){
-        const j=sc.crow,ny=j*4/gh*S;
-        for(let i=0;i<cw;i++){
-            const nx=i*4/gw*S*asp,k=j*cw+i;
-            sc.WX[k]=_fbm(nx*0.7+o[0],ny*0.7+o[1],3);sc.WY[k]=_fbm(nx*0.7+o[2],ny*0.7+o[3],3);sc.CM[k]=_fbm(nx*0.55+o[4],ny*0.55+o[5],3);
-        }
-        sc.crow++;
-        if(_pnow()-t0>budget)return;
-    }
-    const dA=SKY.gA.img.data,dB=SKY.gB.img.data,A=sc.pal.a,B=sc.pal.b,C=sc.pal.c,lo=sc.lo,ih=1/(sc.hi-sc.lo),WX=sc.WX,WY=sc.WY,CM=sc.CM;
-    while(sc.row<gh){
-        const y=sc.row,ny=y/gh*S,v=y*0.25,j=v|0,fy=v-j;
-        for(let x=0;x<gw;x++){
-            const u=x*0.25,i=u|0,fx=u-i,k=j*cw+i,w00=(1-fx)*(1-fy),w10=fx*(1-fy),w01=(1-fx)*fy,w11=fx*fy;
-            const wx=WX[k]*w00+WX[k+1]*w10+WX[k+cw]*w01+WX[k+cw+1]*w11;
-            const wy=WY[k]*w00+WY[k+1]*w10+WY[k+cw]*w01+WY[k+cw+1]*w11;
-            const cm=CM[k]*w00+CM[k+1]*w10+CM[k+cw]*w01+CM[k+cw+1]*w11;
-            const nx=x/gw*S*asp;
-            let dn=(_fbm(nx+wx*2.3+o[6],ny+wy*2.3+o[7],5)-lo)*ih;dn=dn<0?0:dn>1?1:dn;dn=dn*dn*(3-2*dn);
-            const rg=_fbm(nx*2.2+wx*1.5+o[8],ny*2.2+wy*1.5+o[9],3),fil=1-Math.abs(rg*2-1),fl=fil*fil*fil;
-            let t=(cm-0.3)*2.4;t=t<0?0:t>1?1:t;
-            const r=A[0]+(B[0]-A[0])*t,g=A[1]+(B[1]-A[1])*t,b=A[2]+(B[2]-A[2])*t,q=(y*gw+x)*4;
-            // layer A: the soft body of the cloud, tinted toward the hot colour where it is densest
-            const hot=dn*dn*0.4;
-            dA[q]=r+(C[0]-r)*hot;dA[q+1]=g+(C[1]-g)*hot;dA[q+2]=b+(C[2]-b)*hot;dA[q+3]=dn*0.66*215;
-            // layer B: bright filaments threaded through the dense parts (pulses on its own rhythm)
-            let fb=dn*fl*1.15;if(fb>1)fb=1;
-            dB[q]=r+(C[0]-r)*0.6;dB[q+1]=g+(C[1]-g)*0.6;dB[q+2]=b+(C[2]-b)*0.6;dB[q+3]=fb*240;
-        }
-        sc.row++;
-        if((sc.row&3)===0&&_pnow()-t0>budget)return;
-    }
-    sc.stage=1;
-}
-// bake step (one cheap op per frame): upload each layer, then compose margin (direct sky) + arena (mirrored reflection) into a full-res canvas
-function skyBake(sc){
-    const W=sc.W,H=sc.H,B=60;
-    if(sc.stage===1){SKY.gA.cx.putImageData(SKY.gA.img,0,0);SKY.gB.cx.putImageData(SKY.gB.img,0,0);sc.stage=2;return;}
-    const layer=sc.stage<=3?0:1,L=layer?sc.cB:sc.cA,G=layer?SKY.gB:SKY.gA,x=L.cx;
-    if(sc.stage===2||sc.stage===4){
-        x.clearRect(0,0,W,H);x.save();x.beginPath();x.rect(0,0,W,H);x.rect(B,B,W-B*2,H-B*2);x.clip('evenodd');x.globalAlpha=1;x.drawImage(G.cv,0,0,W,H);x.restore();
-    }else{
-        x.save();x.beginPath();x.rect(B,B,W-B*2,H-B*2);x.clip();x.translate(0,H);x.scale(1,-1);x.globalAlpha=0.26;x.drawImage(G.cv,0,0,W,H);x.restore();
-    }
-    sc.stage++;
-    if(sc.stage>5){sc.ready=true;}
-}
-function nskyTick(bt,W,H){
-    const dt=Math.max(0.2,Math.min(5,bt-SKY.last));SKY.last=bt;
-    if(!SKY.cur)SKY.cur=skyNew(W,H);
-    const cur=SKY.cur;
-    if(!cur.ready){if(cur.stage===0)skyWork(cur,3.5);else skyBake(cur);}
-    else{
-        if(cur.a<1&&!SKY.nxt)cur.a=Math.min(1,cur.a+dt/120);
-        SKY.age+=dt;
-        if(!SKY.nxt&&SKY.age>SKY_LIFE-900)SKY.nxt=skyNew(W,H);
-        const n=SKY.nxt;
-        if(n){
-            if(!n.ready){if(n.stage===0)skyWork(n,3);else skyBake(n);}
-            else if(SKY.age>=SKY_LIFE){
-                n.a=Math.min(1,n.a+dt/SKY_XFADE);
-                if(n.a>=1){SKY.pool.push(cur);SKY.cur=n;SKY.nxt=null;SKY.age=0;}
-            }
-        }
-    }
-}
-function _skyStars(sc,a,bt,W,H,refl,B){
-    // big stars: sprites. Direct = a round glow in the margin; reflected = a rippling vertical glint on the floor
-    const bg=sc.big;
-    for(let i=0;i<bg.length;i++){
-        const s=bg[i],tw=0.55+0.45*Math.sin(bt*s.sp+s.ph),lv=0.5+0.5*Math.sin(bt*s.lf+s.lp),vis=lv<0.22?0:lv>0.5?1:(lv-0.22)/0.28,al=tw*vis*a;
-        if(al<0.03)continue;
-        const inA=s.x>B&&s.x<W-B&&s.y>B&&s.y<H-B,sp=glowSprite(s.col);
-        if(refl){
-            if(!inA)continue;
-            const rx=s.x+Math.sin(bt*0.045+s.y*0.03+s.ph)*2.5,w=s.r*3.6,h=s.r*(6+3*tw);
-            ctx.globalAlpha=al*0.6;ctx.drawImage(sp,rx-w/2,s.y-h/2,w,h);
-            ctx.globalAlpha=al*0.22;ctx.drawImage(sp,rx-w*1.1,s.y-h*0.2,w*2.2,h*0.4);
-        }else{
-            if(inA)continue;
-            const w=s.r*7;ctx.globalAlpha=al;ctx.drawImage(sp,s.x-w/2,s.y-w/2,w,w);
-        }
-    }
-    // small stars: batched into 3 alpha buckets
-    const sm=sc.sm,c=sc.pal.s;
-    ctx.fillStyle='rgb('+c[0]+','+c[1]+','+c[2]+')';
-    for(let bk=0;bk<3;bk++){
-        ctx.globalAlpha=a*(refl?0.12+bk*0.13:0.28+bk*0.26);ctx.beginPath();
-        for(let i=0;i<190;i++){
-            const k=i*6,x=sm[k],y=sm[k+1];
-            const inA=x>B&&x<W-B&&y>B&&y<H-B;if(refl?!inA:inA)continue;
-            const tw=0.5+0.5*Math.sin(bt*sm[k+3]+sm[k+2]),lv=0.5+0.5*Math.sin(bt*sm[k+4]+sm[k+5]),vis=lv<0.25?0:lv>0.5?1:(lv-0.25)/0.25,q=tw*vis;
-            if((q<0.12?-1:q<0.45?0:q<0.75?1:2)!==bk)continue;
-            if(refl){const rx=x+Math.sin(bt*0.045+y*0.03+sm[k+2])*2;ctx.rect(rx-0.7,y-1.6-q,1.4,3.2+q*2);}else ctx.rect(x-1,y-1,2,2);
-        }
-        ctx.fill();
-    }
-}
-// The backdrop (static floor + both nebula layers at their current pulse) is composed into a back buffer ONE blit every 3 frames and then
-// swapped in, so a frame never pays for more than a single extra full-screen blit (usually none), while the nebula still breathes and crossfades.
-function skyCompose(bt,W,H,list){
-    if(!SKY.buf){SKY.buf=[0,1].map(()=>{const c=document.createElement('canvas');c.width=W;c.height=H;return c;});SKY.front=0;SKY.step=0;SKY.wait=0;SKY.fr=false;SKY.snap=null;}
-    if(--SKY.wait>0)return;SKY.wait=3;
-    if(SKY.step===0)SKY.snap=list.map(q=>[q[0],q[1]]);
-    const sn=SKY.snap,total=1+sn.length*2,bk=SKY.buf[1-SKY.front].getContext('2d');
-    if(SKY.step===0){bk.globalAlpha=1;bk.drawImage(_bgCache,0,0);}
-    else{
-        const idx=(SKY.step-1)>>1,ly=(SKY.step-1)&1,sc=sn[idx][0],sa=sn[idx][1];
-        if(sa>=0.01){
-            bk.globalAlpha=0.46*sa*(ly?0.35+0.65*(0.5+0.5*Math.sin(bt*0.017+sc.p1*1.7)):0.78+0.22*Math.sin(bt*0.0105+sc.p3));
-            bk.drawImage(ly?sc.cB.cv:sc.cA.cv,0,0);
-        }
-    }
-    if(++SKY.step>=total){SKY.step=0;SKY.front=1-SKY.front;SKY.fr=true;}
-}
-function nskyDraw(bt,W,H){
-    if(SKY.off)return;
-    try{nskyTick(bt,W,H);}catch(err){SKY.off=true;SKY.cur=SKY.nxt=null;return;}   // generation is a pure bonus: if a browser can't do it, just skip the sky
-    const cur=SKY.cur;if(!cur||!cur.ready)return;
-    const n=SKY.nxt&&SKY.nxt.ready&&SKY.nxt.a>0?SKY.nxt:null,B=60;
-    const list=n?[[cur,cur.a*(1-n.a)],[n,n.a]]:[[cur,cur.a]];
-    // shooting star bookkeeping
-    if(bt>SKY.nextShoot&&!SKY.shoot){const an=0.35+Math.random()*0.5;SKY.shoot={x:Math.random()*W*0.7,y:30+Math.random()*H*0.5,vx:Math.cos(an)*17,vy:Math.sin(an)*17,t:0,life:46};SKY.nextShoot=bt+420+Math.random()*540;}
-    skyCompose(bt,W,H,list);
-    for(let pass=0;pass<2;pass++){
-        const refl=pass===1;
-        ctx.save();
-        if(refl){ctx.beginPath();ctx.rect(B,B,W-B*2,H-B*2);ctx.clip();ctx.translate(0,H);ctx.scale(1,-1);}
-        else{ctx.beginPath();ctx.rect(0,0,W,H);ctx.rect(B,B,W-B*2,H-B*2);ctx.clip('evenodd');}
-        ctx.globalCompositeOperation='lighter';
-        for(const [sc,sa] of list){if(sa>=0.01)_skyStars(sc,sa,bt,W,H,refl,B);}
-        const sh=SKY.shoot;
-        if(sh){
-            const k=sh.t/sh.life,al=Math.sin(Math.min(1,k)*Math.PI),hx=sh.x+sh.vx*sh.t,hy=sh.y+sh.vy*sh.t;
-            const g=ctx.createLinearGradient(hx,hy,hx-sh.vx*9,hy-sh.vy*9);g.addColorStop(0,'rgba(255,255,255,'+(0.9*al)+')');g.addColorStop(1,'rgba(160,190,255,0)');
-            ctx.globalAlpha=refl?0.5:1;ctx.strokeStyle=g;ctx.lineWidth=refl?2.4:1.8;ctx.lineCap='round';ctx.beginPath();ctx.moveTo(hx,hy);ctx.lineTo(hx-sh.vx*9,hy-sh.vy*9);ctx.stroke();
-        }
-        ctx.restore();
-    }
-    if(SKY.shoot){SKY.shoot.t++;if(SKY.shoot.t>SKY.shoot.life)SKY.shoot=null;}
-}
-// four fireflies hovering a short way from the corners; each glows on its own rhythm and lights the floor around it
-const FIREFLY=[
-    {x:92,y:92,col:'#00dcff',ph:0.3,sp:0.021,gs:0.045,gp:0.8,rx:30,ry:22},
-    {x:-92,y:92,col:'#ff5ac8',ph:2.1,sp:0.017,gs:0.038,gp:2.9,rx:26,ry:30},
-    {x:92,y:-92,col:'#ffc850',ph:4.0,sp:0.019,gs:0.05,gp:4.6,rx:32,ry:24},
-    {x:-92,y:-92,col:'#78ffaa',ph:5.3,sp:0.023,gs:0.041,gp:1.7,rx:24,ry:28}
-];
-function fireflyDraw(bt,W,H){
-    ctx.save();ctx.globalCompositeOperation='lighter';
-    for(let i=0;i<4;i++){
-        const f=FIREFLY[i],cx=f.x>0?f.x:W+f.x,cy=f.y>0?f.y:H+f.y,an=bt*f.sp+f.ph;
-        const x=cx+Math.sin(an)*f.rx+Math.sin(an*2.37+1.7)*f.rx*0.3,y=cy+Math.cos(an*0.83)*f.ry+Math.sin(an*1.91+0.4)*f.ry*0.3;
-        const g=0.5+0.5*Math.sin(bt*f.gs+f.gp),gl=g*g*(3-2*g),sp=glowSprite(f.col);
-        // trail of its last few positions
-        if(!f.h)f.h=[];
-        if((bt|0)%3===0&&(!f.h.length||f.h[f.h.length-1].t!==(bt|0))){f.h.push({x:x,y:y,t:bt|0});if(f.h.length>5)f.h.shift();}
-        for(let k=0;k<f.h.length;k++){const p=f.h[k],q=(k+1)/f.h.length;ctx.globalAlpha=0.28*q*gl;ctx.drawImage(sp,p.x-5*q,p.y-5*q,10*q,10*q);}
-        const R=115*(0.72+0.38*gl);ctx.globalAlpha=0.16+0.26*gl;ctx.drawImage(sp,x-R,y-R,R*2,R*2);          // the soft light it casts on the floor
-        const m=30*(0.8+0.5*gl);ctx.globalAlpha=0.3+0.5*gl;ctx.drawImage(sp,x-m,y-m,m*2,m*2);
-        ctx.globalAlpha=0.55+0.45*gl;ctx.fillStyle=f.col;ctx.beginPath();ctx.arc(x,y,3+1.8*gl,0,6.2832);ctx.fill();
-        ctx.globalAlpha=0.9*(0.4+0.6*gl);ctx.fillStyle='#ffffff';ctx.beginPath();ctx.arc(x,y,1.3+0.7*gl,0,6.2832);ctx.fill();
-    }
-    ctx.restore();
-}
 let _bgCache=null,_vigCache=null;
 function shadowsDraw(){
     const p=state.player,en=state.enemies,W=canvas.width,H=canvas.height;
@@ -7888,11 +7509,11 @@ function gameRender(){
         const grad=bc.createRadialGradient(canvas.width/2,canvas.height/2,0,canvas.width/2,canvas.height/2,Math.max(canvas.width,canvas.height));
         grad.addColorStop(0,'#1a0b2e');grad.addColorStop(1,'#050112');
         bc.fillStyle=grad;bc.fillRect(0,0,canvas.width,canvas.height);
-        {const lg=bc.createLinearGradient(0,0,canvas.width,canvas.height);lg.addColorStop(0,'rgba(60,30,110,0)');lg.addColorStop(1,'rgba(120,80,200,0.13)');bc.fillStyle=lg;bc.fillRect(0,0,canvas.width,canvas.height);}
         {   // v2.5 polish: starfield in the margin, a lit arena floor with a fine tile grid, a centre sigil and corner glows
             const W=canvas.width,H=canvas.height,B=60;let sd=12345;const rnd=()=>(sd=(sd*1664525+1013904223)>>>0)/4294967296;
+            for(let i=0;i<150;i++){const x=rnd()*W,y=rnd()*H,r=rnd()*1.4+0.3;bc.globalAlpha=0.15+rnd()*0.5;bc.fillStyle=rnd()<0.2?'#9fd8ff':'#ffffff';bc.beginPath();bc.arc(x,y,r,0,6.2832);bc.fill();}
             bc.globalAlpha=1;
-            const fl=bc.createLinearGradient(B,B,W-B,H-B);fl.addColorStop(0,'rgba(52,26,98,0.34)');fl.addColorStop(0.5,'rgba(70,38,128,0.30)');fl.addColorStop(1,'rgba(108,70,184,0.34)');   // v2.8: the same violet, drifting to a slightly lighter violet
+            const fl=bc.createLinearGradient(0,B,0,H-B);fl.addColorStop(0,'rgba(60,30,110,0.30)');fl.addColorStop(0.5,'rgba(38,18,78,0.22)');fl.addColorStop(1,'rgba(70,24,100,0.30)');
             bc.fillStyle=fl;bc.fillRect(B,B,W-B*2,H-B*2);
             bc.save();bc.beginPath();bc.rect(B,B,W-B*2,H-B*2);bc.clip();
             bc.lineWidth=1;bc.strokeStyle='rgba(120,200,255,0.055)';bc.beginPath();
@@ -7902,11 +7523,11 @@ function gameRender(){
             const cg=bc.createRadialGradient(W/2,H/2,0,W/2,H/2,Math.min(W,H)*0.55);cg.addColorStop(0,'rgba(150,90,255,0.16)');cg.addColorStop(1,'rgba(150,90,255,0)');bc.fillStyle=cg;bc.fillRect(B,B,W-B*2,H-B*2);
             bc.strokeStyle='rgba(180,140,255,0.13)';bc.lineWidth=2;for(const r of [90,170,260]){bc.beginPath();bc.arc(W/2,H/2,r,0,6.2832);bc.stroke();}
             bc.beginPath();for(let i=0;i<12;i++){const a=i*0.5236;bc.moveTo(W/2+Math.cos(a)*90,H/2+Math.sin(a)*90);bc.lineTo(W/2+Math.cos(a)*260,H/2+Math.sin(a)*260);}bc.stroke();
+            for(const [cx,cy,col] of [[B,B,'0,220,255'],[W-B,B,'255,90,200'],[B,H-B,'255,200,80'],[W-B,H-B,'120,255,170']]){const g=bc.createRadialGradient(cx,cy,0,cx,cy,260);g.addColorStop(0,'rgba('+col+',0.16)');g.addColorStop(1,'rgba('+col+',0)');bc.fillStyle=g;bc.fillRect(B,B,W-B*2,H-B*2);}
             bc.restore();
         }
     }
-    ctx.drawImage((SKY.fr&&!SKY.off)?SKY.buf[SKY.front]:_bgCache,0,0);
-    {const _bt=_pnow()/16.667;nskyDraw(_bt,canvas.width,canvas.height);fireflyDraw(_bt,canvas.width,canvas.height);}
+    ctx.drawImage(_bgCache,0,0);
 
     const BORDER=60;
     ctx.save();
@@ -7938,7 +7559,6 @@ function gameRender(){
             ctx.strokeRect(2,2,canvas.width-4,canvas.height-4);ctx.restore();
         }
 
-        tarPuddleDraw();
         shadowsDraw();
         state.player.draw();
         // Subaru: where Return by Death will put you back, with the window draining around it
@@ -8188,7 +7808,7 @@ function gameRender(){
             ctx.restore();
         }
 
-        voidDraw();
+        tarPuddleDraw();voidDraw();
         // Enemies
         for(const e of state.enemies){e.draw();}
         if(state.brittleOn){   // brittle marker: icy ring + cracks on anything the Snowball burst left fragile
@@ -8603,8 +8223,8 @@ function initInfoScreen(){
             {key:'R — Wormhole',       desc:'Teleport instantly to your cursor position, confusing nearby enemies, with a brief burst of speed (1.7s).'},
         ]},
         {id:'arsonist',emoji:'🔥',name:'Arsonist',color:'#ff6a00',stats:'Speed: Fast | HP: 250 | Regen: 4/s',abilities:[
-            {key:'SPACE — Phirebranded Phoenix', desc:'Launch a huge flaming phoenix, wings spread, in a fast cone toward your cursor. It flies a limited distance and fades out. Everything the cone crosses takes a big hit (10% of max HP, minimum 6x your damage; far less on bosses) and is set ablaze. Burn deals 140% of your DPS per second (double on oiled enemies) and spreads when a burning enemy burns to death.'},
-            {key:'R — Arson Party',        desc:'Hurl 4 blobs of tar at the thickest clusters. Each splats, bounces back up like slime and splits into 2 smaller blobs, and every blob leaves a tar puddle. Molotovs fly at your nearest, strongest, weakest and furthest enemies in range, and at every tar puddle on the floor, setting the tar ablaze. Enemies touching tar get stuck: they can move, but past a short leash they are yanked ALL the way back to where they got stuck, tied there by sticky tar strands (they break free after a few seconds). Oiled enemies take DOUBLE burn damage.'},
+            {key:'SPACE — Arson Party', desc:'Hurl molotov cocktails at up to 4 enemies within 620px. Each shatters into a fire pool that ignites everything inside. When a burning enemy burns to death the fire spreads to enemies near it. Burn deals 140% of your DPS per second (double on oiled enemies).'},
+            {key:'R — Tar Toss',        desc:'Hurl a glob of tar at the thickest cluster of enemies (or your cursor in manual mode). It splashes everything near the landing with oil for 9 seconds and leaves a tar puddle for 14 seconds that keeps oiling anyone standing in it. Oiled enemies move slower, steer sluggishly and take DOUBLE burn damage — and any fire touching the puddle sets it ablaze.'},
         ]},
         {id:'skyblock',emoji:'⛏️',name:'Skyblock Adict',color:'#55ffff',stats:'Speed: Medium-Fast | HP: 250 | Regen: 4/s',abilities:[
             {key:'MP (Magic Power)',  desc:'You gain 1 MP automatically for every 3 upgrades you take. Each MP adds +1.5 damage, and MP tiers (0 / 3 / 6 / 9+) upgrade every weapon.'},
@@ -8649,7 +8269,7 @@ function initInfoScreen(){
             {key:'R — Justice Monologue (40s CD)', desc:'Trigger a Death Note anime cutscene. Deals 50% max HP to ALL enemies and 35% max HP to the boss. Very long cooldown, but devastating.'},
         ]},
         {id:'femboy',emoji:'🎀',name:'Femboy',color:'#ff88cc',stats:'Speed: Very Fast | HP: 250 | Regen: 4/s',abilities:[
-            {key:'SPACE — Glitter Bomb', desc:'Lob a sparkle bomb at your target (or cursor, up to 580px). It bursts for 9× damage (24% max HP on regular enemies, 1.5% on bosses) in 190px, daze-confuses regular enemies so they fight each other, and leaves a glitter field for ~3s that keeps confusing and stinging everything inside. Your ultimate confuses the whole arena.'},
+            {key:'SPACE — Glitter Bomb', desc:'Lob a sparkle bomb at your target (or cursor, up to 580px). It bursts for 7× damage (18% max HP on regular enemies, 1.2% on bosses) in 190px, daze-confuses regular enemies so they fight each other, and leaves a glitter field for ~3s that keeps confusing and stinging everything inside. Your ultimate confuses the whole arena.'},
             {key:'R — Twirl', desc:'Spin for 3 seconds. Sparkle pulses every 8 frames hit everything in a ring that grows from 170 to 260px and pull enemies toward you. You are NOT invulnerable and enemy bullets are NOT destroyed — it is a risky, aggressive spin. Ends with a Heartbreak Nova: knockback, stun, a big hit and a heart back.'},
         ]},
         {id:'subaru',emoji:'🔄',name:'Subaru',color:'#4488ff',stats:'Speed: Fast | HP: 200 | Regen: 4/s',abilities:[
@@ -8834,7 +8454,7 @@ function updateHUD(){
     const ab2=document.getElementById('secondary-btn');
     const ABILITY_NAMES={
         noglin:{primary:'LATCH',secondary:'CUTENESS'},pikachu:{primary:'THUNDERBOLT',secondary:'VOLT TACKLE'},
-        tiger:{primary:'POUNCE',secondary:'FURY SWIPES'},cat:{primary:'GLORP BEAM',secondary:'WORMHOLE'},arsonist:{primary:'PHIREBRANDED PHOENIX',secondary:'ARSON PARTY'},
+        tiger:{primary:'POUNCE',secondary:'FURY SWIPES'},cat:{primary:'GLORP BEAM',secondary:'WORMHOLE'},arsonist:{primary:'ARSON PARTY',secondary:'TAR TOSS'},
         shiba:{primary:'50 BUCKS',secondary:'WHIMPER'},snowman:{primary:'BLIZZARD',secondary:'ICICLES'},
         coolioioio:{primary:'SPINBOT',secondary:'360-NOSCOPE'},
         kira:{primary:'DEATH NOTE',secondary:'MONOLOGUE'},
