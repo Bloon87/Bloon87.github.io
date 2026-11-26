@@ -1471,7 +1471,7 @@ function lightTar(f){
 //  v2.7 — PHIREBRANDED PHOENIX (SPACE): a huge flaming bird, wings spread, that flies in a cone and sets everything it crosses ablaze
 // ═══════════════════════════════════════════════════
 function phoenixCast(p){
-    const ang=abilityAimAngle(p.x,p.y);
+    const ang=Math.atan2(state.mouseY-p.y,state.mouseX-p.x);   // v2.8: always flies at the cursor (the auto-target setting no longer redirects it)
     state.phoenix={x:p.x+Math.cos(ang)*40,y:p.y+Math.sin(ang)*40,ang:ang,t:0,dist:0,range:720,hit:new Set()};
     state.fireOn=true;state._fireNew=true;
     popup(p.x,p.y-55,'🔥 PHIREBRANDED PHOENIX!','#ff8a2a',130);
@@ -7739,7 +7739,7 @@ function skyBake(sc){
     if(sc.stage===2||sc.stage===4){
         x.clearRect(0,0,W,H);x.save();x.beginPath();x.rect(0,0,W,H);x.rect(B,B,W-B*2,H-B*2);x.clip('evenodd');x.globalAlpha=1;x.drawImage(G.cv,0,0,W,H);x.restore();
     }else{
-        x.save();x.beginPath();x.rect(B,B,W-B*2,H-B*2);x.clip();x.translate(0,H);x.scale(1,-1);x.globalAlpha=0.4;x.drawImage(G.cv,0,0,W,H);x.restore();
+        x.save();x.beginPath();x.rect(B,B,W-B*2,H-B*2);x.clip();x.translate(0,H);x.scale(1,-1);x.globalAlpha=0.26;x.drawImage(G.cv,0,0,W,H);x.restore();
     }
     sc.stage++;
     if(sc.stage>5){sc.ready=true;}
@@ -7806,7 +7806,7 @@ function skyCompose(bt,W,H,list){
     else{
         const idx=(SKY.step-1)>>1,ly=(SKY.step-1)&1,sc=sn[idx][0],sa=sn[idx][1];
         if(sa>=0.01){
-            bk.globalAlpha=0.8*sa*(ly?0.45+0.55*(0.5+0.5*Math.sin(bt*0.017+sc.p1*1.7)):0.78+0.22*Math.sin(bt*0.0105+sc.p3));
+            bk.globalAlpha=0.46*sa*(ly?0.35+0.65*(0.5+0.5*Math.sin(bt*0.017+sc.p1*1.7)):0.78+0.22*Math.sin(bt*0.0105+sc.p3));
             bk.drawImage(ly?sc.cB.cv:sc.cA.cv,0,0);
         }
     }
@@ -8603,7 +8603,7 @@ function initInfoScreen(){
             {key:'R — Wormhole',       desc:'Teleport instantly to your cursor position, confusing nearby enemies, with a brief burst of speed (1.7s).'},
         ]},
         {id:'arsonist',emoji:'🔥',name:'Arsonist',color:'#ff6a00',stats:'Speed: Fast | HP: 250 | Regen: 4/s',abilities:[
-            {key:'SPACE — Phirebranded Phoenix', desc:'Launch a huge flaming phoenix, wings spread, in a fast cone toward your aim. It flies a limited distance and fades out. Everything the cone crosses takes a big hit (10% of max HP, minimum 6x your damage; far less on bosses) and is set ablaze. Burn deals 140% of your DPS per second (double on oiled enemies) and spreads when a burning enemy burns to death.'},
+            {key:'SPACE — Phirebranded Phoenix', desc:'Launch a huge flaming phoenix, wings spread, in a fast cone toward your cursor. It flies a limited distance and fades out. Everything the cone crosses takes a big hit (10% of max HP, minimum 6x your damage; far less on bosses) and is set ablaze. Burn deals 140% of your DPS per second (double on oiled enemies) and spreads when a burning enemy burns to death.'},
             {key:'R — Arson Party',        desc:'Hurl 4 blobs of tar at the thickest clusters. Each splats, bounces back up like slime and splits into 2 smaller blobs, and every blob leaves a tar puddle. Molotovs fly at your nearest, strongest, weakest and furthest enemies in range, and at every tar puddle on the floor, setting the tar ablaze. Enemies touching tar get stuck: they can move, but past a short leash they are yanked ALL the way back to where they got stuck, tied there by sticky tar strands (they break free after a few seconds). Oiled enemies take DOUBLE burn damage.'},
         ]},
         {id:'skyblock',emoji:'⛏️',name:'Skyblock Adict',color:'#55ffff',stats:'Speed: Medium-Fast | HP: 250 | Regen: 4/s',abilities:[
